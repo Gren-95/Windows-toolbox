@@ -9,3 +9,7 @@ My personal toolbox for windows 10+
 3. Execute script with powershell
 
 4. (Optional) Paste this into powershell as administrator ```Set-ExecutionPolicy Default``` to return to default execution policy (Better for security).
+
+## Pictures
+
+![plot](./Screenshots/Administrator.png)
