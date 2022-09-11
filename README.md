@@ -13,3 +13,6 @@ My personal toolbox for windows 10+
 ## Pictures
 
 ![plot](./Screenshots/Administrator.png)
+![plot](./Screenshots/Tweaks.png)
+![plot](./Screenshots/Activate.png)
+![plot](./Screenshots/Power.pngs)
