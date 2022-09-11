@@ -30,7 +30,6 @@ $label.Location = New-Object System.Drawing.Point(10,10)
 $label.Font = New-Object System.Drawing.Font('arial',20,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
 $label.AutoSize = $true
 $label.ForeColor = "#000000"
-#$label.backColor = "#b3b3b3"
 $label.Text = ("Open your desired Application")
 $Tab1.Controls.Add($label)
 
@@ -40,7 +39,6 @@ $label2.Location = New-Object System.Drawing.Point(10,375)
 $label2.Font = New-Object System.Drawing.Font('arial',10)
 $label2.AutoSize = $true
 $label2.ForeColor = "#000000"
-#$label.backColor = "#b3b3b3"
 $label2.Text = ("cpl")
 $Tab1.Controls.Add($label2)
 
@@ -50,7 +48,6 @@ $label3.Location = New-Object System.Drawing.Point(225,375)
 $label3.Font = New-Object System.Drawing.Font('arial',10)
 $label3.AutoSize = $true
 $label3.ForeColor = "#000000"
-#$label.backColor = "#b3b3b3"
 $label3.Text = ("msc")
 $Tab1.Controls.Add($label3)
 
@@ -60,7 +57,6 @@ $label4.Location = New-Object System.Drawing.Point(440,375)
 $label4.Font = New-Object System.Drawing.Font('arial',10)
 $label4.AutoSize = $true
 $label4.ForeColor = "#000000"
-#$label.backColor = "#b3b3b3"
 $label4.Text = ("exe")
 $Tab1.Controls.Add($label4)
 
@@ -290,7 +286,7 @@ $button26.Location = New-Object System.Drawing.Point(225,325)
 $button26.Size = New-Object System.Drawing.Size(200,25)
 $button26.Text = "Remote Desktops"
 $button26.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button26.Add_Click({tsmmc.msc})
+$button26.Add_Click({mstsc.exe})
 $tab1.Controls.Add($button26)
 
 
@@ -469,7 +465,6 @@ $label.Location = New-Object System.Drawing.Point(10,10)
 $label.Font = New-Object System.Drawing.Font('arial',20,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
 $label.AutoSize = $true
 $label.ForeColor = "#000000"
-#$label.backColor = "#b3b3b3"
 $label.Text = ("Requires Administrator Permissions")
 $Tab2.Controls.Add($label)
 
@@ -574,7 +569,6 @@ $label.Location = New-Object System.Drawing.Point(10,10)
 $label.AutoSize = $true
 $label.Font = New-Object System.Drawing.Font('arial',20,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
 $label.ForeColor = "#000000"
-#$label.backColor = "#b3b3b3"
 $label.Text = ("Choose the Windows Edition you have installed")
 $Tab3.Controls.Add($label)
 
@@ -680,7 +674,6 @@ $label.Location = New-Object System.Drawing.Point(10,10)
 $label.AutoSize = $true
 $label.Font = New-Object System.Drawing.Font('arial',20,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
 $label.ForeColor = "#000000"
-#$label.backColor = "#b3b3b3"
 $label.Text = ("Choose how you want to shutdown")
 $Tab4.Controls.Add($label)
 
@@ -739,7 +732,6 @@ $label.Location = New-Object System.Drawing.Point(10,185)
 $label.AutoSize = $true
 $label.Font = New-Object System.Drawing.Font('arial',20,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
 $label.ForeColor = "#000000"
-#$label.backColor = "#b3b3b3"
 $label.Text = ("Power Settings")
 $Tab4.Controls.Add($label)
 
@@ -770,6 +762,72 @@ $PowerButton10.Size = New-Object System.Drawing.Size(320,25)
 $PowerButton10.Text = "Battery Options"
 $PowerButton10.add_click({ms-settings:batterysaver})
 $Tab4.Controls.add($PowerButton10)
+
+# tab 5
+$Tab5 = New-object System.Windows.Forms.Tabpage
+$Tab5.DataBindings.DefaultDataSourceUpdateMode = 0 
+$Tab5.UseVisualStyleBackColor = $True 
+$Tab5.Name = "Tab5" 
+$Tab5.Text = "About” 
+$FormTabControl.Controls.Add($Tab5)
+
+# window label
+$label = New-Object System.Windows.Forms.Label
+$label.Location = New-Object System.Drawing.Point(10,10)
+$label.AutoSize = $true
+$label.Font = New-Object System.Drawing.Font('arial',26,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
+$label.ForeColor = "#000000"
+$label.Text = ("Efe's Toolbox")
+$Tab5.Controls.Add($label)
+
+# window label
+$label2 = New-Object System.Windows.Forms.Label
+$label2.Location = New-Object System.Drawing.Point(10,90)
+$label2.AutoSize = $true
+$label2.Font = New-Object System.Drawing.Font('arial',12)
+$label2.ForeColor = "#000000"
+#$label2.backColor = "#b3b3b3"
+$label2.Text = ("Efe's Toolbox is designed by a student`nwho has gotten bored and found coding slightly joyful.")
+$Tab5.Controls.Add($label2)
+
+# link1
+$link1 = New-Object System.Windows.Forms.LinkLabel
+$link1.Location = New-Object System.Drawing.Point(10,150)
+#$label.AutoSize = $true
+#$label2.AutoSize.DisabledLinkColor = 'Blue'
+$link1.VisitedLinkColor = 'Red'
+$link1.LinkBehavior = 'HoverUnderline'
+$link1.LinkColor = 'Navy'
+$link1.Font = New-Object System.Drawing.Font('arial',10)
+$link1.ForeColor = "#000000"
+$link1.Text = ("Github Page")
+$link1.add_click({explorer "https://github.com/Greninja9559/efe-toolbox"})
+$Tab5.Controls.Add($link1)
+
+# link2
+$link2 = New-Object System.Windows.Forms.LinkLabel
+$link2.Location = New-Object System.Drawing.Point(110,150)
+#$link2.AutoSize = $true
+#$link2.AutoSize.DisabledLinkColor = 'Blue'
+$link2.VisitedLinkColor = 'Red'
+$link2.LinkBehavior = 'HoverUnderline'
+$link2.LinkColor = 'Navy'
+$link2.Font = New-Object System.Drawing.Font('arial',10)
+$link2.ForeColor = "#000000"
+#$link2.backColor = "#b3b3b3"
+$link2.Text = ("Report issues")
+$link2.add_click({explorer "https://github.com/Greninja9559/efe-toolbox/issues"})
+$Tab5.Controls.Add($link2)
+
+# window label
+$label3 = New-Object System.Windows.Forms.Label
+$label3.Location = New-Object System.Drawing.Point(590,400)
+$label3.AutoSize = $true
+$label3.Font = New-Object System.Drawing.Font('arial',8)
+$label3.ForeColor = "#000000"
+#$label3.backColor = "#b3b3b3"
+$label3.Text = ("Made in 2022")
+$Tab5.Controls.Add($label3)
 
 # Initlize the form
 $ApplicationForm.Add_Shown({$ApplicationForm.Activate()})
