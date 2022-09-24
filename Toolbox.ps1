@@ -25,431 +25,431 @@ $Tab1.Text = "Administrator Stuff”
 $FormTabControl.Controls.Add($Tab1)
 
 # label 1
-$label = New-Object System.Windows.Forms.Label
-$label.Location = New-Object System.Drawing.Point(10,10)
-$label.Font = New-Object System.Drawing.Font('arial',20,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
-$label.AutoSize = $true
-$label.ForeColor = "#000000"
-$label.Text = ("Open your desired Application")
-$Tab1.Controls.Add($label)
+$Tab1_label1 = New-Object System.Windows.Forms.Label
+$Tab1_label1.Location = New-Object System.Drawing.Point(10,10)
+$Tab1_label1.Font = New-Object System.Drawing.Font('arial',20,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
+$Tab1_label1.AutoSize = $true
+$Tab1_label1.ForeColor = "#000000"
+$Tab1_label1.Text = ("Open your desired Application")
+$Tab1.Controls.Add($Tab1_label1)
 
 # label 2
-$label2 = New-Object System.Windows.Forms.Label
-$label2.Location = New-Object System.Drawing.Point(10,375)
-$label2.Font = New-Object System.Drawing.Font('arial',10)
-$label2.AutoSize = $true
-$label2.ForeColor = "#000000"
-$label2.Text = ("cpl")
-$Tab1.Controls.Add($label2)
+$Tab1_label2 = New-Object System.Windows.Forms.Label
+$Tab1_label2.Location = New-Object System.Drawing.Point(10,375)
+$Tab1_label2.Font = New-Object System.Drawing.Font('arial',10)
+$Tab1_label2.AutoSize = $true
+$Tab1_label2.ForeColor = "#000000"
+$Tab1_label2.Text = ("cpl")
+$Tab1.Controls.Add($Tab1_label2)
 
 # label 3
-$label3 = New-Object System.Windows.Forms.Label
-$label3.Location = New-Object System.Drawing.Point(225,375)
-$label3.Font = New-Object System.Drawing.Font('arial',10)
-$label3.AutoSize = $true
-$label3.ForeColor = "#000000"
-$label3.Text = ("msc")
-$Tab1.Controls.Add($label3)
+$Tab1_label3 = New-Object System.Windows.Forms.Label
+$Tab1_label3.Location = New-Object System.Drawing.Point(225,375)
+$Tab1_label3.Font = New-Object System.Drawing.Font('arial',10)
+$Tab1_label3.AutoSize = $true
+$Tab1_label3.ForeColor = "#000000"
+$Tab1_label3.Text = ("msc")
+$Tab1.Controls.Add($Tab1_label3)
 
 # label 4
-$label4 = New-Object System.Windows.Forms.Label
-$label4.Location = New-Object System.Drawing.Point(440,375)
-$label4.Font = New-Object System.Drawing.Font('arial',10)
-$label4.AutoSize = $true
-$label4.ForeColor = "#000000"
-$label4.Text = ("exe")
-$Tab1.Controls.Add($label4)
+$Tab1_label4 = New-Object System.Windows.Forms.Label
+$Tab1_label4.Location = New-Object System.Drawing.Point(440,375)
+$Tab1_label4.Font = New-Object System.Drawing.Font('arial',10)
+$Tab1_label4.AutoSize = $true
+$Tab1_label4.ForeColor = "#000000"
+$Tab1_label4.Text = ("exe")
+$Tab1.Controls.Add($Tab1_label4)
 
 # Lots of buttons
-$button1 = New-Object System.Windows.Forms.Button
-$button1.Location = New-Object System.Drawing.Point(10,50)
-$button1.Size = New-Object System.Drawing.Size(200,25)
-$button1.Text = "Device Manager"
-$button1.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button1.Add_Click({hdwwiz.cpl})
-$tab1.Controls.Add($button1)
-
-$button2 = New-Object System.Windows.Forms.Button
-$button2.Location = New-Object System.Drawing.Point(10,75)
-$button2.Size = New-Object System.Drawing.Size(200,25)
-$button2.Text = "Internet Properties"
-$button2.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button2.Add_Click({inetcpl.cpl})
-$tab1.Controls.Add($button2)
-
-$button3 = New-Object System.Windows.Forms.Button
-$button3.Location = New-Object System.Drawing.Point(10,100)
-$button3.Size = New-Object System.Drawing.Size(200,25)
-$button3.Text = "Mouse Properties"
-$button3.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button3.Add_Click({main.cpl})
-$tab1.Controls.Add($button3)
-
-$button4 = New-Object System.Windows.Forms.Button
-$button4.Location = New-Object System.Drawing.Point(10,125)
-$button4.Size = New-Object System.Drawing.Size(200,25)
-$button4.Text = "Sound and Audio"
-$button4.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button4.Add_Click({mmsys.cpl})
-$tab1.Controls.Add($button4)
-
-$button5 = New-Object System.Windows.Forms.Button
-$button5.Location = New-Object System.Drawing.Point(10,150)
-$button5.Size = New-Object System.Drawing.Size(200,25)
-$button5.Text = "Network Properties"
-$button5.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button5.Add_Click({ncpa.cpl})
-$tab1.Controls.Add($button5)
-
-$button6 = New-Object System.Windows.Forms.Button
-$button6.Location = New-Object System.Drawing.Point(10,175)
-$button6.Size = New-Object System.Drawing.Size(200,25)
-$button6.Text = "User Accounts"
-$button6.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button6.Add_Click({nusrmgr.cpl})
-$tab1.Controls.Add($button6)
-
-
-$button7 = New-Object System.Windows.Forms.Button
-$button7.Location = New-Object System.Drawing.Point(10,200)
-$button7.Size = New-Object System.Drawing.Size(200,25)
-$button7.Text = "Time/Date"
-$button7.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button7.Add_Click({timedate.cpl})
-$tab1.Controls.Add($button7)
-
-
-$button8 = New-Object System.Windows.Forms.Button
-$button8.Location = New-Object System.Drawing.Point(10,225)
-$button8.Size = New-Object System.Drawing.Size(200,25)
-$button8.Text = "Windows Security Center"
-$button8.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button8.Add_Click({wscui.cpl})
-$tab1.Controls.Add($button8)
-
-
-$button9 = New-Object System.Windows.Forms.Button
-$button9.Location = New-Object System.Drawing.Point(10,250)
-$button9.Size = New-Object System.Drawing.Size(200,25)
-$button9.Text = "Automatic Updates"
-$button9.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button9.Add_Click({wuaucpl.cpl})
-$tab1.Controls.Add($button9)
-
-
-$button10 = New-Object System.Windows.Forms.Button
-$button10.Location = New-Object System.Drawing.Point(10,275)
-$button10.Size = New-Object System.Drawing.Size(200,25)
-$button10.Text = "Add/Remove Applications"
-$button10.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button10.Add_Click({appwiz.cpl})
-$tab1.Controls.Add($button10)
-
-
-$button11 = New-Object System.Windows.Forms.Button
-$button11.Location = New-Object System.Drawing.Point(10,250)
-$button11.Size = New-Object System.Drawing.Size(200,25)
-$button11.Text = "Display Properties"
-$button11.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button11.Add_Click({desk.cpl})
-$tab1.Controls.Add($button11)
-
-
-$button12 = New-Object System.Windows.Forms.Button
-$button12.Location = New-Object System.Drawing.Point(10,300)
-$button12.Size = New-Object System.Drawing.Size(200,25)
-$button12.Text = "Windows Firewall Properties"
-$button12.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button12.Add_Click({firewall.cpl})
-$tab1.Controls.Add($button12)
-
-
-$button13 = New-Object System.Windows.Forms.Button
-$button13.Location = New-Object System.Drawing.Point(10,325)
-$button13.Size = New-Object System.Drawing.Size(200,25)
-$button13.Text = "System Properties"
-$button13.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button13.Add_Click({sysdm.cpl})
-$tab1.Controls.Add($button13)
-
-
-$button14 = New-Object System.Windows.Forms.Button
-$button14.Location = New-Object System.Drawing.Point(225,50)
-$button14.Size = New-Object System.Drawing.Size(200,25)
-$button14.Text = "Authorization Manager"
-$button14.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button14.Add_Click({azman.msc})
-$tab1.Controls.Add($button14)
-
-
-$button15 = New-Object System.Windows.Forms.Button
-$button15.Location = New-Object System.Drawing.Point(225,75)
-$button15.Size = New-Object System.Drawing.Size(200,25)
-$button15.Text = "Certificate Manager"
-$button15.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button15.Add_Click({certmgr.msc})
-$tab1.Controls.Add($button15)
-
-
-$button16 = New-Object System.Windows.Forms.Button
-$button16.Location = New-Object System.Drawing.Point(225,100)
-$button16.Size = New-Object System.Drawing.Size(200,25)
-$button16.Text = "Computer Management"
-$button16.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button16.Add_Click({compmgmt.msc})
-$tab1.Controls.Add($button16)
-
-
-$button17 = New-Object System.Windows.Forms.Button
-$button17.Location = New-Object System.Drawing.Point(225,125)
-$button17.Size = New-Object System.Drawing.Size(200,25)
-$button17.Text = "Device Management"
-$button17.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button17.Add_Click({devmgmt.msc})
-$tab1.Controls.Add($button17)
-
-
-$button18 = New-Object System.Windows.Forms.Button
-$button18.Location = New-Object System.Drawing.Point(225,150)
-$button18.Size = New-Object System.Drawing.Size(200,25)
-$button18.Text = "Disk Management"
-$button18.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button18.Add_Click({diskmgmt.msc})
-$tab1.Controls.Add($button18)
-
-
-$button19 = New-Object System.Windows.Forms.Button
-$button19.Location = New-Object System.Drawing.Point(225,175)
-$button19.Size = New-Object System.Drawing.Size(200,25)
-$button19.Text = "Event Viewer"
-$button19.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button19.Add_Click({eventvwr.msc})
-$tab1.Controls.Add($button19)
-
-
-$button20 = New-Object System.Windows.Forms.Button
-$button20.Location = New-Object System.Drawing.Point(225,200)
-$button20.Size = New-Object System.Drawing.Size(200,25)
-$button20.Text = "Shared Folders Management"
-$button20.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button20.Add_Click({fsmgmt.mscs})
-$tab1.Controls.Add($button20)
-
-
-$button21 = New-Object System.Windows.Forms.Button
-$button21.Location = New-Object System.Drawing.Point(225,225)
-$button21.Size = New-Object System.Drawing.Size(200,25)
-$button21.Text = "Group Policy Editor"
-$button21.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button21.Add_Click({gpedit.msc})
-$tab1.Controls.Add($button21)
-
-
-$button22 = New-Object System.Windows.Forms.Button
-$button22.Location = New-Object System.Drawing.Point(225,250)
-$button22.Size = New-Object System.Drawing.Size(200,25)
-$button22.Text = "Group Policy Man Console"
-$button22.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button22.Add_Click({gpmc.msc})
-$tab1.Controls.Add($button22)
-
-
-$button23 = New-Object System.Windows.Forms.Button
-$button23.Location = New-Object System.Drawing.Point(225,275)
-$button23.Size = New-Object System.Drawing.Size(200,25)
-$button23.Text = "Local Users and Groups"
-$button23.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button23.Add_Click({lusrmgr.msc})
-$tab1.Controls.Add($button23)
-
-
-$button24 = New-Object System.Windows.Forms.Button
-$button24.Location = New-Object System.Drawing.Point(225,250)
-$button24.Size = New-Object System.Drawing.Size(200,25)
-$button24.Text = "Performance Monitor"
-$button24.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button24.Add_Click({perfmon.msc})
-$tab1.Controls.Add($button24)
-
-
-$button25 = New-Object System.Windows.Forms.Button
-$button25.Location = New-Object System.Drawing.Point(225,300)
-$button25.Size = New-Object System.Drawing.Size(200,25)
-$button25.Text = "Services"
-$button25.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button25.Add_Click({services.msc})
-$tab1.Controls.Add($button25)
-
-
-$button26 = New-Object System.Windows.Forms.Button
-$button26.Location = New-Object System.Drawing.Point(225,325)
-$button26.Size = New-Object System.Drawing.Size(200,25)
-$button26.Text = "Remote Desktops"
-$button26.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button26.Add_Click({mstsc.exe})
-$tab1.Controls.Add($button26)
-
-
-$button27 = New-Object System.Windows.Forms.Button
-$button27.Location = New-Object System.Drawing.Point(225,350)
-$button27.Size = New-Object System.Drawing.Size(200,25)
-$button27.Text = "WMI"
-$button27.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button27.Add_Click({wmimgmt.msc})
-$tab1.Controls.Add($button27)
-
-
-$button28 = New-Object System.Windows.Forms.Button
-$button28.Location = New-Object System.Drawing.Point(440,50)
-$button28.Size = New-Object System.Drawing.Size(200,25)
-$button28.Text = "Explorer"
-$button28.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button28.Add_Click({explorer.exe})
-$tab1.Controls.Add($button28)
-
-
-$button29 = New-Object System.Windows.Forms.Button
-$button29.Location = New-Object System.Drawing.Point(440,75)
-$button29.Size = New-Object System.Drawing.Size(200,25)
-$button29.Text = "Notepad"
-$button29.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button29.Add_Click({notepad.exe})
-$tab1.Controls.Add($button29)
-
-
-$button25 = New-Object System.Windows.Forms.Button
-$button25.Location = New-Object System.Drawing.Point(440,100)
-$button25.Size = New-Object System.Drawing.Size(200,25)
-$button25.Text = "Regedit"
-$button25.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button25.Add_Click({regedit.exe})
-$tab1.Controls.Add($button25)
-
-
-$button31 = New-Object System.Windows.Forms.Button
-$button31.Location = New-Object System.Drawing.Point(440,125)
-$button31.Size = New-Object System.Drawing.Size(200,25)
-$button31.Text = "Activation"
-$button31.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button31.Add_Click({changepk.exe})
-$tab1.Controls.Add($button31)
-
-
-$button32 = New-Object System.Windows.Forms.Button
-$button32.Location = New-Object System.Drawing.Point(440,150)
-$button32.Size = New-Object System.Drawing.Size(200,25)
-$button32.Text = "Character Map"
-$button32.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button32.Add_Click({charmap.exe})
-$tab1.Controls.Add($button32)
-
-
-$button33 = New-Object System.Windows.Forms.Button
-$button33.Location = New-Object System.Drawing.Point(440,175)
-$button33.Size = New-Object System.Drawing.Size(200,25)
-$button33.Text = "Disk Cleanup"
-$button33.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button33.Add_Click({cleanmgr.exe})
-$tab1.Controls.Add($button33)
-
-
-$button34 = New-Object System.Windows.Forms.Button
-$button34.Location = New-Object System.Drawing.Point(440,200)
-$button34.Size = New-Object System.Drawing.Size(200,25)
-$button34.Text = "Command Prompt"
-$button34.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button34.Add_Click({cmd.exe})
-$tab1.Controls.Add($button34)
-
-
-$button35 = New-Object System.Windows.Forms.Button
-$button35.Location = New-Object System.Drawing.Point(440,225)
-$button35.Size = New-Object System.Drawing.Size(200,25)
-$button35.Text = "Default Apps"
-$button35.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button35.Add_Click({ComputerDefaults.exe})
-$tab1.Controls.Add($button35)
-
-
-$button36 = New-Object System.Windows.Forms.Button
-$button36.Location = New-Object System.Drawing.Point(440,250)
-$button36.Size = New-Object System.Drawing.Size(200,25)
-$button36.Text = "Control Panel"
-$button36.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button36.Add_Click({control.exe})
-$tab1.Controls.Add($button36)
-
-
-$button37 = New-Object System.Windows.Forms.Button
-$button37.Location = New-Object System.Drawing.Point(440,275)
-$button37.Size = New-Object System.Drawing.Size(200,25)
-$button37.Text = "Magnify"
-$button37.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button37.Add_Click({Magnify.exe})
-$tab1.Controls.Add($button37)
-
-
-$button38 = New-Object System.Windows.Forms.Button
-$button38.Location = New-Object System.Drawing.Point(440,250)
-$button38.Size = New-Object System.Drawing.Size(200,25)
-$button38.Text = "Mobility Center"
-$button38.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button38.Add_Click({mblctr.exe})
-$tab1.Controls.Add($button38)
-
-
-$button39 = New-Object System.Windows.Forms.Button
-$button39.Location = New-Object System.Drawing.Point(440,300)
-$button39.Size = New-Object System.Drawing.Size(200,25)
-$button39.Text = "Resource Monitor"
-$button39.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button39.Add_Click({resmon.exe})
-$tab1.Controls.Add($button39)
-
-
-$button40 = New-Object System.Windows.Forms.Button
-$button40.Location = New-Object System.Drawing.Point(10,325)
-$button40.Size = New-Object System.Drawing.Size(200,25)
-$button40.Text = "Region"
-$button40.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button40.Add_Click({intl.cpl})
-$tab1.Controls.Add($button40)
-
-
-$button41 = New-Object System.Windows.Forms.Button
-$button41.Location = New-Object System.Drawing.Point(440,325)
-$button41.Size = New-Object System.Drawing.Size(200,25)
-$button41.Text = "DiskPart"
-$button41.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button41.Add_Click({diskpart.exe})
-$tab1.Controls.Add($button41)
-
-
-$button42 = New-Object System.Windows.Forms.Button
-$button42.Location = New-Object System.Drawing.Point(10,350)
-$button42.Size = New-Object System.Drawing.Size(200,25)
-$button42.Text = "Region"
-$button42.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button42.Add_Click({intl.cpl})
-$tab1.Controls.Add($button42)
-
-
-$button43 = New-Object System.Windows.Forms.Button
-$button43.Location = New-Object System.Drawing.Point(440,350)
-$button43.Size = New-Object System.Drawing.Size(100,25)
-$button43.Text = "Powershell"
-$button43.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button43.Add_Click({Start-Process powershell})
-$tab1.Controls.Add($button43)
-
-
-$button44 = New-Object System.Windows.Forms.Button
-$button44.Location = New-Object System.Drawing.Point(540,350)
-$button44.Size = New-Object System.Drawing.Size(100,25)
-$button44.Text = "Adimin"
-$button44.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$button44.Add_Click({powershell start-process powershell -verb runas})
-$tab1.Controls.Add($button44)
+$Tab1_appbutton1 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton1.Location = New-Object System.Drawing.Point(10,50)
+$Tab1_appbutton1.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton1.Text = "Device Manager"
+$Tab1_appbutton1.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton1.Add_Click({hdwwiz.cpl})
+$tab1.Controls.Add($Tab1_appbutton1)
+
+$Tab1_appbutton2 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton2.Location = New-Object System.Drawing.Point(10,75)
+$Tab1_appbutton2.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton2.Text = "Internet Properties"
+$Tab1_appbutton2.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton2.Add_Click({inetcpl.cpl})
+$tab1.Controls.Add($Tab1_appbutton2)
+
+$Tab1_appbutton3 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton3.Location = New-Object System.Drawing.Point(10,100)
+$Tab1_appbutton3.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton3.Text = "Mouse Properties"
+$Tab1_appbutton3.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton3.Add_Click({main.cpl})
+$tab1.Controls.Add($Tab1_appbutton3)
+
+$Tab1_appbutton4 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton4.Location = New-Object System.Drawing.Point(10,125)
+$Tab1_appbutton4.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton4.Text = "Sound and Audio"
+$Tab1_appbutton4.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton4.Add_Click({mmsys.cpl})
+$tab1.Controls.Add($Tab1_appbutton4)
+
+$Tab1_appbutton5 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton5.Location = New-Object System.Drawing.Point(10,150)
+$Tab1_appbutton5.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton5.Text = "Network Properties"
+$Tab1_appbutton5.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton5.Add_Click({ncpa.cpl})
+$tab1.Controls.Add($Tab1_appbutton5)
+
+$Tab1_appbutton6 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton6.Location = New-Object System.Drawing.Point(10,175)
+$Tab1_appbutton6.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton6.Text = "User Accounts"
+$Tab1_appbutton6.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton6.Add_Click({nusrmgr.cpl})
+$tab1.Controls.Add($Tab1_appbutton6)
+
+
+$Tab1_appbutton7 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton7.Location = New-Object System.Drawing.Point(10,200)
+$Tab1_appbutton7.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton7.Text = "Time/Date"
+$Tab1_appbutton7.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton7.Add_Click({timedate.cpl})
+$tab1.Controls.Add($Tab1_appbutton7)
+
+
+$Tab1_appbutton8 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton8.Location = New-Object System.Drawing.Point(10,225)
+$Tab1_appbutton8.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton8.Text = "Windows Security Center"
+$Tab1_appbutton8.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton8.Add_Click({wscui.cpl})
+$tab1.Controls.Add($Tab1_appbutton8)
+
+
+$Tab1_appbutton9 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton9.Location = New-Object System.Drawing.Point(10,250)
+$Tab1_appbutton9.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton9.Text = "Automatic Updates"
+$Tab1_appbutton9.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton9.Add_Click({wuaucpl.cpl})
+$tab1.Controls.Add($Tab1_appbutton9)
+
+
+$Tab1_appbutton10 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton10.Location = New-Object System.Drawing.Point(10,275)
+$Tab1_appbutton10.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton10.Text = "Add/Remove Applications"
+$Tab1_appbutton10.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton10.Add_Click({appwiz.cpl})
+$tab1.Controls.Add($Tab1_appbutton10)
+
+
+$Tab1_appbutton11 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton11.Location = New-Object System.Drawing.Point(10,250)
+$Tab1_appbutton11.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton11.Text = "Display Properties"
+$Tab1_appbutton11.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton11.Add_Click({desk.cpl})
+$tab1.Controls.Add($Tab1_appbutton11)
+
+
+$Tab1_appbutton12 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton12.Location = New-Object System.Drawing.Point(10,300)
+$Tab1_appbutton12.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton12.Text = "Windows Firewall Properties"
+$Tab1_appbutton12.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton12.Add_Click({firewall.cpl})
+$tab1.Controls.Add($Tab1_appbutton12)
+
+
+$Tab1_appbutton13 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton13.Location = New-Object System.Drawing.Point(10,325)
+$Tab1_appbutton13.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton13.Text = "System Properties"
+$Tab1_appbutton13.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton13.Add_Click({sysdm.cpl})
+$tab1.Controls.Add($Tab1_appbutton13)
+
+
+$Tab1_appbutton14 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton14.Location = New-Object System.Drawing.Point(225,50)
+$Tab1_appbutton14.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton14.Text = "Authorization Manager"
+$Tab1_appbutton14.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton14.Add_Click({azman.msc})
+$tab1.Controls.Add($Tab1_appbutton14)
+
+
+$Tab1_appbutton15 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton15.Location = New-Object System.Drawing.Point(225,75)
+$Tab1_appbutton15.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton15.Text = "Certificate Manager"
+$Tab1_appbutton15.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton15.Add_Click({certmgr.msc})
+$tab1.Controls.Add($Tab1_appbutton15)
+
+
+$Tab1_appbutton16 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton16.Location = New-Object System.Drawing.Point(225,100)
+$Tab1_appbutton16.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton16.Text = "Computer Management"
+$Tab1_appbutton16.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton16.Add_Click({compmgmt.msc})
+$tab1.Controls.Add($Tab1_appbutton16)
+
+
+$Tab1_appbutton17 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton17.Location = New-Object System.Drawing.Point(225,125)
+$Tab1_appbutton17.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton17.Text = "Device Management"
+$Tab1_appbutton17.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton17.Add_Click({devmgmt.msc})
+$tab1.Controls.Add($Tab1_appbutton17)
+
+
+$Tab1_appbutton18 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton18.Location = New-Object System.Drawing.Point(225,150)
+$Tab1_appbutton18.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton18.Text = "Disk Management"
+$Tab1_appbutton18.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton18.Add_Click({diskmgmt.msc})
+$tab1.Controls.Add($Tab1_appbutton18)
+
+
+$Tab1_appbutton19 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton19.Location = New-Object System.Drawing.Point(225,175)
+$Tab1_appbutton19.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton19.Text = "Event Viewer"
+$Tab1_appbutton19.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton19.Add_Click({eventvwr.msc})
+$tab1.Controls.Add($Tab1_appbutton19)
+
+
+$Tab1_appbutton20 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton20.Location = New-Object System.Drawing.Point(225,200)
+$Tab1_appbutton20.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton20.Text = "Shared Folders Management"
+$Tab1_appbutton20.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton20.Add_Click({fsmgmt.mscs})
+$tab1.Controls.Add($Tab1_appbutton20)
+
+
+$Tab1_appbutton21 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton21.Location = New-Object System.Drawing.Point(225,225)
+$Tab1_appbutton21.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton21.Text = "Group Policy Editor"
+$Tab1_appbutton21.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton21.Add_Click({gpedit.msc})
+$tab1.Controls.Add($Tab1_appbutton21)
+
+
+$Tab1_appbutton22 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton22.Location = New-Object System.Drawing.Point(225,250)
+$Tab1_appbutton22.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton22.Text = "Group Policy Man Console"
+$Tab1_appbutton22.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton22.Add_Click({gpmc.msc})
+$tab1.Controls.Add($Tab1_appbutton22)
+
+
+$Tab1_appbutton23 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton23.Location = New-Object System.Drawing.Point(225,275)
+$Tab1_appbutton23.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton23.Text = "Local Users and Groups"
+$Tab1_appbutton23.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton23.Add_Click({lusrmgr.msc})
+$tab1.Controls.Add($Tab1_appbutton23)
+
+
+$Tab1_appbutton24 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton24.Location = New-Object System.Drawing.Point(225,250)
+$Tab1_appbutton24.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton24.Text = "Performance Monitor"
+$Tab1_appbutton24.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton24.Add_Click({perfmon.msc})
+$tab1.Controls.Add($Tab1_appbutton24)
+
+
+$Tab1_appbutton25 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton25.Location = New-Object System.Drawing.Point(225,300)
+$Tab1_appbutton25.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton25.Text = "Services"
+$Tab1_appbutton25.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton25.Add_Click({services.msc})
+$tab1.Controls.Add($Tab1_appbutton25)
+
+
+$Tab1_appbutton26 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton26.Location = New-Object System.Drawing.Point(225,325)
+$Tab1_appbutton26.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton26.Text = "Remote Desktops"
+$Tab1_appbutton26.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton26.Add_Click({mstsc.exe})
+$tab1.Controls.Add($Tab1_appbutton26)
+
+
+$Tab1_appbutton27 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton27.Location = New-Object System.Drawing.Point(225,350)
+$Tab1_appbutton27.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton27.Text = "WMI"
+$Tab1_appbutton27.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton27.Add_Click({wmimgmt.msc})
+$tab1.Controls.Add($Tab1_appbutton27)
+
+
+$Tab1_appbutton28 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton28.Location = New-Object System.Drawing.Point(440,50)
+$Tab1_appbutton28.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton28.Text = "Explorer"
+$Tab1_appbutton28.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton28.Add_Click({explorer.exe})
+$tab1.Controls.Add($Tab1_appbutton28)
+
+
+$Tab1_appbutton29 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton29.Location = New-Object System.Drawing.Point(440,75)
+$Tab1_appbutton29.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton29.Text = "Notepad"
+$Tab1_appbutton29.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton29.Add_Click({notepad.exe})
+$tab1.Controls.Add($Tab1_appbutton29)
+
+
+$Tab1_appbutton25 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton25.Location = New-Object System.Drawing.Point(440,100)
+$Tab1_appbutton25.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton25.Text = "Regedit"
+$Tab1_appbutton25.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton25.Add_Click({regedit.exe})
+$tab1.Controls.Add($Tab1_appbutton25)
+
+
+$Tab1_appbutton31 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton31.Location = New-Object System.Drawing.Point(440,125)
+$Tab1_appbutton31.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton31.Text = "Activation"
+$Tab1_appbutton31.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton31.Add_Click({changepk.exe})
+$tab1.Controls.Add($Tab1_appbutton31)
+
+
+$Tab1_appbutton32 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton32.Location = New-Object System.Drawing.Point(440,150)
+$Tab1_appbutton32.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton32.Text = "Character Map"
+$Tab1_appbutton32.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton32.Add_Click({charmap.exe})
+$tab1.Controls.Add($Tab1_appbutton32)
+
+
+$Tab1_appbutton33 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton33.Location = New-Object System.Drawing.Point(440,175)
+$Tab1_appbutton33.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton33.Text = "Disk Cleanup"
+$Tab1_appbutton33.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton33.Add_Click({cleanmgr.exe})
+$tab1.Controls.Add($Tab1_appbutton33)
+
+
+$Tab1_appbutton34 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton34.Location = New-Object System.Drawing.Point(440,200)
+$Tab1_appbutton34.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton34.Text = "Command Prompt"
+$Tab1_appbutton34.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton34.Add_Click({cmd.exe})
+$tab1.Controls.Add($Tab1_appbutton34)
+
+
+$Tab1_appbutton35 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton35.Location = New-Object System.Drawing.Point(440,225)
+$Tab1_appbutton35.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton35.Text = "Default Apps"
+$Tab1_appbutton35.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton35.Add_Click({ComputerDefaults.exe})
+$tab1.Controls.Add($Tab1_appbutton35)
+
+
+$Tab1_appbutton36 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton36.Location = New-Object System.Drawing.Point(440,250)
+$Tab1_appbutton36.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton36.Text = "Control Panel"
+$Tab1_appbutton36.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton36.Add_Click({control.exe})
+$tab1.Controls.Add($Tab1_appbutton36)
+
+
+$Tab1_appbutton37 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton37.Location = New-Object System.Drawing.Point(440,275)
+$Tab1_appbutton37.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton37.Text = "Magnify"
+$Tab1_appbutton37.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton37.Add_Click({Magnify.exe})
+$tab1.Controls.Add($Tab1_appbutton37)
+
+
+$Tab1_appbutton38 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton38.Location = New-Object System.Drawing.Point(440,250)
+$Tab1_appbutton38.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton38.Text = "Mobility Center"
+$Tab1_appbutton38.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton38.Add_Click({mblctr.exe})
+$tab1.Controls.Add($Tab1_appbutton38)
+
+
+$Tab1_appbutton39 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton39.Location = New-Object System.Drawing.Point(440,300)
+$Tab1_appbutton39.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton39.Text = "Resource Monitor"
+$Tab1_appbutton39.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton39.Add_Click({resmon.exe})
+$tab1.Controls.Add($Tab1_appbutton39)
+
+
+$Tab1_appbutton40 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton40.Location = New-Object System.Drawing.Point(10,325)
+$Tab1_appbutton40.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton40.Text = "Region"
+$Tab1_appbutton40.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton40.Add_Click({intl.cpl})
+$tab1.Controls.Add($Tab1_appbutton40)
+
+
+$Tab1_appbutton41 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton41.Location = New-Object System.Drawing.Point(440,325)
+$Tab1_appbutton41.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton41.Text = "DiskPart"
+$Tab1_appbutton41.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton41.Add_Click({diskpart.exe})
+$tab1.Controls.Add($Tab1_appbutton41)
+
+
+$Tab1_appbutton42 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton42.Location = New-Object System.Drawing.Point(10,350)
+$Tab1_appbutton42.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton42.Text = "Region"
+$Tab1_appbutton42.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton42.Add_Click({intl.cpl})
+$tab1.Controls.Add($Tab1_appbutton42)
+
+
+$Tab1_appbutton43 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton43.Location = New-Object System.Drawing.Point(440,350)
+$Tab1_appbutton43.Size = New-Object System.Drawing.Size(100,25)
+$Tab1_appbutton43.Text = "Powershell"
+$Tab1_appbutton43.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton43.Add_Click({Start-Process powershell})
+$tab1.Controls.Add($Tab1_appbutton43)
+
+
+$Tab1_appbutton44 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton44.Location = New-Object System.Drawing.Point(540,350)
+$Tab1_appbutton44.Size = New-Object System.Drawing.Size(100,25)
+$Tab1_appbutton44.Text = "Adimin"
+$Tab1_appbutton44.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton44.Add_Click({powershell start-process powershell -verb runas})
+$tab1.Controls.Add($Tab1_appbutton44)
 
 # tab 2 - tweaks#
 $Tab2 = New-object System.Windows.Forms.Tabpage
@@ -460,100 +460,100 @@ $Tab2.Text = "Tweaks”
 $FormTabControl.Controls.Add($Tab2)
 
 # label
-$label = New-Object System.Windows.Forms.Label
-$label.Location = New-Object System.Drawing.Point(10,10)
-$label.Font = New-Object System.Drawing.Font('arial',20,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
-$label.AutoSize = $true
-$label.ForeColor = "#000000"
-$label.Text = ("Requires Administrator Permissions")
+$Tab2_label1 = New-Object System.Windows.Forms.Label
+$Tab2_label1.Location = New-Object System.Drawing.Point(10,10)
+$Tab2_label1.Font = New-Object System.Drawing.Font('arial',20,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
+$Tab2_label1.AutoSize = $true
+$Tab2_label1.ForeColor = "#000000"
+$Tab2_label1.Text = ("Requires Administrator Permissions")
 $Tab2.Controls.Add($label)
 
 # tweak buttons
-$featurebutton1 = New-Object System.Windows.Forms.Button
-$featurebutton1.Location = New-Object System.Drawing.Point(10,50)
-$featurebutton1.Size = New-Object System.Drawing.Size (320,25)
-$featurebutton1.Text = "All .NET Framework (2,3,4)"
-$featurebutton1.Add_Click({
-    Enable-WindowsOptionalFeature -Online -FeatureName "NetFx4-AdvSrvs" -All
-    Enable-WindowsOptionalFeature -Online -FeatureName "NetFx3" -All
+$Tab2_tweakbutton1 = New-Object System.Windows.Forms.Button
+$Tab2_tweakbutton1.Location = New-Object System.Drawing.Point(10,50)
+$Tab2_tweakbutton1.Size = New-Object System.Drawing.Size (320,25)
+$Tab2_tweakbutton1.Text = "All .NET Framework (2,3,4)"
+$Tab2_tweakbutton1.Add_Click({
+Enable-WindowsOptionalFeature -Online -FeatureName "NetFx4-AdvSrvs" -All
+Enable-WindowsOptionalFeature -Online -FeatureName "NetFx3" -All
 })
-$Tab2.Controls.Add($featurebutton1)
+$Tab2.Controls.Add($Tab2_tweakbutton1)
 
-$featurebutton2 = New-Object System.Windows.Forms.Button
-$featurebutton2.Location = New-Object System.Drawing.Point(10,75)
-$featurebutton2.Size = New-Object System.Drawing.Size (320,25)
-$featurebutton2.Text = "Hyper-V"
-$featurebutton2.Add_Click({
-    Enable-WindowsOptionalFeature -Online -FeatureName "HypervisorPlatform" -All
-    Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-All" -All
-    Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V" -All
-    Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-Tools-All" -All
-    Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-Management-PowerShell" -All
-    Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-Hypervisor" -All
-    Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-Services" -All
-    Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-Management-Clients" -All
-    cmd /c bcdedit /set hypervisorschedulertype classic
-    Write-Host "HyperV is now installed and configured. Please Reboot before using."
+$Tab2_tweakbutton2 = New-Object System.Windows.Forms.Button
+$Tab2_tweakbutton2.Location = New-Object System.Drawing.Point(10,75)
+$Tab2_tweakbutton2.Size = New-Object System.Drawing.Size (320,25)
+$Tab2_tweakbutton2.Text = "Hyper-V"
+$Tab2_tweakbutton2.Add_Click({
+Enable-WindowsOptionalFeature -Online -FeatureName "HypervisorPlatform" -All
+Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-All" -All
+Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V" -All
+Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-Tools-All" -All
+Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-Management-PowerShell" -All
+Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-Hypervisor" -All
+Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-Services" -All
+Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-Management-Clients" -All
+cmd /c bcdedit /set hypervisorschedulertype classic
+Write-Host "HyperV is now installed and configured. Please Reboot before using."
 })
-$Tab2.Controls.Add($featurebutton2)
+$Tab2.Controls.Add($Tab2_tweakbutton2)
 
-$featurebutton3 = New-Object System.Windows.Forms.Button
-$featurebutton3.Location = New-Object System.Drawing.Point(10,100)
-$featurebutton3.Size = New-Object System.Drawing.Size (320,25)
-$featurebutton3.Text = "legacy Media"
-$featurebutton3.Add_Click({
-    Enable-WindowsOptionalFeature -Online -FeatureName "WindowsMediaPlayer" -All
-    Enable-WindowsOptionalFeature -Online -FeatureName "MediaPlayback" -All
-    Enable-WindowsOptionalFeature -Online -FeatureName "DirectPlay" -All
-    Enable-WindowsOptionalFeature -Online -FeatureName "LegacyComponents" -All
+$Tab2_tweakbutton3 = New-Object System.Windows.Forms.Button
+$Tab2_tweakbutton3.Location = New-Object System.Drawing.Point(10,100)
+$Tab2_tweakbutton3.Size = New-Object System.Drawing.Size (320,25)
+$Tab2_tweakbutton3.Text = "legacy Media"
+$Tab2_tweakbutton3.Add_Click({
+Enable-WindowsOptionalFeature -Online -FeatureName "WindowsMediaPlayer" -All
+Enable-WindowsOptionalFeature -Online -FeatureName "MediaPlayback" -All
+Enable-WindowsOptionalFeature -Online -FeatureName "DirectPlay" -All
+Enable-WindowsOptionalFeature -Online -FeatureName "LegacyComponents" -All
 })
-$Tab2.Controls.Add($featurebutton3)
+$Tab2.Controls.Add($Tab2_tweakbutton3)
 
-$featurebutton4 = New-Object System.Windows.Forms.Button
-$featurebutton4.Location = New-Object System.Drawing.Point(10,125)
-$featurebutton4.Size = New-Object System.Drawing.Size (320,25)
-$featurebutton4.Text = "WSL"
-$featurebutton4.Add_Click({
-    Enable-WindowsOptionalFeature -Online -FeatureName "VirtualMachinePlatform" -All
-    Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Windows-Subsystem-Linux" -All
+$Tab2_tweakbutton4 = New-Object System.Windows.Forms.Button
+$Tab2_tweakbutton4.Location = New-Object System.Drawing.Point(10,125)
+$Tab2_tweakbutton4.Size = New-Object System.Drawing.Size (320,25)
+$Tab2_tweakbutton4.Text = "WSL"
+$Tab2_tweakbutton4.Add_Click({
+Enable-WindowsOptionalFeature -Online -FeatureName "VirtualMachinePlatform" -All
+Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Windows-Subsystem-Linux" -All
 	Write-Host "WSL is now installed and configured. Please Reboot before using."
 })
-$Tab2.Controls.Add($featurebutton4)
+$Tab2.Controls.Add($Tab2_tweakbutton4)
 
-$featurebutton5 = New-Object System.Windows.Forms.Button
-$featurebutton5.Location = New-Object System.Drawing.Point(340,50)
-$featurebutton5.Size = New-Object System.Drawing.Size (320,25)
-$featurebutton5.Text = "Remove MS Store Apps"
-$featurebutton5.Add_Click({Get-AppPackage | Remove-AppPackage})
-$Tab2.Controls.Add($featurebutton5)
+$Tab2_tweakbutton5 = New-Object System.Windows.Forms.Button
+$Tab2_tweakbutton5.Location = New-Object System.Drawing.Point(340,50)
+$Tab2_tweakbutton5.Size = New-Object System.Drawing.Size (320,25)
+$Tab2_tweakbutton5.Text = "Remove MS Store Apps"
+$Tab2_tweakbutton5.Add_Click({Get-AppPackage | Remove-AppPackage})
+$Tab2.Controls.Add($Tab2_tweakbutton5)
 
-$featurebutton6 = New-Object System.Windows.Forms.Button
-$featurebutton6.Location = New-Object System.Drawing.Point(340,75)
-$featurebutton6.Size = New-Object System.Drawing.Size (320,25)
-$featurebutton6.Text = "Reinstall MS Store"
-$featurebutton6.Add_Click({Get-AppxPackage -allusers Microsoft.WindowsStore | ForEach-Object {Add-AppxPackage -DisableDevelopmentMode -Register “$($_.InstallLocation)\AppXManifest.xml”}})
-$Tab2.Controls.Add($featurebutton6)
+$Tab2_tweakbutton6 = New-Object System.Windows.Forms.Button
+$Tab2_tweakbutton6.Location = New-Object System.Drawing.Point(340,75)
+$Tab2_tweakbutton6.Size = New-Object System.Drawing.Size (320,25)
+$Tab2_tweakbutton6.Text = "Reinstall MS Store"
+$Tab2_tweakbutton6.Add_Click({Get-AppxPackage -allusers Microsoft.WindowsStore | ForEach-Object {Add-AppxPackage -DisableDevelopmentMode -Register “$($_.InstallLocation)\AppXManifest.xml”}})
+$Tab2.Controls.Add($Tab2_tweakbutton6)
 
-$featurebutton7 = New-Object System.Windows.Forms.Button
-$featurebutton7.Location = New-Object System.Drawing.Point(340,100)
-$featurebutton7.Size = New-Object System.Drawing.Size (320,25)
-$featurebutton7.Text = "Install Winget"
-$featurebutton7.Add_Click({
+$Tab2_tweakbutton7 = New-Object System.Windows.Forms.Button
+$Tab2_tweakbutton7.Location = New-Object System.Drawing.Point(340,100)
+$Tab2_tweakbutton7.Size = New-Object System.Drawing.Size (320,25)
+$Tab2_tweakbutton7.Text = "Install Winget"
+$Tab2_tweakbutton7.Add_Click({
 reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" /t REG_DWORD /f /v "AllowDevelopmentWithoutDevLicense" /d "1"
 mkdir $env:temp\c2r; Set-Location $env:temp\c2r
-curl -o $env:temp\c2r\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle `
+Invoke-WebRequest -o $env:temp\c2r\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle `
 https://github.com/microsoft/winget-cli/releases/download/v1.2.10271/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
 Add-AppPackage -Path $env:temp\c2r\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
 pause
 })
-$Tab2.Controls.Add($featurebutton7)
+$Tab2.Controls.Add($Tab2_tweakbutton7)
 
-$featurebutton8 = New-Object System.Windows.Forms.Button
-$featurebutton8.Location = New-Object System.Drawing.Point(340,125)
-$featurebutton8.Size = New-Object System.Drawing.Size (320,25)
-$featurebutton8.Text = "Install Chocolatey"
-$featurebutton8.Add_Click({Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 2572; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))})
-$Tab2.Controls.Add($featurebutton8)
+$Tab2_tweakbutton8 = New-Object System.Windows.Forms.Button
+$Tab2_tweakbutton8.Location = New-Object System.Drawing.Point(340,125)
+$Tab2_tweakbutton8.Size = New-Object System.Drawing.Size (320,25)
+$Tab2_tweakbutton8.Text = "Install Chocolatey"
+$Tab2_tweakbutton8.Add_Click({Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 2572; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))})
+$Tab2.Controls.Add($Tab2_tweakbutton8)
 
 # tab 3
 $Tab3 = New-object System.Windows.Forms.Tabpage
@@ -564,101 +564,101 @@ $Tab3.Text = "Activate Windows”
 $FormTabControl.Controls.Add($Tab3)
 
 # window label
-$label = New-Object System.Windows.Forms.Label
-$label.Location = New-Object System.Drawing.Point(10,10)
-$label.AutoSize = $true
-$label.Font = New-Object System.Drawing.Font('arial',20,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
-$label.ForeColor = "#000000"
-$label.Text = ("Choose the Windows Edition you have installed")
-$Tab3.Controls.Add($label)
+$Tab3_label1 = New-Object System.Windows.Forms.Label
+$Tab3_label1.Location = New-Object System.Drawing.Point(10,10)
+$Tab3_label1.AutoSize = $true
+$Tab3_label1.Font = New-Object System.Drawing.Font('arial',20,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
+$Tab3_label1.ForeColor = "#000000"
+$Tab3_label1.Text = ("Choose the Windows Edition you have installed")
+$Tab3.Controls.Add($Tab3_label1)
 
 # Activate Win 10 Home
-$ActivateButton1 = New-Object System.Windows.Forms.Button
-$ActivateButton1.Location = New-Object System.Drawing.Point(10,50)
-$ActivateButton1.Size = New-Object System.Drawing.Size(320,25)
-$ActivateButton1.Text = "Home"
-$ActivateButton1.add_click({slmgr /ipk TX9XD-98N7V-6WMQ6-BX7FG-H8Q99 ; slmgr /skms kms8.msguides.com ; slmgr /ato})
-$Tab3.Controls.add($ActivateButton1)
+$Tab3_actiavtebutton1 = New-Object System.Windows.Forms.Button
+$Tab3_actiavtebutton1.Location = New-Object System.Drawing.Point(10,50)
+$Tab3_actiavtebutton1.Size = New-Object System.Drawing.Size(320,25)
+$Tab3_actiavtebutton1.Text = "Home"
+$Tab3_actiavtebutton1.add_click({slmgr /ipk TX9XD-98N7V-6WMQ6-BX7FG-H8Q99 ; slmgr /skms kms8.msguides.com ; slmgr /ato})
+$Tab3.Controls.add($Tab3_actiavtebutton1)
 
 # Activate Win 10 Home N
-$ActivateButton2 = New-Object System.Windows.Forms.Button
-$ActivateButton2.Location = New-Object System.Drawing.Point(10,75)
-$ActivateButton2.Size = New-Object System.Drawing.Size(320,25)
-$ActivateButton2.Text = "Home N"
-$ActivateButton2.add_click({slmgr /ipk 3KHY7-WNT83-DGQKR-F7HPR-844BM ; slmgr /skms kms8.msguides.com ; slmgr /ato})
-$Tab3.Controls.add($ActivateButton2)
+$Tab3_actiavtebutton2 = New-Object System.Windows.Forms.Button
+$Tab3_actiavtebutton2.Location = New-Object System.Drawing.Point(10,75)
+$Tab3_actiavtebutton2.Size = New-Object System.Drawing.Size(320,25)
+$Tab3_actiavtebutton2.Text = "Home N"
+$Tab3_actiavtebutton2.add_click({slmgr /ipk 3KHY7-WNT83-DGQKR-F7HPR-844BM ; slmgr /skms kms8.msguides.com ; slmgr /ato})
+$Tab3.Controls.add($Tab3_actiavtebutton2)
 
 # Activate Win 10 PRO
-$ActivateButton3 = New-Object System.Windows.Forms.Button
-$ActivateButton3.Location = New-Object System.Drawing.Point(340,50)
-$ActivateButton3.Size = New-Object System.Drawing.Size(320,25)
-$ActivateButton3.Text = "Pro"
-$ActivateButton3.add_click({slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX ; slmgr /skms kms8.msguides.com ; slmgr /ato})
-$Tab3.Controls.add($ActivateButton3)
+$Tab3_actiavtebutton3 = New-Object System.Windows.Forms.Button
+$Tab3_actiavtebutton3.Location = New-Object System.Drawing.Point(340,50)
+$Tab3_actiavtebutton3.Size = New-Object System.Drawing.Size(320,25)
+$Tab3_actiavtebutton3.Text = "Pro"
+$Tab3_actiavtebutton3.add_click({slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX ; slmgr /skms kms8.msguides.com ; slmgr /ato})
+$Tab3.Controls.add($Tab3_actiavtebutton3)
 
 # Activate Win 10 PRO N
-$ActivateButton4 = New-Object System.Windows.Forms.Button
-$ActivateButton4.Location = New-Object System.Drawing.Point(340,75)
-$ActivateButton4.Size = New-Object System.Drawing.Size(320,25)
-$ActivateButton4.Text = "Pro N"
-$ActivateButton4.add_click({slmgr /ipk MH37W-N47XK-V7XM9-C7227-GCQG9 ; slmgr /skms kms8.msguides.com ; slmgr /ato})
-$Tab3.Controls.add($ActivateButton4)
+$Tab3_actiavtebutton4 = New-Object System.Windows.Forms.Button
+$Tab3_actiavtebutton4.Location = New-Object System.Drawing.Point(340,75)
+$Tab3_actiavtebutton4.Size = New-Object System.Drawing.Size(320,25)
+$Tab3_actiavtebutton4.Text = "Pro N"
+$Tab3_actiavtebutton4.add_click({slmgr /ipk MH37W-N47XK-V7XM9-C7227-GCQG9 ; slmgr /skms kms8.msguides.com ; slmgr /ato})
+$Tab3.Controls.add($Tab3_actiavtebutton4)
 
 # Activate Win 10 EDU
-$ActivateButton5 = New-Object System.Windows.Forms.Button
-$ActivateButton5.Location = New-Object System.Drawing.Point(340,100)
-$ActivateButton5.Size = New-Object System.Drawing.Size(320,25)
-$ActivateButton5.Text = "Education"
-$ActivateButton5.add_click({slmgr /ipk NW6C2-QMPVW-D7KKK-3GKT6-VCFB2 ; slmgr /skms kms8.msguides.com ; slmgr /ato})
-$Tab3.Controls.add($ActivateButton5)
+$Tab3_actiavtebutton5 = New-Object System.Windows.Forms.Button
+$Tab3_actiavtebutton5.Location = New-Object System.Drawing.Point(340,100)
+$Tab3_actiavtebutton5.Size = New-Object System.Drawing.Size(320,25)
+$Tab3_actiavtebutton5.Text = "Education"
+$Tab3_actiavtebutton5.add_click({slmgr /ipk NW6C2-QMPVW-D7KKK-3GKT6-VCFB2 ; slmgr /skms kms8.msguides.com ; slmgr /ato})
+$Tab3.Controls.add($Tab3_actiavtebutton5)
 
 # Activate Win 10 EDU N
-$ActivateButton6 = New-Object System.Windows.Forms.Button
-$ActivateButton6.Location = New-Object System.Drawing.Point(340,125)
-$ActivateButton6.Size = New-Object System.Drawing.Size(320,25)
-$ActivateButton6.Text = "Education N"
-$ActivateButton6.add_click({slmgr /ipk 2WH4N-8QGBV-H22JP-CT43Q-MDWWJ ; slmgr /skms kms8.msguides.com ; slmgr /ato})
-$Tab3.Controls.add($ActivateButton6)
+$Tab3_actiavtebutton6 = New-Object System.Windows.Forms.Button
+$Tab3_actiavtebutton6.Location = New-Object System.Drawing.Point(340,125)
+$Tab3_actiavtebutton6.Size = New-Object System.Drawing.Size(320,25)
+$Tab3_actiavtebutton6.Text = "Education N"
+$Tab3_actiavtebutton6.add_click({slmgr /ipk 2WH4N-8QGBV-H22JP-CT43Q-MDWWJ ; slmgr /skms kms8.msguides.com ; slmgr /ato})
+$Tab3.Controls.add($Tab3_actiavtebutton6)
 
 # Activate Win 10 ENT
-$ActivateButton7 = New-Object System.Windows.Forms.Button
-$ActivateButton7.Location = New-Object System.Drawing.Point(340,150)
-$ActivateButton7.Size = New-Object System.Drawing.Size(320,25)
-$ActivateButton7.Text = "Enterprise"
-$ActivateButton7.add_click({shutdslmgr /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43 ; slmgr /skms kms8.msguides.com ; slmgr /ato})
-$Tab3.Controls.add($ActivateButton7)
+$Tab3_actiavtebutton7 = New-Object System.Windows.Forms.Button
+$Tab3_actiavtebutton7.Location = New-Object System.Drawing.Point(340,150)
+$Tab3_actiavtebutton7.Size = New-Object System.Drawing.Size(320,25)
+$Tab3_actiavtebutton7.Text = "Enterprise"
+$Tab3_actiavtebutton7.add_click({shutdslmgr /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43 ; slmgr /skms kms8.msguides.com ; slmgr /ato})
+$Tab3.Controls.add($Tab3_actiavtebutton7)
 
 # Activate Win 10 ENT N
-$ActivateButton8 = New-Object System.Windows.Forms.Button
-$ActivateButton8.Location = New-Object System.Drawing.Point(340,175)
-$ActivateButton8.Size = New-Object System.Drawing.Size(320,25)
-$ActivateButton8.Text = "Enterprise N"
-$ActivateButton8.add_click({slmgr /ipk DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4 ; slmgr /skms kms8.msguides.com ; slmgr /ato})
-$Tab3.Controls.add($ActivateButton8)
+$Tab3_actiavtebutton8 = New-Object System.Windows.Forms.Button
+$Tab3_actiavtebutton8.Location = New-Object System.Drawing.Point(340,175)
+$Tab3_actiavtebutton8.Size = New-Object System.Drawing.Size(320,25)
+$Tab3_actiavtebutton8.Text = "Enterprise N"
+$Tab3_actiavtebutton8.add_click({slmgr /ipk DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4 ; slmgr /skms kms8.msguides.com ; slmgr /ato})
+$Tab3.Controls.add($Tab3_actiavtebutton8)
 
 # Activate Home Single Language
-$ActivateButton9 = New-Object System.Windows.Forms.Button
-$ActivateButton9.Location = New-Object System.Drawing.Point(10,100)
-$ActivateButton9.Size = New-Object System.Drawing.Size(320,25)
-$ActivateButton9.Text = "Home Single Language"
-$ActivateButton9.add_click({slmgr /ipk 7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH ; slmgr /skms kms8.msguides.com ; slmgr /ato})
-$Tab3.Controls.add($ActivateButton9)
+$Tab3_actiavtebutton9 = New-Object System.Windows.Forms.Button
+$Tab3_actiavtebutton9.Location = New-Object System.Drawing.Point(10,100)
+$Tab3_actiavtebutton9.Size = New-Object System.Drawing.Size(320,25)
+$Tab3_actiavtebutton9.Text = "Home Single Language"
+$Tab3_actiavtebutton9.add_click({slmgr /ipk 7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH ; slmgr /skms kms8.msguides.com ; slmgr /ato})
+$Tab3.Controls.add($Tab3_actiavtebutton9)
 
 # Activate Home Country Specific
-$ActivateButton10 = New-Object System.Windows.Forms.Button
-$ActivateButton10.Location = New-Object System.Drawing.Point(10,125)
-$ActivateButton10.Size = New-Object System.Drawing.Size(320,25)
-$ActivateButton10.Text = "Home Country Specific"
-$ActivateButton10.add_click({slmgr /ipk PVMJN-6DFY6-9CCP6-7BKTT-D3WVR ; slmgr /skms kms8.msguides.com ; slmgr /ato})
-$Tab3.Controls.add($ActivateButton10)
+$Tab3_actiavtebutton10 = New-Object System.Windows.Forms.Button
+$Tab3_actiavtebutton10.Location = New-Object System.Drawing.Point(10,125)
+$Tab3_actiavtebutton10.Size = New-Object System.Drawing.Size(320,25)
+$Tab3_actiavtebutton10.Text = "Home Country Specific"
+$Tab3_actiavtebutton10.add_click({slmgr /ipk PVMJN-6DFY6-9CCP6-7BKTT-D3WVR ; slmgr /skms kms8.msguides.com ; slmgr /ato})
+$Tab3.Controls.add($Tab3_actiavtebutton10)
 
 # Clear Product Key
-$ActivateButton11 = New-Object System.Windows.Forms.Button
-$ActivateButton11.Location = New-Object System.Drawing.Point(10,150)
-$ActivateButton11.Size = New-Object System.Drawing.Size(320,50)
-$ActivateButton11.Text = "Clear Product Key"
-$ActivateButton11.add_click({slmgr /upk ; slmgr /cpky ; slmgr /rearm})
-$Tab3.Controls.add($ActivateButton11)
+$Tab3_actiavtebutton11 = New-Object System.Windows.Forms.Button
+$Tab3_actiavtebutton11.Location = New-Object System.Drawing.Point(10,150)
+$Tab3_actiavtebutton11.Size = New-Object System.Drawing.Size(320,50)
+$Tab3_actiavtebutton11.Text = "Clear Product Key"
+$Tab3_actiavtebutton11.add_click({slmgr /upk ; slmgr /cpky ; slmgr /rearm})
+$Tab3.Controls.add($Tab3_actiavtebutton11)
 
 # tab 4
 $Tab4 = New-object System.Windows.Forms.Tabpage
@@ -669,107 +669,311 @@ $Tab4.Text = "Power Options”
 $FormTabControl.Controls.Add($Tab4)
 
 # window label
-$label = New-Object System.Windows.Forms.Label
-$label.Location = New-Object System.Drawing.Point(10,10)
-$label.AutoSize = $true
-$label.Font = New-Object System.Drawing.Font('arial',20,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
-$label.ForeColor = "#000000"
-$label.Text = ("Choose how you want to shutdown")
-$Tab4.Controls.Add($label)
+$Tab4_label1 = New-Object System.Windows.Forms.Label
+$Tab4_label1.Location = New-Object System.Drawing.Point(10,10)
+$Tab4_label1.AutoSize = $true
+$Tab4_label1.Font = New-Object System.Drawing.Font('arial',20,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
+$Tab4_label1.ForeColor = "#000000"
+$Tab4_label1.Text = ("Choose how you want to shutdown")
+$Tab4.Controls.Add($Tab4_label1)
 
-$PowerButton1 = New-Object System.Windows.Forms.Button
-$PowerButton1.Location = New-Object System.Drawing.Point(10,50)
-$PowerButton1.Size = New-Object System.Drawing.Size(320,25)
-$PowerButton1.Text = "Reboot"
-$PowerButton1.add_click({shutdown /r})
-$Tab4.Controls.add($PowerButton1)
+$Tab4_powerbutton1 = New-Object System.Windows.Forms.Button
+$Tab4_powerbutton1.Location = New-Object System.Drawing.Point(10,50)
+$Tab4_powerbutton1.Size = New-Object System.Drawing.Size(320,25)
+$Tab4_powerbutton1.Text = "Reboot"
+$Tab4_powerbutton1.add_click({shutdown /r})
+$Tab4.Controls.add($Tab4_powerbutton1)
 
-$PowerButton2 = New-Object System.Windows.Forms.Button
-$PowerButton2.Location = New-Object System.Drawing.Point(10,75)
-$PowerButton2.Size = New-Object System.Drawing.Size(320,25)
-$PowerButton2.Text = "Shutdown"
-$PowerButton2.add_click({shutdown /s})
-$Tab4.Controls.add($PowerButton2)
+$Tab4_powerbutton2 = New-Object System.Windows.Forms.Button
+$Tab4_powerbutton2.Location = New-Object System.Drawing.Point(10,75)
+$Tab4_powerbutton2.Size = New-Object System.Drawing.Size(320,25)
+$Tab4_powerbutton2.Text = "Shutdown"
+$Tab4_powerbutton2.add_click({shutdown /s})
+$Tab4.Controls.add($Tab4_powerbutton2)
 
-$PowerButton3 = New-Object System.Windows.Forms.Button
-$PowerButton3.Location = New-Object System.Drawing.Point(10,100)
-$PowerButton3.Size = New-Object System.Drawing.Size(320,25)
-$PowerButton3.Text = "Abort"
-$PowerButton3.add_click({shutdown /a})
-$Tab4.Controls.add($PowerButton3)
+$Tab4_powerbutton3 = New-Object System.Windows.Forms.Button
+$Tab4_powerbutton3.Location = New-Object System.Drawing.Point(10,100)
+$Tab4_powerbutton3.Size = New-Object System.Drawing.Size(320,25)
+$Tab4_powerbutton3.Text = "Abort"
+$Tab4_powerbutton3.add_click({shutdown /a})
+$Tab4.Controls.add($Tab4_powerbutton3)
 
-$PowerButton4 = New-Object System.Windows.Forms.Button
-$PowerButton4.Location = New-Object System.Drawing.Point(340,50)
-$PowerButton4.Size = New-Object System.Drawing.Size(320,25)
-$PowerButton4.Text = "Force Reboot"
-$PowerButton4.add_click({shutdown /r /f})
-$Tab4.Controls.add($PowerButton4)
+$Tab4_powerbutton4 = New-Object System.Windows.Forms.Button
+$Tab4_powerbutton4.Location = New-Object System.Drawing.Point(340,50)
+$Tab4_powerbutton4.Size = New-Object System.Drawing.Size(320,25)
+$Tab4_powerbutton4.Text = "Force Reboot"
+$Tab4_powerbutton4.add_click({shutdown /r /f})
+$Tab4.Controls.add($Tab4_powerbutton4)
 
-$PowerButton5 = New-Object System.Windows.Forms.Button
-$PowerButton5.Location = New-Object System.Drawing.Point(340,75)
-$PowerButton5.Size = New-Object System.Drawing.Size(320,25)
-$PowerButton5.Text = "Force Shutdown"
-$PowerButton5.add_click({shutdown /s /f})
-$Tab4.Controls.add($PowerButton5)
+$Tab4_powerbutton5 = New-Object System.Windows.Forms.Button
+$Tab4_powerbutton5.Location = New-Object System.Drawing.Point(340,75)
+$Tab4_powerbutton5.Size = New-Object System.Drawing.Size(320,25)
+$Tab4_powerbutton5.Text = "Force Shutdown"
+$Tab4_powerbutton5.add_click({shutdown /s /f})
+$Tab4.Controls.add($Tab4_powerbutton5)
 
-$PowerButton6 = New-Object System.Windows.Forms.Button
-$PowerButton6.Location = New-Object System.Drawing.Point(340,100)
-$PowerButton6.Size = New-Object System.Drawing.Size(320,25)
-$PowerButton6.Text = "Log Out"
-$PowerButton6.add_click({shutdown /l})
-$Tab4.Controls.add($PowerButton6)
+$Tab4_powerbutton6 = New-Object System.Windows.Forms.Button
+$Tab4_powerbutton6.Location = New-Object System.Drawing.Point(340,100)
+$Tab4_powerbutton6.Size = New-Object System.Drawing.Size(320,25)
+$Tab4_powerbutton6.Text = "Log Out"
+$Tab4_powerbutton6.add_click({shutdown /l})
+$Tab4.Controls.add($Tab4_powerbutton6)
 
-$PowerButton6 = New-Object System.Windows.Forms.Button
-$PowerButton6.Location = New-Object System.Drawing.Point(10,125)
-$PowerButton6.Size = New-Object System.Drawing.Size(320,25)
-$PowerButton6.Text = "Remote Shutdown"
-$PowerButton6.add_click({shutdown /i})
-$Tab4.Controls.add($PowerButton6)
+$Tab4_powerbutton7 = New-Object System.Windows.Forms.Button
+$Tab4_powerbutton7.Location = New-Object System.Drawing.Point(10,125)
+$Tab4_powerbutton7.Size = New-Object System.Drawing.Size(320,25)
+$Tab4_powerbutton7.Text = "Remote Shutdown"
+$Tab4_powerbutton7.add_click({shutdown /i})
+$Tab4.Controls.add($Tab4_powerbutton7)
 
 # window label
-$label = New-Object System.Windows.Forms.Label
-$label.Location = New-Object System.Drawing.Point(10,185)
-$label.AutoSize = $true
-$label.Font = New-Object System.Drawing.Font('arial',20,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
-$label.ForeColor = "#000000"
-$label.Text = ("Power Settings")
-$Tab4.Controls.Add($label)
+$Tab4_label2 = New-Object System.Windows.Forms.Label
+$Tab4_label2.Location = New-Object System.Drawing.Point(10,185)
+$Tab4_label2.AutoSize = $true
+$Tab4_label2.Font = New-Object System.Drawing.Font('arial',20,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
+$Tab4_label2.ForeColor = "#000000"
+$Tab4_label2.Text = ("Power Settings")
+$Tab4.Controls.Add($Tab4_label2)
 
-$PowerButton7 = New-Object System.Windows.Forms.Button
-$PowerButton7.Location = New-Object System.Drawing.Point(10,225)
-$PowerButton7.Size = New-Object System.Drawing.Size(320,25)
-$PowerButton7.Text = "Power Options"
-$PowerButton7.add_click({powercfg.cpl})
-$Tab4.Controls.add($PowerButton7)
+$Tab4_powerbutton8 = New-Object System.Windows.Forms.Button
+$Tab4_powerbutton8.Location = New-Object System.Drawing.Point(10,225)
+$Tab4_powerbutton8.Size = New-Object System.Drawing.Size(320,25)
+$Tab4_powerbutton8.Text = "Power Options"
+$Tab4_powerbutton8.add_click({powercfg.cpl})
+$Tab4.Controls.add($Tab4_powerbutton8)
 
-$PowerButton8 = New-Object System.Windows.Forms.Button
-$PowerButton8.Location = New-Object System.Drawing.Point(10,250)
-$PowerButton8.Size = New-Object System.Drawing.Size(320,25)
-$PowerButton8.Text = "Mobility Center"
-$PowerButton8.add_click({mblctr.exe})
-$Tab4.Controls.add($PowerButton8)
+$Tab4_powerbutton9 = New-Object System.Windows.Forms.Button
+$Tab4_powerbutton9.Location = New-Object System.Drawing.Point(10,250)
+$Tab4_powerbutton9.Size = New-Object System.Drawing.Size(320,25)
+$Tab4_powerbutton9.Text = "Mobility Center"
+$Tab4_powerbutton9.add_click({mblctr.exe})
+$Tab4.Controls.add($Tab4_powerbutton9)
 
-$PowerButton9 = New-Object System.Windows.Forms.Button
-$PowerButton9.Location = New-Object System.Drawing.Point(340,225)
-$PowerButton9.Size = New-Object System.Drawing.Size(320,25)
-$PowerButton9.Text = "Boot Options"
-$PowerButton9.add_click({cmd /c msconfig.exe})
-$Tab4.Controls.add($PowerButton9)
+$Tab4_powerbutton10 = New-Object System.Windows.Forms.Button
+$Tab4_powerbutton10.Location = New-Object System.Drawing.Point(340,225)
+$Tab4_powerbutton10.Size = New-Object System.Drawing.Size(320,25)
+$Tab4_powerbutton10.Text = "Boot Options"
+$Tab4_powerbutton10.add_click({cmd /c msconfig.exe})
+$Tab4.Controls.add($Tab4_powerbutton10)
 
-$PowerButton10 = New-Object System.Windows.Forms.Button
-$PowerButton10.Location = New-Object System.Drawing.Point(340,250)
-$PowerButton10.Size = New-Object System.Drawing.Size(320,25)
-$PowerButton10.Text = "Battery Options"
-$PowerButton10.add_click({ms-settings:batterysaver})
-$Tab4.Controls.add($PowerButton10)
+$Tab4_powerbutton11 = New-Object System.Windows.Forms.Button
+$Tab4_powerbutton11.Location = New-Object System.Drawing.Point(340,250)
+$Tab4_powerbutton11.Size = New-Object System.Drawing.Size(320,25)
+$Tab4_powerbutton11.Text = "Battery Options"
+$Tab4_powerbutton11.add_click({ms-settings:batterysaver})
+$Tab4.Controls.add($Tab4_powerbutton11)
 
 # tab 5
-$Tab5 = New-object System.Windows.Forms.Tabpage
-$Tab5.DataBindings.DefaultDataSourceUpdateMode = 0 
-$Tab5.UseVisualStyleBackColor = $True 
-$Tab5.Name = "Tab5" 
-$Tab5.Text = "About” 
-$FormTabControl.Controls.Add($Tab5)
+$tab5 = New-object System.Windows.Forms.Tabpage
+$tab5.DataBindings.DefaultDataSourceUpdateMode = 0 
+$tab5.UseVisualStyleBackColor = $True 
+$tab5.Name = "tab5" 
+$tab5.Text = "Scoop” 
+$FormTabControl.Controls.Add($tab5)
+
+# window label
+$Tab5_label1 = New-Object System.Windows.Forms.Label
+$Tab5_label1.Location = New-Object System.Drawing.Point(10,10)
+$Tab5_label1.AutoSize = $true
+$Tab5_label1.Font = New-Object System.Drawing.Font('arial',20,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
+$Tab5_label1.ForeColor = "#000000"
+$Tab5_label1.Text = ("Install applications")
+$Tab5.Controls.Add($Tab5_label1)
+
+$Tab5_installerbutton1 = New-Object System.Windows.Forms.Button
+$Tab5_installerbutton1.Location = New-Object System.Drawing.Point(550,15)
+$Tab5_installerbutton1.Size = New-Object System.Drawing.Size(100,25)
+$Tab5_installerbutton1.Text = "Install Scoop"
+$Tab5_installerbutton1.add_click({Set-ExecutionPolicy RemoteSigned -Scope CurrentUser ; Invoke-RestMethod get.scoop.sh | Invoke-Expression})
+$Tab5.Controls.add($Tab5_installerbutton1)
+
+$Tab5_installerbutton2 = New-Object System.Windows.Forms.Button
+$Tab5_installerbutton2.Location = New-Object System.Drawing.Point(450,15)
+$Tab5_installerbutton2.Size = New-Object System.Drawing.Size(100,25)
+$Tab5_installerbutton2.Text = "Update Scoop"
+$Tab5_installerbutton2.add_click({scoop update -a})
+$Tab5.Controls.add($Tab5_installerbutton2)
+
+
+
+
+
+
+$Tab1_appbutton1 = New-Object System.Windows.Forms.Button
+$listBox1 = New-Object System.Windows.Forms.ListBox
+$checkBox1 = New-Object System.Windows.Forms.CheckBox
+$checkBox2 = New-Object System.Windows.Forms.CheckBox
+$checkBox3 = New-Object System.Windows.Forms.CheckBox
+$checkBox4 = New-Object System.Windows.Forms.CheckBox
+$checkBox5 = New-Object System.Windows.Forms.CheckBox
+$checkBox6 = New-Object System.Windows.Forms.CheckBox
+$checkBox7 = New-Object System.Windows.Forms.CheckBox
+$checkBox8 = New-Object System.Windows.Forms.CheckBox
+$checkBox9 = New-Object System.Windows.Forms.CheckBox
+$checkBox10 = New-Object System.Windows.Forms.CheckBox
+$checkBox11 = New-Object System.Windows.Forms.CheckBox
+$checkBox12 = New-Object System.Windows.Forms.CheckBox
+$checkBox13 = New-Object System.Windows.Forms.CheckBox
+$checkBox14 = New-Object System.Windows.Forms.CheckBox
+$checkBox15 = New-Object System.Windows.Forms.CheckBox
+$checkBox16 = New-Object System.Windows.Forms.CheckBox
+$checkBox17 = New-Object System.Windows.Forms.CheckBox
+$checkBox18 = New-Object System.Windows.Forms.CheckBox
+$checkBox19 = New-Object System.Windows.Forms.CheckBox
+$checkBox20 = New-Object System.Windows.Forms.CheckBox
+$checkBox21 = New-Object System.Windows.Forms.CheckBox
+$checkBox22 = New-Object System.Windows.Forms.CheckBox
+$checkBox23 = New-Object System.Windows.Forms.CheckBox
+
+#----------------------------------------------
+#Generated Event Script Blocks
+#----------------------------------------------
+
+$handler_Tab1_appbutton1_Click= 
+{
+$listBox1.Items.Clear();
+if ($checkBox1.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
+if ($checkBox2.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
+if ($checkBox3.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
+if ($checkBox4.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
+if ($checkBox5.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
+if ($checkBox6.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
+if ($checkBox7.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
+if ($checkBox8.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
+if ($checkBox9.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
+if ($checkBox10.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
+if ($checkBox11.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
+if ($checkBox12.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
+if ($checkBox12.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
+if ($checkBox13.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
+if ($checkBox14.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
+if ($checkBox15.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
+if ($checkBox16.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
+if ($checkBox17.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
+if ($checkBox18.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
+if ($checkBox19.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
+if ($checkBox20.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
+if ($checkBox21.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
+if ($checkBox22.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
+if ($checkBox23.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
+if ( !$checkBox1.Checked -and !$checkBox2.Checked -and !$checkBox3.Checked -and !$checkBox4.Checked -and !$checkBox5.Checked -and !$checkBox6.Checked -and !$checkBox7.Checked -and !$checkBox8.Checked -and !$checkBox9.Checked -and !$checkBox10.Checked -and !$checkBox11.Checked -and !$checkBox12.Checked -and !$checkBox13.Checked -and !$checkBox14.Checked -and !$checkBox15.Checked -and !$checkBox16.Checked -and !$checkBox17.Checked -and !$checkBox18.Checked -and !$checkBox19.Checked -and !$checkBox20.Checked -and !$checkBox21.Checked -and !$checkBox22.Checked -and !$checkBox23.Checked ) {   $listBox1.Items.Add("No CheckBox selected....")} 
+}
+
+#----------------------------------------------
+
+$Tab1_appbutton1.TabIndex = 4
+$Tab1_appbutton1.Name = "Tab1_appbutton1"
+$System_Drawing_Size = New-Object System.Drawing.Size
+$System_Drawing_Size.Width = 75
+$System_Drawing_Size.Height = 23
+$Tab1_appbutton1.Size = $System_Drawing_Size
+$Tab1_appbutton1.UseVisualStyleBackColor = $True
+$Tab1_appbutton1.Text = "Install selected applications"
+$System_Drawing_Point = New-Object System.Drawing.Point
+$System_Drawing_Point.X = 27
+$System_Drawing_Point.Y = 156
+$Tab1_appbutton1.Location = $System_Drawing_Point
+$Tab1_appbutton1.DataBindings.DefaultDataSourceUpdateMode = 0
+$Tab1_appbutton1.add_Click($handler_Tab1_appbutton1_Click)
+$tab5.Controls.Add($Tab1_appbutton1)
+
+$listBox1.FormattingEnabled = $True
+$System_Drawing_Size = New-Object System.Drawing.Size
+$System_Drawing_Size.Width = 200
+$System_Drawing_Size.Height = 100
+$listBox1.Size = $System_Drawing_Size
+$listBox1.DataBindings.DefaultDataSourceUpdateMode = 0
+$listBox1.Name = "listBox1"
+$System_Drawing_Point = New-Object System.Drawing.Point
+$System_Drawing_Point.X = 470
+$System_Drawing_Point.Y = 335
+$listBox1.Location = $System_Drawing_Point
+$listBox1.TabIndex = 3
+$tab5.Controls.Add($listBox1)
+
+
+$checkBox3.UseVisualStyleBackColor = $True
+$System_Drawing_Size = New-Object System.Drawing.Size
+$System_Drawing_Size.Width = 104
+$System_Drawing_Size.Height = 24
+$checkBox3.Size = $System_Drawing_Size
+$checkBox3.TabIndex = 2
+$checkBox3.Text = "CheckBox 3"
+$System_Drawing_Point = New-Object System.Drawing.Point
+$System_Drawing_Point.X = 27
+$System_Drawing_Point.Y = 75
+$checkBox3.Location = $System_Drawing_Point
+$checkBox3.DataBindings.DefaultDataSourceUpdateMode = 0
+$checkBox3.Name = "checkBox3"
+$tab5.Controls.Add($checkBox3)
+
+
+$checkBox2.UseVisualStyleBackColor = $True
+$System_Drawing_Size = New-Object System.Drawing.Size
+$System_Drawing_Size.Width = 104
+$System_Drawing_Size.Height = 24
+$checkBox2.Size = $System_Drawing_Size
+$checkBox2.TabIndex = 1
+$checkBox2.Text = "CheckBox 2"
+$System_Drawing_Point = New-Object System.Drawing.Point
+$System_Drawing_Point.X = 27
+$System_Drawing_Point.Y = 44
+$checkBox2.Location = $System_Drawing_Point
+$checkBox2.DataBindings.DefaultDataSourceUpdateMode = 0
+$checkBox2.Name = "checkBox2"
+$tab5.Controls.Add($checkBox2)
+
+
+
+$checkBox1.UseVisualStyleBackColor = $True
+$System_Drawing_Size = New-Object System.Drawing.Size
+$System_Drawing_Size.Width = 104
+$System_Drawing_Size.Height = 24
+$checkBox1.Size = $System_Drawing_Size
+$checkBox1.TabIndex = 0
+$checkBox1.Text = "CheckBox 1"
+$System_Drawing_Point = New-Object System.Drawing.Point
+$System_Drawing_Point.X = 27
+$System_Drawing_Point.Y = 13
+$checkBox1.Location = $System_Drawing_Point
+$checkBox1.DataBindings.DefaultDataSourceUpdateMode = 0
+$checkBox1.Name = "checkBox1"
+$tab5.Controls.Add($checkBox1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# tab 10
+$tab10 = New-object System.Windows.Forms.Tabpage
+$tab10.DataBindings.DefaultDataSourceUpdateMode = 0 
+$tab10.UseVisualStyleBackColor = $True 
+$tab10.Name = "tab10" 
+$tab10.Text = "About” 
+$FormTabControl.Controls.Add($tab10)
 
 # window label
 $label = New-Object System.Windows.Forms.Label
@@ -778,7 +982,7 @@ $label.AutoSize = $true
 $label.Font = New-Object System.Drawing.Font('arial',26,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
 $label.ForeColor = "#000000"
 $label.Text = ("Efe's Toolbox")
-$Tab5.Controls.Add($label)
+$tab10.Controls.Add($label)
 
 # window label
 $label2 = New-Object System.Windows.Forms.Label
@@ -788,7 +992,7 @@ $label2.Font = New-Object System.Drawing.Font('arial',12)
 $label2.ForeColor = "#000000"
 #$label2.backColor = "#b3b3b3"
 $label2.Text = ("Efe's Toolbox is designed by a student`nwho has gotten bored and found coding slightly joyful.")
-$Tab5.Controls.Add($label2)
+$tab10.Controls.Add($label2)
 
 # link1
 $link1 = New-Object System.Windows.Forms.LinkLabel
@@ -802,7 +1006,7 @@ $link1.Font = New-Object System.Drawing.Font('arial',10)
 $link1.ForeColor = "#000000"
 $link1.Text = ("Github Page")
 $link1.add_click({explorer "https://github.com/Greninja9559/efe-toolbox"})
-$Tab5.Controls.Add($link1)
+$tab10.Controls.Add($link1)
 
 # link2
 $link2 = New-Object System.Windows.Forms.LinkLabel
@@ -817,7 +1021,7 @@ $link2.ForeColor = "#000000"
 #$link2.backColor = "#b3b3b3"
 $link2.Text = ("Report issues")
 $link2.add_click({explorer "https://github.com/Greninja9559/efe-toolbox/issues"})
-$Tab5.Controls.Add($link2)
+$tab10.Controls.Add($link2)
 
 # window label
 $label3 = New-Object System.Windows.Forms.Label
@@ -827,7 +1031,7 @@ $label3.Font = New-Object System.Drawing.Font('arial',8)
 $label3.ForeColor = "#000000"
 #$label3.backColor = "#b3b3b3"
 $label3.Text = ("Made in 2022")
-$Tab5.Controls.Add($label3)
+$tab10.Controls.Add($label3)
 
 # Initlize the form
 $ApplicationForm.Add_Shown({$ApplicationForm.Activate()})

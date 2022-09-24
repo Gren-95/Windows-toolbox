@@ -1,0 +1,113 @@
+things to add to toolbox
+
+
+scoop/chocolatey app installers.						needs checboxes
+install replacements/enable win pro stuff.				needs checboxes
+add multicore support?
+add windows 10 installer hotkeys as text
+theming
+make the script iex -able
+
+fix link nr/naming
+add legable comments
+
+add a script to make the exe file
+make my settings preferences automatically apply with a button?
+
+
+figure out how to add pictures to powershell script
+
+nvcleaninstall button and/or gfexperience
+firefox
+chrome
+brave
+librewolf
+
+mpv
+vlc
+audacity
+ear trumpet
+
+vscode
+office
+alacritty / tabby
+putty
+filezilla
+cisco packet tracer
+github desktop
+explorer patcher
+transparent taskbar
+winrar
+7-zip
+logitech gaming software
+revo uninstaller
+
+
+mod organizer 1&2
+vortex & nexus
+loot
+
+etcher
+ventoy
+rufus
+
+transmission
+image glass
+notepad ++
+
+
+
+gd launcher
+steam
+heroic
+epic
+gog
+
+telegram
+signal
+messenger
+
+maybe digidoc
+
+gimp
+krita
+git cmd
+
+neofetch XD
+
+installer for fonts 	-	sorce code pro and fira code 
+
+
+some registry tweaks?
+
+disable file indexing
+debloat windows apps
+auto elevate the script to admin
+
+
+add functionality from chris titus and sycnex
+
+
+
+read the actual licence
+add declaration of no responcibility if something goes wrong (use at your own risk)
+add manual how to strip windows passwords
+
+maybe disable the windows activation for final release
+advertise on reddit
+read windows licence + windows pro licence
+
+
+make the script legal.
+
+automatically add the user manager to the windows folder (third party app (look in downloads))
+
+get feedback
+fix stuff
+
+is windows activation part legal?
+
+
+
+add manuals?
+seperate manual script?
