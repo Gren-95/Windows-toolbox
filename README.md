@@ -17,7 +17,7 @@ My personal toolbox for windows 10+
 
 1. Download from [Here](https://github.com/Gren-95/efe-toolbox/releases/download/toolbox/Toolbox.exe)
 
-2. Run the executable
+2. Run the executable as administrator
 
 
 ## Pictures
