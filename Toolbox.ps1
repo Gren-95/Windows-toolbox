@@ -61,13 +61,13 @@ $Tab1_label4.Text = ("exe")
 $Tab1.Controls.Add($Tab1_label4)
 
 # Lots of buttons
-$Tab1_appbutton1 = New-Object System.Windows.Forms.Button
-$Tab1_appbutton1.Location = New-Object System.Drawing.Point(10,50)
-$Tab1_appbutton1.Size = New-Object System.Drawing.Size(200,25)
-$Tab1_appbutton1.Text = "Device Manager"
-$Tab1_appbutton1.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$Tab1_appbutton1.Add_Click({hdwwiz.cpl})
-$tab1.Controls.Add($Tab1_appbutton1)
+$Tab5_installbutton1 = New-Object System.Windows.Forms.Button
+$Tab5_installbutton1.Location = New-Object System.Drawing.Point(10,50)
+$Tab5_installbutton1.Size = New-Object System.Drawing.Size(200,25)
+$Tab5_installbutton1.Text = "Device Manager"
+$Tab5_installbutton1.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab5_installbutton1.Add_Click({hdwwiz.cpl})
+$tab1.Controls.Add($Tab5_installbutton1)
 
 $Tab1_appbutton2 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton2.Location = New-Object System.Drawing.Point(10,75)
@@ -137,94 +137,94 @@ $Tab1_appbutton9.Add_Click({wuaucpl.cpl})
 $tab1.Controls.Add($Tab1_appbutton9)
 
 
-$Tab1_appbutton10 = New-Object System.Windows.Forms.Button
-$Tab1_appbutton10.Location = New-Object System.Drawing.Point(10,275)
-$Tab1_appbutton10.Size = New-Object System.Drawing.Size(200,25)
-$Tab1_appbutton10.Text = "Add/Remove Applications"
-$Tab1_appbutton10.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$Tab1_appbutton10.Add_Click({appwiz.cpl})
-$tab1.Controls.Add($Tab1_appbutton10)
+$Tab5_installbutton10 = New-Object System.Windows.Forms.Button
+$Tab5_installbutton10.Location = New-Object System.Drawing.Point(10,275)
+$Tab5_installbutton10.Size = New-Object System.Drawing.Size(200,25)
+$Tab5_installbutton10.Text = "Add/Remove Applications"
+$Tab5_installbutton10.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab5_installbutton10.Add_Click({appwiz.cpl})
+$tab1.Controls.Add($Tab5_installbutton10)
 
 
-$Tab1_appbutton11 = New-Object System.Windows.Forms.Button
-$Tab1_appbutton11.Location = New-Object System.Drawing.Point(10,250)
-$Tab1_appbutton11.Size = New-Object System.Drawing.Size(200,25)
-$Tab1_appbutton11.Text = "Display Properties"
-$Tab1_appbutton11.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$Tab1_appbutton11.Add_Click({desk.cpl})
-$tab1.Controls.Add($Tab1_appbutton11)
+$Tab5_installbutton11 = New-Object System.Windows.Forms.Button
+$Tab5_installbutton11.Location = New-Object System.Drawing.Point(10,250)
+$Tab5_installbutton11.Size = New-Object System.Drawing.Size(200,25)
+$Tab5_installbutton11.Text = "Display Properties"
+$Tab5_installbutton11.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab5_installbutton11.Add_Click({desk.cpl})
+$tab1.Controls.Add($Tab5_installbutton11)
 
 
-$Tab1_appbutton12 = New-Object System.Windows.Forms.Button
-$Tab1_appbutton12.Location = New-Object System.Drawing.Point(10,300)
-$Tab1_appbutton12.Size = New-Object System.Drawing.Size(200,25)
-$Tab1_appbutton12.Text = "Windows Firewall Properties"
-$Tab1_appbutton12.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$Tab1_appbutton12.Add_Click({firewall.cpl})
-$tab1.Controls.Add($Tab1_appbutton12)
+$Tab5_installbutton12 = New-Object System.Windows.Forms.Button
+$Tab5_installbutton12.Location = New-Object System.Drawing.Point(10,300)
+$Tab5_installbutton12.Size = New-Object System.Drawing.Size(200,25)
+$Tab5_installbutton12.Text = "Windows Firewall Properties"
+$Tab5_installbutton12.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab5_installbutton12.Add_Click({firewall.cpl})
+$tab1.Controls.Add($Tab5_installbutton12)
 
 
-$Tab1_appbutton13 = New-Object System.Windows.Forms.Button
-$Tab1_appbutton13.Location = New-Object System.Drawing.Point(10,325)
-$Tab1_appbutton13.Size = New-Object System.Drawing.Size(200,25)
-$Tab1_appbutton13.Text = "System Properties"
-$Tab1_appbutton13.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$Tab1_appbutton13.Add_Click({sysdm.cpl})
-$tab1.Controls.Add($Tab1_appbutton13)
+$Tab5_installbutton13 = New-Object System.Windows.Forms.Button
+$Tab5_installbutton13.Location = New-Object System.Drawing.Point(10,325)
+$Tab5_installbutton13.Size = New-Object System.Drawing.Size(200,25)
+$Tab5_installbutton13.Text = "System Properties"
+$Tab5_installbutton13.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab5_installbutton13.Add_Click({sysdm.cpl})
+$tab1.Controls.Add($Tab5_installbutton13)
 
 
-$Tab1_appbutton14 = New-Object System.Windows.Forms.Button
-$Tab1_appbutton14.Location = New-Object System.Drawing.Point(225,50)
-$Tab1_appbutton14.Size = New-Object System.Drawing.Size(200,25)
-$Tab1_appbutton14.Text = "Authorization Manager"
-$Tab1_appbutton14.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$Tab1_appbutton14.Add_Click({azman.msc})
-$tab1.Controls.Add($Tab1_appbutton14)
+$Tab5_installbutton14 = New-Object System.Windows.Forms.Button
+$Tab5_installbutton14.Location = New-Object System.Drawing.Point(225,50)
+$Tab5_installbutton14.Size = New-Object System.Drawing.Size(200,25)
+$Tab5_installbutton14.Text = "Authorization Manager"
+$Tab5_installbutton14.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab5_installbutton14.Add_Click({azman.msc})
+$tab1.Controls.Add($Tab5_installbutton14)
 
 
-$Tab1_appbutton15 = New-Object System.Windows.Forms.Button
-$Tab1_appbutton15.Location = New-Object System.Drawing.Point(225,75)
-$Tab1_appbutton15.Size = New-Object System.Drawing.Size(200,25)
-$Tab1_appbutton15.Text = "Certificate Manager"
-$Tab1_appbutton15.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$Tab1_appbutton15.Add_Click({certmgr.msc})
-$tab1.Controls.Add($Tab1_appbutton15)
+$Tab5_installbutton15 = New-Object System.Windows.Forms.Button
+$Tab5_installbutton15.Location = New-Object System.Drawing.Point(225,75)
+$Tab5_installbutton15.Size = New-Object System.Drawing.Size(200,25)
+$Tab5_installbutton15.Text = "Certificate Manager"
+$Tab5_installbutton15.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab5_installbutton15.Add_Click({certmgr.msc})
+$tab1.Controls.Add($Tab5_installbutton15)
 
 
-$Tab1_appbutton16 = New-Object System.Windows.Forms.Button
-$Tab1_appbutton16.Location = New-Object System.Drawing.Point(225,100)
-$Tab1_appbutton16.Size = New-Object System.Drawing.Size(200,25)
-$Tab1_appbutton16.Text = "Computer Management"
-$Tab1_appbutton16.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$Tab1_appbutton16.Add_Click({compmgmt.msc})
-$tab1.Controls.Add($Tab1_appbutton16)
+$Tab5_installbutton16 = New-Object System.Windows.Forms.Button
+$Tab5_installbutton16.Location = New-Object System.Drawing.Point(225,100)
+$Tab5_installbutton16.Size = New-Object System.Drawing.Size(200,25)
+$Tab5_installbutton16.Text = "Computer Management"
+$Tab5_installbutton16.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab5_installbutton16.Add_Click({compmgmt.msc})
+$tab1.Controls.Add($Tab5_installbutton16)
 
 
-$Tab1_appbutton17 = New-Object System.Windows.Forms.Button
-$Tab1_appbutton17.Location = New-Object System.Drawing.Point(225,125)
-$Tab1_appbutton17.Size = New-Object System.Drawing.Size(200,25)
-$Tab1_appbutton17.Text = "Device Management"
-$Tab1_appbutton17.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$Tab1_appbutton17.Add_Click({devmgmt.msc})
-$tab1.Controls.Add($Tab1_appbutton17)
+$Tab5_installbutton17 = New-Object System.Windows.Forms.Button
+$Tab5_installbutton17.Location = New-Object System.Drawing.Point(225,125)
+$Tab5_installbutton17.Size = New-Object System.Drawing.Size(200,25)
+$Tab5_installbutton17.Text = "Device Management"
+$Tab5_installbutton17.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab5_installbutton17.Add_Click({devmgmt.msc})
+$tab1.Controls.Add($Tab5_installbutton17)
 
 
-$Tab1_appbutton18 = New-Object System.Windows.Forms.Button
-$Tab1_appbutton18.Location = New-Object System.Drawing.Point(225,150)
-$Tab1_appbutton18.Size = New-Object System.Drawing.Size(200,25)
-$Tab1_appbutton18.Text = "Disk Management"
-$Tab1_appbutton18.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$Tab1_appbutton18.Add_Click({diskmgmt.msc})
-$tab1.Controls.Add($Tab1_appbutton18)
+$Tab5_installbutton18 = New-Object System.Windows.Forms.Button
+$Tab5_installbutton18.Location = New-Object System.Drawing.Point(225,150)
+$Tab5_installbutton18.Size = New-Object System.Drawing.Size(200,25)
+$Tab5_installbutton18.Text = "Disk Management"
+$Tab5_installbutton18.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab5_installbutton18.Add_Click({diskmgmt.msc})
+$tab1.Controls.Add($Tab5_installbutton18)
 
 
-$Tab1_appbutton19 = New-Object System.Windows.Forms.Button
-$Tab1_appbutton19.Location = New-Object System.Drawing.Point(225,175)
-$Tab1_appbutton19.Size = New-Object System.Drawing.Size(200,25)
-$Tab1_appbutton19.Text = "Event Viewer"
-$Tab1_appbutton19.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$Tab1_appbutton19.Add_Click({eventvwr.msc})
-$tab1.Controls.Add($Tab1_appbutton19)
+$Tab5_installbutton19 = New-Object System.Windows.Forms.Button
+$Tab5_installbutton19.Location = New-Object System.Drawing.Point(225,175)
+$Tab5_installbutton19.Size = New-Object System.Drawing.Size(200,25)
+$Tab5_installbutton19.Text = "Event Viewer"
+$Tab5_installbutton19.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab5_installbutton19.Add_Click({eventvwr.msc})
+$tab1.Controls.Add($Tab5_installbutton19)
 
 
 $Tab1_appbutton20 = New-Object System.Windows.Forms.Button
@@ -796,14 +796,27 @@ $Tab5.Controls.add($Tab5_installerbutton2)
 
 
 
+$checkBox1 = New-Object System.Windows.Forms.CheckBox
+$checkBox1.Location = New-Object System.Drawing.Point (550, 68)
+$checkBox1.Size = New-Object System.Drawing.Size(100,25)
+$checkBox1.Text = "Firefox"
+$tab5.Controls.Add($checkBox1)
+    if ($checkBox1.Checked -eq $true)
+    {
+        winver
+    }
+    else
+    {
+    }
+
+$tab5.Controls.Add($checkBox1)
 
 
-
-$Tab1_appbutton1 = New-Object System.Windows.Forms.Button
-$listBox1 = New-Object System.Windows.Forms.ListBox
+$Tab5_installbutton1 = New-Object System.Windows.Forms.Button
+$Tab5_Statusbox1 = New-Object System.Windows.Forms.ListBox
 $checkBox1 = New-Object System.Windows.Forms.CheckBox
 $checkBox2 = New-Object System.Windows.Forms.CheckBox
-$checkBox3 = New-Object System.Windows.Forms.CheckBox
+$checkBox1 = New-Object System.Windows.Forms.CheckBox
 $checkBox4 = New-Object System.Windows.Forms.CheckBox
 $checkBox5 = New-Object System.Windows.Forms.CheckBox
 $checkBox6 = New-Object System.Windows.Forms.CheckBox
@@ -829,84 +842,107 @@ $checkBox23 = New-Object System.Windows.Forms.CheckBox
 #Generated Event Script Blocks
 #----------------------------------------------
 
-$handler_Tab1_appbutton1_Click= 
+$handler_Tab5_installbutton1_Click= 
 {
-$listBox1.Items.Clear();
-if ($checkBox1.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
-if ($checkBox2.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
-if ($checkBox3.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
-if ($checkBox4.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
-if ($checkBox5.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
-if ($checkBox6.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
-if ($checkBox7.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
-if ($checkBox8.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
-if ($checkBox9.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
-if ($checkBox10.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
-if ($checkBox11.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
-if ($checkBox12.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
-if ($checkBox12.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
-if ($checkBox13.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
-if ($checkBox14.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
-if ($checkBox15.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
-if ($checkBox16.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
-if ($checkBox17.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
-if ($checkBox18.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
-if ($checkBox19.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
-if ($checkBox20.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
-if ($checkBox21.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
-if ($checkBox22.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
-if ($checkBox23.Checked) {  $listBox1.Items.Add( "Installing ..."  ) }
-if ( !$checkBox1.Checked -and !$checkBox2.Checked -and !$checkBox3.Checked -and !$checkBox4.Checked -and !$checkBox5.Checked -and !$checkBox6.Checked -and !$checkBox7.Checked -and !$checkBox8.Checked -and !$checkBox9.Checked -and !$checkBox10.Checked -and !$checkBox11.Checked -and !$checkBox12.Checked -and !$checkBox13.Checked -and !$checkBox14.Checked -and !$checkBox15.Checked -and !$checkBox16.Checked -and !$checkBox17.Checked -and !$checkBox18.Checked -and !$checkBox19.Checked -and !$checkBox20.Checked -and !$checkBox21.Checked -and !$checkBox22.Checked -and !$checkBox23.Checked ) {   $listBox1.Items.Add("No CheckBox selected....")} 
+$Tab5_Statusbox1.Items.Clear();
+if ($checkBox1.Checked) {  $Tab5_Statusbox1.Items.Add. ( winver.exe "Installing ..."  ) }
+if ($checkBox2.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
+if ($checkBox1.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
+if ($checkBox4.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
+if ($checkBox5.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
+if ($checkBox6.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
+if ($checkBox7.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
+if ($checkBox8.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
+if ($checkBox9.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
+if ($checkBox10.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
+if ($checkBox11.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
+if ($checkBox12.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
+if ($checkBox12.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
+if ($checkBox13.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
+if ($checkBox14.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
+if ($checkBox15.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
+if ($checkBox16.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
+if ($checkBox17.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
+if ($checkBox18.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
+if ($checkBox19.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
+if ($checkBox20.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
+if ($checkBox21.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
+if ($checkBox22.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
+if ($checkBox23.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
+if ( !$checkBox1.Checked -and !$checkBox2.Checked -and !$checkBox1.Checked -and !$checkBox4.Checked -and !$checkBox5.Checked -and !$checkBox6.Checked -and !$checkBox7.Checked -and !$checkBox8.Checked -and !$checkBox9.Checked -and !$checkBox10.Checked -and !$checkBox11.Checked -and !$checkBox12.Checked -and !$checkBox13.Checked -and !$checkBox14.Checked -and !$checkBox15.Checked -and !$checkBox16.Checked -and !$checkBox17.Checked -and !$checkBox18.Checked -and !$checkBox19.Checked -and !$checkBox20.Checked -and !$checkBox21.Checked -and !$checkBox22.Checked -and !$checkBox23.Checked ) {   $Tab5_Statusbox1.Items.Add("No CheckBox selected....")} 
 }
 
 #----------------------------------------------
 
-$Tab1_appbutton1.TabIndex = 4
-$Tab1_appbutton1.Name = "Tab1_appbutton1"
-$System_Drawing_Size = New-Object System.Drawing.Size
-$System_Drawing_Size.Width = 75
-$System_Drawing_Size.Height = 23
-$Tab1_appbutton1.Size = $System_Drawing_Size
-$Tab1_appbutton1.UseVisualStyleBackColor = $True
-$Tab1_appbutton1.Text = "Install selected applications"
-$System_Drawing_Point = New-Object System.Drawing.Point
-$System_Drawing_Point.X = 27
-$System_Drawing_Point.Y = 156
-$Tab1_appbutton1.Location = $System_Drawing_Point
-$Tab1_appbutton1.DataBindings.DefaultDataSourceUpdateMode = 0
-$Tab1_appbutton1.add_Click($handler_Tab1_appbutton1_Click)
-$tab5.Controls.Add($Tab1_appbutton1)
 
-$listBox1.FormattingEnabled = $True
+#Tab5_installbutton1
+$Tab5_installbutton1.TabIndex = 4
+$Tab5_installbutton1.Name = "Tab5_installbutton1"
+$System_Drawing_Size = New-Object System.Drawing.Size
+$System_Drawing_Size.Width = 175
+$System_Drawing_Size.Height = 25
+$Tab5_installbutton1.Size = $System_Drawing_Size
+$Tab5_installbutton1.UseVisualStyleBackColor = $True
+$Tab5_installbutton1.Text = "Install selected applications"
+$System_Drawing_Point = New-Object System.Drawing.Point
+$System_Drawing_Point.X = 480
+$System_Drawing_Point.Y = 300
+$Tab5_installbutton1.Location = $System_Drawing_Point
+$Tab5_installbutton1.DataBindings.DefaultDataSourceUpdateMode = 0
+$Tab5_installbutton1.add_Click($handler_Tab5_installbutton1_Click)
+$tab5.Controls.Add($Tab5_installbutton1)
+
+#Tab5_Statusbox1
+$Tab5_Statusbox1.FormattingEnabled = $True
 $System_Drawing_Size = New-Object System.Drawing.Size
 $System_Drawing_Size.Width = 200
 $System_Drawing_Size.Height = 100
-$listBox1.Size = $System_Drawing_Size
-$listBox1.DataBindings.DefaultDataSourceUpdateMode = 0
-$listBox1.Name = "listBox1"
+$Tab5_Statusbox1.Size = $System_Drawing_Size
+$Tab5_Statusbox1.DataBindings.DefaultDataSourceUpdateMode = 0
+$Tab5_Statusbox1.Name = "Tab5_Statusbox1"
 $System_Drawing_Point = New-Object System.Drawing.Point
 $System_Drawing_Point.X = 470
 $System_Drawing_Point.Y = 335
-$listBox1.Location = $System_Drawing_Point
-$listBox1.TabIndex = 3
-$tab5.Controls.Add($listBox1)
+$Tab5_Statusbox1.Location = $System_Drawing_Point
+$Tab5_Statusbox1.TabIndex = 3
+$tab5.Controls.Add($Tab5_Statusbox1)
 
 
-$checkBox3.UseVisualStyleBackColor = $True
+
+
+$checkBox1.UseVisualStyleBackColor = $True
 $System_Drawing_Size = New-Object System.Drawing.Size
-$System_Drawing_Size.Width = 104
-$System_Drawing_Size.Height = 24
-$checkBox3.Size = $System_Drawing_Size
-$checkBox3.TabIndex = 2
-$checkBox3.Text = "CheckBox 3"
+$System_Drawing_Size.Width = 75
+$System_Drawing_Size.Height = 25
+$checkBox1.Size = $System_Drawing_Size
+$checkBox1.TabIndex = 1
+$checkBox1.Text = "firefox"
 $System_Drawing_Point = New-Object System.Drawing.Point
-$System_Drawing_Point.X = 27
+$System_Drawing_Point.X = 10
 $System_Drawing_Point.Y = 75
-$checkBox3.Location = $System_Drawing_Point
-$checkBox3.DataBindings.DefaultDataSourceUpdateMode = 0
-$checkBox3.Name = "checkBox3"
-$tab5.Controls.Add($checkBox3)
+$checkBox1.Location = $System_Drawing_Point
+$checkBox1.DataBindings.DefaultDataSourceUpdateMode = 0
+$checkBox1.Name = "checkBox1"
+$tab5.Controls.Add($checkBox1)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<#
 
 $checkBox2.UseVisualStyleBackColor = $True
 $System_Drawing_Size = New-Object System.Drawing.Size
@@ -925,23 +961,23 @@ $tab5.Controls.Add($checkBox2)
 
 
 
-$checkBox1.UseVisualStyleBackColor = $True
+$checkBox3.UseVisualStyleBackColor = $True
 $System_Drawing_Size = New-Object System.Drawing.Size
 $System_Drawing_Size.Width = 104
 $System_Drawing_Size.Height = 24
-$checkBox1.Size = $System_Drawing_Size
-$checkBox1.TabIndex = 0
-$checkBox1.Text = "CheckBox 1"
+$checkBox3.Size = $System_Drawing_Size
+$checkBox3.TabIndex = 0
+$checkBox3.Text = "CheckBox 3"
 $System_Drawing_Point = New-Object System.Drawing.Point
 $System_Drawing_Point.X = 27
 $System_Drawing_Point.Y = 13
-$checkBox1.Location = $System_Drawing_Point
-$checkBox1.DataBindings.DefaultDataSourceUpdateMode = 0
-$checkBox1.Name = "checkBox1"
-$tab5.Controls.Add($checkBox1)
+$checkBox3.Location = $System_Drawing_Point
+$checkBox3.DataBindings.DefaultDataSourceUpdateMode = 0
+$checkBox3.Name = "checkBox3"
+$tab5.Controls.Add($checkBox3)#>
 
 
-
+#>
 
 
 
@@ -991,7 +1027,7 @@ $label2.AutoSize = $true
 $label2.Font = New-Object System.Drawing.Font('arial',12)
 $label2.ForeColor = "#000000"
 #$label2.backColor = "#b3b3b3"
-$label2.Text = ("Efe's Toolbox is designed by a student`nwho has gotten bored and found coding slightly joyful.")
+$label2.Text = ("Efe's Toolbox is designed by a student`nwho has gotten bored and found coding slightly interesting.")
 $tab10.Controls.Add($label2)
 
 # link1
