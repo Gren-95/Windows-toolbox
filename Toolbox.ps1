@@ -16,7 +16,11 @@ $FormTabControl.Size = "681,500"
 $FormTabControl.Location = "0,0" 
 $ApplicationForm.Controls.Add($FormTabControl)
 
-# tab 1
+
+# TAB 1
+#----------------------------------------------
+
+
 $Tab1 = New-object System.Windows.Forms.Tabpage
 $Tab1.DataBindings.DefaultDataSourceUpdateMode 
 $Tab1.Name = "Tab1" 
@@ -136,94 +140,94 @@ $Tab1_appbutton9.Add_Click({wuaucpl.cpl})
 $tab1.Controls.Add($Tab1_appbutton9)
 
 
-$Tab5_installbutton10 = New-Object System.Windows.Forms.Button
-$Tab5_installbutton10.Location = New-Object System.Drawing.Point(10,275)
-$Tab5_installbutton10.Size = New-Object System.Drawing.Size(200,25)
-$Tab5_installbutton10.Text = "Add/Remove Applications"
-$Tab5_installbutton10.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$Tab5_installbutton10.Add_Click({appwiz.cpl})
-$tab1.Controls.Add($Tab5_installbutton10)
+$Tab1_appbutton10 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton10.Location = New-Object System.Drawing.Point(10,275)
+$Tab1_appbutton10.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton10.Text = "Add/Remove Applications"
+$Tab1_appbutton10.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton10.Add_Click({appwiz.cpl})
+$tab1.Controls.Add($Tab1_appbutton10)
 
 
-$Tab5_installbutton11 = New-Object System.Windows.Forms.Button
-$Tab5_installbutton11.Location = New-Object System.Drawing.Point(10,250)
-$Tab5_installbutton11.Size = New-Object System.Drawing.Size(200,25)
-$Tab5_installbutton11.Text = "Display Properties"
-$Tab5_installbutton11.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$Tab5_installbutton11.Add_Click({desk.cpl})
-$tab1.Controls.Add($Tab5_installbutton11)
+$Tab1_appbutton11 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton11.Location = New-Object System.Drawing.Point(10,250)
+$Tab1_appbutton11.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton11.Text = "Display Properties"
+$Tab1_appbutton11.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton11.Add_Click({desk.cpl})
+$tab1.Controls.Add($Tab1_appbutton11)
 
 
-$Tab5_installbutton12 = New-Object System.Windows.Forms.Button
-$Tab5_installbutton12.Location = New-Object System.Drawing.Point(10,300)
-$Tab5_installbutton12.Size = New-Object System.Drawing.Size(200,25)
-$Tab5_installbutton12.Text = "Windows Firewall Properties"
-$Tab5_installbutton12.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$Tab5_installbutton12.Add_Click({firewall.cpl})
-$tab1.Controls.Add($Tab5_installbutton12)
+$Tab1_appbutton12 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton12.Location = New-Object System.Drawing.Point(10,300)
+$Tab1_appbutton12.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton12.Text = "Windows Firewall Properties"
+$Tab1_appbutton12.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton12.Add_Click({firewall.cpl})
+$tab1.Controls.Add($Tab1_appbutton12)
 
 
-$Tab5_installbutton13 = New-Object System.Windows.Forms.Button
-$Tab5_installbutton13.Location = New-Object System.Drawing.Point(10,325)
-$Tab5_installbutton13.Size = New-Object System.Drawing.Size(200,25)
-$Tab5_installbutton13.Text = "System Properties"
-$Tab5_installbutton13.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$Tab5_installbutton13.Add_Click({sysdm.cpl})
-$tab1.Controls.Add($Tab5_installbutton13)
+$Tab1_appbutton13 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton13.Location = New-Object System.Drawing.Point(10,325)
+$Tab1_appbutton13.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton13.Text = "System Properties"
+$Tab1_appbutton13.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton13.Add_Click({sysdm.cpl})
+$tab1.Controls.Add($Tab1_appbutton13)
 
 
-$Tab5_installbutton14 = New-Object System.Windows.Forms.Button
-$Tab5_installbutton14.Location = New-Object System.Drawing.Point(225,50)
-$Tab5_installbutton14.Size = New-Object System.Drawing.Size(200,25)
-$Tab5_installbutton14.Text = "Authorization Manager"
-$Tab5_installbutton14.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$Tab5_installbutton14.Add_Click({azman.msc})
-$tab1.Controls.Add($Tab5_installbutton14)
+$Tab1_appbutton14 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton14.Location = New-Object System.Drawing.Point(225,50)
+$Tab1_appbutton14.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton14.Text = "Authorization Manager"
+$Tab1_appbutton14.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton14.Add_Click({azman.msc})
+$tab1.Controls.Add($Tab1_appbutton14)
 
 
-$Tab5_installbutton15 = New-Object System.Windows.Forms.Button
-$Tab5_installbutton15.Location = New-Object System.Drawing.Point(225,75)
-$Tab5_installbutton15.Size = New-Object System.Drawing.Size(200,25)
-$Tab5_installbutton15.Text = "Certificate Manager"
-$Tab5_installbutton15.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$Tab5_installbutton15.Add_Click({certmgr.msc})
-$tab1.Controls.Add($Tab5_installbutton15)
+$Tab1_appbutton15 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton15.Location = New-Object System.Drawing.Point(225,75)
+$Tab1_appbutton15.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton15.Text = "Certificate Manager"
+$Tab1_appbutton15.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton15.Add_Click({certmgr.msc})
+$tab1.Controls.Add($Tab1_appbutton15)
 
 
-$Tab5_installbutton16 = New-Object System.Windows.Forms.Button
-$Tab5_installbutton16.Location = New-Object System.Drawing.Point(225,100)
-$Tab5_installbutton16.Size = New-Object System.Drawing.Size(200,25)
-$Tab5_installbutton16.Text = "Computer Management"
-$Tab5_installbutton16.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$Tab5_installbutton16.Add_Click({compmgmt.msc})
-$tab1.Controls.Add($Tab5_installbutton16)
+$Tab1_appbutton16 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton16.Location = New-Object System.Drawing.Point(225,100)
+$Tab1_appbutton16.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton16.Text = "Computer Management"
+$Tab1_appbutton16.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton16.Add_Click({compmgmt.msc})
+$tab1.Controls.Add($Tab1_appbutton16)
 
 
-$Tab5_installbutton17 = New-Object System.Windows.Forms.Button
-$Tab5_installbutton17.Location = New-Object System.Drawing.Point(225,125)
-$Tab5_installbutton17.Size = New-Object System.Drawing.Size(200,25)
-$Tab5_installbutton17.Text = "Device Management"
-$Tab5_installbutton17.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$Tab5_installbutton17.Add_Click({devmgmt.msc})
-$tab1.Controls.Add($Tab5_installbutton17)
+$Tab1_appbutton17 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton17.Location = New-Object System.Drawing.Point(225,125)
+$Tab1_appbutton17.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton17.Text = "Device Management"
+$Tab1_appbutton17.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton17.Add_Click({devmgmt.msc})
+$tab1.Controls.Add($Tab1_appbutton17)
 
 
-$Tab5_installbutton18 = New-Object System.Windows.Forms.Button
-$Tab5_installbutton18.Location = New-Object System.Drawing.Point(225,150)
-$Tab5_installbutton18.Size = New-Object System.Drawing.Size(200,25)
-$Tab5_installbutton18.Text = "Disk Management"
-$Tab5_installbutton18.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$Tab5_installbutton18.Add_Click({diskmgmt.msc})
-$tab1.Controls.Add($Tab5_installbutton18)
+$Tab1_appbutton18 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton18.Location = New-Object System.Drawing.Point(225,150)
+$Tab1_appbutton18.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton18.Text = "Disk Management"
+$Tab1_appbutton18.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton18.Add_Click({diskmgmt.msc})
+$tab1.Controls.Add($Tab1_appbutton18)
 
 
-$Tab5_installbutton19 = New-Object System.Windows.Forms.Button
-$Tab5_installbutton19.Location = New-Object System.Drawing.Point(225,175)
-$Tab5_installbutton19.Size = New-Object System.Drawing.Size(200,25)
-$Tab5_installbutton19.Text = "Event Viewer"
-$Tab5_installbutton19.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$Tab5_installbutton19.Add_Click({eventvwr.msc})
-$tab1.Controls.Add($Tab5_installbutton19)
+$Tab1_appbutton19 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton19.Location = New-Object System.Drawing.Point(225,175)
+$Tab1_appbutton19.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton19.Text = "Event Viewer"
+$Tab1_appbutton19.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton19.Add_Click({eventvwr.msc})
+$tab1.Controls.Add($Tab1_appbutton19)
 
 
 $Tab1_appbutton20 = New-Object System.Windows.Forms.Button
@@ -450,7 +454,11 @@ $Tab1_appbutton44.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton44.Add_Click({powershell start-process powershell -verb runas})
 $tab1.Controls.Add($Tab1_appbutton44)
 
-# tab 2 - tweaks#
+
+# TAB 2
+#----------------------------------------------
+
+
 $Tab2 = New-object System.Windows.Forms.Tabpage
 $Tab2.DataBindings.DefaultDataSourceUpdateMode 
 $Tab2.Name = "Tab2" 
@@ -553,7 +561,11 @@ $Tab2_tweakbutton8.Text = "Install Chocolatey"
 $Tab2_tweakbutton8.Add_Click({Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 2572; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))})
 $Tab2.Controls.Add($Tab2_tweakbutton8)
 
-# tab 3
+
+# TAB 3
+#----------------------------------------------
+
+
 $Tab3 = New-object System.Windows.Forms.Tabpage
 $Tab3.DataBindings.DefaultDataSourceUpdateMode 
 $Tab3.Name = "Tab3" 
@@ -657,7 +669,11 @@ $Tab3_actiavtebutton11.Text = "Clear Product Key"
 $Tab3_actiavtebutton11.add_click({slmgr /upk ; slmgr /cpky ; slmgr /rearm})
 $Tab3.Controls.add($Tab3_actiavtebutton11)
 
-# tab 4
+
+# TAB 4
+#----------------------------------------------
+
+
 $Tab4 = New-object System.Windows.Forms.Tabpage
 $Tab4.DataBindings.DefaultDataSourceUpdateMode 
 $Tab4.Name = "Tab4" 
@@ -759,7 +775,10 @@ $Tab4_powerbutton11.Text = "Battery Options"
 $Tab4_powerbutton11.add_click({ms-settings:batterysaver})
 $Tab4.Controls.add($Tab4_powerbutton11)
 
-# tab 5
+
+# TAB 5
+#----------------------------------------------
+
 $tab5 = New-object System.Windows.Forms.Tabpage
 $tab5.DataBindings.DefaultDataSourceUpdateMode 
 $tab5.Name = "tab5" 
@@ -790,9 +809,6 @@ $Tab5_installerbutton2.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_installerbutton2.Text = "Update Scoop"
 $Tab5_installerbutton2.add_click({scoop update -a})
 $Tab5.Controls.add($Tab5_installerbutton2)
-
-
-
 
 $Tab5_installbutton1 = New-Object System.Windows.Forms.Button
 $Tab5_Statusbox1 = New-Object System.Windows.Forms.ListBox
@@ -875,9 +891,7 @@ $checkBox76 = New-Object System.Windows.Forms.CheckBox
 $checkBox77 = New-Object System.Windows.Forms.CheckBox
 $checkBox78 = New-Object System.Windows.Forms.CheckBox
 
-#----------------------------------------------
-#Generated Event Script Blocks
-#----------------------------------------------
+#The part that does the installing
 
 $handler_Tab5_installbutton1_Click= 
 {
@@ -935,36 +949,33 @@ if ($checkBox50.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing taskbarx..."
 if ($checkBox51.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing translucenttb..."  ) ; scoop bucket add extras  ; scoop install translucenttb }
 if ($checkBox52.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing powertoys..."  ) ; scoop bucket add extras  ; scoop install powertoys }
 if ($checkBox53.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing 7zip..."  ) ; scoop bucket add main  ; scoop install 7zip }
-if ($checkBox54.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing revouninstaller..."  ) ; scoop bucket add extras  ; scoop install revouninstaller }
-if ($checkBox55.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing czkawka..."  ) ; scoop bucket add extras  ; scoop install czkawka }
-if ($checkBox56.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing anydesk..."  ) ; scoop bucket add extras  ; scoop install anydesk }
-if ($checkBox57.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing teamviewer..."  ) ; scoop bucket add extras  ; scoop install teamviewer }
-if ($checkBox58.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing rustdesk..."  ) ; scoop bucket add extras  ; scoop install rustdesk }
-if ($checkBox59.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing putty..."  ) ; scoop bucket add extras  ; scoop install putty }
-if ($checkBox60.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing filezilla..."  ) ; scoop bucket add extras  ; scoop install filezilla }
-if ($checkBox61.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing etcher..."  ) ; scoop bucket add extras  ; scoop install etcher }
-if ($checkBox62.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing rufus..."  ) ; scoop bucket add extras  ; scoop install rufus }
-if ($checkBox63.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ventoy..."  ) ; scoop bucket add extras  ; scoop install ventoy }
-if ($checkBox64.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ddu..."  ) ; scoop bucket add extras  ; scoop install ddu }
-if ($checkBox65.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing nvcleanstall..."  ) ; scoop bucket add extras  ; scoop install nvcleanstall }
-if ($checkBox66.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing nvidia-display-driver-np..."  ) ; scoop bucket add nonportable  ; scoop install nvidia-display-driver-np }
-if ($checkBox67.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ryzen-controller..."  ) ; scoop bucket add extras  ; scoop install ryzen-controller }
-if ($checkBox68.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ryzentuner..."  ) ; scoop bucket add hoilc_scoop-lemon https://github.com/hoilc/scoop-lemon  ; scoop install ryzentuner }
-if ($checkBox69.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing IntelExtremeTuningUtility-Install..."  ) ; scoop bucket add ACooper81_scoop-apps https://github.com/ACooper81/scoop-apps ; scoop install IntelExtremeTuningUtility-Install }
-if ($checkBox70.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing neofetch..."  ) ; scoop bucket add main  ; scoop install neofetch }
-if ($checkBox71.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing meow..."  ) ; scoop bucket add extras  ; scoop install meow }
-if ($checkBox72.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing cowsay..."  ) ; scoop bucket add main  ; scoop install cowsay }
-if ($checkBox73.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing alacritty..."  ) ; scoop bucket add extras  ; scoop install alacritty }
-if ($checkBox74.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing tabby..."  ) ; scoop bucket add extras  ; scoop install tabby }
-if ($checkBox75.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing hyper..."  ) ; scoop bucket add extras  ; scoop install hyper }
-if ($checkBox76.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing fluent-terminal-np..."  ) ; scoop bucket add nonportable  ; scoop install fluent-terminal-np }
-if ($checkBox77.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing windows-terminal..."  ) ; scoop bucket add extras  ; scoop install windows-terminal }
-if ($checkBox78.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing discord..."  ) ; scoop bucket add extras  ; scoop install discord }
+if ($checkBox54.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing winrar..."  ) ; scoop bucket add extras  ; scoop install winrar }
+if ($checkBox55.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing revouninstaller..."  ) ; scoop bucket add extras  ; scoop install revouninstaller }
+if ($checkBox56.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing czkawka..."  ) ; scoop bucket add extras  ; scoop install czkawka }
+if ($checkBox57.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing anydesk..."  ) ; scoop bucket add extras  ; scoop install anydesk }
+if ($checkBox58.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing teamviewer..."  ) ; scoop bucket add extras  ; scoop install teamviewer }
+if ($checkBox59.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing rustdesk..."  ) ; scoop bucket add extras  ; scoop install rustdesk }
+if ($checkBox60.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing putty..."  ) ; scoop bucket add extras  ; scoop install putty }
+if ($checkBox61.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing filezilla..."  ) ; scoop bucket add extras  ; scoop install filezilla }
+if ($checkBox62.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing etcher..."  ) ; scoop bucket add extras  ; scoop install etcher }
+if ($checkBox63.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing rufus..."  ) ; scoop bucket add extras  ; scoop install rufus }
+if ($checkBox64.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ventoy..."  ) ; scoop bucket add extras  ; scoop install ventoy }
+if ($checkBox65.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ddu..."  ) ; scoop bucket add extras  ; scoop install ddu }
+if ($checkBox66.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing nvcleanstall..."  ) ; scoop bucket add extras  ; scoop install nvcleanstall }
+if ($checkBox67.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing nvidia-display-driver-np..."  ) ; scoop bucket add nonportable  ; scoop install nvidia-display-driver-np }
+if ($checkBox68.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ryzen-controller..."  ) ; scoop bucket add extras  ; scoop install ryzen-controller }
+if ($checkBox69.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ryzentuner..."  ) ; scoop bucket add hoilc_scoop-lemon https://github.com/hoilc/scoop-lemon  ; scoop install ryzentuner }
+if ($checkBox70.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing IntelExtremeTuningUtility-Install..."  ) ; scoop bucket add ACooper81_scoop-apps https://github.com/ACooper81/scoop-apps ; scoop install IntelExtremeTuningUtility-Install }
+if ($checkBox71.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing neofetch..."  ) ; scoop bucket add main  ; scoop install neofetch }
+if ($checkBox72.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing meow..."  ) ; scoop bucket add extras  ; scoop install meow }
+if ($checkBox73.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing cowsay..."  ) ; scoop bucket add main  ; scoop install cowsay }
+if ($checkBox74.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing alacritty..."  ) ; scoop bucket add extras  ; scoop install alacritty }
+if ($checkBox75.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing tabby..."  ) ; scoop bucket add extras  ; scoop install tabby }
+if ($checkBox76.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing hyper..."  ) ; scoop bucket add extras  ; scoop install hyper }
+if ($checkBox77.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing fluent-terminal-np..."  ) ; scoop bucket add nonportable  ; scoop install fluent-terminal-np }
+if ($checkBox78.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing windows-terminal..."  ) ; scoop bucket add extras  ; scoop install windows-terminal }
 if ( !$checkBox1.Checked -and !$checkBox2.Checked -and !$checkBox1.Checked -and !$checkBox4.Checked -and !$checkBox5.Checked -and !$checkBox6.Checked -and !$checkBox7.Checked -and !$checkBox8.Checked -and !$checkBox9.Checked -and !$checkBox10.Checked -and !$checkBox11.Checked -and !$checkBox12.Checked -and !$checkBox13.Checked -and !$checkBox14.Checked -and !$checkBox15.Checked -and !$checkBox16.Checked -and !$checkBox17.Checked -and !$checkBox18.Checked -and !$checkBox19.Checked -and !$checkBox20.Checked -and !$checkBox21.Checked -and !$checkBox22.Checked -and !$checkBox23.Checked -and !$checkBox24.Checked -and !$checkBox25.Checked -and !$checkBox26.Checked -and !$checkBox27.Checked -and !$checkBox28.Checked -and !$checkBox29.Checked -and !$checkBox30.Checked -and !$checkBox31.Checked -and !$checkBox32.Checked -and !$checkBox33.Checked -and !$checkBox34.Checked -and !$checkBox35.Checked -and !$checkBox36.Checked -and !$checkBox37.Checked -and !$checkBox38.Checked -and !$checkBox39.Checked -and !$checkBox40.Checked -and !$checkBox41.Checked -and !$checkBox42.Checked -and !$checkBox43.Checked -and !$checkBox44.Checked -and !$checkBox45.Checked -and !$checkBox46.Checked -and !$checkBox47.Checked -and !$checkBox48.Checked -and !$checkBox49.Checked -and !$checkBox50.Checked -and !$checkBox51.Checked -and !$checkBox52.Checked -and !$checkBox53.Checked -and !$checkBox54.Checked -and !$checkBox55.Checked -and !$checkBox56.Checked -and !$checkBox57.Checked -and !$checkBox58.Checked -and !$checkBox59.Checked -and !$checkBox60.Checked -and !$checkBox61.Checked -and !$checkBox62.Checked -and !$checkBox63.Checked -and !$checkBox64.Checked -and !$checkBox65.Checked -and !$checkBox66.Checked -and !$checkBox67.Checked -and !$checkBox67.Checked -and !$checkBox68.Checked -and !$checkBox69.Checked -and !$checkBox70.Checked -and !$checkBox71.Checked -and !$checkBox72.Checked -and !$checkBox73.Checked -and !$checkBox74.Checked -and !$checkBox75.Checked -and !$checkBox76.Checked -and !$checkBox77.Checked -and !$checkBox78.Checked) {   $Tab5_Statusbox1.Items.Add("No CheckBox selected....")} 
 }
-
-#----------------------------------------------
-
 
 #Tab5_installbutton1
 $Tab5_installbutton1.Name = "Tab5_installbutton1"
@@ -984,7 +995,7 @@ $Tab5_Statusbox1.Name = "Tab5_Statusbox1"
 $tab5.Controls.Add($Tab5_Statusbox1)
 
 
-
+# alot of checkboxes
 $checkBox1.Location = New-Object System.Drawing.Point(10,50)
 $checkBox1.Size = New-Object System.Drawing.Size(100,25)
 $checkBox1.Text = "Firefox"
@@ -1598,6 +1609,53 @@ $checkBox78.Name = "checkBox78"
 $checkBox78.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox78)
 
+
+# link1
+$tab5_manualinstall1 = New-Object System.Windows.Forms.LinkLabel
+$tab5_manualinstall1.Location = New-Object System.Drawing.Point(530,200)
+$tab5_manualinstall1.VisitedLinkColor = 'Red'
+$tab5_manualinstall1.LinkBehavior = 'HoverUnderline'
+$tab5_manualinstall1.LinkColor = 'Navy'
+$tab5_manualinstall1.Font = New-Object System.Drawing.Font('arial',10)
+$tab5_manualinstall1.ForeColor = "#000000"
+$tab5_manualinstall1.Text = ("Digidoc4")
+$tab5_manualinstall1.add_click({explorer "https://installer.id.ee/media/win/Open-EID-22.6.0.1930.exe"})
+$tab5.Controls.Add($tab5_manualinstall1)
+
+# link1
+$tab5_manualinstall2 = New-Object System.Windows.Forms.LinkLabel
+$tab5_manualinstall2.Location = New-Object System.Drawing.Point(530,230)
+$tab5_manualinstall2.VisitedLinkColor = 'Red'
+$tab5_manualinstall2.LinkBehavior = 'HoverUnderline'
+$tab5_manualinstall2.LinkColor = 'Navy'
+$tab5_manualinstall2.Font = New-Object System.Drawing.Font('arial',10)
+$tab5_manualinstall2.ForeColor = "#000000"
+$tab5_manualinstall2.Text = ("Packet Tracer")
+$tab5_manualinstall2.add_click({explorer "https://www.netacad.com/portal/resources/file/84f3e715-2e22-435a-8742-fd51f136cf73"})
+$tab5.Controls.Add($tab5_manualinstall2)
+
+# link1
+$tab5_manualinstall3 = New-Object System.Windows.Forms.LinkLabel
+$tab5_manualinstall3.Location = New-Object System.Drawing.Point(530,260)
+$tab5_manualinstall3.VisitedLinkColor = 'Red'
+$tab5_manualinstall3.LinkBehavior = 'HoverUnderline'
+$tab5_manualinstall3.LinkColor = 'Navy'
+$tab5_manualinstall3.Font = New-Object System.Drawing.Font('arial',10)
+$tab5_manualinstall3.ForeColor = "#000000"
+$tab5_manualinstall3.Text = ("GNS3")
+$tab5_manualinstall3.add_click({explorer "https://github.com/GNS3/gns3-gui/releases/download/v2.2.33.1/GNS3-2.2.33.1-all-in-one.exe"})
+$tab5.Controls.Add($tab5_manualinstall3)
+
+
+
+# window label
+$Tab6_text1 = New-Object System.Windows.Forms.Label
+$Tab6_text1.Location = New-Object System.Drawing.Point(10,10)
+$Tab6_text1.AutoSize = $true
+$Tab6_text1.Font = New-Object System.Drawing.Font('arial',10)
+$Tab6_text1.ForeColor = "#000000"
+$Tab6_text1.Text = ("Installer")
+$Tab6.Controls.Add($Tab6_text1)
 
 
 
