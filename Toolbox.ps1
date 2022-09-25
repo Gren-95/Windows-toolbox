@@ -18,8 +18,7 @@ $ApplicationForm.Controls.Add($FormTabControl)
 
 # tab 1
 $Tab1 = New-object System.Windows.Forms.Tabpage
-$Tab1.DataBindings.DefaultDataSourceUpdateMode = 0 
-$Tab1.UseVisualStyleBackColor = $True 
+$Tab1.DataBindings.DefaultDataSourceUpdateMode 
 $Tab1.Name = "Tab1" 
 $Tab1.Text = "Administrator Stuff” 
 $FormTabControl.Controls.Add($Tab1)
@@ -453,8 +452,7 @@ $tab1.Controls.Add($Tab1_appbutton44)
 
 # tab 2 - tweaks#
 $Tab2 = New-object System.Windows.Forms.Tabpage
-$Tab2.DataBindings.DefaultDataSourceUpdateMode = 0 
-$Tab2.UseVisualStyleBackColor = $True 
+$Tab2.DataBindings.DefaultDataSourceUpdateMode 
 $Tab2.Name = "Tab2" 
 $Tab2.Text = "Tweaks” 
 $FormTabControl.Controls.Add($Tab2)
@@ -557,8 +555,7 @@ $Tab2.Controls.Add($Tab2_tweakbutton8)
 
 # tab 3
 $Tab3 = New-object System.Windows.Forms.Tabpage
-$Tab3.DataBindings.DefaultDataSourceUpdateMode = 0 
-$Tab3.UseVisualStyleBackColor = $True 
+$Tab3.DataBindings.DefaultDataSourceUpdateMode 
 $Tab3.Name = "Tab3" 
 $Tab3.Text = "Activate Windows” 
 $FormTabControl.Controls.Add($Tab3)
@@ -662,8 +659,7 @@ $Tab3.Controls.add($Tab3_actiavtebutton11)
 
 # tab 4
 $Tab4 = New-object System.Windows.Forms.Tabpage
-$Tab4.DataBindings.DefaultDataSourceUpdateMode = 0 
-$Tab4.UseVisualStyleBackColor = $True 
+$Tab4.DataBindings.DefaultDataSourceUpdateMode 
 $Tab4.Name = "Tab4" 
 $Tab4.Text = "Power Options” 
 $FormTabControl.Controls.Add($Tab4)
@@ -765,8 +761,7 @@ $Tab4.Controls.add($Tab4_powerbutton11)
 
 # tab 5
 $tab5 = New-object System.Windows.Forms.Tabpage
-$tab5.DataBindings.DefaultDataSourceUpdateMode = 0 
-$tab5.UseVisualStyleBackColor = $True 
+$tab5.DataBindings.DefaultDataSourceUpdateMode 
 $tab5.Name = "tab5" 
 $tab5.Text = "Scoop” 
 $FormTabControl.Controls.Add($tab5)
@@ -796,27 +791,12 @@ $Tab5.Controls.add($Tab5_installerbutton2)
 
 
 
-$checkBox1 = New-Object System.Windows.Forms.CheckBox
-$checkBox1.Location = New-Object System.Drawing.Point (550, 68)
-$checkBox1.Size = New-Object System.Drawing.Size(100,25)
-$checkBox1.Text = "Firefox"
-$tab5.Controls.Add($checkBox1)
-    if ($checkBox1.Checked -eq $true)
-    {
-        winver
-    }
-    else
-    {
-    }
-
-$tab5.Controls.Add($checkBox1)
-
 
 $Tab5_installbutton1 = New-Object System.Windows.Forms.Button
 $Tab5_Statusbox1 = New-Object System.Windows.Forms.ListBox
 $checkBox1 = New-Object System.Windows.Forms.CheckBox
 $checkBox2 = New-Object System.Windows.Forms.CheckBox
-$checkBox1 = New-Object System.Windows.Forms.CheckBox
+$checkBox3 = New-Object System.Windows.Forms.CheckBox
 $checkBox4 = New-Object System.Windows.Forms.CheckBox
 $checkBox5 = New-Object System.Windows.Forms.CheckBox
 $checkBox6 = New-Object System.Windows.Forms.CheckBox
@@ -845,9 +825,9 @@ $checkBox23 = New-Object System.Windows.Forms.CheckBox
 $handler_Tab5_installbutton1_Click= 
 {
 $Tab5_Statusbox1.Items.Clear();
-if ($checkBox1.Checked) {  $Tab5_Statusbox1.Items.Add. ( winver.exe "Installing ..."  ) }
+if ($checkBox1.Checked) {  $Tab5_Statusbox1.Items.Add. ( winver.exe "Installing Firefox ..."  ) }
 if ($checkBox2.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
-if ($checkBox1.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
+if ($checkBox3.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
 if ($checkBox4.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
 if ($checkBox5.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
 if ($checkBox6.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ..."  ) }
@@ -876,54 +856,183 @@ if ( !$checkBox1.Checked -and !$checkBox2.Checked -and !$checkBox1.Checked -and 
 
 
 #Tab5_installbutton1
-$Tab5_installbutton1.TabIndex = 4
 $Tab5_installbutton1.Name = "Tab5_installbutton1"
-$System_Drawing_Size = New-Object System.Drawing.Size
-$System_Drawing_Size.Width = 175
-$System_Drawing_Size.Height = 25
-$Tab5_installbutton1.Size = $System_Drawing_Size
-$Tab5_installbutton1.UseVisualStyleBackColor = $True
+$Tab5_installbutton1.Location = New-Object System.Drawing.Point(480,300)
+$Tab5_installbutton1.Size = New-Object System.Drawing.Size(175,25)
 $Tab5_installbutton1.Text = "Install selected applications"
-$System_Drawing_Point = New-Object System.Drawing.Point
-$System_Drawing_Point.X = 480
-$System_Drawing_Point.Y = 300
-$Tab5_installbutton1.Location = $System_Drawing_Point
-$Tab5_installbutton1.DataBindings.DefaultDataSourceUpdateMode = 0
+$Tab5_ins
 $Tab5_installbutton1.add_Click($handler_Tab5_installbutton1_Click)
 $tab5.Controls.Add($Tab5_installbutton1)
 
 #Tab5_Statusbox1
 $Tab5_Statusbox1.FormattingEnabled = $True
-$System_Drawing_Size = New-Object System.Drawing.Size
-$System_Drawing_Size.Width = 200
-$System_Drawing_Size.Height = 100
-$Tab5_Statusbox1.Size = $System_Drawing_Size
-$Tab5_Statusbox1.DataBindings.DefaultDataSourceUpdateMode = 0
+$Tab5_Statusbox1.Location = New-Object System.Drawing.Point(470,335)
+$Tab5_Statusbox1.Size = New-Object System.Drawing.Size(200,100)
+$Tab5
 $Tab5_Statusbox1.Name = "Tab5_Statusbox1"
-$System_Drawing_Point = New-Object System.Drawing.Point
-$System_Drawing_Point.X = 470
-$System_Drawing_Point.Y = 335
-$Tab5_Statusbox1.Location = $System_Drawing_Point
-$Tab5_Statusbox1.TabIndex = 3
 $tab5.Controls.Add($Tab5_Statusbox1)
 
 
 
 
-$checkBox1.UseVisualStyleBackColor = $True
-$System_Drawing_Size = New-Object System.Drawing.Size
-$System_Drawing_Size.Width = 75
-$System_Drawing_Size.Height = 25
-$checkBox1.Size = $System_Drawing_Size
-$checkBox1.TabIndex = 1
-$checkBox1.Text = "firefox"
-$System_Drawing_Point = New-Object System.Drawing.Point
-$System_Drawing_Point.X = 10
-$System_Drawing_Point.Y = 75
-$checkBox1.Location = $System_Drawing_Point
-$checkBox1.DataBindings.DefaultDataSourceUpdateMode = 0
+$checkBox1.Location = New-Object System.Drawing.Point(10,50)
+$checkBox1.Size = New-Object System.Drawing.Size(100,25)
+$checkBox1.Text = "Firefox"
 $checkBox1.Name = "checkBox1"
 $tab5.Controls.Add($checkBox1)
+
+$checkBox2.Location = New-Object System.Drawing.Point(10,70)
+$checkBox2.Size = New-Object System.Drawing.Size(100,25)
+$checkBox2.Text = "Librewolf"
+$checkBox2.Name = "checkBox2"
+$tab5.Controls.Add($checkBox2)
+
+$checkBox3.Location = New-Object System.Drawing.Point(10,90)
+$checkBox3.Size = New-Object System.Drawing.Size(100,25)
+$checkBox3.Text = "Brave"
+$checkBox3.Name = "checkBox3"
+$tab5.Controls.Add($checkBox3)
+
+$checkBox4.Location = New-Object System.Drawing.Point(10,120)
+$checkBox4.Size = New-Object System.Drawing.Size(100,25)
+$checkBox4.Text = "MPV"
+$checkBox4.Name = "checkBox4"
+$tab5.Controls.Add($checkBox4)
+
+$checkBox5.Location = New-Object System.Drawing.Point(10,140)
+$checkBox5.Size = New-Object System.Drawing.Size(100,25)
+$checkBox5.Text = "VLC"
+$checkBox5.Name = "checkBox5"
+$tab5.Controls.Add($checkBox5)
+
+$checkBox6.Location = New-Object System.Drawing.Point(10,160)
+$checkBox6.Size = New-Object System.Drawing.Size(100,25)
+$checkBox6.Text = "Audacity"
+$checkBox6.Name = "checkBox6"
+$tab5.Controls.Add($checkBox6)
+
+$checkBox7.Location = New-Object System.Drawing.Point(10,190)
+$checkBox7.Size = New-Object System.Drawing.Size(100,25)
+$checkBox7.Text = "Notepad++"
+$checkBox7.Name = "checkBox7"
+$tab5.Controls.Add($checkBox7)
+
+$checkBox8.Location = New-Object System.Drawing.Point(10,210)
+$checkBox8.Size = New-Object System.Drawing.Size(100,25)
+$checkBox8.Text = "VS Code"
+$checkBox8.Name = "checkBox8"
+$tab5.Controls.Add($checkBox8)
+
+$checkBox9.Location = New-Object System.Drawing.Point(10,230)
+$checkBox9.Size = New-Object System.Drawing.Size(100,25)
+$checkBox9.Text = "Sublime Text"
+$checkBox9.Name = "checkBox9"
+$tab5.Controls.Add($checkBox9)
+
+
+$checkBox10.Location = New-Object System.Drawing.Point(10,250)
+$checkBox10.Size = New-Object System.Drawing.Size(100,25)
+$checkBox10.Text = "Pycharm"
+$checkBox10.Name = "checkBox10"
+$tab5.Controls.Add($checkBox10)
+
+
+$checkBox11.Location = New-Object System.Drawing.Point(10,280)
+$checkBox11.Size = New-Object System.Drawing.Size(150,25)
+$checkBox11.Text = "Github Desktop"
+$checkBox11.Name = "checkBox11"
+$tab5.Controls.Add($checkBox11)
+
+
+$checkBox12.Location = New-Object System.Drawing.Point(10,300)
+$checkBox12.Size = New-Object System.Drawing.Size(100,25)
+$checkBox12.Text = "Git"
+$checkBox12.Name = "checkBox12"
+$tab5.Controls.Add($checkBox12)
+
+
+$checkBox13.Location = New-Object System.Drawing.Point(10,330)
+$checkBox13.Size = New-Object System.Drawing.Size(100,25)
+$checkBox13.Text = "Caprine"
+$checkBox13.Name = "checkBox13"
+$tab5.Controls.Add($checkBox13)
+
+
+$checkBox14.Location = New-Object System.Drawing.Point(10,350)
+$checkBox14.Size = New-Object System.Drawing.Size(100,25)
+$checkBox14.Text = "Telegram"
+$checkBox14.Name = "checkBox14"
+$tab5.Controls.Add($checkBox14)
+
+
+$checkBox15.Location = New-Object System.Drawing.Point(10,370)
+$checkBox15.Size = New-Object System.Drawing.Size(100,25)
+$checkBox15.Text = "Signal"
+$checkBox15.Name = "checkBox15"
+$tab5.Controls.Add($checkBox15)
+
+
+$checkBox16.Location = New-Object System.Drawing.Point(50,50)
+$checkBox16.Size = New-Object System.Drawing.Size(100,25)
+$checkBox16.Text = "Firefox"
+$checkBox16.Name = "checkBox16"
+$tab5.Controls.Add($checkBox16)
+
+
+$checkBox17.Location = New-Object System.Drawing.Point(50,50)
+$checkBox17.Size = New-Object System.Drawing.Size(100,25)
+$checkBox17.Text = "Firefox"
+$checkBox17.Name = "checkBox17"
+$tab5.Controls.Add($checkBox17)
+
+
+$checkBox18.Location = New-Object System.Drawing.Point(50,50)
+$checkBox18.Size = New-Object System.Drawing.Size(100,25)
+$checkBox18.Text = "Firefox"
+$checkBox18.Name = "checkBox18"
+$tab5.Controls.Add($checkBox18)
+
+
+$checkBox19.Location = New-Object System.Drawing.Point(50,50)
+$checkBox19.Size = New-Object System.Drawing.Size(100,25)
+$checkBox19.Text = "Firefox"
+$checkBox19.Name = "checkBox19"
+$tab5.Controls.Add($checkBox19)
+
+
+$checkBox20.Location = New-Object System.Drawing.Point(50,50)
+$checkBox20.Size = New-Object System.Drawing.Size(100,25)
+$checkBox20.Text = "Firefox"
+$checkBox20.Name = "checkBox20"
+$tab5.Controls.Add($checkBox20)
+
+
+$checkBox21.Location = New-Object System.Drawing.Point(50,50)
+$checkBox21.Size = New-Object System.Drawing.Size(100,25)
+$checkBox21.Text = "Firefox"
+$checkBox21.Name = "checkBox21"
+$tab5.Controls.Add($checkBox21)
+
+
+$checkBox22.Location = New-Object System.Drawing.Point(50,50)
+$checkBox22.Size = New-Object System.Drawing.Size(100,25)
+$checkBox22.Text = "Firefox"
+$checkBox22.Name = "checkBox22"
+$tab5.Controls.Add($checkBox22)
+
+
+$checkBox23.Location = New-Object System.Drawing.Point(50,50)
+$checkBox23.Size = New-Object System.Drawing.Size(100,25)
+$checkBox23.Text = "Firefox"
+$checkBox23.Name = "checkBox23"
+$tab5.Controls.Add($checkBox23)
+
+
+
+
+
+
+
 
 
 
@@ -944,7 +1053,6 @@ $tab5.Controls.Add($checkBox1)
 
 <#
 
-$checkBox2.UseVisualStyleBackColor = $True
 $System_Drawing_Size = New-Object System.Drawing.Size
 $System_Drawing_Size.Width = 104
 $System_Drawing_Size.Height = 24
@@ -955,13 +1063,11 @@ $System_Drawing_Point = New-Object System.Drawing.Point
 $System_Drawing_Point.X = 27
 $System_Drawing_Point.Y = 44
 $checkBox2.Location = $System_Drawing_Point
-$checkBox2.DataBindings.DefaultDataSourceUpdateMode = 0
 $checkBox2.Name = "checkBox2"
 $tab5.Controls.Add($checkBox2)
 
 
 
-$checkBox3.UseVisualStyleBackColor = $True
 $System_Drawing_Size = New-Object System.Drawing.Size
 $System_Drawing_Size.Width = 104
 $System_Drawing_Size.Height = 24
@@ -972,7 +1078,6 @@ $System_Drawing_Point = New-Object System.Drawing.Point
 $System_Drawing_Point.X = 27
 $System_Drawing_Point.Y = 13
 $checkBox3.Location = $System_Drawing_Point
-$checkBox3.DataBindings.DefaultDataSourceUpdateMode = 0
 $checkBox3.Name = "checkBox3"
 $tab5.Controls.Add($checkBox3)#>
 
@@ -1005,8 +1110,7 @@ $tab5.Controls.Add($checkBox3)#>
 
 # tab 10
 $tab10 = New-object System.Windows.Forms.Tabpage
-$tab10.DataBindings.DefaultDataSourceUpdateMode = 0 
-$tab10.UseVisualStyleBackColor = $True 
+$tab10.DataBindings.DefaultDataSourceUpdateMode  
 $tab10.Name = "tab10" 
 $tab10.Text = "About” 
 $FormTabControl.Controls.Add($tab10)
