@@ -64,13 +64,13 @@ $Tab1_label4.Text = ("exe")
 $Tab1.Controls.Add($Tab1_label4)
 
 # Lots of buttons
-$Tab5_installbutton1 = New-Object System.Windows.Forms.Button
-$Tab5_installbutton1.Location = New-Object System.Drawing.Point(10,50)
-$Tab5_installbutton1.Size = New-Object System.Drawing.Size(200,25)
-$Tab5_installbutton1.Text = "Device Manager"
-$Tab5_installbutton1.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$Tab5_installbutton1.Add_Click({hdwwiz.cpl})
-$tab1.Controls.Add($Tab5_installbutton1)
+$Tab1_appbutton1 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton1.Location = New-Object System.Drawing.Point(10,50)
+$Tab1_appbutton1.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton1.Text = "Device Manager"
+$Tab1_appbutton1.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton1.Add_Click({hdwwiz.cpl})
+$tab1.Controls.Add($Tab1_appbutton1)
 
 $Tab1_appbutton2 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton2.Location = New-Object System.Drawing.Point(10,75)
@@ -320,13 +320,13 @@ $Tab1_appbutton29.Add_Click({notepad.exe})
 $tab1.Controls.Add($Tab1_appbutton29)
 
 
-$Tab1_appbutton25 = New-Object System.Windows.Forms.Button
-$Tab1_appbutton25.Location = New-Object System.Drawing.Point(440,100)
-$Tab1_appbutton25.Size = New-Object System.Drawing.Size(200,25)
-$Tab1_appbutton25.Text = "Regedit"
-$Tab1_appbutton25.DialogResult = [System.Windows.Forms.DialogResult]::OK
-$Tab1_appbutton25.Add_Click({regedit.exe})
-$tab1.Controls.Add($Tab1_appbutton25)
+$Tab1_appbutton30 = New-Object System.Windows.Forms.Button
+$Tab1_appbutton30.Location = New-Object System.Drawing.Point(440,100)
+$Tab1_appbutton30.Size = New-Object System.Drawing.Size(200,25)
+$Tab1_appbutton30.Text = "Regedit"
+$Tab1_appbutton30.DialogResult = [System.Windows.Forms.DialogResult]::OK
+$Tab1_appbutton30.Add_Click({regedit.exe})
+$tab1.Controls.Add($Tab1_appbutton30)
 
 
 $Tab1_appbutton31 = New-Object System.Windows.Forms.Button
@@ -472,7 +472,7 @@ $Tab2_label1.Font = New-Object System.Drawing.Font('arial',20,[System.Drawing.Fo
 $Tab2_label1.AutoSize = $true
 $Tab2_label1.ForeColor = "#000000"
 $Tab2_label1.Text = ("Requires Administrator Permissions")
-$Tab2.Controls.Add($label)
+$Tab2.Controls.Add($Tab2_label1)
 
 # tweak buttons
 $Tab2_tweakbutton1 = New-Object System.Windows.Forms.Button
@@ -785,6 +785,7 @@ $tab5.Name = "tab5"
 $tab5.Text = "Scoop” 
 $FormTabControl.Controls.Add($tab5)
 
+
 # window label
 $Tab5_label1 = New-Object System.Windows.Forms.Label
 $Tab5_label1.Location = New-Object System.Drawing.Point(10,10)
@@ -799,7 +800,7 @@ $Tab5_installerbutton1.Location = New-Object System.Drawing.Point(550,15)
 $Tab5_installerbutton1.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_installerbutton1.Text = "Install Scoop"
 $Tab5_installerbutton1.add_click({ Start-Process powershell {
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser} ; Start-Process powershell { Invoke-RestMethod get.scoop.sh | Invoke-Expression} ;Start-Process powershell { scoop bucket add extras}
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser} ; Start-Process powershell { Invoke-RestMethod get.scoop.sh | Invoke-Expression}
 })
 $Tab5.Controls.add($Tab5_installerbutton1)
 
@@ -810,16 +811,6 @@ $Tab5_installerbutton2.Text = "Update Scoop"
 $Tab5_installerbutton2.add_click({scoop update -a})
 $Tab5.Controls.add($Tab5_installerbutton2)
 
-$Tab5_installbutton1 = New-Object System.Windows.Forms.Button
-$Tab5_Statusbox1 = New-Object System.Windows.Forms.ListBox
-$checkBox1 = New-Object System.Windows.Forms.CheckBox
-$checkBox2 = New-Object System.Windows.Forms.CheckBox
-$checkBox3 = New-Object System.Windows.Forms.CheckBox
-$checkBox4 = New-Object System.Windows.Forms.CheckBox
-$checkBox5 = New-Object System.Windows.Forms.CheckBox
-$checkBox6 = New-Object System.Windows.Forms.CheckBox
-$checkBox7 = New-Object System.Windows.Forms.CheckBox
-$checkBox8 = New-Object System.Windows.Forms.CheckBox
 $checkBox9 = New-Object System.Windows.Forms.CheckBox
 $checkBox10 = New-Object System.Windows.Forms.CheckBox
 $checkBox11 = New-Object System.Windows.Forms.CheckBox
@@ -892,6 +883,8 @@ $checkBox77 = New-Object System.Windows.Forms.CheckBox
 $checkBox78 = New-Object System.Windows.Forms.CheckBox
 
 #The part that does the installing
+
+
 
 $handler_Tab5_installbutton1_Click= 
 {
@@ -978,6 +971,7 @@ if ( !$checkBox1.Checked -and !$checkBox2.Checked -and !$checkBox1.Checked -and 
 }
 
 #Tab5_installbutton1
+$Tab5_installbutton1 = New-Object System.Windows.Forms.Button
 $Tab5_installbutton1.Name = "Tab5_installbutton1"
 $Tab5_installbutton1.Location = New-Object System.Drawing.Point(480,300)
 $Tab5_installbutton1.Size = New-Object System.Drawing.Size(175,25)
@@ -986,6 +980,7 @@ $Tab5_installbutton1.add_Click($handler_Tab5_installbutton1_Click)
 $tab5.Controls.Add($Tab5_installbutton1)
 
 #Tab5_Statusbox1
+$Tab5_Statusbox1 = New-Object System.Windows.Forms.ListBox
 $Tab5_Statusbox1.FormattingEnabled = $True
 $Tab5_Statusbox1.Location = New-Object System.Drawing.Point(470,335)
 $Tab5_Statusbox1.Size = New-Object System.Drawing.Size(200,100)
@@ -994,48 +989,56 @@ $tab5.Controls.Add($Tab5_Statusbox1)
 
 
 # alot of checkboxes
+$checkBox1 = New-Object System.Windows.Forms.CheckBox
 $checkBox1.Location = New-Object System.Drawing.Point(10,50)
 $checkBox1.Size = New-Object System.Drawing.Size(100,25)
 $checkBox1.Text = "Firefox"
 $checkBox1.Name = "checkBox1"
 $tab5.Controls.Add($checkBox1)
 
+$checkBox2 = New-Object System.Windows.Forms.CheckBox
 $checkBox2.Location = New-Object System.Drawing.Point(10,70)
 $checkBox2.Size = New-Object System.Drawing.Size(100,25)
 $checkBox2.Text = "Librewolf"
 $checkBox2.Name = "checkBox2"
 $tab5.Controls.Add($checkBox2)
 
+$checkBox3 = New-Object System.Windows.Forms.CheckBox
 $checkBox3.Location = New-Object System.Drawing.Point(10,90)
 $checkBox3.Size = New-Object System.Drawing.Size(100,25)
 $checkBox3.Text = "Brave"
 $checkBox3.Name = "checkBox3"
 $tab5.Controls.Add($checkBox3)
 
+$checkBox4 = New-Object System.Windows.Forms.CheckBox
 $checkBox4.Location = New-Object System.Drawing.Point(10,110)
 $checkBox4.Size = New-Object System.Drawing.Size(100,25)
 $checkBox4.Text = "Chrome"
 $checkBox4.Name = "checkBox4"
 $tab5.Controls.Add($checkBox4)
 
+$checkBox5 = New-Object System.Windows.Forms.CheckBox
 $checkBox5.Location = New-Object System.Drawing.Point(10,130)
 $checkBox5.Size = New-Object System.Drawing.Size(100,25)
 $checkBox5.Text = "Chromium"
 $checkBox5.Name = "checkBox5"
 $tab5.Controls.Add($checkBox5)
 
+$checkBox6 = New-Object System.Windows.Forms.CheckBox
 $checkBox6.Location = New-Object System.Drawing.Point(10,160)
 $checkBox6.Size = New-Object System.Drawing.Size(100,25)
 $checkBox6.Text = "MPV"
 $checkBox6.Name = "checkBox6"
 $tab5.Controls.Add($checkBox6)
 
+$checkBox7 = New-Object System.Windows.Forms.CheckBox
 $checkBox7.Location = New-Object System.Drawing.Point(10,180)
 $checkBox7.Size = New-Object System.Drawing.Size(100,25)
 $checkBox7.Text = "VLC"
 $checkBox7.Name = "checkBox7"
 $tab5.Controls.Add($checkBox7)
 
+$checkBox8 = New-Object System.Windows.Forms.CheckBox
 $checkBox8.Location = New-Object System.Drawing.Point(10,200)
 $checkBox8.Size = New-Object System.Drawing.Size(100,25)
 $checkBox8.Text = "Audacity"
@@ -1632,7 +1635,6 @@ $label3.Location = New-Object System.Drawing.Point(590,400)
 $label3.AutoSize = $true
 $label3.Font = New-Object System.Drawing.Font('arial',8)
 $label3.ForeColor = "#000000"
-#$label3.backColor = "#b3b3b3"
 $label3.Text = ("Made in 2022")
 $tab10.Controls.Add($label3)
 
