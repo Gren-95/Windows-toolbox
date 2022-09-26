@@ -22,7 +22,7 @@ $ApplicationForm.Controls.Add($FormTabControl)
 
 
 $Tab1 = New-object System.Windows.Forms.Tabpage
-$Tab1.DataBindings.DefaultDataSourceUpdateMode 
+$Tab1.DataBindings.DefaultDataSourceUpdateMode = 0 
 $Tab1.Name = "Tab1" 
 $Tab1.Text = "Administrator Stuff” 
 $FormTabControl.Controls.Add($Tab1)
@@ -460,7 +460,7 @@ $tab1.Controls.Add($Tab1_appbutton44)
 
 
 $Tab2 = New-object System.Windows.Forms.Tabpage
-$Tab2.DataBindings.DefaultDataSourceUpdateMode 
+$Tab2.DataBindings.DefaultDataSourceUpdateMode = 0 
 $Tab2.Name = "Tab2" 
 $Tab2.Text = "Tweaks” 
 $FormTabControl.Controls.Add($Tab2)
@@ -567,7 +567,7 @@ $Tab2.Controls.Add($Tab2_tweakbutton8)
 
 
 $Tab3 = New-object System.Windows.Forms.Tabpage
-$Tab3.DataBindings.DefaultDataSourceUpdateMode 
+$Tab3.DataBindings.DefaultDataSourceUpdateMode = 0 
 $Tab3.Name = "Tab3" 
 $Tab3.Text = "Activate Windows” 
 $FormTabControl.Controls.Add($Tab3)
@@ -675,7 +675,7 @@ $Tab3.Controls.add($Tab3_actiavtebutton11)
 
 
 $Tab4 = New-object System.Windows.Forms.Tabpage
-$Tab4.DataBindings.DefaultDataSourceUpdateMode 
+$Tab4.DataBindings.DefaultDataSourceUpdateMode = 0 
 $Tab4.Name = "Tab4" 
 $Tab4.Text = "Power Options” 
 $FormTabControl.Controls.Add($Tab4)
@@ -780,7 +780,7 @@ $Tab4.Controls.add($Tab4_powerbutton11)
 #----------------------------------------------
 
 $tab5 = New-object System.Windows.Forms.Tabpage
-$tab5.DataBindings.DefaultDataSourceUpdateMode 
+$Tab5.DataBindings.DefaultDataSourceUpdateMode = 0 
 $tab5.Name = "tab5" 
 $tab5.Text = "Scoop” 
 $FormTabControl.Controls.Add($tab5)
@@ -1576,7 +1576,7 @@ $tab5.Controls.Add($tab5_manualinstall3)
 
 # tab 10
 $tab10 = New-object System.Windows.Forms.Tabpage
-$tab10.DataBindings.DefaultDataSourceUpdateMode  
+$Tab10.DataBindings.DefaultDataSourceUpdateMode = 0 
 $tab10.Name = "tab10" 
 $tab10.Text = "About” 
 $FormTabControl.Controls.Add($tab10)
