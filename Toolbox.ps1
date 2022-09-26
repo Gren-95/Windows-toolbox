@@ -982,7 +982,6 @@ $Tab5_installbutton1.Name = "Tab5_installbutton1"
 $Tab5_installbutton1.Location = New-Object System.Drawing.Point(480,300)
 $Tab5_installbutton1.Size = New-Object System.Drawing.Size(175,25)
 $Tab5_installbutton1.Text = "Install selected applications"
-$Tab5_installbutton1.DataBindings.DefaultDataSourceUpdateMode = 0
 $Tab5_installbutton1.add_Click($handler_Tab5_installbutton1_Click)
 $tab5.Controls.Add($Tab5_installbutton1)
 
@@ -990,7 +989,6 @@ $tab5.Controls.Add($Tab5_installbutton1)
 $Tab5_Statusbox1.FormattingEnabled = $True
 $Tab5_Statusbox1.Location = New-Object System.Drawing.Point(470,335)
 $Tab5_Statusbox1.Size = New-Object System.Drawing.Size(200,100)
-$Tab5_Statusbox1.DataBindings.DefaultDataSourceUpdateMode = 0
 $Tab5_Statusbox1.Name = "Tab5_Statusbox1"
 $tab5.Controls.Add($Tab5_Statusbox1)
 
@@ -1000,63 +998,54 @@ $checkBox1.Location = New-Object System.Drawing.Point(10,50)
 $checkBox1.Size = New-Object System.Drawing.Size(100,25)
 $checkBox1.Text = "Firefox"
 $checkBox1.Name = "checkBox1"
-$checkBox1.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox1)
 
 $checkBox2.Location = New-Object System.Drawing.Point(10,70)
 $checkBox2.Size = New-Object System.Drawing.Size(100,25)
 $checkBox2.Text = "Librewolf"
 $checkBox2.Name = "checkBox2"
-$checkBox2.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox2)
 
 $checkBox3.Location = New-Object System.Drawing.Point(10,90)
 $checkBox3.Size = New-Object System.Drawing.Size(100,25)
 $checkBox3.Text = "Brave"
 $checkBox3.Name = "checkBox3"
-$checkBox3.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox3)
 
 $checkBox4.Location = New-Object System.Drawing.Point(10,110)
 $checkBox4.Size = New-Object System.Drawing.Size(100,25)
 $checkBox4.Text = "Chrome"
 $checkBox4.Name = "checkBox4"
-$checkBox4.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox4)
 
 $checkBox5.Location = New-Object System.Drawing.Point(10,130)
 $checkBox5.Size = New-Object System.Drawing.Size(100,25)
 $checkBox5.Text = "Chromium"
 $checkBox5.Name = "checkBox5"
-$checkBox5.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox5)
 
 $checkBox6.Location = New-Object System.Drawing.Point(10,160)
 $checkBox6.Size = New-Object System.Drawing.Size(100,25)
 $checkBox6.Text = "MPV"
 $checkBox6.Name = "checkBox6"
-$checkBox6.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox6)
 
 $checkBox7.Location = New-Object System.Drawing.Point(10,180)
 $checkBox7.Size = New-Object System.Drawing.Size(100,25)
 $checkBox7.Text = "VLC"
 $checkBox7.Name = "checkBox7"
-$checkBox7.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox7)
 
 $checkBox8.Location = New-Object System.Drawing.Point(10,200)
 $checkBox8.Size = New-Object System.Drawing.Size(100,25)
 $checkBox8.Text = "Audacity"
 $checkBox8.Name = "checkBox8"
-$checkBox8.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox8)
 
 $checkBox9.Location = New-Object System.Drawing.Point(10,220)
 $checkBox9.Size = New-Object System.Drawing.Size(100,25)
 $checkBox9.Text = "EarTrumpet"
 $checkBox9.Name = "checkBox9"
-$checkBox9.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox9)
 
 
@@ -1064,7 +1053,6 @@ $checkBox10.Location = New-Object System.Drawing.Point(10,240)
 $checkBox10.Size = New-Object System.Drawing.Size(100,25)
 $checkBox10.Text = "HandBrake"
 $checkBox10.Name = "checkBox10"
-$checkBox10.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox10)
 
 
@@ -1072,7 +1060,6 @@ $checkBox11.Location = New-Object System.Drawing.Point(10,280)
 $checkBox11.Size = New-Object System.Drawing.Size(100,25)
 $checkBox11.Text = "Flameshot"
 $checkBox11.Name = "checkBox11"
-$checkBox11.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox11)
 
 
@@ -1080,7 +1067,6 @@ $checkBox12.Location = New-Object System.Drawing.Point(10,300)
 $checkBox12.Size = New-Object System.Drawing.Size(100,25)
 $checkBox12.Text = "OBS-Studio"
 $checkBox12.Name = "checkBox12"
-$checkBox12.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox12)
 
 
@@ -1088,7 +1074,6 @@ $checkBox13.Location = New-Object System.Drawing.Point(10,320)
 $checkBox13.Size = New-Object System.Drawing.Size(100,25)
 $checkBox13.Text = "Blender"
 $checkBox13.Name = "checkBox13"
-$checkBox13.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox13)
 
 
@@ -1096,7 +1081,6 @@ $checkBox14.Location = New-Object System.Drawing.Point(10,340)
 $checkBox14.Size = New-Object System.Drawing.Size(100,25)
 $checkBox14.Text = "Gimp"
 $checkBox14.Name = "checkBox14"
-$checkBox14.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox14)
 
 
@@ -1104,7 +1088,6 @@ $checkBox15.Location = New-Object System.Drawing.Point(10,360)
 $checkBox15.Size = New-Object System.Drawing.Size(100,25)
 $checkBox15.Text = "Krita"
 $checkBox15.Name = "checkBox15"
-$checkBox15.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox15)
 
 
@@ -1112,7 +1095,6 @@ $checkBox16.Location = New-Object System.Drawing.Point(10,380)
 $checkBox16.Size = New-Object System.Drawing.Size(100,25)
 $checkBox16.Text = "InkScape"
 $checkBox16.Name = "checkBox16"
-$checkBox16.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox16)
 
 
@@ -1120,7 +1102,6 @@ $checkBox17.Location = New-Object System.Drawing.Point(110,50)
 $checkBox17.Size = New-Object System.Drawing.Size(100,25)
 $checkBox17.Text = "SoundCloud"
 $checkBox17.Name = "checkBox17"
-$checkBox17.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox17)
 
 
@@ -1128,7 +1109,6 @@ $checkBox18.Location = New-Object System.Drawing.Point(110,70)
 $checkBox18.Size = New-Object System.Drawing.Size(100,25)
 $checkBox18.Text = "Spotify"
 $checkBox18.Name = "checkBox18"
-$checkBox18.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox18)
 
 
@@ -1136,7 +1116,6 @@ $checkBox19.Location = New-Object System.Drawing.Point(110,90)
 $checkBox19.Size = New-Object System.Drawing.Size(100,25)
 $checkBox19.Text = "YT Music"
 $checkBox19.Name = "checkBox19"
-$checkBox19.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox19)
 
 
@@ -1144,7 +1123,6 @@ $checkBox20.Location = New-Object System.Drawing.Point(110,110)
 $checkBox20.Size = New-Object System.Drawing.Size(100,25)
 $checkBox20.Text = "Cider"
 $checkBox20.Name = "checkBox20"
-$checkBox20.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox20)
 
 
@@ -1152,7 +1130,6 @@ $checkBox21.Location = New-Object System.Drawing.Point(110,140)
 $checkBox21.Size = New-Object System.Drawing.Size(100,25)
 $checkBox21.Text = "Deluge"
 $checkBox21.Name = "checkBox21"
-$checkBox21.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox21)
 
 
@@ -1160,7 +1137,6 @@ $checkBox22.Location = New-Object System.Drawing.Point(110,160)
 $checkBox22.Size = New-Object System.Drawing.Size(100,25)
 $checkBox22.Text = "Picotorrent"
 $checkBox22.Name = "checkBox22"
-$checkBox22.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox22)
 
 
@@ -1168,7 +1144,6 @@ $checkBox23.Location = New-Object System.Drawing.Point(110,180)
 $checkBox23.Size = New-Object System.Drawing.Size(100,25)
 $checkBox23.Text = "qBittorrent"
 $checkBox23.Name = "checkBox23"
-$checkBox23.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox23)
 
 
@@ -1176,7 +1151,6 @@ $checkBox24.Location = New-Object System.Drawing.Point(110,200)
 $checkBox24.Size = New-Object System.Drawing.Size(100,25)
 $checkBox24.Text = "Transmission"
 $checkBox24.Name = "checkBox24"
-$checkBox24.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox24)
 
 
@@ -1184,7 +1158,6 @@ $checkBox25.Location = New-Object System.Drawing.Point(110,230)
 $checkBox25.Size = New-Object System.Drawing.Size(100,25)
 $checkBox25.Text = "Zoom"
 $checkBox25.Name = "checkBox25"
-$checkBox25.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox25)
 
 
@@ -1192,7 +1165,6 @@ $checkBox26.Location = New-Object System.Drawing.Point(110,250)
 $checkBox26.Size = New-Object System.Drawing.Size(100,25)
 $checkBox26.Text = "Teams"
 $checkBox26.Name = "checkBox26"
-$checkBox26.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox26)
 
 
@@ -1200,7 +1172,6 @@ $checkBox27.Location = New-Object System.Drawing.Point(110,270)
 $checkBox27.Size = New-Object System.Drawing.Size(100,25)
 $checkBox27.Text = "Telegram"
 $checkBox27.Name = "checkBox27"
-$checkBox27.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox27)
 
 
@@ -1208,7 +1179,6 @@ $checkBox28.Location = New-Object System.Drawing.Point(110,290)
 $checkBox28.Size = New-Object System.Drawing.Size(100,25)
 $checkBox28.Text = "Signal"
 $checkBox28.Name = "checkBox28"
-$checkBox28.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox28)
 
 
@@ -1216,7 +1186,6 @@ $checkBox29.Location = New-Object System.Drawing.Point(110,310)
 $checkBox29.Size = New-Object System.Drawing.Size(100,25)
 $checkBox29.Text = "Discord"
 $checkBox29.Name = "checkBox29"
-$checkBox29.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox29)
 
 
@@ -1224,7 +1193,6 @@ $checkBox30.Location = New-Object System.Drawing.Point(110,330)
 $checkBox30.Size = New-Object System.Drawing.Size(100,25)
 $checkBox30.Text = "Caprine"
 $checkBox30.Name = "checkBox30"
-$checkBox30.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox30)
 
 
@@ -1232,7 +1200,6 @@ $checkBox31.Location = New-Object System.Drawing.Point(110,360)
 $checkBox31.Size = New-Object System.Drawing.Size(100,25)
 $checkBox31.Text = "LibreOffice"
 $checkBox31.Name = "checkBox31"
-$checkBox31.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox31)
 
 
@@ -1240,7 +1207,6 @@ $checkBox32.Location = New-Object System.Drawing.Point(110,380)
 $checkBox32.Size = New-Object System.Drawing.Size(100,25)
 $checkBox32.Text = "OnlyOffice"
 $checkBox32.Name = "checkBox32"
-$checkBox32.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox32)
 
 
@@ -1248,7 +1214,6 @@ $checkBox33.Location = New-Object System.Drawing.Point(110,400)
 $checkBox33.Size = New-Object System.Drawing.Size(100,25)
 $checkBox33.Text = "Office 365"
 $checkBox33.Name = "checkBox33"
-$checkBox33.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox33)
 
 
@@ -1256,7 +1221,6 @@ $checkBox34.Location = New-Object System.Drawing.Point(210,50)
 $checkBox34.Size = New-Object System.Drawing.Size(100,25)
 $checkBox34.Text = "Foxit"
 $checkBox34.Name = "checkBox34"
-$checkBox34.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox34)
 
 
@@ -1264,7 +1228,6 @@ $checkBox35.Location = New-Object System.Drawing.Point(210,70)
 $checkBox35.Size = New-Object System.Drawing.Size(100,25)
 $checkBox35.Text = "Qalculate"
 $checkBox35.Name = "checkBox35"
-$checkBox35.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox35)
 
 
@@ -1272,7 +1235,6 @@ $checkBox36.Location = New-Object System.Drawing.Point(210,100)
 $checkBox36.Size = New-Object System.Drawing.Size(100,25)
 $checkBox36.Text = "Steam"
 $checkBox36.Name = "checkBox36"
-$checkBox36.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox36)
 
 
@@ -1280,7 +1242,6 @@ $checkBox37.Location = New-Object System.Drawing.Point(210,120)
 $checkBox37.Size = New-Object System.Drawing.Size(100,25)
 $checkBox37.Text = "Epic"
 $checkBox37.Name = "checkBox37"
-$checkBox37.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox37)
 
 
@@ -1288,7 +1249,6 @@ $checkBox38.Location = New-Object System.Drawing.Point(210,140)
 $checkBox38.Size = New-Object System.Drawing.Size(100,25)
 $checkBox38.Text = "GOG"
 $checkBox38.Name = "checkBox38"
-$checkBox38.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox38)
 
 
@@ -1296,7 +1256,6 @@ $checkBox39.Location = New-Object System.Drawing.Point(210,160)
 $checkBox39.Size = New-Object System.Drawing.Size(100,25)
 $checkBox39.Text = "Itch"
 $checkBox39.Name = "checkBox39"
-$checkBox39.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox39)
 
 
@@ -1304,7 +1263,6 @@ $checkBox40.Location = New-Object System.Drawing.Point(210,180)
 $checkBox40.Size = New-Object System.Drawing.Size(100,25)
 $checkBox40.Text = "PolyMC"
 $checkBox40.Name = "checkBox40"
-$checkBox40.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox40)
 
 
@@ -1312,7 +1270,6 @@ $checkBox41.Location = New-Object System.Drawing.Point(210,200)
 $checkBox41.Size = New-Object System.Drawing.Size(100,25)
 $checkBox41.Text = "Dolphin"
 $checkBox41.Name = "checkBox41"
-$checkBox41.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox41)
 
 
@@ -1320,7 +1277,6 @@ $checkBox42.Location = New-Object System.Drawing.Point(210,220)
 $checkBox42.Size = New-Object System.Drawing.Size(100,25)
 $checkBox42.Text = "Citra"
 $checkBox42.Name = "checkBox42"
-$checkBox42.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox42)
 
 
@@ -1328,7 +1284,6 @@ $checkBox43.Location = New-Object System.Drawing.Point(210,240)
 $checkBox43.Size = New-Object System.Drawing.Size(100,25)
 $checkBox43.Text = "Yuzu"
 $checkBox43.Name = "checkBox43"
-$checkBox43.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox43)
 
 
@@ -1336,7 +1291,6 @@ $checkBox44.Location = New-Object System.Drawing.Point(210,260)
 $checkBox44.Size = New-Object System.Drawing.Size(100,25)
 $checkBox44.Text = "Dosbox"
 $checkBox44.Name = "checkBox44"
-$checkBox44.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox44)
 
 
@@ -1344,7 +1298,6 @@ $checkBox45.Location = New-Object System.Drawing.Point(210,290)
 $checkBox45.Size = New-Object System.Drawing.Size(100,25)
 $checkBox45.Text = "Loot"
 $checkBox45.Name = "checkBox45"
-$checkBox45.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox45)
 
 
@@ -1352,7 +1305,6 @@ $checkBox46.Location = New-Object System.Drawing.Point(210,310)
 $checkBox46.Size = New-Object System.Drawing.Size(100,25)
 $checkBox46.Text = "MO 2"
 $checkBox46.Name = "checkBox46"
-$checkBox46.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox46)
 
 
@@ -1360,7 +1312,6 @@ $checkBox47.Location = New-Object System.Drawing.Point(210,330)
 $checkBox47.Size = New-Object System.Drawing.Size(100,25)
 $checkBox47.Text = "Vortex"
 $checkBox47.Name = "checkBox47"
-$checkBox47.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox47)
 
 
@@ -1368,7 +1319,6 @@ $checkBox48.Location = New-Object System.Drawing.Point(210,360)
 $checkBox48.Size = New-Object System.Drawing.Size(100,30)
 $checkBox48.Text = "Logitech Software"
 $checkBox48.Name = "checkBox48"
-$checkBox48.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox48)
 
 
@@ -1376,7 +1326,6 @@ $checkBox49.Location = New-Object System.Drawing.Point(310,50)
 $checkBox49.Size = New-Object System.Drawing.Size(100,25)
 $checkBox49.Text = "RoundedTB"
 $checkBox49.Name = "checkBox49"
-$checkBox49.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox49)
 
 
@@ -1384,7 +1333,6 @@ $checkBox50.Location = New-Object System.Drawing.Point(310,70)
 $checkBox50.Size = New-Object System.Drawing.Size(100,25)
 $checkBox50.Text = "TaskbarX"
 $checkBox50.Name = "checkBox50"
-$checkBox50.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox50)
 
 
@@ -1392,7 +1340,6 @@ $checkBox51.Location = New-Object System.Drawing.Point(310,90)
 $checkBox51.Size = New-Object System.Drawing.Size(100,25)
 $checkBox51.Text = "TranslucentTB"
 $checkBox51.Name = "checkBox51"
-$checkBox51.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox51)
 
 
@@ -1400,7 +1347,6 @@ $checkBox52.Location = New-Object System.Drawing.Point(310,110)
 $checkBox52.Size = New-Object System.Drawing.Size(100,25)
 $checkBox52.Text = "Powertoys"
 $checkBox52.Name = "checkBox52"
-$checkBox52.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox52)
 
 
@@ -1408,7 +1354,6 @@ $checkBox53.Location = New-Object System.Drawing.Point(310,130)
 $checkBox53.Size = New-Object System.Drawing.Size(100,25)
 $checkBox53.Text = "7-zip"
 $checkBox53.Name = "checkBox53"
-$checkBox53.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox53)
 
 
@@ -1416,7 +1361,6 @@ $checkBox54.Location = New-Object System.Drawing.Point(310,150)
 $checkBox54.Size = New-Object System.Drawing.Size(100,25)
 $checkBox54.Text = "Winrar"
 $checkBox54.Name = "checkBox54"
-$checkBox54.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox54)
 
 
@@ -1424,7 +1368,6 @@ $checkBox55.Location = New-Object System.Drawing.Point(310,170)
 $checkBox55.Size = New-Object System.Drawing.Size(100,25)
 $checkBox55.Text = "Revo"
 $checkBox55.Name = "checkBox55"
-$checkBox55.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox55)
 
 
@@ -1432,7 +1375,6 @@ $checkBox56.Location = New-Object System.Drawing.Point(310,190)
 $checkBox56.Size = New-Object System.Drawing.Size(100,25)
 $checkBox56.Text = "Czkawka"
 $checkBox56.Name = "checkBox56"
-$checkBox56.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox56)
 
 
@@ -1440,7 +1382,6 @@ $checkBox57.Location = New-Object System.Drawing.Point(310,220)
 $checkBox57.Size = New-Object System.Drawing.Size(100,25)
 $checkBox57.Text = "Anydesk"
 $checkBox57.Name = "checkBox57"
-$checkBox57.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox57)
 
 
@@ -1448,7 +1389,6 @@ $checkBox58.Location = New-Object System.Drawing.Point(310,240)
 $checkBox58.Size = New-Object System.Drawing.Size(100,25)
 $checkBox58.Text = "TeamViewer"
 $checkBox58.Name = "checkBox58"
-$checkBox58.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox58)
 
 
@@ -1456,7 +1396,6 @@ $checkBox59.Location = New-Object System.Drawing.Point(310,260)
 $checkBox59.Size = New-Object System.Drawing.Size(100,25)
 $checkBox59.Text = "RustDesk"
 $checkBox59.Name = "checkBox59"
-$checkBox59.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox59)
 
 
@@ -1464,7 +1403,6 @@ $checkBox60.Location = New-Object System.Drawing.Point(310,290)
 $checkBox60.Size = New-Object System.Drawing.Size(100,25)
 $checkBox60.Text = "Putty"
 $checkBox60.Name = "checkBox60"
-$checkBox60.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox60)
 
 
@@ -1472,7 +1410,6 @@ $checkBox61.Location = New-Object System.Drawing.Point(310,320)
 $checkBox61.Size = New-Object System.Drawing.Size(100,25)
 $checkBox61.Text = "Filezilla"
 $checkBox61.Name = "checkBox61"
-$checkBox61.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox61)
 
 
@@ -1480,7 +1417,6 @@ $checkBox62.Location = New-Object System.Drawing.Point(310,340)
 $checkBox62.Size = New-Object System.Drawing.Size(100,25)
 $checkBox62.Text = "Etcher"
 $checkBox62.Name = "checkBox62"
-$checkBox62.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox62)
 
 
@@ -1488,7 +1424,6 @@ $checkBox63.Location = New-Object System.Drawing.Point(310,360)
 $checkBox63.Size = New-Object System.Drawing.Size(100,25)
 $checkBox63.Text = "Rufus"
 $checkBox63.Name = "checkBox63"
-$checkBox63.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox63)
 
 
@@ -1496,7 +1431,6 @@ $checkBox64.Location = New-Object System.Drawing.Point(310,380)
 $checkBox64.Size = New-Object System.Drawing.Size(100,25)
 $checkBox64.Text = "Ventoy"
 $checkBox64.Name = "checkBox64"
-$checkBox64.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox64)
 
 
@@ -1504,7 +1438,6 @@ $checkBox65.Location = New-Object System.Drawing.Point(410,50)
 $checkBox65.Size = New-Object System.Drawing.Size(100,25)
 $checkBox65.Text = "DDU"
 $checkBox65.Name = "checkBox65"
-$checkBox65.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox65)
 
 
@@ -1512,14 +1445,12 @@ $checkBox66.Location = New-Object System.Drawing.Point(410,70)
 $checkBox66.Size = New-Object System.Drawing.Size(100,25)
 $checkBox66.Text = "NVCleanInstall"
 $checkBox66.Name = "checkBox66"
-$checkBox66.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox66)
 
 $checkBox67.Location = New-Object System.Drawing.Point(410,90)
 $checkBox67.Size = New-Object System.Drawing.Size(100,25)
 $checkBox67.Text = "GFExperience"
 $checkBox67.Name = "checkBox67"
-$checkBox67.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox67)
 
 
@@ -1527,7 +1458,6 @@ $checkBox68.Location = New-Object System.Drawing.Point(410,110)
 $checkBox68.Size = New-Object System.Drawing.Size(120,25)
 $checkBox68.Text = "Ryzen Controller"
 $checkBox68.Name = "checkBox68"
-$checkBox68.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox68)
 
 
@@ -1535,7 +1465,6 @@ $checkBox69.Location = New-Object System.Drawing.Point(410,130)
 $checkBox69.Size = New-Object System.Drawing.Size(100,25)
 $checkBox69.Text = "Ryzen Tuner"
 $checkBox69.Name = "checkBox69"
-$checkBox69.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox69)
 
 
@@ -1543,7 +1472,6 @@ $checkBox70.Location = New-Object System.Drawing.Point(410,150)
 $checkBox70.Size = New-Object System.Drawing.Size(100,35)
 $checkBox70.Text = "Intel Extreme Tuning Utility"
 $checkBox70.Name = "checkBox70"
-$checkBox70.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox70)
 
 
@@ -1551,7 +1479,6 @@ $checkBox71.Location = New-Object System.Drawing.Point(410,180)
 $checkBox71.Size = New-Object System.Drawing.Size(100,25)
 $checkBox71.Text = "Neofetch"
 $checkBox71.Name = "checkBox71"
-$checkBox71.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox71)
 
 
@@ -1559,14 +1486,12 @@ $checkBox72.Location = New-Object System.Drawing.Point(410,200)
 $checkBox72.Size = New-Object System.Drawing.Size(100,25)
 $checkBox72.Text = "Lolcat"
 $checkBox72.Name = "checkBox72"
-$checkBox72.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox72)
 
 $checkBox73.Location = New-Object System.Drawing.Point(410,220)
 $checkBox73.Size = New-Object System.Drawing.Size(100,25)
 $checkBox73.Text = "Cowsay"
 $checkBox73.Name = "checkBox73"
-$checkBox73.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox73)
 
 
@@ -1574,7 +1499,6 @@ $checkBox74.Location = New-Object System.Drawing.Point(530,50)
 $checkBox74.Size = New-Object System.Drawing.Size(100,25)
 $checkBox74.Text = "Alacritty"
 $checkBox74.Name = "checkBox74"
-$checkBox74.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox74)
 
 
@@ -1582,7 +1506,6 @@ $checkBox75.Location = New-Object System.Drawing.Point(530,70)
 $checkBox75.Size = New-Object System.Drawing.Size(100,25)
 $checkBox75.Text = "Tabby"
 $checkBox75.Name = "checkBox75"
-$checkBox75.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox75)
 
 
@@ -1590,7 +1513,6 @@ $checkBox76.Location = New-Object System.Drawing.Point(530,90)
 $checkBox76.Size = New-Object System.Drawing.Size(100,25)
 $checkBox76.Text = "Hyper"
 $checkBox76.Name = "checkBox76"
-$checkBox76.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox76)
 
 
@@ -1598,7 +1520,6 @@ $checkBox77.Location = New-Object System.Drawing.Point(530,110)
 $checkBox77.Size = New-Object System.Drawing.Size(120,25)
 $checkBox77.Text = "Fluent Terminal"
 $checkBox77.Name = "checkBox77"
-$checkBox77.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox77)
 
 
@@ -1606,7 +1527,6 @@ $checkBox78.Location = New-Object System.Drawing.Point(530,130)
 $checkBox78.Size = New-Object System.Drawing.Size(120,25)
 $checkBox78.Text = "Windows Terminal"
 $checkBox78.Name = "checkBox78"
-$checkBox78.DataBindings.DefaultDataSourceUpdateMode = 0
 $tab5.Controls.Add($checkBox78)
 
 
@@ -1647,15 +1567,6 @@ $tab5_manualinstall3.add_click({explorer "https://github.com/GNS3/gns3-gui/relea
 $tab5.Controls.Add($tab5_manualinstall3)
 
 
-
-# window label
-$Tab6_text1 = New-Object System.Windows.Forms.Label
-$Tab6_text1.Location = New-Object System.Drawing.Point(10,10)
-$Tab6_text1.AutoSize = $true
-$Tab6_text1.Font = New-Object System.Drawing.Font('arial',10)
-$Tab6_text1.ForeColor = "#000000"
-$Tab6_text1.Text = ("Installer")
-$Tab6.Controls.Add($Tab6_text1)
 
 
 
