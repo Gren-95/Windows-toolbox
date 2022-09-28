@@ -1,5 +1,31 @@
-﻿[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing") 
+﻿
+param([switch]$Elevated)
+
+function Test-Admin {
+    $currentUser = New-Object Security.Principal.WindowsPrincipal $([Security.Principal.WindowsIdentity]::GetCurrent())
+    $currentUser.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+}
+
+if ((Test-Admin) -eq $false)  {
+    if ($elevated) {
+        # tried to elevate, did not work, aborting
+} else {
+        Start-Process powershell.exe -Verb RunAs -ArgumentList ('-noprofile -noexit -file "{0}" -elevated' -f ($myinvocation.MyCommand.Definition))
+}
+    exit
+}
+
+'running with full privileges'
+
+
+
+
+
+[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing") 
 [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
+
+
+
 
 $ApplicationForm = New-Object System.Windows.Forms.Form
 $ApplicationForm.StartPosition = "CenterScreen"
@@ -9,6 +35,7 @@ $ApplicationForm.FormBorderStyle = 'Fixed3D'
 $ApplicationForm.MinimizeBox = $false
 $ApplicationForm.MaximizeBox = $false
 $ApplicationForm.Text = "Efe's Toolbox"
+$ApplicationForm.Topmost = $true
 
 # tab Control Window
 $FormTabControl = New-object System.Windows.Forms.TabControl 
@@ -68,7 +95,6 @@ $Tab1_appbutton1 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton1.Location = New-Object System.Drawing.Point(10,50)
 $Tab1_appbutton1.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton1.Text = "Device Manager"
-$Tab1_appbutton1.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton1.Add_Click({hdwwiz.cpl})
 $tab1.Controls.Add($Tab1_appbutton1)
 
@@ -76,7 +102,6 @@ $Tab1_appbutton2 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton2.Location = New-Object System.Drawing.Point(10,75)
 $Tab1_appbutton2.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton2.Text = "Internet Properties"
-$Tab1_appbutton2.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton2.Add_Click({inetcpl.cpl})
 $tab1.Controls.Add($Tab1_appbutton2)
 
@@ -84,7 +109,6 @@ $Tab1_appbutton3 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton3.Location = New-Object System.Drawing.Point(10,100)
 $Tab1_appbutton3.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton3.Text = "Mouse Properties"
-$Tab1_appbutton3.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton3.Add_Click({main.cpl})
 $tab1.Controls.Add($Tab1_appbutton3)
 
@@ -92,7 +116,6 @@ $Tab1_appbutton4 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton4.Location = New-Object System.Drawing.Point(10,125)
 $Tab1_appbutton4.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton4.Text = "Sound and Audio"
-$Tab1_appbutton4.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton4.Add_Click({mmsys.cpl})
 $tab1.Controls.Add($Tab1_appbutton4)
 
@@ -100,7 +123,6 @@ $Tab1_appbutton5 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton5.Location = New-Object System.Drawing.Point(10,150)
 $Tab1_appbutton5.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton5.Text = "Network Properties"
-$Tab1_appbutton5.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton5.Add_Click({ncpa.cpl})
 $tab1.Controls.Add($Tab1_appbutton5)
 
@@ -108,7 +130,6 @@ $Tab1_appbutton6 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton6.Location = New-Object System.Drawing.Point(10,175)
 $Tab1_appbutton6.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton6.Text = "User Accounts"
-$Tab1_appbutton6.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton6.Add_Click({nusrmgr.cpl})
 $tab1.Controls.Add($Tab1_appbutton6)
 
@@ -117,7 +138,6 @@ $Tab1_appbutton7 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton7.Location = New-Object System.Drawing.Point(10,200)
 $Tab1_appbutton7.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton7.Text = "Time/Date"
-$Tab1_appbutton7.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton7.Add_Click({timedate.cpl})
 $tab1.Controls.Add($Tab1_appbutton7)
 
@@ -126,7 +146,6 @@ $Tab1_appbutton8 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton8.Location = New-Object System.Drawing.Point(10,225)
 $Tab1_appbutton8.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton8.Text = "Windows Security Center"
-$Tab1_appbutton8.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton8.Add_Click({wscui.cpl})
 $tab1.Controls.Add($Tab1_appbutton8)
 
@@ -135,7 +154,6 @@ $Tab1_appbutton9 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton9.Location = New-Object System.Drawing.Point(10,250)
 $Tab1_appbutton9.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton9.Text = "Automatic Updates"
-$Tab1_appbutton9.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton9.Add_Click({wuaucpl.cpl})
 $tab1.Controls.Add($Tab1_appbutton9)
 
@@ -144,7 +162,6 @@ $Tab1_appbutton10 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton10.Location = New-Object System.Drawing.Point(10,275)
 $Tab1_appbutton10.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton10.Text = "Add/Remove Applications"
-$Tab1_appbutton10.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton10.Add_Click({appwiz.cpl})
 $tab1.Controls.Add($Tab1_appbutton10)
 
@@ -153,7 +170,6 @@ $Tab1_appbutton11 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton11.Location = New-Object System.Drawing.Point(10,250)
 $Tab1_appbutton11.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton11.Text = "Display Properties"
-$Tab1_appbutton11.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton11.Add_Click({desk.cpl})
 $tab1.Controls.Add($Tab1_appbutton11)
 
@@ -162,7 +178,6 @@ $Tab1_appbutton12 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton12.Location = New-Object System.Drawing.Point(10,300)
 $Tab1_appbutton12.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton12.Text = "Windows Firewall Properties"
-$Tab1_appbutton12.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton12.Add_Click({firewall.cpl})
 $tab1.Controls.Add($Tab1_appbutton12)
 
@@ -171,7 +186,6 @@ $Tab1_appbutton13 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton13.Location = New-Object System.Drawing.Point(10,325)
 $Tab1_appbutton13.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton13.Text = "System Properties"
-$Tab1_appbutton13.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton13.Add_Click({sysdm.cpl})
 $tab1.Controls.Add($Tab1_appbutton13)
 
@@ -180,7 +194,6 @@ $Tab1_appbutton14 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton14.Location = New-Object System.Drawing.Point(225,50)
 $Tab1_appbutton14.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton14.Text = "Authorization Manager"
-$Tab1_appbutton14.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton14.Add_Click({azman.msc})
 $tab1.Controls.Add($Tab1_appbutton14)
 
@@ -189,7 +202,6 @@ $Tab1_appbutton15 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton15.Location = New-Object System.Drawing.Point(225,75)
 $Tab1_appbutton15.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton15.Text = "Certificate Manager"
-$Tab1_appbutton15.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton15.Add_Click({certmgr.msc})
 $tab1.Controls.Add($Tab1_appbutton15)
 
@@ -198,7 +210,6 @@ $Tab1_appbutton16 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton16.Location = New-Object System.Drawing.Point(225,100)
 $Tab1_appbutton16.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton16.Text = "Computer Management"
-$Tab1_appbutton16.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton16.Add_Click({compmgmt.msc})
 $tab1.Controls.Add($Tab1_appbutton16)
 
@@ -207,7 +218,6 @@ $Tab1_appbutton17 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton17.Location = New-Object System.Drawing.Point(225,125)
 $Tab1_appbutton17.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton17.Text = "Device Management"
-$Tab1_appbutton17.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton17.Add_Click({devmgmt.msc})
 $tab1.Controls.Add($Tab1_appbutton17)
 
@@ -216,7 +226,6 @@ $Tab1_appbutton18 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton18.Location = New-Object System.Drawing.Point(225,150)
 $Tab1_appbutton18.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton18.Text = "Disk Management"
-$Tab1_appbutton18.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton18.Add_Click({diskmgmt.msc})
 $tab1.Controls.Add($Tab1_appbutton18)
 
@@ -225,7 +234,6 @@ $Tab1_appbutton19 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton19.Location = New-Object System.Drawing.Point(225,175)
 $Tab1_appbutton19.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton19.Text = "Event Viewer"
-$Tab1_appbutton19.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton19.Add_Click({eventvwr.msc})
 $tab1.Controls.Add($Tab1_appbutton19)
 
@@ -234,7 +242,6 @@ $Tab1_appbutton20 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton20.Location = New-Object System.Drawing.Point(225,200)
 $Tab1_appbutton20.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton20.Text = "Shared Folders Management"
-$Tab1_appbutton20.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton20.Add_Click({fsmgmt.mscs})
 $tab1.Controls.Add($Tab1_appbutton20)
 
@@ -243,7 +250,6 @@ $Tab1_appbutton21 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton21.Location = New-Object System.Drawing.Point(225,225)
 $Tab1_appbutton21.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton21.Text = "Group Policy Editor"
-$Tab1_appbutton21.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton21.Add_Click({gpedit.msc})
 $tab1.Controls.Add($Tab1_appbutton21)
 
@@ -252,7 +258,6 @@ $Tab1_appbutton22 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton22.Location = New-Object System.Drawing.Point(225,250)
 $Tab1_appbutton22.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton22.Text = "Group Policy Man Console"
-$Tab1_appbutton22.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton22.Add_Click({gpmc.msc})
 $tab1.Controls.Add($Tab1_appbutton22)
 
@@ -261,7 +266,6 @@ $Tab1_appbutton23 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton23.Location = New-Object System.Drawing.Point(225,275)
 $Tab1_appbutton23.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton23.Text = "Local Users and Groups"
-$Tab1_appbutton23.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton23.Add_Click({lusrmgr.msc})
 $tab1.Controls.Add($Tab1_appbutton23)
 
@@ -270,7 +274,6 @@ $Tab1_appbutton24 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton24.Location = New-Object System.Drawing.Point(225,250)
 $Tab1_appbutton24.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton24.Text = "Performance Monitor"
-$Tab1_appbutton24.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton24.Add_Click({perfmon.msc})
 $tab1.Controls.Add($Tab1_appbutton24)
 
@@ -279,7 +282,6 @@ $Tab1_appbutton25 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton25.Location = New-Object System.Drawing.Point(225,300)
 $Tab1_appbutton25.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton25.Text = "Services"
-$Tab1_appbutton25.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton25.Add_Click({services.msc})
 $tab1.Controls.Add($Tab1_appbutton25)
 
@@ -288,7 +290,6 @@ $Tab1_appbutton26 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton26.Location = New-Object System.Drawing.Point(225,325)
 $Tab1_appbutton26.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton26.Text = "Remote Desktops"
-$Tab1_appbutton26.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton26.Add_Click({mstsc.exe})
 $tab1.Controls.Add($Tab1_appbutton26)
 
@@ -297,7 +298,6 @@ $Tab1_appbutton27 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton27.Location = New-Object System.Drawing.Point(225,350)
 $Tab1_appbutton27.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton27.Text = "WMI"
-$Tab1_appbutton27.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton27.Add_Click({wmimgmt.msc})
 $tab1.Controls.Add($Tab1_appbutton27)
 
@@ -306,7 +306,6 @@ $Tab1_appbutton28 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton28.Location = New-Object System.Drawing.Point(440,50)
 $Tab1_appbutton28.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton28.Text = "Explorer"
-$Tab1_appbutton28.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton28.Add_Click({explorer.exe})
 $tab1.Controls.Add($Tab1_appbutton28)
 
@@ -315,7 +314,6 @@ $Tab1_appbutton29 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton29.Location = New-Object System.Drawing.Point(440,75)
 $Tab1_appbutton29.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton29.Text = "Notepad"
-$Tab1_appbutton29.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton29.Add_Click({notepad.exe})
 $tab1.Controls.Add($Tab1_appbutton29)
 
@@ -324,7 +322,6 @@ $Tab1_appbutton30 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton30.Location = New-Object System.Drawing.Point(440,100)
 $Tab1_appbutton30.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton30.Text = "Regedit"
-$Tab1_appbutton30.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton30.Add_Click({regedit.exe})
 $tab1.Controls.Add($Tab1_appbutton30)
 
@@ -333,7 +330,6 @@ $Tab1_appbutton31 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton31.Location = New-Object System.Drawing.Point(440,125)
 $Tab1_appbutton31.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton31.Text = "Activation"
-$Tab1_appbutton31.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton31.Add_Click({changepk.exe})
 $tab1.Controls.Add($Tab1_appbutton31)
 
@@ -342,7 +338,6 @@ $Tab1_appbutton32 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton32.Location = New-Object System.Drawing.Point(440,150)
 $Tab1_appbutton32.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton32.Text = "Character Map"
-$Tab1_appbutton32.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton32.Add_Click({charmap.exe})
 $tab1.Controls.Add($Tab1_appbutton32)
 
@@ -351,7 +346,6 @@ $Tab1_appbutton33 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton33.Location = New-Object System.Drawing.Point(440,175)
 $Tab1_appbutton33.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton33.Text = "Disk Cleanup"
-$Tab1_appbutton33.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton33.Add_Click({cleanmgr.exe})
 $tab1.Controls.Add($Tab1_appbutton33)
 
@@ -360,7 +354,6 @@ $Tab1_appbutton34 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton34.Location = New-Object System.Drawing.Point(440,200)
 $Tab1_appbutton34.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton34.Text = "Command Prompt"
-$Tab1_appbutton34.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton34.Add_Click({cmd.exe})
 $tab1.Controls.Add($Tab1_appbutton34)
 
@@ -369,7 +362,6 @@ $Tab1_appbutton35 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton35.Location = New-Object System.Drawing.Point(440,225)
 $Tab1_appbutton35.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton35.Text = "Default Apps"
-$Tab1_appbutton35.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton35.Add_Click({ComputerDefaults.exe})
 $tab1.Controls.Add($Tab1_appbutton35)
 
@@ -378,7 +370,6 @@ $Tab1_appbutton36 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton36.Location = New-Object System.Drawing.Point(440,250)
 $Tab1_appbutton36.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton36.Text = "Control Panel"
-$Tab1_appbutton36.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton36.Add_Click({control.exe})
 $tab1.Controls.Add($Tab1_appbutton36)
 
@@ -387,7 +378,6 @@ $Tab1_appbutton37 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton37.Location = New-Object System.Drawing.Point(440,275)
 $Tab1_appbutton37.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton37.Text = "Magnify"
-$Tab1_appbutton37.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton37.Add_Click({Magnify.exe})
 $tab1.Controls.Add($Tab1_appbutton37)
 
@@ -396,7 +386,6 @@ $Tab1_appbutton38 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton38.Location = New-Object System.Drawing.Point(440,250)
 $Tab1_appbutton38.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton38.Text = "Mobility Center"
-$Tab1_appbutton38.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton38.Add_Click({mblctr.exe})
 $tab1.Controls.Add($Tab1_appbutton38)
 
@@ -405,7 +394,6 @@ $Tab1_appbutton39 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton39.Location = New-Object System.Drawing.Point(440,300)
 $Tab1_appbutton39.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton39.Text = "Resource Monitor"
-$Tab1_appbutton39.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton39.Add_Click({resmon.exe})
 $tab1.Controls.Add($Tab1_appbutton39)
 
@@ -414,7 +402,6 @@ $Tab1_appbutton40 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton40.Location = New-Object System.Drawing.Point(10,325)
 $Tab1_appbutton40.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton40.Text = "Region"
-$Tab1_appbutton40.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton40.Add_Click({intl.cpl})
 $tab1.Controls.Add($Tab1_appbutton40)
 
@@ -423,7 +410,6 @@ $Tab1_appbutton41 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton41.Location = New-Object System.Drawing.Point(440,325)
 $Tab1_appbutton41.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton41.Text = "DiskPart"
-$Tab1_appbutton41.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton41.Add_Click({diskpart.exe})
 $tab1.Controls.Add($Tab1_appbutton41)
 
@@ -432,7 +418,6 @@ $Tab1_appbutton42 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton42.Location = New-Object System.Drawing.Point(10,350)
 $Tab1_appbutton42.Size = New-Object System.Drawing.Size(200,25)
 $Tab1_appbutton42.Text = "Region"
-$Tab1_appbutton42.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton42.Add_Click({intl.cpl})
 $tab1.Controls.Add($Tab1_appbutton42)
 
@@ -441,7 +426,6 @@ $Tab1_appbutton43 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton43.Location = New-Object System.Drawing.Point(440,350)
 $Tab1_appbutton43.Size = New-Object System.Drawing.Size(100,25)
 $Tab1_appbutton43.Text = "Powershell"
-$Tab1_appbutton43.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton43.Add_Click({Start-Process powershell})
 $tab1.Controls.Add($Tab1_appbutton43)
 
@@ -450,7 +434,6 @@ $Tab1_appbutton44 = New-Object System.Windows.Forms.Button
 $Tab1_appbutton44.Location = New-Object System.Drawing.Point(540,350)
 $Tab1_appbutton44.Size = New-Object System.Drawing.Size(100,25)
 $Tab1_appbutton44.Text = "Adimin"
-$Tab1_appbutton44.DialogResult = [System.Windows.Forms.DialogResult]::OK
 $Tab1_appbutton44.Add_Click({powershell start-process powershell -verb runas})
 $tab1.Controls.Add($Tab1_appbutton44)
 
@@ -557,10 +540,25 @@ $Tab2.Controls.Add($Tab2_tweakbutton7)
 $Tab2_tweakbutton8 = New-Object System.Windows.Forms.Button
 $Tab2_tweakbutton8.Location = New-Object System.Drawing.Point(340,125)
 $Tab2_tweakbutton8.Size = New-Object System.Drawing.Size (320,25)
-$Tab2_tweakbutton8.Text = "Install Chocolatey"
-$Tab2_tweakbutton8.Add_Click({Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 2572; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))})
+$Tab2_tweakbutton8.Text = "Install User Manager"
+$Tab2_tweakbutton8.Add_Click({
+mkdir 'C:\Program Files\usermanager'
+Start-BitsTransfer -Source "https://github.com/proviq/AccountManagement/raw/master/lusrmgr/bin/Release/lusrmgr.exe" -Destination "C:\Program Files\usermanager"
+$SourceFilePath = "C:\Program Files\usermanager\lusrmgr.exe"
+$ShortcutPath = "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\lusrmgr.lnk"
+$WScriptObj = New-Object -ComObject ("WScript.Shell")
+$shortcut = $WscriptObj.CreateShortcut($ShortcutPath)
+$shortcut.TargetPath = $SourceFilePath
+$shortcut.Save()
+})
 $Tab2.Controls.Add($Tab2_tweakbutton8)
 
+$Tab2_tweakbutton9 = New-Object System.Windows.Forms.Button
+$Tab2_tweakbutton9.Location = New-Object System.Drawing.Point(340,150)
+$Tab2_tweakbutton9.Size = New-Object System.Drawing.Size (320,25)
+$Tab2_tweakbutton9.Text = "User Manager"
+$Tab2_tweakbutton9.Add_Click({& 'C:\Program Files\usermanager\lusrmgr.exe'})
+$Tab2.Controls.Add($Tab2_tweakbutton9)
 
 # TAB 3
 #----------------------------------------------
@@ -889,84 +887,84 @@ $checkBox78 = New-Object System.Windows.Forms.CheckBox
 $handler_Tab5_installbutton1_Click= 
 {
 $Tab5_Statusbox1.Items.Clear();
-if ($checkBox1.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing firefox..."  ) ; scoop bucket add extras ; scoop install firefox }
-if ($checkBox2.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing librewolf..."  ) ; scoop bucket add extras ; scoop install librewolf }
-if ($checkBox3.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing brave..."  ) ; scoop bucket add extras ; scoop install brave }
-if ($checkBox4.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing googlechrome..."  ) ; scoop bucket add extras ; scoop install googlechrome }
-if ($checkBox5.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing chromium..."  ) ; scoop bucket add extras ; scoop install chromium }
-if ($checkBox6.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing mpv..."  ) ; scoop bucket add extras ; scoop install mpv }
+if ($checkBox1.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing firefox..."  ) ; scoop bucket add extras ; scoop install firefox -g }
+if ($checkBox2.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing librewolf..."  ) ; scoop bucket add extras ; scoop install librewolf -g }
+if ($checkBox3.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing brave..."  ) ; scoop bucket add extras ; scoop install brave -g }
+if ($checkBox4.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing googlechrome..."  ) ; scoop bucket add extras ; scoop install googlechrome -g }
+if ($checkBox5.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing chromium..."  ) ; scoop bucket add extras ; scoop install chromium -g }
+if ($checkBox6.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing mpv..."  ) ; scoop bucket add extras ; scoop install mpv -g }
 if ($checkBox7.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing vlc..."  ) ; scoop bucket add extras ; scoop install vlc}
-if ($checkBox8.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing audacity..."  ) ; scoop bucket add extras ; scoop install audacity }
-if ($checkBox9.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing eartrumpet..."  ) ; scoop bucket add extras ; scoop install eartrumpet }
-if ($checkBox10.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing handbrake..."  ) ; scoop bucket add extras ; scoop install handbrake }
-if ($checkBox11.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing flameshot..."  ) ; scoop bucket add extras ; scoop install flameshot }
-if ($checkBox12.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing obs-studio..."  ) ; scoop bucket add extras ; scoop install obs-studio }
-if ($checkBox13.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing blender..."  ) ; scoop bucket add extras ; scoop install blender }
-if ($checkBox14.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing gimp..."  ) ; scoop bucket add extras ; scoop install gimp }
-if ($checkBox15.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing krita..."  ) ; scoop bucket add extras ; scoop install krita }
-if ($checkBox16.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing inkscape..."  ) ; scoop bucket add extras ; scoop install inkscape }
-if ($checkBox17.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing soundnode..."  ) ; scoop bucket add extras ; scoop install soundnode }
-if ($checkBox18.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing spotify..."  ) ; scoop bucket add extras ; scoop install spotify }
-if ($checkBox19.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing youtube-music..."  ) ; scoop bucket add extras ; scoop install youtube-music }
-if ($checkBox20.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing cider..."  ) ; scoop bucket add extras ; scoop install cider }
-if ($checkBox21.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing deluge..."  ) ; scoop bucket add extras ; scoop install deluge }
-if ($checkBox22.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing picotorrent..."  ) ; scoop bucket add extras ; scoop install picotorrent }
-if ($checkBox23.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing qbittorrent..."  ) ; scoop bucket add extras ; scoop install qbittorrent }
-if ($checkBox24.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing transmission..."  ) ; scoop bucket add extras ; scoop install transmission }
-if ($checkBox25.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing zoom..."  ) ; scoop bucket add extras ; scoop install zoom }
-if ($checkBox26.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing microsoft-teams..."  ) ; scoop bucket add extras ; scoop install microsoft-teams }
-if ($checkBox27.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing telegram..."  ) ; scoop bucket add extras ; scoop install telegram }
-if ($checkBox28.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing signal..."  ) ; scoop bucket add extras ; scoop install signal }
-if ($checkBox29.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing discord..."  ) ; scoop bucket add extras  ; scoop install discord }
-if ($checkBox30.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing caprine..."  ) ; scoop bucket add extras  ; scoop install caprine }
-if ($checkBox31.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing libreoffice..."  ) ; scoop bucket add extras  ; scoop install libreoffice }
-if ($checkBox32.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing onlyoffice-desktopeditors..."  ) ; scoop bucket add extras  ; scoop install onlyoffice-desktopeditors }
-if ($checkBox33.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing office-365-apps-np..."  ) ; scoop bucket add nonportable  ; scoop install office-365-apps-np }
-if ($checkBox34.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing foxit-pdf-reader..."  ) ; scoop bucket add extras  ; scoop install foxit-pdf-reader }
-if ($checkBox35.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing qalculate..."  ) ; scoop bucket add extras  ; scoop install qalculate }
-if ($checkBox36.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing steam..."  ) ; scoop bucket add versions  ; scoop install steam }
-if ($checkBox37.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing epicgameslauncher..."  ) ; scoop bucket add chawyehsu_dorado https://github.com/chawyehsu/dorado  ; scoop install epicgameslauncher }
-if ($checkBox38.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing gog-galaxy..."  ) ; scoop bucket add anderlli0053_DEV-tools https://github.com/anderlli0053/DEV-tools  ; scoop install gog-galaxy }
-if ($checkBox39.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing itch..."  ) ; scoop bucket add games  ; scoop install itch }
-if ($checkBox40.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing polymc..."  ) ; scoop bucket add games  ; scoop install polymc }
-if ($checkBox41.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing dolphin..."  ) ; scoop bucket add games  ; scoop install dolphin }
-if ($checkBox42.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing citra..."  ) ; scoop bucket add games  ; scoop install citra }
-if ($checkBox43.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing yuzu..."  ) ; scoop bucket add games  ; scoop install yuzu }
-if ($checkBox44.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing dosbox-x..."  ) ; scoop bucket add extras  ; scoop install dosbox-x }
-if ($checkBox45.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing loot..."  ) ; scoop bucket add games  ; scoop install loot }
-if ($checkBox46.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing mo2..."  ) ; scoop bucket add games  ; scoop install mo2 }
-if ($checkBox47.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing vortex..."  ) ; scoop bucket add games  ; scoop install vortex }
-if ($checkBox48.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing logitech-gaming-software-np..."  ) ; scoop bucket add nonportable  ; scoop install logitech-gaming-software-np }
-if ($checkBox49.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing roundedtb..."  ) ; scoop bucket add extras  ; scoop install roundedtb }
-if ($checkBox50.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing taskbarx..."  ) ; scoop bucket add extras  ; scoop install taskbarx }
-if ($checkBox51.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing translucenttb..."  ) ; scoop bucket add extras  ; scoop install translucenttb }
-if ($checkBox52.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing powertoys..."  ) ; scoop bucket add extras  ; scoop install powertoys }
-if ($checkBox53.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing 7zip..."  ) ; scoop bucket add main  ; scoop install 7zip }
-if ($checkBox54.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing winrar..."  ) ; scoop bucket add extras  ; scoop install winrar }
-if ($checkBox55.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing revouninstaller..."  ) ; scoop bucket add extras  ; scoop install revouninstaller }
-if ($checkBox56.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing czkawka..."  ) ; scoop bucket add extras  ; scoop install czkawka }
-if ($checkBox57.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing anydesk..."  ) ; scoop bucket add extras  ; scoop install anydesk }
-if ($checkBox58.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing teamviewer..."  ) ; scoop bucket add extras  ; scoop install teamviewer }
-if ($checkBox59.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing rustdesk..."  ) ; scoop bucket add extras  ; scoop install rustdesk }
-if ($checkBox60.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing putty..."  ) ; scoop bucket add extras  ; scoop install putty }
-if ($checkBox61.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing filezilla..."  ) ; scoop bucket add extras  ; scoop install filezilla }
-if ($checkBox62.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing etcher..."  ) ; scoop bucket add extras  ; scoop install etcher }
-if ($checkBox63.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing rufus..."  ) ; scoop bucket add extras  ; scoop install rufus }
-if ($checkBox64.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ventoy..."  ) ; scoop bucket add extras  ; scoop install ventoy }
-if ($checkBox65.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ddu..."  ) ; scoop bucket add extras  ; scoop install ddu }
-if ($checkBox66.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing nvcleanstall..."  ) ; scoop bucket add extras  ; scoop install nvcleanstall }
-if ($checkBox67.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing nvidia-display-driver-np..."  ) ; scoop bucket add nonportable  ; scoop install nvidia-display-driver-np }
-if ($checkBox68.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ryzen-controller..."  ) ; scoop bucket add extras  ; scoop install ryzen-controller }
-if ($checkBox69.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ryzentuner..."  ) ; scoop bucket add hoilc_scoop-lemon https://github.com/hoilc/scoop-lemon  ; scoop install ryzentuner }
-if ($checkBox70.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing IntelExtremeTuningUtility-Install..."  ) ; scoop bucket add ACooper81_scoop-apps https://github.com/ACooper81/scoop-apps ; scoop install IntelExtremeTuningUtility-Install }
-if ($checkBox71.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing neofetch..."  ) ; scoop bucket add main  ; scoop install neofetch }
-if ($checkBox72.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing meow..."  ) ; scoop bucket add extras  ; scoop install meow }
-if ($checkBox73.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing cowsay..."  ) ; scoop bucket add main  ; scoop install cowsay }
-if ($checkBox74.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing alacritty..."  ) ; scoop bucket add extras  ; scoop install alacritty }
-if ($checkBox75.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing tabby..."  ) ; scoop bucket add extras  ; scoop install tabby }
-if ($checkBox76.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing hyper..."  ) ; scoop bucket add extras  ; scoop install hyper }
-if ($checkBox77.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing fluent-terminal-np..."  ) ; scoop bucket add nonportable  ; scoop install fluent-terminal-np }
-if ($checkBox78.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing windows-terminal..."  ) ; scoop bucket add extras  ; scoop install windows-terminal }
+if ($checkBox8.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing audacity..."  ) ; scoop bucket add extras ; scoop install audacity -g }
+if ($checkBox9.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing eartrumpet..."  ) ; scoop bucket add extras ; scoop install eartrumpet -g }
+if ($checkBox10.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing handbrake..."  ) ; scoop bucket add extras ; scoop install handbrake -g }
+if ($checkBox11.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing flameshot..."  ) ; scoop bucket add extras ; scoop install flameshot -g }
+if ($checkBox12.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing obs-studio..."  ) ; scoop bucket add extras ; scoop install obs-studio -g }
+if ($checkBox13.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing blender..."  ) ; scoop bucket add extras ; scoop install blender -g }
+if ($checkBox14.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing gimp..."  ) ; scoop bucket add extras ; scoop install gimp -g }
+if ($checkBox15.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing krita..."  ) ; scoop bucket add extras ; scoop install krita -g }
+if ($checkBox16.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing inkscape..."  ) ; scoop bucket add extras ; scoop install inkscape -g }
+if ($checkBox17.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing soundnode..."  ) ; scoop bucket add extras ; scoop install soundnode -g }
+if ($checkBox18.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing spotify..."  ) ; scoop bucket add extras ; scoop install spotify -g }
+if ($checkBox19.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing youtube-music..."  ) ; scoop bucket add extras ; scoop install youtube-music -g }
+if ($checkBox20.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing cider..."  ) ; scoop bucket add extras ; scoop install cider -g }
+if ($checkBox21.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing deluge..."  ) ; scoop bucket add extras ; scoop install deluge -g }
+if ($checkBox22.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing picotorrent..."  ) ; scoop bucket add extras ; scoop install picotorrent -g }
+if ($checkBox23.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing qbittorrent..."  ) ; scoop bucket add extras ; scoop install qbittorrent -g }
+if ($checkBox24.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing transmission..."  ) ; scoop bucket add extras ; scoop install transmission -g }
+if ($checkBox25.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing zoom..."  ) ; scoop bucket add extras ; scoop install zoom -g }
+if ($checkBox26.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing microsoft-teams..."  ) ; scoop bucket add extras ; scoop install microsoft-teams -g }
+if ($checkBox27.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing telegram..."  ) ; scoop bucket add extras ; scoop install telegram -g }
+if ($checkBox28.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing signal..."  ) ; scoop bucket add extras ; scoop install signal -g }
+if ($checkBox29.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing discord..."  ) ; scoop bucket add extras  ; scoop install discord -g }
+if ($checkBox30.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing caprine..."  ) ; scoop bucket add extras  ; scoop install caprine -g }
+if ($checkBox31.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing libreoffice..."  ) ; scoop bucket add extras  ; scoop install libreoffice -g }
+if ($checkBox32.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing onlyoffice-desktopeditors..."  ) ; scoop bucket add extras  ; scoop install onlyoffice-desktopeditors -g }
+if ($checkBox33.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing office-365-apps-np..."  ) ; scoop bucket add nonportable  ; scoop install office-365-apps-np -g }
+if ($checkBox34.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing foxit-pdf-reader..."  ) ; scoop bucket add extras  ; scoop install foxit-pdf-reader -g }
+if ($checkBox35.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing qalculate..."  ) ; scoop bucket add extras  ; scoop install qalculate -g }
+if ($checkBox36.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing steam..."  ) ; scoop bucket add versions  ; scoop install steam -g }
+if ($checkBox37.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing epicgameslauncher..."  ) ; scoop bucket add chawyehsu_dorado https://github.com/chawyehsu/dorado  ; scoop install epicgameslauncher -g }
+if ($checkBox38.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing gog-galaxy..."  ) ; scoop bucket add anderlli0053_DEV-tools https://github.com/anderlli0053/DEV-tools  ; scoop install gog-galaxy -g }
+if ($checkBox39.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing itch..."  ) ; scoop bucket add games  ; scoop install itch -g }
+if ($checkBox40.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing polymc..."  ) ; scoop bucket add games  ; scoop install polymc -g }
+if ($checkBox41.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing dolphin..."  ) ; scoop bucket add games  ; scoop install dolphin -g }
+if ($checkBox42.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing citra..."  ) ; scoop bucket add games  ; scoop install citra -g }
+if ($checkBox43.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing yuzu..."  ) ; scoop bucket add games  ; scoop install yuzu -g }
+if ($checkBox44.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing dosbox-x..."  ) ; scoop bucket add extras  ; scoop install dosbox-x -g }
+if ($checkBox45.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing loot..."  ) ; scoop bucket add games  ; scoop install loot -g }
+if ($checkBox46.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing mo2..."  ) ; scoop bucket add games  ; scoop install mo2 -g }
+if ($checkBox47.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing vortex..."  ) ; scoop bucket add games  ; scoop install vortex -g }
+if ($checkBox48.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing logitech-gaming-software-np..."  ) ; scoop bucket add nonportable  ; scoop install logitech-gaming-software-np -g }
+if ($checkBox49.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing roundedtb..."  ) ; scoop bucket add extras  ; scoop install roundedtb -g }
+if ($checkBox50.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing taskbarx..."  ) ; scoop bucket add extras  ; scoop install taskbarx -g }
+if ($checkBox51.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing translucenttb..."  ) ; scoop bucket add extras  ; scoop install translucenttb -g }
+if ($checkBox52.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing powertoys..."  ) ; scoop bucket add extras  ; scoop install powertoys -g }
+if ($checkBox53.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing 7zip..."  ) ; scoop bucket add main  ; scoop install 7zip -g }
+if ($checkBox54.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing winrar..."  ) ; scoop bucket add extras  ; scoop install winrar -g }
+if ($checkBox55.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing revouninstaller..."  ) ; scoop bucket add extras  ; scoop install revouninstaller -g }
+if ($checkBox56.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing czkawka..."  ) ; scoop bucket add extras  ; scoop install czkawka -g }
+if ($checkBox57.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing anydesk..."  ) ; scoop bucket add extras  ; scoop install anydesk -g }
+if ($checkBox58.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing teamviewer..."  ) ; scoop bucket add extras  ; scoop install teamviewer -g }
+if ($checkBox59.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing rustdesk..."  ) ; scoop bucket add extras  ; scoop install rustdesk -g }
+if ($checkBox60.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing putty..."  ) ; scoop bucket add extras  ; scoop install putty -g }
+if ($checkBox61.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing filezilla..."  ) ; scoop bucket add extras  ; scoop install filezilla -g }
+if ($checkBox62.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing etcher..."  ) ; scoop bucket add extras  ; scoop install etcher -g }
+if ($checkBox63.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing rufus..."  ) ; scoop bucket add extras  ; scoop install rufus -g }
+if ($checkBox64.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ventoy..."  ) ; scoop bucket add extras  ; scoop install ventoy -g }
+if ($checkBox65.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ddu..."  ) ; scoop bucket add extras  ; scoop install ddu -g }
+if ($checkBox66.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing nvcleanstall..."  ) ; scoop bucket add extras  ; scoop install nvcleanstall -g }
+if ($checkBox67.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing nvidia-display-driver-np..."  ) ; scoop bucket add nonportable  ; scoop install nvidia-display-driver-np -g }
+if ($checkBox68.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ryzen-controller..."  ) ; scoop bucket add extras  ; scoop install ryzen-controller -g }
+if ($checkBox69.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ryzentuner..."  ) ; scoop bucket add hoilc_scoop-lemon https://github.com/hoilc/scoop-lemon  ; scoop install ryzentuner -g }
+if ($checkBox70.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing IntelExtremeTuningUtility-Install..."  ) ; scoop bucket add ACooper81_scoop-apps https://github.com/ACooper81/scoop-apps ; scoop install IntelExtremeTuningUtility-Install -g }
+if ($checkBox71.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing neofetch..."  ) ; scoop bucket add main  ; scoop install neofetch -g }
+if ($checkBox72.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing meow..."  ) ; scoop bucket add extras  ; scoop install meow -g }
+if ($checkBox73.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing cowsay..."  ) ; scoop bucket add main  ; scoop install cowsay -g }
+if ($checkBox74.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing alacritty..."  ) ; scoop bucket add extras  ; scoop install alacritty -g }
+if ($checkBox75.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing tabby..."  ) ; scoop bucket add extras  ; scoop install tabby -g }
+if ($checkBox76.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing hyper..."  ) ; scoop bucket add extras  ; scoop install hyper -g }
+if ($checkBox77.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing fluent-terminal-np..."  ) ; scoop bucket add nonportable  ; scoop install fluent-terminal-np -g }
+if ($checkBox78.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing windows-terminal..."  ) ; scoop bucket add extras  ; scoop install windows-terminal -g }
 if ( !$checkBox1.Checked -and !$checkBox2.Checked -and !$checkBox1.Checked -and !$checkBox4.Checked -and !$checkBox5.Checked -and !$checkBox6.Checked -and !$checkBox7.Checked -and !$checkBox8.Checked -and !$checkBox9.Checked -and !$checkBox10.Checked -and !$checkBox11.Checked -and !$checkBox12.Checked -and !$checkBox13.Checked -and !$checkBox14.Checked -and !$checkBox15.Checked -and !$checkBox16.Checked -and !$checkBox17.Checked -and !$checkBox18.Checked -and !$checkBox19.Checked -and !$checkBox20.Checked -and !$checkBox21.Checked -and !$checkBox22.Checked -and !$checkBox23.Checked -and !$checkBox24.Checked -and !$checkBox25.Checked -and !$checkBox26.Checked -and !$checkBox27.Checked -and !$checkBox28.Checked -and !$checkBox29.Checked -and !$checkBox30.Checked -and !$checkBox31.Checked -and !$checkBox32.Checked -and !$checkBox33.Checked -and !$checkBox34.Checked -and !$checkBox35.Checked -and !$checkBox36.Checked -and !$checkBox37.Checked -and !$checkBox38.Checked -and !$checkBox39.Checked -and !$checkBox40.Checked -and !$checkBox41.Checked -and !$checkBox42.Checked -and !$checkBox43.Checked -and !$checkBox44.Checked -and !$checkBox45.Checked -and !$checkBox46.Checked -and !$checkBox47.Checked -and !$checkBox48.Checked -and !$checkBox49.Checked -and !$checkBox50.Checked -and !$checkBox51.Checked -and !$checkBox52.Checked -and !$checkBox53.Checked -and !$checkBox54.Checked -and !$checkBox55.Checked -and !$checkBox56.Checked -and !$checkBox57.Checked -and !$checkBox58.Checked -and !$checkBox59.Checked -and !$checkBox60.Checked -and !$checkBox61.Checked -and !$checkBox62.Checked -and !$checkBox63.Checked -and !$checkBox64.Checked -and !$checkBox65.Checked -and !$checkBox66.Checked -and !$checkBox67.Checked -and !$checkBox67.Checked -and !$checkBox68.Checked -and !$checkBox69.Checked -and !$checkBox70.Checked -and !$checkBox71.Checked -and !$checkBox72.Checked -and !$checkBox73.Checked -and !$checkBox74.Checked -and !$checkBox75.Checked -and !$checkBox76.Checked -and !$checkBox77.Checked -and !$checkBox78.Checked) {   $Tab5_Statusbox1.Items.Add("No CheckBox selected....")} 
 }
 
@@ -1571,10 +1569,40 @@ $tab5.Controls.Add($tab5_manualinstall3)
 
 
 
+# TAB 6
+#----------------------------------------------
 
+$tab6 = New-object System.Windows.Forms.Tabpage
+$tab6.DataBindings.DefaultDataSourceUpdateMode = 0 
+$tab6.Name = "tab6" 
+$tab6.Text = "PC Name” 
+$FormTabControl.Controls.Add($tab6)
 
+# window label
+$label = New-Object System.Windows.Forms.Label
+$label.Location = New-Object System.Drawing.Point(10,10)
+$label.AutoSize = $true
+$label.Font = New-Object System.Drawing.Font('arial',26,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
+$label.ForeColor = "#000000"
+$label.Text = ("Enter your preferred computer name")
+$tab6.Controls.Add($label)
 
-# tab 10
+$textBox1 = New-Object System.Windows.Forms.TextBox
+$textBox1.Location = New-Object System.Drawing.Point(50,100)
+$textBox1.Size = New-Object System.Drawing.Size(260,100)
+$tab6.Controls.Add($textBox1)
+Write-Host $textBox1.Text
+
+$Tab6_renamebutton = New-Object System.Windows.Forms.Button
+$Tab6_renamebutton.Location = New-Object System.Drawing.Point(10,200)
+$Tab6_renamebutton.Size = New-Object System.Drawing.Size(200,25)
+$Tab6_renamebutton.Text = "Rename"
+$Tab6_renamebutton.Add_Click({Rename-Computer -NewName $textBox1.Text -Restart})
+$tab6.Controls.Add($Tab6_renamebutton)
+
+# TAB 10
+#----------------------------------------------
+
 $tab10 = New-object System.Windows.Forms.Tabpage
 $Tab10.DataBindings.DefaultDataSourceUpdateMode = 0 
 $tab10.Name = "tab10" 
