@@ -12,20 +12,13 @@ if ((Test-Admin) -eq $false)  {
 } else {
         Start-Process powershell.exe -Verb RunAs -ArgumentList ('-noprofile -noexit -file "{0}" -elevated' -f ($myinvocation.MyCommand.Definition))
 }
-    exit
+
 }
 
 'running with full privileges'
 
-
-
-
-
 [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing") 
 [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
-
-
-
 
 $ApplicationForm = New-Object System.Windows.Forms.Form
 $ApplicationForm.StartPosition = "CenterScreen"
