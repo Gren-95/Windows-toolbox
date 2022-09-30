@@ -1,17 +1,17 @@
-﻿param([switch]$Elevated)
-function Test-Admin {
-$currentUser = New-Object Security.Principal.WindowsPrincipal $([Security.Principal.WindowsIdentity]::GetCurrent())
-$currentUser.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
-}
-if ((Test-Admin) -eq $false)  {
-    if ($elevated) {
-         'tried to elevate, did not work, aborting'
-} else {
-Start-Process powershell.exe -Verb RunAs -ArgumentList ('-noprofile -noexit -file "{0}" -elevated' -f ($myinvocation.MyCommand.Definition))
-}
-exit
-}
-'running with full privileges'
+﻿#param([switch]$Elevated)
+##function Test-Admin {
+#$currentUser = New-Object Security.Principal.WindowsPrincipal $([Security.Principal.WindowsIdentity]::GetCurrent())
+#$currentUser.IsInRole([Security.Principal.WindowsBuiltinRole]::Administrator)
+#}
+#if ((Test-Admin) -eq $false)  {
+#    if ($elevated) {
+#         'tried to elevate, did not work, aborting'
+#} else {
+#Start-Process powershell.exe -Verb RunAs -ArgumentList ('-noprofile -noexit -file "{0}" -elevated' -f ($myinvocation.MyCommand.Definition))
+#}
+#exit
+#}
+#'running with full privileges'
 
 [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing") 
 [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
@@ -45,39 +45,31 @@ $FormTabControl.Controls.Add($Tab1)
 
 # label 1
 $Tab1_label1 = New-Object System.Windows.Forms.Label
-$Tab1_label1.Location = New-Object System.Drawing.Point(10,10)
-$Tab1_label1.Font = New-Object System.Drawing.Font('arial',20,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
+$Tab1_label1.Location = New-Object System.Drawing.Point(100,10)
+$Tab1_label1.Font = New-Object System.Drawing.Font('verdana',16)
 $Tab1_label1.AutoSize = $true
 $Tab1_label1.ForeColor = "#000000"
-$Tab1_label1.Text = ("Open your desired Application")
+$Tab1_label1.Text = ("cpl")
 $Tab1.Controls.Add($Tab1_label1)
 
 # label 2
 $Tab1_label2 = New-Object System.Windows.Forms.Label
-$Tab1_label2.Location = New-Object System.Drawing.Point(10,375)
-$Tab1_label2.Font = New-Object System.Drawing.Font('arial',10)
+$Tab1_label2.Location = New-Object System.Drawing.Point(300,10)
+$Tab1_label2.Font = New-Object System.Drawing.Font('verdana',16)
 $Tab1_label2.AutoSize = $true
 $Tab1_label2.ForeColor = "#000000"
-$Tab1_label2.Text = ("cpl")
+$Tab1_label2.Text = ("msc")
 $Tab1.Controls.Add($Tab1_label2)
 
 # label 3
 $Tab1_label3 = New-Object System.Windows.Forms.Label
-$Tab1_label3.Location = New-Object System.Drawing.Point(225,375)
-$Tab1_label3.Font = New-Object System.Drawing.Font('arial',10)
+$Tab1_label3.Location = New-Object System.Drawing.Point(515,10)
+$Tab1_label3.Font = New-Object System.Drawing.Font('verdana',16)
 $Tab1_label3.AutoSize = $true
 $Tab1_label3.ForeColor = "#000000"
-$Tab1_label3.Text = ("msc")
+$Tab1_label3.Text = ("exe")
 $Tab1.Controls.Add($Tab1_label3)
 
-# label 4
-$Tab1_label4 = New-Object System.Windows.Forms.Label
-$Tab1_label4.Location = New-Object System.Drawing.Point(440,375)
-$Tab1_label4.Font = New-Object System.Drawing.Font('arial',10)
-$Tab1_label4.AutoSize = $true
-$Tab1_label4.ForeColor = "#000000"
-$Tab1_label4.Text = ("exe")
-$Tab1.Controls.Add($Tab1_label4)
 
 # Lots of buttons
 $Tab1_appbutton1 = New-Object System.Windows.Forms.Button
@@ -439,29 +431,102 @@ $FormTabControl.Controls.Add($Tab2)
 
 # label
 $Tab2_label1 = New-Object System.Windows.Forms.Label
-$Tab2_label1.Location = New-Object System.Drawing.Point(10,10)
-$Tab2_label1.Font = New-Object System.Drawing.Font('arial',20,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
+$Tab2_label1.Location = New-Object System.Drawing.Point(75,10)
+$Tab2_label1.Font = New-Object System.Drawing.Font('verdana',14)
 $Tab2_label1.AutoSize = $true
 $Tab2_label1.ForeColor = "#000000"
-$Tab2_label1.Text = ("Requires Administrator Permissions")
+$Tab2_label1.Text = ("Package`nManagers")
 $Tab2.Controls.Add($Tab2_label1)
 
+# label
+$Tab2_label2 = New-Object System.Windows.Forms.Label
+$Tab2_label2.Location = New-Object System.Drawing.Point(275,10)
+$Tab2_label2.Font = New-Object System.Drawing.Font('verdana',14)
+$Tab2_label2.AutoSize = $true
+$Tab2_label2.ForeColor = "#000000"
+$Tab2_label2.Text = ("Optional`nFeatures")
+$Tab2.Controls.Add($Tab2_label2)
+
+# label
+$Tab2_label3 = New-Object System.Windows.Forms.Label
+$Tab2_label3.Location = New-Object System.Drawing.Point(515,10)
+$Tab2_label3.Font = New-Object System.Drawing.Font('verdana',14)
+$Tab2_label3.AutoSize = $true
+$Tab2_label3.ForeColor = "#000000"
+$Tab2_label3.Text = ("Pro`nApps")
+$Tab2.Controls.Add($Tab2_label3)
+
+#Tweaks Package manager 
+$Tab2_pkgmgrbutton1 = New-Object System.Windows.Forms.Button
+$Tab2_pkgmgrbutton1.Location = New-Object System.Drawing.Point(10,75)
+$Tab2_pkgmgrbutton1.Size = New-Object System.Drawing.Size (200,25)
+$Tab2_pkgmgrbutton1.Text = "Winget"
+$Tab2_pkgmgrbutton1.Add_Click({start-process powershell -verb runas {
+reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" /t REG_DWORD /f /v "AllowDevelopmentWithoutDevLicense" /d "1"
+mkdir $env:temp\c2r; Set-Location $env:temp\c2r
+Invoke-WebRequest -o $env:temp\c2r\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle `
+https://github.com/microsoft/winget-cli/releases/download/v1.2.10271/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
+Add-AppPackage -Path $env:temp\c2r\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
+pause
+}})
+$Tab2.Controls.Add($Tab2_pkgmgrbutton1)
+
+$Tab2_pkgmgrbutton2 = New-Object System.Windows.Forms.Button
+$Tab2_pkgmgrbutton2.Location = New-Object System.Drawing.Point(10,100)
+$Tab2_pkgmgrbutton2.Size = New-Object System.Drawing.Size (200,25)
+$Tab2_pkgmgrbutton2.Text = "Scoop"
+$Tab2_pkgmgrbutton2.Add_Click({start-process powershell -verb runas {
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+Invoke-RestMethod get.scoop.sh | Invoke-Expression
+}})
+$Tab2.Controls.Add($Tab2_pkgmgrbutton2)
+
+$Tab2_pkgmgrbutton3 = New-Object System.Windows.Forms.Button
+$Tab2_pkgmgrbutton3.Location = New-Object System.Drawing.Point(10,125)
+$Tab2_pkgmgrbutton3.Size = New-Object System.Drawing.Size (200,25)
+$Tab2_pkgmgrbutton3.Text = "Chocolatey"
+$Tab2_pkgmgrbutton3.Add_Click({start-process powershell -verb runas {
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; Invoke-Expression ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+}})
+$Tab2.Controls.Add($Tab2_pkgmgrbutton3)
+
+$Tab2_pkgmgrbutton4 = New-Object System.Windows.Forms.Button
+$Tab2_pkgmgrbutton4.Location = New-Object System.Drawing.Point(10,150)
+$Tab2_pkgmgrbutton4.Size = New-Object System.Drawing.Size (200,25)
+$Tab2_pkgmgrbutton4.Text = "Reinstall MS Store"
+$Tab2_pkgmgrbutton4.Add_Click({start-process powershell -verb runas {
+Get-AppxPackage -allusers Microsoft.WindowsStore | ForEach-Object {Add-AppxPackage -DisableDevelopmentMode -Register “$($_.InstallLocation)\AppXManifest.xml”}
+}})
+$Tab2.Controls.Add($Tab2_pkgmgrbutton4)
+
+$Tab2_pkgmgrbutton5 = New-Object System.Windows.Forms.Button
+$Tab2_pkgmgrbutton5.Location = New-Object System.Drawing.Point(10,175)
+$Tab2_pkgmgrbutton5.Size = New-Object System.Drawing.Size (200,25)
+$Tab2_pkgmgrbutton5.Text = "Remove MS Store Apps"
+$Tab2_pkgmgrbutton5.Add_Click({start-process powershell -verb runas {
+Get-AppPackage | Remove-AppPackage
+}})
+$Tab2.Controls.Add($Tab2_pkgmgrbutton5)
+
+
+
+
 # tweak buttons
-$Tab2_tweakbutton1 = New-Object System.Windows.Forms.Button
-$Tab2_tweakbutton1.Location = New-Object System.Drawing.Point(10,50)
-$Tab2_tweakbutton1.Size = New-Object System.Drawing.Size (320,25)
-$Tab2_tweakbutton1.Text = "All .NET Framework (2,3,4)"
-$Tab2_tweakbutton1.Add_Click({
+$Tab2_optfeaturebutton1 = New-Object System.Windows.Forms.Button
+$Tab2_optfeaturebutton1.Location = New-Object System.Drawing.Point(225,75)
+$Tab2_optfeaturebutton1.Size = New-Object System.Drawing.Size (200,25)
+$Tab2_optfeaturebutton1.Text = "All .NET Framework (2,3,4)"
+$Tab2_optfeaturebutton1.Add_Click({start-process powershell -verb runas {
 Enable-WindowsOptionalFeature -Online -FeatureName "NetFx4-AdvSrvs" -All
 Enable-WindowsOptionalFeature -Online -FeatureName "NetFx3" -All
-})
-$Tab2.Controls.Add($Tab2_tweakbutton1)
+}})
+$Tab2.Controls.Add($Tab2_optfeaturebutton1)
 
-$Tab2_tweakbutton2 = New-Object System.Windows.Forms.Button
-$Tab2_tweakbutton2.Location = New-Object System.Drawing.Point(10,75)
-$Tab2_tweakbutton2.Size = New-Object System.Drawing.Size (320,25)
-$Tab2_tweakbutton2.Text = "Hyper-V"
-$Tab2_tweakbutton2.Add_Click({
+$Tab2_optfeaturebutton2 = New-Object System.Windows.Forms.Button
+$Tab2_optfeaturebutton2.Location = New-Object System.Drawing.Point(225,100)
+$Tab2_optfeaturebutton2.Size = New-Object System.Drawing.Size (200,25)
+$Tab2_optfeaturebutton2.Text = "Hyper-V"
+$Tab2_optfeaturebutton2.Add_Click({start-process powershell -verb runas {
 Enable-WindowsOptionalFeature -Online -FeatureName "HypervisorPlatform" -All
 Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-All" -All
 Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V" -All
@@ -472,65 +537,64 @@ Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-Services" 
 Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Hyper-V-Management-Clients" -All
 cmd /c bcdedit /set hypervisorschedulertype classic
 Write-Host "HyperV is now installed and configured. Please Reboot before using."
-})
-$Tab2.Controls.Add($Tab2_tweakbutton2)
+}})
+$Tab2.Controls.Add($Tab2_optfeaturebutton2)
 
-$Tab2_tweakbutton3 = New-Object System.Windows.Forms.Button
-$Tab2_tweakbutton3.Location = New-Object System.Drawing.Point(10,100)
-$Tab2_tweakbutton3.Size = New-Object System.Drawing.Size (320,25)
-$Tab2_tweakbutton3.Text = "legacy Media"
-$Tab2_tweakbutton3.Add_Click({
+$Tab2_optfeaturebutton3 = New-Object System.Windows.Forms.Button
+$Tab2_optfeaturebutton3.Location = New-Object System.Drawing.Point(225,125)
+$Tab2_optfeaturebutton3.Size = New-Object System.Drawing.Size (200,25)
+$Tab2_optfeaturebutton3.Text = "legacy Media"
+$Tab2_optfeaturebutton3.Add_Click({start-process powershell -verb runas {
 Enable-WindowsOptionalFeature -Online -FeatureName "WindowsMediaPlayer" -All
 Enable-WindowsOptionalFeature -Online -FeatureName "MediaPlayback" -All
 Enable-WindowsOptionalFeature -Online -FeatureName "DirectPlay" -All
 Enable-WindowsOptionalFeature -Online -FeatureName "LegacyComponents" -All
-})
-$Tab2.Controls.Add($Tab2_tweakbutton3)
+}})
+$Tab2.Controls.Add($Tab2_optfeaturebutton3)
 
-$Tab2_tweakbutton4 = New-Object System.Windows.Forms.Button
-$Tab2_tweakbutton4.Location = New-Object System.Drawing.Point(10,125)
-$Tab2_tweakbutton4.Size = New-Object System.Drawing.Size (320,25)
-$Tab2_tweakbutton4.Text = "WSL"
-$Tab2_tweakbutton4.Add_Click({
+$Tab2_optfeaturebutton4 = New-Object System.Windows.Forms.Button
+$Tab2_optfeaturebutton4.Location = New-Object System.Drawing.Point(225,150)
+$Tab2_optfeaturebutton4.Size = New-Object System.Drawing.Size (200,25)
+$Tab2_optfeaturebutton4.Text = "WSL"
+$Tab2_optfeaturebutton4.Add_Click({start-process powershell -verb runas {
 Enable-WindowsOptionalFeature -Online -FeatureName "VirtualMachinePlatform" -All
 Enable-WindowsOptionalFeature -Online -FeatureName "Microsoft-Windows-Subsystem-Linux" -All
-	Write-Host "WSL is now installed and configured. Please Reboot before using."
-})
-$Tab2.Controls.Add($Tab2_tweakbutton4)
+Write-Host "WSL is now installed and configured. Please Reboot before using."
+}})
+$Tab2.Controls.Add($Tab2_optfeaturebutton4)
 
-$Tab2_tweakbutton5 = New-Object System.Windows.Forms.Button
-$Tab2_tweakbutton5.Location = New-Object System.Drawing.Point(340,50)
-$Tab2_tweakbutton5.Size = New-Object System.Drawing.Size (320,25)
-$Tab2_tweakbutton5.Text = "Remove MS Store Apps"
-$Tab2_tweakbutton5.Add_Click({Get-AppPackage | Remove-AppPackage})
-$Tab2.Controls.Add($Tab2_tweakbutton5)
+$Tab2_optfeaturebutton5 = New-Object System.Windows.Forms.Button
+$Tab2_optfeaturebutton5.Location = New-Object System.Drawing.Point(225,175)
+$Tab2_optfeaturebutton5.Size = New-Object System.Drawing.Size (200,25)
+$Tab2_optfeaturebutton5.Text = "NFS"
+$Tab2_optfeaturebutton5.Add_Click({start-process powershell -verb runas {
+Enable-WindowsOptionalFeature -Online -FeatureName "ServicesForNFS-ClientOnly" -All -NoRestart
+Enable-WindowsOptionalFeature -Online -FeatureName "ClientForNFS-Infrastructure" -All -NoRestart
+Enable-WindowsOptionalFeature -Online -FeatureName "NFS-Administration" -All -NoRestart
+nfsadmin client stop
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default" -Name "AnonymousUID" -Type DWord -Value 0
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\ClientForNFS\CurrentVersion\Default" -Name "AnonymousGID" -Type DWord -Value 0
+nfsadmin client start
+nfsadmin client localhost config fileaccess=755 SecFlavors=+sys -krb5 -krb5i
+Write-Host "NFS is now setup for user based NFS mounts"
+}})
+$Tab2.Controls.Add($Tab2_optfeaturebutton5)
 
-$Tab2_tweakbutton6 = New-Object System.Windows.Forms.Button
-$Tab2_tweakbutton6.Location = New-Object System.Drawing.Point(340,75)
-$Tab2_tweakbutton6.Size = New-Object System.Drawing.Size (320,25)
-$Tab2_tweakbutton6.Text = "Reinstall MS Store"
-$Tab2_tweakbutton6.Add_Click({Get-AppxPackage -allusers Microsoft.WindowsStore | ForEach-Object {Add-AppxPackage -DisableDevelopmentMode -Register “$($_.InstallLocation)\AppXManifest.xml”}})
-$Tab2.Controls.Add($Tab2_tweakbutton6)
+$Tab2_optfeaturebutton6 = New-Object System.Windows.Forms.Button
+$Tab2_optfeaturebutton6.Location = New-Object System.Drawing.Point(225,200)
+$Tab2_optfeaturebutton6.Size = New-Object System.Drawing.Size (200,25)
+$Tab2_optfeaturebutton6.Text = "Telnet"
+$Tab2_optfeaturebutton6.Add_Click({start-process powershell -verb runas {
+dism /online /Enable-Feature /FeatureName:TelnetClient
+}})
+$Tab2.Controls.Add($Tab2_optfeaturebutton6)
 
-$Tab2_tweakbutton7 = New-Object System.Windows.Forms.Button
-$Tab2_tweakbutton7.Location = New-Object System.Drawing.Point(340,100)
-$Tab2_tweakbutton7.Size = New-Object System.Drawing.Size (320,25)
-$Tab2_tweakbutton7.Text = "Install Winget"
-$Tab2_tweakbutton7.Add_Click({
-reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock" /t REG_DWORD /f /v "AllowDevelopmentWithoutDevLicense" /d "1"
-mkdir $env:temp\c2r; Set-Location $env:temp\c2r
-Invoke-WebRequest -o $env:temp\c2r\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle `
-https://github.com/microsoft/winget-cli/releases/download/v1.2.10271/Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
-Add-AppPackage -Path $env:temp\c2r\Microsoft.DesktopAppInstaller_8wekyb3d8bbwe.msixbundle
-pause
-})
-$Tab2.Controls.Add($Tab2_tweakbutton7)
 
-$Tab2_tweakbutton8 = New-Object System.Windows.Forms.Button
-$Tab2_tweakbutton8.Location = New-Object System.Drawing.Point(340,125)
-$Tab2_tweakbutton8.Size = New-Object System.Drawing.Size (320,25)
-$Tab2_tweakbutton8.Text = "Install User Manager"
-$Tab2_tweakbutton8.Add_Click({
+$Tab2_probutton1 = New-Object System.Windows.Forms.Button
+$Tab2_probutton1.Location = New-Object System.Drawing.Point(440,75)
+$Tab2_probutton1.Size = New-Object System.Drawing.Size (200,25)
+$Tab2_probutton1.Text = "Install User Manager"
+$Tab2_probutton1.Add_Click({start-process powershell -verb runas {
 mkdir 'C:\Program Files\usermanager'
 Start-BitsTransfer -Source "https://github.com/proviq/AccountManagement/raw/master/lusrmgr/bin/Release/lusrmgr.exe" -Destination "C:\Program Files\usermanager"
 $SourceFilePath = "C:\Program Files\usermanager\lusrmgr.exe"
@@ -539,15 +603,53 @@ $WScriptObj = New-Object -ComObject ("WScript.Shell")
 $shortcut = $WscriptObj.CreateShortcut($ShortcutPath)
 $shortcut.TargetPath = $SourceFilePath
 $shortcut.Save()
-})
-$Tab2.Controls.Add($Tab2_tweakbutton8)
+}})
+$Tab2.Controls.Add($Tab2_probutton1)
 
-$Tab2_tweakbutton9 = New-Object System.Windows.Forms.Button
-$Tab2_tweakbutton9.Location = New-Object System.Drawing.Point(340,150)
-$Tab2_tweakbutton9.Size = New-Object System.Drawing.Size (320,25)
-$Tab2_tweakbutton9.Text = "User Manager"
-$Tab2_tweakbutton9.Add_Click({& 'C:\Program Files\usermanager\lusrmgr.exe'})
-$Tab2.Controls.Add($Tab2_tweakbutton9)
+$Tab2_probutton2 = New-Object System.Windows.Forms.Button
+$Tab2_probutton2.Location = New-Object System.Drawing.Point(440,100)
+$Tab2_probutton2.Size = New-Object System.Drawing.Size (200,25)
+$Tab2_probutton2.Text = "User Manager"
+$Tab2_probutton2.Add_Click({& 'C:\Program Files\usermanager\lusrmgr.exe'})
+$Tab2.Controls.Add($Tab2_probutton2)
+
+#$Tab2_probutton3 = New-Object System.Windows.Forms.Button
+#$Tab2_probutton3.Location = New-Object System.Drawing.Point(440,125)
+#$Tab2_probutton3.Size = New-Object System.Drawing.Size (200,25)
+#$Tab2_probutton3.Text = "GPedit"
+#$Tab2_probutton3.Add_Click({start-process cmd -verb runas {
+#Push-Location "%~dp0" 
+#Get-ChildItem /b %SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum >List.txt 
+#Get-ChildItem /b %SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum >>List.txt 
+#i#f( /f %%i in ('findstr /i . List.txt 2^>nul')) {dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i" }
+#pause
+#}})
+#$Tab2.Controls.Add($Tab2_probutton3)
+
+# window label
+$label = New-Object System.Windows.Forms.Label
+$label.Location = New-Object System.Drawing.Point(50,225)
+$label.AutoSize = $true
+$label.Font = New-Object System.Drawing.Font('verdana',16)
+$label.ForeColor = "#000000"
+$label.Text = ("Rename`n    PC")
+$tab2.Controls.Add($label)
+
+$Tab2_textBox1 = New-Object System.Windows.Forms.TextBox
+$Tab2_textBox1.Location = New-Object System.Drawing.Point(10,300)
+$Tab2_textBox1.Size = New-Object System.Drawing.Size(200,100)
+$tab2.Controls.Add($Tab2_textBox1)
+
+Write-Host $Tab2_textBox1.Text
+
+$tab2_renamebutton1 = New-Object System.Windows.Forms.Button
+$tab2_renamebutton1.Location = New-Object System.Drawing.Point(75,350)
+$tab2_renamebutton1.Size = New-Object System.Drawing.Size(75,25)
+$tab2_renamebutton1.Text = "Rename"
+$tab2_renamebutton1.Add_Click({Rename-Computer -NewName $textBox1.Text -Restart})
+$tab2.Controls.Add($tab2_renamebutton1)
+
+
 
 # TAB 3
 #----------------------------------------------
@@ -561,9 +663,9 @@ $FormTabControl.Controls.Add($Tab3)
 
 # window label
 $Tab3_label1 = New-Object System.Windows.Forms.Label
-$Tab3_label1.Location = New-Object System.Drawing.Point(10,10)
+$Tab3_label1.Location = New-Object System.Drawing.Point(75,10)
 $Tab3_label1.AutoSize = $true
-$Tab3_label1.Font = New-Object System.Drawing.Font('arial',20,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
+$Tab3_label1.Font = New-Object System.Drawing.Font('verdana',16)
 $Tab3_label1.ForeColor = "#000000"
 $Tab3_label1.Text = ("Choose the Windows Edition you have installed")
 $Tab3.Controls.Add($Tab3_label1)
@@ -573,7 +675,9 @@ $Tab3_actiavtebutton1 = New-Object System.Windows.Forms.Button
 $Tab3_actiavtebutton1.Location = New-Object System.Drawing.Point(10,50)
 $Tab3_actiavtebutton1.Size = New-Object System.Drawing.Size(320,25)
 $Tab3_actiavtebutton1.Text = "Home"
-$Tab3_actiavtebutton1.add_click({slmgr /ipk TX9XD-98N7V-6WMQ6-BX7FG-H8Q99 ; slmgr /skms kms8.msguides.com ; slmgr /ato})
+$Tab3_actiavtebutton1.add_click({start-process powershell -verb runas {
+slmgr /ipk TX9XD-98N7V-6WMQ6-BX7FG-H8Q99 ; slmgr /skms kms8.msguides.com ; slmgr /ato
+}})
 $Tab3.Controls.add($Tab3_actiavtebutton1)
 
 # Activate Win 10 Home N
@@ -581,7 +685,9 @@ $Tab3_actiavtebutton2 = New-Object System.Windows.Forms.Button
 $Tab3_actiavtebutton2.Location = New-Object System.Drawing.Point(10,75)
 $Tab3_actiavtebutton2.Size = New-Object System.Drawing.Size(320,25)
 $Tab3_actiavtebutton2.Text = "Home N"
-$Tab3_actiavtebutton2.add_click({slmgr /ipk 3KHY7-WNT83-DGQKR-F7HPR-844BM ; slmgr /skms kms8.msguides.com ; slmgr /ato})
+$Tab3_actiavtebutton2.add_click({start-process powershell -verb runas {
+slmgr /ipk 3KHY7-WNT83-DGQKR-F7HPR-844BM ; slmgr /skms kms8.msguides.com ; slmgr /ato
+}})
 $Tab3.Controls.add($Tab3_actiavtebutton2)
 
 # Activate Win 10 PRO
@@ -589,7 +695,9 @@ $Tab3_actiavtebutton3 = New-Object System.Windows.Forms.Button
 $Tab3_actiavtebutton3.Location = New-Object System.Drawing.Point(340,50)
 $Tab3_actiavtebutton3.Size = New-Object System.Drawing.Size(320,25)
 $Tab3_actiavtebutton3.Text = "Pro"
-$Tab3_actiavtebutton3.add_click({slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX ; slmgr /skms kms8.msguides.com ; slmgr /ato})
+$Tab3_actiavtebutton3.add_click({start-process powershell -verb runas {
+slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX ; slmgr /skms kms8.msguides.com ; slmgr /ato
+}})
 $Tab3.Controls.add($Tab3_actiavtebutton3)
 
 # Activate Win 10 PRO N
@@ -597,7 +705,9 @@ $Tab3_actiavtebutton4 = New-Object System.Windows.Forms.Button
 $Tab3_actiavtebutton4.Location = New-Object System.Drawing.Point(340,75)
 $Tab3_actiavtebutton4.Size = New-Object System.Drawing.Size(320,25)
 $Tab3_actiavtebutton4.Text = "Pro N"
-$Tab3_actiavtebutton4.add_click({slmgr /ipk MH37W-N47XK-V7XM9-C7227-GCQG9 ; slmgr /skms kms8.msguides.com ; slmgr /ato})
+$Tab3_actiavtebutton4.add_click({start-process powershell -verb runas {
+slmgr /ipk MH37W-N47XK-V7XM9-C7227-GCQG9 ; slmgr /skms kms8.msguides.com ; slmgr /ato
+}})
 $Tab3.Controls.add($Tab3_actiavtebutton4)
 
 # Activate Win 10 EDU
@@ -605,7 +715,9 @@ $Tab3_actiavtebutton5 = New-Object System.Windows.Forms.Button
 $Tab3_actiavtebutton5.Location = New-Object System.Drawing.Point(340,100)
 $Tab3_actiavtebutton5.Size = New-Object System.Drawing.Size(320,25)
 $Tab3_actiavtebutton5.Text = "Education"
-$Tab3_actiavtebutton5.add_click({slmgr /ipk NW6C2-QMPVW-D7KKK-3GKT6-VCFB2 ; slmgr /skms kms8.msguides.com ; slmgr /ato})
+$Tab3_actiavtebutton5.add_click({start-process powershell -verb runas {
+slmgr /ipk NW6C2-QMPVW-D7KKK-3GKT6-VCFB2 ; slmgr /skms kms8.msguides.com ; slmgr /ato
+}})
 $Tab3.Controls.add($Tab3_actiavtebutton5)
 
 # Activate Win 10 EDU N
@@ -613,7 +725,9 @@ $Tab3_actiavtebutton6 = New-Object System.Windows.Forms.Button
 $Tab3_actiavtebutton6.Location = New-Object System.Drawing.Point(340,125)
 $Tab3_actiavtebutton6.Size = New-Object System.Drawing.Size(320,25)
 $Tab3_actiavtebutton6.Text = "Education N"
-$Tab3_actiavtebutton6.add_click({slmgr /ipk 2WH4N-8QGBV-H22JP-CT43Q-MDWWJ ; slmgr /skms kms8.msguides.com ; slmgr /ato})
+$Tab3_actiavtebutton6.add_click({start-process powershell -verb runas {
+slmgr /ipk 2WH4N-8QGBV-H22JP-CT43Q-MDWWJ ; slmgr /skms kms8.msguides.com ; slmgr /ato
+}})
 $Tab3.Controls.add($Tab3_actiavtebutton6)
 
 # Activate Win 10 ENT
@@ -621,7 +735,9 @@ $Tab3_actiavtebutton7 = New-Object System.Windows.Forms.Button
 $Tab3_actiavtebutton7.Location = New-Object System.Drawing.Point(340,150)
 $Tab3_actiavtebutton7.Size = New-Object System.Drawing.Size(320,25)
 $Tab3_actiavtebutton7.Text = "Enterprise"
-$Tab3_actiavtebutton7.add_click({shutdslmgr /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43 ; slmgr /skms kms8.msguides.com ; slmgr /ato})
+$Tab3_actiavtebutton7.add_click({start-process powershell -verb runas {
+shutdslmgr /ipk NPPR9-FWDCX-D2C8J-H872K-2YT43 ; slmgr /skms kms8.msguides.com ; slmgr /ato
+}})
 $Tab3.Controls.add($Tab3_actiavtebutton7)
 
 # Activate Win 10 ENT N
@@ -629,7 +745,9 @@ $Tab3_actiavtebutton8 = New-Object System.Windows.Forms.Button
 $Tab3_actiavtebutton8.Location = New-Object System.Drawing.Point(340,175)
 $Tab3_actiavtebutton8.Size = New-Object System.Drawing.Size(320,25)
 $Tab3_actiavtebutton8.Text = "Enterprise N"
-$Tab3_actiavtebutton8.add_click({slmgr /ipk DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4 ; slmgr /skms kms8.msguides.com ; slmgr /ato})
+$Tab3_actiavtebutton8.add_click({start-process powershell -verb runas {
+slmgr /ipk DPH2V-TTNVB-4X9Q3-TJR4H-KHJW4 ; slmgr /skms kms8.msguides.com ; slmgr /ato
+}})
 $Tab3.Controls.add($Tab3_actiavtebutton8)
 
 # Activate Home Single Language
@@ -637,7 +755,9 @@ $Tab3_actiavtebutton9 = New-Object System.Windows.Forms.Button
 $Tab3_actiavtebutton9.Location = New-Object System.Drawing.Point(10,100)
 $Tab3_actiavtebutton9.Size = New-Object System.Drawing.Size(320,25)
 $Tab3_actiavtebutton9.Text = "Home Single Language"
-$Tab3_actiavtebutton9.add_click({slmgr /ipk 7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH ; slmgr /skms kms8.msguides.com ; slmgr /ato})
+$Tab3_actiavtebutton9.add_click({start-process powershell -verb runas {
+slmgr /ipk 7HNRX-D7KGG-3K4RQ-4WPJ4-YTDFH ; slmgr /skms kms8.msguides.com ; slmgr /ato
+}})
 $Tab3.Controls.add($Tab3_actiavtebutton9)
 
 # Activate Home Country Specific
@@ -645,7 +765,9 @@ $Tab3_actiavtebutton10 = New-Object System.Windows.Forms.Button
 $Tab3_actiavtebutton10.Location = New-Object System.Drawing.Point(10,125)
 $Tab3_actiavtebutton10.Size = New-Object System.Drawing.Size(320,25)
 $Tab3_actiavtebutton10.Text = "Home Country Specific"
-$Tab3_actiavtebutton10.add_click({slmgr /ipk PVMJN-6DFY6-9CCP6-7BKTT-D3WVR ; slmgr /skms kms8.msguides.com ; slmgr /ato})
+$Tab3_actiavtebutton10.add_click({start-process powershell -verb runas {
+slmgr /ipk PVMJN-6DFY6-9CCP6-7BKTT-D3WVR ; slmgr /skms kms8.msguides.com ; slmgr /ato
+}})
 $Tab3.Controls.add($Tab3_actiavtebutton10)
 
 # Clear Product Key
@@ -653,7 +775,9 @@ $Tab3_actiavtebutton11 = New-Object System.Windows.Forms.Button
 $Tab3_actiavtebutton11.Location = New-Object System.Drawing.Point(10,150)
 $Tab3_actiavtebutton11.Size = New-Object System.Drawing.Size(320,50)
 $Tab3_actiavtebutton11.Text = "Clear Product Key"
-$Tab3_actiavtebutton11.add_click({slmgr /upk ; slmgr /cpky ; slmgr /rearm})
+$Tab3_actiavtebutton11.add_click({start-process powershell -verb runas {
+slmgr /upk ; slmgr /cpky ; slmgr /rearm
+}})
 $Tab3.Controls.add($Tab3_actiavtebutton11)
 
 
@@ -669,12 +793,21 @@ $FormTabControl.Controls.Add($Tab4)
 
 # window label
 $Tab4_label1 = New-Object System.Windows.Forms.Label
-$Tab4_label1.Location = New-Object System.Drawing.Point(10,10)
+$Tab4_label1.Location = New-Object System.Drawing.Point(250,10)
 $Tab4_label1.AutoSize = $true
-$Tab4_label1.Font = New-Object System.Drawing.Font('arial',20,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
+$Tab4_label1.Font = New-Object System.Drawing.Font('verdana',16)
 $Tab4_label1.ForeColor = "#000000"
-$Tab4_label1.Text = ("Choose how you want to shutdown")
+$Tab4_label1.Text = ("Power Settings")
 $Tab4.Controls.Add($Tab4_label1)
+
+# window label
+#$Tab4_label2 = New-Object System.Windows.Forms.Label
+#$Tab4_label2.Location = New-Object System.Drawing.Point(300,10)
+#$Tab4_label2.AutoSize = $true
+#$Tab4_label2.Font = New-Object System.Drawing.Font('verdana',16)
+#$Tab4_label2.ForeColor = "#000000"
+#$Tab4_label2.Text = ("Power Settings")
+#$Tab4.Controls.Add($Tab4_label2)
 
 $Tab4_powerbutton1 = New-Object System.Windows.Forms.Button
 $Tab4_powerbutton1.Location = New-Object System.Drawing.Point(10,50)
@@ -698,65 +831,56 @@ $Tab4_powerbutton3.add_click({shutdown /a})
 $Tab4.Controls.add($Tab4_powerbutton3)
 
 $Tab4_powerbutton4 = New-Object System.Windows.Forms.Button
-$Tab4_powerbutton4.Location = New-Object System.Drawing.Point(340,50)
+$Tab4_powerbutton4.Location = New-Object System.Drawing.Point(10,125)
 $Tab4_powerbutton4.Size = New-Object System.Drawing.Size(320,25)
 $Tab4_powerbutton4.Text = "Force Reboot"
 $Tab4_powerbutton4.add_click({shutdown /r /f})
 $Tab4.Controls.add($Tab4_powerbutton4)
 
 $Tab4_powerbutton5 = New-Object System.Windows.Forms.Button
-$Tab4_powerbutton5.Location = New-Object System.Drawing.Point(340,75)
+$Tab4_powerbutton5.Location = New-Object System.Drawing.Point(10,150)
 $Tab4_powerbutton5.Size = New-Object System.Drawing.Size(320,25)
 $Tab4_powerbutton5.Text = "Force Shutdown"
 $Tab4_powerbutton5.add_click({shutdown /s /f})
 $Tab4.Controls.add($Tab4_powerbutton5)
 
 $Tab4_powerbutton6 = New-Object System.Windows.Forms.Button
-$Tab4_powerbutton6.Location = New-Object System.Drawing.Point(340,100)
+$Tab4_powerbutton6.Location = New-Object System.Drawing.Point(10,175)
 $Tab4_powerbutton6.Size = New-Object System.Drawing.Size(320,25)
 $Tab4_powerbutton6.Text = "Log Out"
 $Tab4_powerbutton6.add_click({shutdown /l})
 $Tab4.Controls.add($Tab4_powerbutton6)
 
 $Tab4_powerbutton7 = New-Object System.Windows.Forms.Button
-$Tab4_powerbutton7.Location = New-Object System.Drawing.Point(10,125)
+$Tab4_powerbutton7.Location = New-Object System.Drawing.Point(10,200)
 $Tab4_powerbutton7.Size = New-Object System.Drawing.Size(320,25)
 $Tab4_powerbutton7.Text = "Remote Shutdown"
 $Tab4_powerbutton7.add_click({shutdown /i})
 $Tab4.Controls.add($Tab4_powerbutton7)
 
-# window label
-$Tab4_label2 = New-Object System.Windows.Forms.Label
-$Tab4_label2.Location = New-Object System.Drawing.Point(10,185)
-$Tab4_label2.AutoSize = $true
-$Tab4_label2.Font = New-Object System.Drawing.Font('arial',20,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
-$Tab4_label2.ForeColor = "#000000"
-$Tab4_label2.Text = ("Power Settings")
-$Tab4.Controls.Add($Tab4_label2)
-
 $Tab4_powerbutton8 = New-Object System.Windows.Forms.Button
-$Tab4_powerbutton8.Location = New-Object System.Drawing.Point(10,225)
+$Tab4_powerbutton8.Location = New-Object System.Drawing.Point(340,50)
 $Tab4_powerbutton8.Size = New-Object System.Drawing.Size(320,25)
 $Tab4_powerbutton8.Text = "Power Options"
 $Tab4_powerbutton8.add_click({powercfg.cpl})
 $Tab4.Controls.add($Tab4_powerbutton8)
 
 $Tab4_powerbutton9 = New-Object System.Windows.Forms.Button
-$Tab4_powerbutton9.Location = New-Object System.Drawing.Point(10,250)
+$Tab4_powerbutton9.Location = New-Object System.Drawing.Point(340,75)
 $Tab4_powerbutton9.Size = New-Object System.Drawing.Size(320,25)
 $Tab4_powerbutton9.Text = "Mobility Center"
 $Tab4_powerbutton9.add_click({mblctr.exe})
 $Tab4.Controls.add($Tab4_powerbutton9)
 
 $Tab4_powerbutton10 = New-Object System.Windows.Forms.Button
-$Tab4_powerbutton10.Location = New-Object System.Drawing.Point(340,225)
+$Tab4_powerbutton10.Location = New-Object System.Drawing.Point(340,100)
 $Tab4_powerbutton10.Size = New-Object System.Drawing.Size(320,25)
 $Tab4_powerbutton10.Text = "Boot Options"
 $Tab4_powerbutton10.add_click({cmd /c msconfig.exe})
 $Tab4.Controls.add($Tab4_powerbutton10)
 
 $Tab4_powerbutton11 = New-Object System.Windows.Forms.Button
-$Tab4_powerbutton11.Location = New-Object System.Drawing.Point(340,250)
+$Tab4_powerbutton11.Location = New-Object System.Drawing.Point(340,125)
 $Tab4_powerbutton11.Size = New-Object System.Drawing.Size(320,25)
 $Tab4_powerbutton11.Text = "Battery Options"
 $Tab4_powerbutton11.add_click({ms-settings:batterysaver})
@@ -775,9 +899,10 @@ $FormTabControl.Controls.Add($tab5)
 
 # window label
 $Tab5_label1 = New-Object System.Windows.Forms.Label
-$Tab5_label1.Location = New-Object System.Drawing.Point(10,10)
+$Tab5_label1.Location = New-Object System.Drawing.Point(225,10)
 $Tab5_label1.AutoSize = $true
-$Tab5_label1.Font = New-Object System.Drawing.Font('arial',20,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
+$Tab5_label1.Font = New-Object System.Drawing.Font('verdana',16) 
+#System.Drawing.Font('arial',20,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
 $Tab5_label1.ForeColor = "#000000"
 $Tab5_label1.Text = ("Install applications")
 $Tab5.Controls.Add($Tab5_label1)
@@ -876,84 +1001,84 @@ $checkBox78 = New-Object System.Windows.Forms.CheckBox
 $handler_Tab5_installbutton1_Click= 
 {
 $Tab5_Statusbox1.Items.Clear();
-if ($checkBox1.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing firefox..."  ) ; scoop bucket add extras ; scoop install firefox -g }
-if ($checkBox2.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing librewolf..."  ) ; scoop bucket add extras ; scoop install librewolf -g }
-if ($checkBox3.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing brave..."  ) ; scoop bucket add extras ; scoop install brave -g }
-if ($checkBox4.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing googlechrome..."  ) ; scoop bucket add extras ; scoop install googlechrome -g }
-if ($checkBox5.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing chromium..."  ) ; scoop bucket add extras ; scoop install chromium -g }
-if ($checkBox6.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing mpv..."  ) ; scoop bucket add extras ; scoop install mpv -g }
+if ($checkBox1.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing firefox..."  ) ; scoop bucket add extras ; scoop install firefox }
+if ($checkBox2.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing librewolf..."  ) ; scoop bucket add extras ; scoop install librewolf }
+if ($checkBox3.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing brave..."  ) ; scoop bucket add extras ; scoop install brave }
+if ($checkBox4.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing googlechrome..."  ) ; scoop bucket add extras ; scoop install googlechrome }
+if ($checkBox5.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing chromium..."  ) ; scoop bucket add extras ; scoop install chromium }
+if ($checkBox6.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing mpv..."  ) ; scoop bucket add extras ; scoop install mpv }
 if ($checkBox7.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing vlc..."  ) ; scoop bucket add extras ; scoop install vlc}
-if ($checkBox8.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing audacity..."  ) ; scoop bucket add extras ; scoop install audacity -g }
-if ($checkBox9.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing eartrumpet..."  ) ; scoop bucket add extras ; scoop install eartrumpet -g }
-if ($checkBox10.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing handbrake..."  ) ; scoop bucket add extras ; scoop install handbrake -g }
-if ($checkBox11.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing flameshot..."  ) ; scoop bucket add extras ; scoop install flameshot -g }
-if ($checkBox12.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing obs-studio..."  ) ; scoop bucket add extras ; scoop install obs-studio -g }
-if ($checkBox13.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing blender..."  ) ; scoop bucket add extras ; scoop install blender -g }
-if ($checkBox14.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing gimp..."  ) ; scoop bucket add extras ; scoop install gimp -g }
-if ($checkBox15.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing krita..."  ) ; scoop bucket add extras ; scoop install krita -g }
-if ($checkBox16.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing inkscape..."  ) ; scoop bucket add extras ; scoop install inkscape -g }
-if ($checkBox17.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing soundnode..."  ) ; scoop bucket add extras ; scoop install soundnode -g }
-if ($checkBox18.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing spotify..."  ) ; scoop bucket add extras ; scoop install spotify -g }
-if ($checkBox19.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing youtube-music..."  ) ; scoop bucket add extras ; scoop install youtube-music -g }
-if ($checkBox20.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing cider..."  ) ; scoop bucket add extras ; scoop install cider -g }
-if ($checkBox21.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing deluge..."  ) ; scoop bucket add extras ; scoop install deluge -g }
-if ($checkBox22.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing picotorrent..."  ) ; scoop bucket add extras ; scoop install picotorrent -g }
-if ($checkBox23.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing qbittorrent..."  ) ; scoop bucket add extras ; scoop install qbittorrent -g }
-if ($checkBox24.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing transmission..."  ) ; scoop bucket add extras ; scoop install transmission -g }
-if ($checkBox25.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing zoom..."  ) ; scoop bucket add extras ; scoop install zoom -g }
-if ($checkBox26.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing microsoft-teams..."  ) ; scoop bucket add extras ; scoop install microsoft-teams -g }
-if ($checkBox27.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing telegram..."  ) ; scoop bucket add extras ; scoop install telegram -g }
-if ($checkBox28.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing signal..."  ) ; scoop bucket add extras ; scoop install signal -g }
-if ($checkBox29.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing discord..."  ) ; scoop bucket add extras  ; scoop install discord -g }
-if ($checkBox30.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing caprine..."  ) ; scoop bucket add extras  ; scoop install caprine -g }
-if ($checkBox31.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing libreoffice..."  ) ; scoop bucket add extras  ; scoop install libreoffice -g }
-if ($checkBox32.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing onlyoffice-desktopeditors..."  ) ; scoop bucket add extras  ; scoop install onlyoffice-desktopeditors -g }
-if ($checkBox33.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing office-365-apps-np..."  ) ; scoop bucket add nonportable  ; scoop install office-365-apps-np -g }
-if ($checkBox34.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing foxit-pdf-reader..."  ) ; scoop bucket add extras  ; scoop install foxit-pdf-reader -g }
-if ($checkBox35.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing qalculate..."  ) ; scoop bucket add extras  ; scoop install qalculate -g }
-if ($checkBox36.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing steam..."  ) ; scoop bucket add versions  ; scoop install steam -g }
-if ($checkBox37.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing epicgameslauncher..."  ) ; scoop bucket add chawyehsu_dorado https://github.com/chawyehsu/dorado  ; scoop install epicgameslauncher -g }
-if ($checkBox38.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing gog-galaxy..."  ) ; scoop bucket add anderlli0053_DEV-tools https://github.com/anderlli0053/DEV-tools  ; scoop install gog-galaxy -g }
-if ($checkBox39.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing itch..."  ) ; scoop bucket add games  ; scoop install itch -g }
-if ($checkBox40.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing polymc..."  ) ; scoop bucket add games  ; scoop install polymc -g }
-if ($checkBox41.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing dolphin..."  ) ; scoop bucket add games  ; scoop install dolphin -g }
-if ($checkBox42.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing citra..."  ) ; scoop bucket add games  ; scoop install citra -g }
-if ($checkBox43.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing yuzu..."  ) ; scoop bucket add games  ; scoop install yuzu -g }
-if ($checkBox44.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing dosbox-x..."  ) ; scoop bucket add extras  ; scoop install dosbox-x -g }
-if ($checkBox45.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing loot..."  ) ; scoop bucket add games  ; scoop install loot -g }
-if ($checkBox46.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing mo2..."  ) ; scoop bucket add games  ; scoop install mo2 -g }
-if ($checkBox47.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing vortex..."  ) ; scoop bucket add games  ; scoop install vortex -g }
-if ($checkBox48.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing logitech-gaming-software-np..."  ) ; scoop bucket add nonportable  ; scoop install logitech-gaming-software-np -g }
-if ($checkBox49.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing roundedtb..."  ) ; scoop bucket add extras  ; scoop install roundedtb -g }
-if ($checkBox50.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing taskbarx..."  ) ; scoop bucket add extras  ; scoop install taskbarx -g }
-if ($checkBox51.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing translucenttb..."  ) ; scoop bucket add extras  ; scoop install translucenttb -g }
-if ($checkBox52.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing powertoys..."  ) ; scoop bucket add extras  ; scoop install powertoys -g }
-if ($checkBox53.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing 7zip..."  ) ; scoop bucket add main  ; scoop install 7zip -g }
-if ($checkBox54.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing winrar..."  ) ; scoop bucket add extras  ; scoop install winrar -g }
-if ($checkBox55.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing revouninstaller..."  ) ; scoop bucket add extras  ; scoop install revouninstaller -g }
-if ($checkBox56.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing czkawka..."  ) ; scoop bucket add extras  ; scoop install czkawka -g }
-if ($checkBox57.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing anydesk..."  ) ; scoop bucket add extras  ; scoop install anydesk -g }
-if ($checkBox58.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing teamviewer..."  ) ; scoop bucket add extras  ; scoop install teamviewer -g }
-if ($checkBox59.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing rustdesk..."  ) ; scoop bucket add extras  ; scoop install rustdesk -g }
-if ($checkBox60.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing putty..."  ) ; scoop bucket add extras  ; scoop install putty -g }
-if ($checkBox61.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing filezilla..."  ) ; scoop bucket add extras  ; scoop install filezilla -g }
-if ($checkBox62.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing etcher..."  ) ; scoop bucket add extras  ; scoop install etcher -g }
-if ($checkBox63.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing rufus..."  ) ; scoop bucket add extras  ; scoop install rufus -g }
-if ($checkBox64.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ventoy..."  ) ; scoop bucket add extras  ; scoop install ventoy -g }
-if ($checkBox65.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ddu..."  ) ; scoop bucket add extras  ; scoop install ddu -g }
-if ($checkBox66.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing nvcleanstall..."  ) ; scoop bucket add extras  ; scoop install nvcleanstall -g }
-if ($checkBox67.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing nvidia-display-driver-np..."  ) ; scoop bucket add nonportable  ; scoop install nvidia-display-driver-np -g }
-if ($checkBox68.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ryzen-controller..."  ) ; scoop bucket add extras  ; scoop install ryzen-controller -g }
-if ($checkBox69.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ryzentuner..."  ) ; scoop bucket add hoilc_scoop-lemon https://github.com/hoilc/scoop-lemon  ; scoop install ryzentuner -g }
-if ($checkBox70.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing IntelExtremeTuningUtility-Install..."  ) ; scoop bucket add ACooper81_scoop-apps https://github.com/ACooper81/scoop-apps ; scoop install IntelExtremeTuningUtility-Install -g }
-if ($checkBox71.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing neofetch..."  ) ; scoop bucket add main  ; scoop install neofetch -g }
-if ($checkBox72.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing meow..."  ) ; scoop bucket add extras  ; scoop install meow -g }
-if ($checkBox73.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing cowsay..."  ) ; scoop bucket add main  ; scoop install cowsay -g }
-if ($checkBox74.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing alacritty..."  ) ; scoop bucket add extras  ; scoop install alacritty -g }
-if ($checkBox75.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing tabby..."  ) ; scoop bucket add extras  ; scoop install tabby -g }
-if ($checkBox76.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing hyper..."  ) ; scoop bucket add extras  ; scoop install hyper -g }
-if ($checkBox77.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing fluent-terminal-np..."  ) ; scoop bucket add nonportable  ; scoop install fluent-terminal-np -g }
-if ($checkBox78.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing windows-terminal..."  ) ; scoop bucket add extras  ; scoop install windows-terminal -g }
+if ($checkBox8.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing audacity..."  ) ; scoop bucket add extras ; scoop install audacity }
+if ($checkBox9.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing eartrumpet..."  ) ; scoop bucket add extras ; scoop install eartrumpet }
+if ($checkBox10.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing handbrake..."  ) ; scoop bucket add extras ; scoop install handbrake }
+if ($checkBox11.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing flameshot..."  ) ; scoop bucket add extras ; scoop install flameshot }
+if ($checkBox12.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing obs-studio..."  ) ; scoop bucket add extras ; scoop install obs-studio }
+if ($checkBox13.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing blender..."  ) ; scoop bucket add extras ; scoop install blender }
+if ($checkBox14.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing gimp..."  ) ; scoop bucket add extras ; scoop install gimp }
+if ($checkBox15.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing krita..."  ) ; scoop bucket add extras ; scoop install krita }
+if ($checkBox16.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing inkscape..."  ) ; scoop bucket add extras ; scoop install inkscape }
+if ($checkBox17.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing soundnode..."  ) ; scoop bucket add extras ; scoop install soundnode }
+if ($checkBox18.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing spotify..."  ) ; scoop bucket add extras ; scoop install spotify }
+if ($checkBox19.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing youtube-music..."  ) ; scoop bucket add extras ; scoop install youtube-music }
+if ($checkBox20.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing cider..."  ) ; scoop bucket add extras ; scoop install cider }
+if ($checkBox21.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing deluge..."  ) ; scoop bucket add extras ; scoop install deluge }
+if ($checkBox22.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing picotorrent..."  ) ; scoop bucket add extras ; scoop install picotorrent }
+if ($checkBox23.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing qbittorrent..."  ) ; scoop bucket add extras ; scoop install qbittorrent }
+if ($checkBox24.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing transmission..."  ) ; scoop bucket add extras ; scoop install transmission }
+if ($checkBox25.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing zoom..."  ) ; scoop bucket add extras ; scoop install zoom }
+if ($checkBox26.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing microsoft-teams..."  ) ; scoop bucket add extras ; scoop install microsoft-teams }
+if ($checkBox27.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing telegram..."  ) ; scoop bucket add extras ; scoop install telegram }
+if ($checkBox28.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing signal..."  ) ; scoop bucket add extras ; scoop install signal }
+if ($checkBox29.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing discord..."  ) ; scoop bucket add extras  ; scoop install discord }
+if ($checkBox30.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing caprine..."  ) ; scoop bucket add extras  ; scoop install caprine }
+if ($checkBox31.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing libreoffice..."  ) ; scoop bucket add extras  ; scoop install libreoffice }
+if ($checkBox32.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing onlyoffice-desktopeditors..."  ) ; scoop bucket add extras  ; scoop install onlyoffice-desktopeditors }
+if ($checkBox33.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing office-365-apps-np..."  ) ; scoop bucket add nonportable  ; scoop install office-365-apps-np }
+if ($checkBox34.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing foxit-pdf-reader..."  ) ; scoop bucket add extras  ; scoop install foxit-pdf-reader }
+if ($checkBox35.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing qalculate..."  ) ; scoop bucket add extras  ; scoop install qalculate }
+if ($checkBox36.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing steam..."  ) ; scoop bucket add versions  ; scoop install steam }
+if ($checkBox37.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing epicgameslauncher..."  ) ; scoop bucket add chawyehsu_dorado https://github.com/chawyehsu/dorado  ; scoop install epicgameslauncher }
+if ($checkBox38.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing gog-galaxy..."  ) ; scoop bucket add anderlli0053_DEV-tools https://github.com/anderlli0053/DEV-tools  ; scoop install gog-galaxy }
+if ($checkBox39.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing itch..."  ) ; scoop bucket add games  ; scoop install itch }
+if ($checkBox40.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing polymc..."  ) ; scoop bucket add games  ; scoop install polymc }
+if ($checkBox41.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing dolphin..."  ) ; scoop bucket add games  ; scoop install dolphin }
+if ($checkBox42.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing citra..."  ) ; scoop bucket add games  ; scoop install citra }
+if ($checkBox43.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing yuzu..."  ) ; scoop bucket add games  ; scoop install yuzu }
+if ($checkBox44.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing dosbox-x..."  ) ; scoop bucket add extras  ; scoop install dosbox-x }
+if ($checkBox45.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing loot..."  ) ; scoop bucket add games  ; scoop install loot }
+if ($checkBox46.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing mo2..."  ) ; scoop bucket add games  ; scoop install mo2 }
+if ($checkBox47.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing vortex..."  ) ; scoop bucket add games  ; scoop install vortex }
+if ($checkBox48.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing logitech-gaming-software-np..."  ) ; scoop bucket add nonportable  ; scoop install logitech-gaming-software-np }
+if ($checkBox49.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing roundedtb..."  ) ; scoop bucket add extras  ; scoop install roundedtb }
+if ($checkBox50.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing taskbarx..."  ) ; scoop bucket add extras  ; scoop install taskbarx }
+if ($checkBox51.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing translucenttb..."  ) ; scoop bucket add extras  ; scoop install translucenttb }
+if ($checkBox52.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing powertoys..."  ) ; scoop bucket add extras  ; scoop install powertoys }
+if ($checkBox53.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing 7zip..."  ) ; scoop bucket add main  ; scoop install 7zip }
+if ($checkBox54.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing winrar..."  ) ; scoop bucket add extras  ; scoop install winrar }
+if ($checkBox55.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing revouninstaller..."  ) ; scoop bucket add extras  ; scoop install revouninstaller }
+if ($checkBox56.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing czkawka..."  ) ; scoop bucket add extras  ; scoop install czkawka }
+if ($checkBox57.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing anydesk..."  ) ; scoop bucket add extras  ; scoop install anydesk }
+if ($checkBox58.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing teamviewer..."  ) ; scoop bucket add extras  ; scoop install teamviewer }
+if ($checkBox59.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing rustdesk..."  ) ; scoop bucket add extras  ; scoop install rustdesk }
+if ($checkBox60.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing putty..."  ) ; scoop bucket add extras  ; scoop install putty }
+if ($checkBox61.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing filezilla..."  ) ; scoop bucket add extras  ; scoop install filezilla }
+if ($checkBox62.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing etcher..."  ) ; scoop bucket add extras  ; scoop install etcher }
+if ($checkBox63.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing rufus..."  ) ; scoop bucket add extras  ; scoop install rufus }
+if ($checkBox64.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ventoy..."  ) ; scoop bucket add extras  ; scoop install ventoy }
+if ($checkBox65.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ddu..."  ) ; scoop bucket add extras  ; scoop install ddu }
+if ($checkBox66.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing nvcleanstall..."  ) ; scoop bucket add extras  ; scoop install nvcleanstall }
+if ($checkBox67.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing nvidia-display-driver-np..."  ) ; scoop bucket add nonportable  ; scoop install nvidia-display-driver-np }
+if ($checkBox68.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ryzen-controller..."  ) ; scoop bucket add extras  ; scoop install ryzen-controller }
+if ($checkBox69.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ryzentuner..."  ) ; scoop bucket add hoilc_scoop-lemon https://github.com/hoilc/scoop-lemon  ; scoop install ryzentuner }
+if ($checkBox70.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing IntelExtremeTuningUtility-Install..."  ) ; scoop bucket add ACooper81_scoop-apps https://github.com/ACooper81/scoop-apps ; scoop install IntelExtremeTuningUtility-Install }
+if ($checkBox71.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing neofetch..."  ) ; scoop bucket add main  ; scoop install neofetch }
+if ($checkBox72.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing meow..."  ) ; scoop bucket add extras  ; scoop install meow }
+if ($checkBox73.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing cowsay..."  ) ; scoop bucket add main  ; scoop install cowsay }
+if ($checkBox74.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing alacritty..."  ) ; scoop bucket add extras  ; scoop install alacritty }
+if ($checkBox75.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing tabby..."  ) ; scoop bucket add extras  ; scoop install tabby }
+if ($checkBox76.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing hyper..."  ) ; scoop bucket add extras  ; scoop install hyper }
+if ($checkBox77.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing fluent-terminal-np..."  ) ; scoop bucket add nonportable  ; scoop install fluent-terminal-np }
+if ($checkBox78.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing windows-terminal..."  ) ; scoop bucket add extras  ; scoop install windows-terminal }
 if ( !$checkBox1.Checked -and !$checkBox2.Checked -and !$checkBox1.Checked -and !$checkBox4.Checked -and !$checkBox5.Checked -and !$checkBox6.Checked -and !$checkBox7.Checked -and !$checkBox8.Checked -and !$checkBox9.Checked -and !$checkBox10.Checked -and !$checkBox11.Checked -and !$checkBox12.Checked -and !$checkBox13.Checked -and !$checkBox14.Checked -and !$checkBox15.Checked -and !$checkBox16.Checked -and !$checkBox17.Checked -and !$checkBox18.Checked -and !$checkBox19.Checked -and !$checkBox20.Checked -and !$checkBox21.Checked -and !$checkBox22.Checked -and !$checkBox23.Checked -and !$checkBox24.Checked -and !$checkBox25.Checked -and !$checkBox26.Checked -and !$checkBox27.Checked -and !$checkBox28.Checked -and !$checkBox29.Checked -and !$checkBox30.Checked -and !$checkBox31.Checked -and !$checkBox32.Checked -and !$checkBox33.Checked -and !$checkBox34.Checked -and !$checkBox35.Checked -and !$checkBox36.Checked -and !$checkBox37.Checked -and !$checkBox38.Checked -and !$checkBox39.Checked -and !$checkBox40.Checked -and !$checkBox41.Checked -and !$checkBox42.Checked -and !$checkBox43.Checked -and !$checkBox44.Checked -and !$checkBox45.Checked -and !$checkBox46.Checked -and !$checkBox47.Checked -and !$checkBox48.Checked -and !$checkBox49.Checked -and !$checkBox50.Checked -and !$checkBox51.Checked -and !$checkBox52.Checked -and !$checkBox53.Checked -and !$checkBox54.Checked -and !$checkBox55.Checked -and !$checkBox56.Checked -and !$checkBox57.Checked -and !$checkBox58.Checked -and !$checkBox59.Checked -and !$checkBox60.Checked -and !$checkBox61.Checked -and !$checkBox62.Checked -and !$checkBox63.Checked -and !$checkBox64.Checked -and !$checkBox65.Checked -and !$checkBox66.Checked -and !$checkBox67.Checked -and !$checkBox67.Checked -and !$checkBox68.Checked -and !$checkBox69.Checked -and !$checkBox70.Checked -and !$checkBox71.Checked -and !$checkBox72.Checked -and !$checkBox73.Checked -and !$checkBox74.Checked -and !$checkBox75.Checked -and !$checkBox76.Checked -and !$checkBox77.Checked -and !$checkBox78.Checked) {   $Tab5_Statusbox1.Items.Add("No CheckBox selected....")} 
 }
 
@@ -1522,11 +1647,11 @@ $tab5.Controls.Add($checkBox78)
 
 # link1
 $tab5_manualinstall1 = New-Object System.Windows.Forms.LinkLabel
-$tab5_manualinstall1.Location = New-Object System.Drawing.Point(530,200)
+$tab5_manualinstall1.Location = New-Object System.Drawing.Point(530,160)
 $tab5_manualinstall1.VisitedLinkColor = 'Red'
 $tab5_manualinstall1.LinkBehavior = 'HoverUnderline'
 $tab5_manualinstall1.LinkColor = 'Navy'
-$tab5_manualinstall1.Font = New-Object System.Drawing.Font('arial',10)
+$tab5_manualinstall1.Font = New-Object System.Drawing.Font('arial',8)
 $tab5_manualinstall1.ForeColor = "#000000"
 $tab5_manualinstall1.Text = ("Digidoc4")
 $tab5_manualinstall1.add_click({explorer "https://installer.id.ee/media/win/Open-EID-22.6.0.1930.exe"})
@@ -1534,11 +1659,11 @@ $tab5.Controls.Add($tab5_manualinstall1)
 
 # link1
 $tab5_manualinstall2 = New-Object System.Windows.Forms.LinkLabel
-$tab5_manualinstall2.Location = New-Object System.Drawing.Point(530,230)
+$tab5_manualinstall2.Location = New-Object System.Drawing.Point(530,185)
 $tab5_manualinstall2.VisitedLinkColor = 'Red'
 $tab5_manualinstall2.LinkBehavior = 'HoverUnderline'
 $tab5_manualinstall2.LinkColor = 'Navy'
-$tab5_manualinstall2.Font = New-Object System.Drawing.Font('arial',10)
+$tab5_manualinstall2.Font = New-Object System.Drawing.Font('arial',8)
 $tab5_manualinstall2.ForeColor = "#000000"
 $tab5_manualinstall2.Text = ("Packet Tracer")
 $tab5_manualinstall2.add_click({explorer "https://www.netacad.com/portal/resources/file/84f3e715-2e22-435a-8742-fd51f136cf73"})
@@ -1546,11 +1671,11 @@ $tab5.Controls.Add($tab5_manualinstall2)
 
 # link1
 $tab5_manualinstall3 = New-Object System.Windows.Forms.LinkLabel
-$tab5_manualinstall3.Location = New-Object System.Drawing.Point(530,260)
+$tab5_manualinstall3.Location = New-Object System.Drawing.Point(530,210)
 $tab5_manualinstall3.VisitedLinkColor = 'Red'
 $tab5_manualinstall3.LinkBehavior = 'HoverUnderline'
 $tab5_manualinstall3.LinkColor = 'Navy'
-$tab5_manualinstall3.Font = New-Object System.Drawing.Font('arial',10)
+$tab5_manualinstall3.Font = New-Object System.Drawing.Font('arial',8)
 $tab5_manualinstall3.ForeColor = "#000000"
 $tab5_manualinstall3.Text = ("GNS3")
 $tab5_manualinstall3.add_click({explorer "https://github.com/GNS3/gns3-gui/releases/download/v2.2.33.1/GNS3-2.2.33.1-all-in-one.exe"})
@@ -1558,37 +1683,43 @@ $tab5.Controls.Add($tab5_manualinstall3)
 
 
 
-# TAB 6
-#----------------------------------------------
 
-$tab6 = New-object System.Windows.Forms.Tabpage
-$tab6.DataBindings.DefaultDataSourceUpdateMode = 0 
-$tab6.Name = "tab6" 
-$tab6.Text = "PC Name” 
-$FormTabControl.Controls.Add($tab6)
+# link1
+$tab5_manualinstall4 = New-Object System.Windows.Forms.LinkLabel
+$tab5_manualinstall4.Location = New-Object System.Drawing.Point(530,235)
+$tab5_manualinstall4.VisitedLinkColor = 'Red'
+$tab5_manualinstall4.LinkBehavior = 'HoverUnderline'
+$tab5_manualinstall4.LinkColor = 'Navy'
+$tab5_manualinstall4.Font = New-Object System.Drawing.Font('arial',8)
+$tab5_manualinstall4.ForeColor = "#000000"
+$tab5_manualinstall4.Text = ("Explorer Patcher")
+$tab5_manualinstall4.add_click({explorer "https://github.com/valinet/ExplorerPatcher/releases/download/22622.450.50.2_5de2eb0/ep_setup.exe"})
+$tab5.Controls.Add($tab5_manualinstall4)
 
-# window label
-$label = New-Object System.Windows.Forms.Label
-$label.Location = New-Object System.Drawing.Point(10,10)
-$label.AutoSize = $true
-$label.Font = New-Object System.Drawing.Font('arial',26,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
-$label.ForeColor = "#000000"
-$label.Text = ("Enter your preferred computer name")
-$tab6.Controls.Add($label)
 
-$textBox1 = New-Object System.Windows.Forms.TextBox
-$textBox1.Location = New-Object System.Drawing.Point(50,100)
-$textBox1.Size = New-Object System.Drawing.Size(260,100)
-$tab6.Controls.Add($textBox1)
-Write-Host $textBox1.Text
+# link1
+$tab5_manualinstall5 = New-Object System.Windows.Forms.LinkLabel
+$tab5_manualinstall5.Location = New-Object System.Drawing.Point(530,260)
+$tab5_manualinstall5.VisitedLinkColor = 'Red'
+$tab5_manualinstall5.LinkBehavior = 'HoverUnderline'
+$tab5_manualinstall5.LinkColor = 'Navy'
+$tab5_manualinstall5.Font = New-Object System.Drawing.Font('arial',8)
+$tab5_manualinstall5.ForeColor = "#000000"
+$tab5_manualinstall5.Text = ("FxSound")
+$tab5_manualinstall5.add_click({explorer "https://drive.fxsound.com/cs/sqCJUUJodRDCmXn/downloads3.fxsound.com/fxsound/1.1.16.0/fxsound_setup.exe/download"})
+$tab5.Controls.Add($tab5_manualinstall5)
 
-$Tab6_renamebutton = New-Object System.Windows.Forms.Button
-$Tab6_renamebutton.Location = New-Object System.Drawing.Point(10,200)
-$Tab6_renamebutton.Size = New-Object System.Drawing.Size(200,25)
-$Tab6_renamebutton.Text = "Rename"
-$Tab6_renamebutton.Add_Click({Rename-Computer -NewName $textBox1.Text -Restart})
-$tab6.Controls.Add($Tab6_renamebutton)
-
+# link1
+$tab5_manualinstall6 = New-Object System.Windows.Forms.LinkLabel
+$tab5_manualinstall6.Location = New-Object System.Drawing.Point(530,285)
+$tab5_manualinstall6.VisitedLinkColor = 'Red'
+$tab5_manualinstall6.LinkBehavior = 'HoverUnderline'
+$tab5_manualinstall6.LinkColor = 'Navy'
+$tab5_manualinstall6.Font = New-Object System.Drawing.Font('arial',8)
+$tab5_manualinstall6.ForeColor = "#000000"
+$tab5_manualinstall6.Text = ("Battle.net")
+$tab5_manualinstall6.add_click({explorer "https://eu.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe&id=undefined"})
+$tab5.Controls.Add($tab5_manualinstall6)
 # TAB 10
 #----------------------------------------------
 
