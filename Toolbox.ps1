@@ -25,7 +25,7 @@ $ApplicationForm.Controls.Add($FormTabControl)
 $Tab1 = New-object System.Windows.Forms.Tabpage
 $Tab1.DataBindings.DefaultDataSourceUpdateMode = 0 
 $Tab1.Name = "Tab1" 
-$Tab1.Text = "Administrator Stuff” 
+$Tab1.Text = "Admin” 
 $FormTabControl.Controls.Add($Tab1)
 
 # label 1
@@ -643,7 +643,7 @@ $tab2.Controls.Add($tab2_renamebutton1)
 $Tab3 = New-object System.Windows.Forms.Tabpage
 $Tab3.DataBindings.DefaultDataSourceUpdateMode = 0 
 $Tab3.Name = "Tab3" 
-$Tab3.Text = "Activate Windows” 
+$Tab3.Text = "Activate” 
 $FormTabControl.Controls.Add($Tab3)
 
 # window label
@@ -773,7 +773,7 @@ $Tab3.Controls.add($Tab3_actiavtebutton11)
 $Tab4 = New-object System.Windows.Forms.Tabpage
 $Tab4.DataBindings.DefaultDataSourceUpdateMode = 0 
 $Tab4.Name = "Tab4" 
-$Tab4.Text = "Power Options” 
+$Tab4.Text = "Power” 
 $FormTabControl.Controls.Add($Tab4)
 
 # window label
@@ -893,7 +893,7 @@ $Tab5_label1.Text = ("Install applications")
 $Tab5.Controls.Add($Tab5_label1)
 
 $Tab5_installerbutton1 = New-Object System.Windows.Forms.Button
-$Tab5_installerbutton1.Location = New-Object System.Drawing.Point(550,15)
+$Tab5_installerbutton1.Location = New-Object System.Drawing.Point(10,10)
 $Tab5_installerbutton1.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_installerbutton1.Text = "Install Scoop"
 $Tab5_installerbutton1.add_click({ Start-Process powershell {
@@ -902,7 +902,7 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser} ; Start-Process powershell 
 $Tab5.Controls.add($Tab5_installerbutton1)
 
 $Tab5_installerbutton2 = New-Object System.Windows.Forms.Button
-$Tab5_installerbutton2.Location = New-Object System.Drawing.Point(450,15)
+$Tab5_installerbutton2.Location = New-Object System.Drawing.Point(110,10)
 $Tab5_installerbutton2.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_installerbutton2.Text = "Update Scoop"
 $Tab5_installerbutton2.add_click({scoop update -a})
@@ -1070,8 +1070,8 @@ if ( !$checkBox1.Checked -and !$checkBox2.Checked -and !$checkBox1.Checked -and 
 #Tab5_installbutton1
 $Tab5_installbutton1 = New-Object System.Windows.Forms.Button
 $Tab5_installbutton1.Name = "Tab5_installbutton1"
-$Tab5_installbutton1.Location = New-Object System.Drawing.Point(480,300)
-$Tab5_installbutton1.Size = New-Object System.Drawing.Size(175,25)
+$Tab5_installbutton1.Location = New-Object System.Drawing.Point(450,10)
+$Tab5_installbutton1.Size = New-Object System.Drawing.Size(200,25)
 $Tab5_installbutton1.Text = "Install selected applications"
 $Tab5_installbutton1.add_Click($handler_Tab5_installbutton1_Click)
 $tab5.Controls.Add($Tab5_installbutton1)
@@ -1079,7 +1079,7 @@ $tab5.Controls.Add($Tab5_installbutton1)
 #Tab5_Statusbox1
 $Tab5_Statusbox1 = New-Object System.Windows.Forms.ListBox
 $Tab5_Statusbox1.FormattingEnabled = $True
-$Tab5_Statusbox1.Location = New-Object System.Drawing.Point(470,335)
+$Tab5_Statusbox1.Location = New-Object System.Drawing.Point(525,335)
 $Tab5_Statusbox1.Size = New-Object System.Drawing.Size(200,100)
 $Tab5_Statusbox1.Name = "Tab5_Statusbox1"
 $tab5.Controls.Add($Tab5_Statusbox1)
@@ -1595,44 +1595,44 @@ $checkBox73.Name = "checkBox73"
 $tab5.Controls.Add($checkBox73)
 
 
-$checkBox74.Location = New-Object System.Drawing.Point(530,50)
+$checkBox74.Location = New-Object System.Drawing.Point(410,250)
 $checkBox74.Size = New-Object System.Drawing.Size(100,25)
 $checkBox74.Text = "Alacritty"
 $checkBox74.Name = "checkBox74"
 $tab5.Controls.Add($checkBox74)
 
 
-$checkBox75.Location = New-Object System.Drawing.Point(530,70)
+$checkBox75.Location = New-Object System.Drawing.Point(410,270)
 $checkBox75.Size = New-Object System.Drawing.Size(100,25)
 $checkBox75.Text = "Tabby"
 $checkBox75.Name = "checkBox75"
 $tab5.Controls.Add($checkBox75)
 
 
-$checkBox76.Location = New-Object System.Drawing.Point(530,90)
+$checkBox76.Location = New-Object System.Drawing.Point(410,290)
 $checkBox76.Size = New-Object System.Drawing.Size(100,25)
 $checkBox76.Text = "Hyper"
 $checkBox76.Name = "checkBox76"
 $tab5.Controls.Add($checkBox76)
 
 
-$checkBox77.Location = New-Object System.Drawing.Point(530,110)
+$checkBox77.Location = New-Object System.Drawing.Point(410,310)
 $checkBox77.Size = New-Object System.Drawing.Size(120,25)
-$checkBox77.Text = "Fluent Terminal"
+$checkBox77.Text = "Fluent"
 $checkBox77.Name = "checkBox77"
 $tab5.Controls.Add($checkBox77)
 
 
-$checkBox78.Location = New-Object System.Drawing.Point(530,130)
+$checkBox78.Location = New-Object System.Drawing.Point(410,330)
 $checkBox78.Size = New-Object System.Drawing.Size(120,25)
-$checkBox78.Text = "Windows Terminal"
+$checkBox78.Text = "Windows"
 $checkBox78.Name = "checkBox78"
 $tab5.Controls.Add($checkBox78)
 
 
 # link1
 $tab5_manualinstall1 = New-Object System.Windows.Forms.LinkLabel
-$tab5_manualinstall1.Location = New-Object System.Drawing.Point(530,160)
+$tab5_manualinstall1.Location = New-Object System.Drawing.Point(530,50)
 $tab5_manualinstall1.VisitedLinkColor = 'Red'
 $tab5_manualinstall1.LinkBehavior = 'HoverUnderline'
 $tab5_manualinstall1.LinkColor = 'Navy'
@@ -1644,7 +1644,7 @@ $tab5.Controls.Add($tab5_manualinstall1)
 
 # link1
 $tab5_manualinstall2 = New-Object System.Windows.Forms.LinkLabel
-$tab5_manualinstall2.Location = New-Object System.Drawing.Point(530,185)
+$tab5_manualinstall2.Location = New-Object System.Drawing.Point(530,75)
 $tab5_manualinstall2.VisitedLinkColor = 'Red'
 $tab5_manualinstall2.LinkBehavior = 'HoverUnderline'
 $tab5_manualinstall2.LinkColor = 'Navy'
@@ -1656,7 +1656,7 @@ $tab5.Controls.Add($tab5_manualinstall2)
 
 # link1
 $tab5_manualinstall3 = New-Object System.Windows.Forms.LinkLabel
-$tab5_manualinstall3.Location = New-Object System.Drawing.Point(530,210)
+$tab5_manualinstall3.Location = New-Object System.Drawing.Point(530,100)
 $tab5_manualinstall3.VisitedLinkColor = 'Red'
 $tab5_manualinstall3.LinkBehavior = 'HoverUnderline'
 $tab5_manualinstall3.LinkColor = 'Navy'
@@ -1671,7 +1671,7 @@ $tab5.Controls.Add($tab5_manualinstall3)
 
 # link1
 $tab5_manualinstall4 = New-Object System.Windows.Forms.LinkLabel
-$tab5_manualinstall4.Location = New-Object System.Drawing.Point(530,235)
+$tab5_manualinstall4.Location = New-Object System.Drawing.Point(530,125)
 $tab5_manualinstall4.VisitedLinkColor = 'Red'
 $tab5_manualinstall4.LinkBehavior = 'HoverUnderline'
 $tab5_manualinstall4.LinkColor = 'Navy'
@@ -1684,7 +1684,7 @@ $tab5.Controls.Add($tab5_manualinstall4)
 
 # link1
 $tab5_manualinstall5 = New-Object System.Windows.Forms.LinkLabel
-$tab5_manualinstall5.Location = New-Object System.Drawing.Point(530,260)
+$tab5_manualinstall5.Location = New-Object System.Drawing.Point(530,150)
 $tab5_manualinstall5.VisitedLinkColor = 'Red'
 $tab5_manualinstall5.LinkBehavior = 'HoverUnderline'
 $tab5_manualinstall5.LinkColor = 'Navy'
@@ -1696,7 +1696,7 @@ $tab5.Controls.Add($tab5_manualinstall5)
 
 # link1
 $tab5_manualinstall6 = New-Object System.Windows.Forms.LinkLabel
-$tab5_manualinstall6.Location = New-Object System.Drawing.Point(530,285)
+$tab5_manualinstall6.Location = New-Object System.Drawing.Point(530,175)
 $tab5_manualinstall6.VisitedLinkColor = 'Red'
 $tab5_manualinstall6.LinkBehavior = 'HoverUnderline'
 $tab5_manualinstall6.LinkColor = 'Navy'
@@ -1705,6 +1705,258 @@ $tab5_manualinstall6.ForeColor = "#000000"
 $tab5_manualinstall6.Text = ("Battle.net")
 $tab5_manualinstall6.add_click({explorer "https://eu.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe&id=undefined"})
 $tab5.Controls.Add($tab5_manualinstall6)
+
+
+# TAB 6
+#----------------------------------------------
+
+$tab6 = New-object System.Windows.Forms.Tabpage
+$tab6.DataBindings.DefaultDataSourceUpdateMode = 0 
+$tab6.Name = "tab6" 
+$tab6.Text = "Update” 
+$FormTabControl.Controls.Add($tab6)
+
+# window label
+$tab6_label1 = New-Object System.Windows.Forms.Label
+$tab6_label1.Location = New-Object System.Drawing.Point(100,10)
+$tab6_label1.AutoSize = $true
+$tab6_label1.Font = New-Object System.Drawing.Font('verdana',16)
+$tab6_label1.ForeColor = "#000000"
+$tab6_label1.Text = ("Default")
+$tab6.Controls.Add($tab6_label1)
+
+$tab6_label2 = New-Object System.Windows.Forms.Label
+$tab6_label2.Location = New-Object System.Drawing.Point(300,10)
+$tab6_label2.AutoSize = $true
+$tab6_label2.Font = New-Object System.Drawing.Font('verdana',16)
+$tab6_label2.ForeColor = "#000000"
+$tab6_label2.Text = ("Security")
+$tab6.Controls.Add($tab6_label2)
+
+$tab6_label3 = New-Object System.Windows.Forms.Label
+$tab6_label3.Location = New-Object System.Drawing.Point(500,10)
+$tab6_label3.AutoSize = $true
+$tab6_label3.Font = New-Object System.Drawing.Font('verdana',16)
+$tab6_label3.ForeColor = "#000000"
+$tab6_label3.Text = ("Disabled")
+$tab6.Controls.Add($tab6_label3)
+
+
+$Tab6_updatebutton1 = New-Object System.Windows.Forms.Button
+$Tab6_updatebutton1.Location = New-Object System.Drawing.Point(10,50)
+$Tab6_updatebutton1.Size = New-Object System.Drawing.Size(200,25)
+$Tab6_updatebutton1.Text = "Default"
+$Tab6_updatebutton1.Add_Click({start-process powershell -verb runas {
+	If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU")) {
+		New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -Force | Out-Null
+	}
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -Name "NoAutoUpdate" -Type DWord -Value 0
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -Name "AUOptions" -Type DWord -Value 3
+	If (!(Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config")) {
+		New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" -Force | Out-Null
+	}
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" -Name "DODownloadMode" -Type DWord -Value 1
+	
+	$services = @(
+		"BITS"
+		"wuauserv"
+	)
+
+	foreach ($service in $services) {
+		# -ErrorAction SilentlyContinue is so it doesn't write an error to stdout if a service doesn't exist
+
+		Write-Host "Setting $service StartupType to Automatic"
+		Get-Service -Name $service -ErrorAction SilentlyContinue | Set-Service -StartupType Automatic
+	}
+	Write-Host "Enabling driver offering through Windows Update..."
+	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Device Metadata" -Name "PreventDeviceMetadataFromNetwork" -ErrorAction SilentlyContinue
+	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DriverSearching" -Name "DontPromptForWindowsUpdate" -ErrorAction SilentlyContinue
+	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DriverSearching" -Name "DontSearchWindowsUpdate" -ErrorAction SilentlyContinue
+	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DriverSearching" -Name "DriverUpdateWizardWuSearchEnabled" -ErrorAction SilentlyContinue
+	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -Name "ExcludeWUDriversInQualityUpdate" -ErrorAction SilentlyContinue
+	Write-Host "Enabling Windows Update automatic restart..."
+	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -Name "NoAutoRebootWithLoggedOnUsers" -ErrorAction SilentlyContinue
+	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -Name "AUPowerManagement" -ErrorAction SilentlyContinue
+	Write-Host "Enabled driver offering through Windows Update"
+	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings" -Name "BranchReadinessLevel" -ErrorAction SilentlyContinue
+	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings" -Name "DeferFeatureUpdatesPeriodInDays" -ErrorAction SilentlyContinue
+	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings" -Name "DeferQualityUpdatesPeriodInDays " -ErrorAction SilentlyContinue
+	Write-Host "Updates Set to Default"
+}})
+$tab6.Controls.Add($Tab6_updatebutton1)
+
+$Tab6_updatebutton2 = New-Object System.Windows.Forms.Button
+$Tab6_updatebutton2.Location = New-Object System.Drawing.Point(225,50)
+$Tab6_updatebutton2.Size = New-Object System.Drawing.Size(200,25)
+$Tab6_updatebutton2.Text = "Security"
+$Tab6_updatebutton2.Add_Click({start-process powershell -verb runas {
+	Write-Host "Disabling driver offering through Windows Update..."
+	If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Device Metadata")) {
+		New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Device Metadata" -Force | Out-Null
+	}
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Device Metadata" -Name "PreventDeviceMetadataFromNetwork" -Type DWord -Value 1
+	If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DriverSearching")) {
+		New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DriverSearching" -Force | Out-Null
+	}
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DriverSearching" -Name "DontPromptForWindowsUpdate" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DriverSearching" -Name "DontSearchWindowsUpdate" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DriverSearching" -Name "DriverUpdateWizardWuSearchEnabled" -Type DWord -Value 0
+	If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate")) {
+		New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" | Out-Null
+	}
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" -Name "ExcludeWUDriversInQualityUpdate" -Type DWord -Value 1
+	Write-Host "Disabling Windows Update automatic restart..."
+	If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU")) {
+		New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -Force | Out-Null
+	}
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -Name "NoAutoRebootWithLoggedOnUsers" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -Name "AUPowerManagement" -Type DWord -Value 0
+	Write-Host "Disabled driver offering through Windows Update"
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings" -Name "BranchReadinessLevel" -Type DWord -Value 20
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings" -Name "DeferFeatureUpdatesPeriodInDays" -Type DWord -Value 365
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\WindowsUpdate\UX\Settings" -Name "DeferQualityUpdatesPeriodInDays " -Type DWord -Value 4
+	Write-Host "Updates Set to Recommended"
+}})
+$tab6.Controls.Add($Tab6_updatebutton2)
+
+$Tab6_updatebutton3 = New-Object System.Windows.Forms.Button
+$Tab6_updatebutton3.Location = New-Object System.Drawing.Point(440,50)
+$Tab6_updatebutton3.Size = New-Object System.Drawing.Size(200,25)
+$Tab6_updatebutton3.Text = "Disabled"
+$Tab6_updatebutton3.Add_Click({start-process powershell -verb runas {
+    If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU")) {
+        New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -Force | Out-Null
+    }
+    Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -Name "NoAutoUpdate" -Type DWord -Value 1
+    Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" -Name "AUOptions" -Type DWord -Value 1
+    If (!(Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config")) {
+        New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" -Force | Out-Null
+    }
+    Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" -Name "DODownloadMode" -Type DWord -Value 0
+    
+    $services = @(
+        "BITS"
+        "wuauserv"
+    )
+
+    foreach ($service in $services) {
+        # -ErrorAction SilentlyContinue is so it doesn't write an error to stdout if a service doesn't exist
+
+        Write-Host "Setting $service StartupType to Disabled"
+        Get-Service -Name $service -ErrorAction SilentlyContinue | Set-Service -StartupType Disabled
+    }
+    Write-Host "Updates ARE DISABLED"
+}})
+$tab6.Controls.Add($Tab6_updatebutton3)
+
+
+$Tab6_updatebutton4 = New-Object System.Windows.Forms.Button
+$Tab6_updatebutton4.Location = New-Object System.Drawing.Point(540,350)
+$Tab6_updatebutton4.Size = New-Object System.Drawing.Size(100,25)
+$Tab6_updatebutton4.Text = "Factory"
+$Tab6_updatebutton4.Add_Click({start-process powershell -verb runas {
+	Write-Host "1. Stopping Windows Update Services..." 
+	Stop-Service -Name BITS 
+	Stop-Service -Name wuauserv 
+	Stop-Service -Name appidsvc 
+	Stop-Service -Name cryptsvc 
+
+	Write-Host "2. Remove QMGR Data file..." 
+	Remove-Item "$env:allusersprofile\Application Data\Microsoft\Network\Downloader\qmgr*.dat" -ErrorAction SilentlyContinue 
+
+	Write-Host "3. Renaming the Software Distribution and CatRoot Folder..." 
+	Rename-Item $env:systemroot\SoftwareDistribution SoftwareDistribution.bak -ErrorAction SilentlyContinue 
+	Rename-Item $env:systemroot\System32\Catroot2 catroot2.bak -ErrorAction SilentlyContinue 
+
+	Write-Host "4. Removing old Windows Update log..." 
+	Remove-Item $env:systemroot\WindowsUpdate.log -ErrorAction SilentlyContinue 
+
+	Write-Host "5. Resetting the Windows Update Services to defualt settings..." 
+	"sc.exe sdset bits D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWLOCRRC;;;AU)(A;;CCLCSWRPWPDTLOCRRC;;;PU)" 
+	"sc.exe sdset wuauserv D:(A;;CCLCSWRPWPDTLOCRRC;;;SY)(A;;CCDCLCSWRPWPDTLOCRSDRCWDWO;;;BA)(A;;CCLCSWLOCRRC;;;AU)(A;;CCLCSWRPWPDTLOCRRC;;;PU)" 
+	Set-Location $env:systemroot\system32 
+
+	Write-Host "6. Registering some DLLs..." 
+	regsvr32.exe /s atl.dll 
+	regsvr32.exe /s urlmon.dll 
+	regsvr32.exe /s mshtml.dll 
+	regsvr32.exe /s shdocvw.dll 
+	regsvr32.exe /s browseui.dll 
+	regsvr32.exe /s jscript.dll 
+	regsvr32.exe /s vbscript.dll 
+	regsvr32.exe /s scrrun.dll 
+	regsvr32.exe /s msxml.dll 
+	regsvr32.exe /s msxml3.dll 
+	regsvr32.exe /s msxml6.dll 
+	regsvr32.exe /s actxprxy.dll 
+	regsvr32.exe /s softpub.dll 
+	regsvr32.exe /s wintrust.dll 
+	regsvr32.exe /s dssenh.dll 
+	regsvr32.exe /s rsaenh.dll 
+	regsvr32.exe /s gpkcsp.dll 
+	regsvr32.exe /s sccbase.dll 
+	regsvr32.exe /s slbcsp.dll 
+	regsvr32.exe /s cryptdlg.dll 
+	regsvr32.exe /s oleaut32.dll 
+	regsvr32.exe /s ole32.dll 
+	regsvr32.exe /s shell32.dll 
+	regsvr32.exe /s initpki.dll 
+	regsvr32.exe /s wuapi.dll 
+	regsvr32.exe /s wuaueng.dll 
+	regsvr32.exe /s wuaueng1.dll 
+	regsvr32.exe /s wucltui.dll 
+	regsvr32.exe /s wups.dll 
+	regsvr32.exe /s wups2.dll 
+	regsvr32.exe /s wuweb.dll 
+	regsvr32.exe /s qmgr.dll 
+	regsvr32.exe /s qmgrprxy.dll 
+	regsvr32.exe /s wucltux.dll 
+	regsvr32.exe /s muweb.dll 
+	regsvr32.exe /s wuwebv.dll 
+
+	Write-Host "7) Removing WSUS client settings..." 
+	REG DELETE "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate" /v AccountDomainSid /f 
+	REG DELETE "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate" /v PingID /f 
+	REG DELETE "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\WindowsUpdate" /v SusClientId /f 
+
+	Write-Host "8) Resetting the WinSock..." 
+	netsh winsock reset 
+	netsh winhttp reset proxy 
+	netsh int ip reset
+
+	Write-Host "9) Delete all BITS jobs..." 
+	Get-BitsTransfer | Remove-BitsTransfer 
+
+	Write-Host "10) Attempting to install the Windows Update Agent..." 
+	If (!((wmic OS get OSArchitecture | Out-String).IndexOf("64") -eq -1)) { 
+		wusa Windows8-RT-KB2937636-x64 /quiet 
+	}
+	else { 
+		wusa Windows8-RT-KB2937636-x86 /quiet 
+	} 
+
+	Write-Host "11) Starting Windows Update Services..." 
+	Start-Service -Name BITS 
+	Start-Service -Name wuauserv 
+	Start-Service -Name appidsvc 
+	Start-Service -Name cryptsvc 
+
+	Write-Host "12) Forcing discovery..." 
+	wuauclt /resetauthorization /detectnow 
+
+	Write-Host "Process complete. Please reboot your computer."
+
+	$ButtonType = [System.Windows.MessageBoxButton]::OK
+	$MessageboxTitle = "Reset Windows Update "
+	$Messageboxbody = ("Stock settings loaded.`n Please reboot your computer")
+	$MessageIcon = [System.Windows.MessageBoxImage]::Information
+
+	[System.Windows.MessageBox]::Show($Messageboxbody, $MessageboxTitle, $ButtonType, $MessageIcon)
+	Write-Host "Reset ALL Updates to Factory"
+}})
+$Tab6.Controls.Add($Tab6_updatebutton4)
+
+
 # TAB 10
 #----------------------------------------------
 
