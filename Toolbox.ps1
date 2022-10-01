@@ -1,4 +1,5 @@
-﻿[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing") 
+﻿Write-Host "HELLO"
+[void] [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing") 
 [void] [System.Reflection.Assembly]::LoadWithPartialName("System.Windows.Forms")
 
 $ApplicationForm = New-Object System.Windows.Forms.Form
