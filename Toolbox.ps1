@@ -9,6 +9,7 @@ Write-host '______\/\\\_____________\/\\\_____________\/\\\_____________________
 Write-host '_______\/\\\_____________\/\\\_____________\/\\\_____________________/\\\______\//\\\___________________________________'
 Write-host '________\/\\\\\\\\\\\\\\\_\/\\\_____________\/\\\\\\\\\\\\\\\________\///\\\\\\\\\\\/___________________________________'
 Write-host '_________\///////////////__\///______________\///////////////___________\///////////____________________________________'
+Write-host '________________________________________________________________________________________________________________________'
 Write-host '__/\\\\\\\\\\\\\\\______________________________/\\\\\\_____/\\\________________________________________________________'
 Write-host '__\///////\\\/////______________________________\////\\\____\/\\\_______________________________________________________'
 Write-host '_________\/\\\______________________________________\/\\\____\/\\\______________________________________________________'
@@ -933,163 +934,90 @@ $Tab5_installerbutton2.Text = "Update Scoop"
 $Tab5_installerbutton2.add_click({scoop update -a})
 $Tab5.Controls.add($Tab5_installerbutton2)
 
-$Tab5_checkBox9 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox10 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox11 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox12 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox13 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox14 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox15 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox16 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox17 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox18 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox19 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox20 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox21 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox22 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox23 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox24 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox25 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox26 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox27 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox28 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox29 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox30 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox31 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox32 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox33 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox34 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox35 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox36 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox37 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox38 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox39 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox40 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox41 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox42 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox43 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox44 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox45 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox46 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox47 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox48 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox49 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox50 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox51 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox52 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox53 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox54 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox55 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox56 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox57 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox58 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox59 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox60 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox61 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox62 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox63 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox64 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox65 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox66 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox67 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox68 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox69 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox70 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox71 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox72 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox73 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox74 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox75 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox76 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox77 = New-Object System.Windows.Forms.CheckBox
-$Tab5_checkBox78 = New-Object System.Windows.Forms.CheckBox
 
 #The part that does the installing
 
-
-
-$handler_Tab5_installbutton1_Click= 
-{
-$Tab5_Statusbox1.Items.Clear();
-if ($Tab5_checkBox1.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing firefox..."  ) ; scoop bucket add extras ; scoop install firefox }
-if ($Tab5_checkBox2.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing librewolf..."  ) ; scoop bucket add extras ; scoop install librewolf }
-if ($Tab5_checkBox3.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing brave..."  ) ; scoop bucket add extras ; scoop install brave }
-if ($Tab5_checkBox4.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing googlechrome..."  ) ; scoop bucket add extras ; scoop install googlechrome }
-if ($Tab5_checkBox5.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing chromium..."  ) ; scoop bucket add extras ; scoop install chromium }
-if ($Tab5_checkBox6.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing mpv..."  ) ; scoop bucket add extras ; scoop install mpv }
-if ($Tab5_checkBox7.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing vlc..."  ) ; scoop bucket add extras ; scoop install vlc}
-if ($Tab5_checkBox8.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing audacity..."  ) ; scoop bucket add extras ; scoop install audacity }
-if ($Tab5_checkBox9.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing eartrumpet..."  ) ; scoop bucket add extras ; scoop install eartrumpet }
-if ($Tab5_checkBox10.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing handbrake..."  ) ; scoop bucket add extras ; scoop install handbrake }
-if ($Tab5_checkBox11.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing flameshot..."  ) ; scoop bucket add extras ; scoop install flameshot }
-if ($Tab5_checkBox12.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing obs-studio..."  ) ; scoop bucket add extras ; scoop install obs-studio }
-if ($Tab5_checkBox13.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing blender..."  ) ; scoop bucket add extras ; scoop install blender }
-if ($Tab5_checkBox14.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing gimp..."  ) ; scoop bucket add extras ; scoop install gimp }
-if ($Tab5_checkBox15.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing krita..."  ) ; scoop bucket add extras ; scoop install krita }
-if ($Tab5_checkBox16.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing inkscape..."  ) ; scoop bucket add extras ; scoop install inkscape }
-if ($Tab5_checkBox17.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing soundnode..."  ) ; scoop bucket add extras ; scoop install soundnode }
-if ($Tab5_checkBox18.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing spotify..."  ) ; scoop bucket add extras ; scoop install spotify }
-if ($Tab5_checkBox19.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing youtube-music..."  ) ; scoop bucket add extras ; scoop install youtube-music }
-if ($Tab5_checkBox20.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing cider..."  ) ; scoop bucket add extras ; scoop install cider }
-if ($Tab5_checkBox21.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing deluge..."  ) ; scoop bucket add extras ; scoop install deluge }
-if ($Tab5_checkBox22.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing picotorrent..."  ) ; scoop bucket add extras ; scoop install picotorrent }
-if ($Tab5_checkBox23.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing qbittorrent..."  ) ; scoop bucket add extras ; scoop install qbittorrent }
-if ($Tab5_checkBox24.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing transmission..."  ) ; scoop bucket add extras ; scoop install transmission }
-if ($Tab5_checkBox25.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing zoom..."  ) ; scoop bucket add extras ; scoop install zoom }
-if ($Tab5_checkBox26.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing microsoft-teams..."  ) ; scoop bucket add extras ; scoop install microsoft-teams }
-if ($Tab5_checkBox27.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing telegram..."  ) ; scoop bucket add extras ; scoop install telegram }
-if ($Tab5_checkBox28.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing signal..."  ) ; scoop bucket add extras ; scoop install signal }
-if ($Tab5_checkBox29.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing discord..."  ) ; scoop bucket add extras  ; scoop install discord }
-if ($Tab5_checkBox30.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing caprine..."  ) ; scoop bucket add extras  ; scoop install caprine }
-if ($Tab5_checkBox31.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing libreoffice..."  ) ; scoop bucket add extras  ; scoop install libreoffice }
-if ($Tab5_checkBox32.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing onlyoffice-desktopeditors..."  ) ; scoop bucket add extras  ; scoop install onlyoffice-desktopeditors }
-if ($Tab5_checkBox33.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing office-365-apps-np..."  ) ; scoop bucket add nonportable  ; scoop install office-365-apps-np }
-if ($Tab5_checkBox34.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing foxit-pdf-reader..."  ) ; scoop bucket add extras  ; scoop install foxit-pdf-reader }
-if ($Tab5_checkBox35.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing qalculate..."  ) ; scoop bucket add extras  ; scoop install qalculate }
-if ($Tab5_checkBox36.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing steam..."  ) ; scoop bucket add versions  ; scoop install steam }
-if ($Tab5_checkBox37.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing epicgameslauncher..."  ) ; scoop bucket add chawyehsu_dorado https://github.com/chawyehsu/dorado  ; scoop install epicgameslauncher }
-if ($Tab5_checkBox38.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing gog-galaxy..."  ) ; scoop bucket add anderlli0053_DEV-tools https://github.com/anderlli0053/DEV-tools  ; scoop install gog-galaxy }
-if ($Tab5_checkBox39.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing itch..."  ) ; scoop bucket add games  ; scoop install itch }
-if ($Tab5_checkBox40.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing polymc..."  ) ; scoop bucket add games  ; scoop install polymc }
-if ($Tab5_checkBox41.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing dolphin..."  ) ; scoop bucket add games  ; scoop install dolphin }
-if ($Tab5_checkBox42.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing citra..."  ) ; scoop bucket add games  ; scoop install citra }
-if ($Tab5_checkBox43.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing yuzu..."  ) ; scoop bucket add games  ; scoop install yuzu }
-if ($Tab5_checkBox44.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing dosbox-x..."  ) ; scoop bucket add extras  ; scoop install dosbox-x }
-if ($Tab5_checkBox45.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing loot..."  ) ; scoop bucket add games  ; scoop install loot }
-if ($Tab5_checkBox46.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing mo2..."  ) ; scoop bucket add games  ; scoop install mo2 }
-if ($Tab5_checkBox47.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing vortex..."  ) ; scoop bucket add games  ; scoop install vortex }
-if ($Tab5_checkBox48.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing logitech-gaming-software-np..."  ) ; scoop bucket add nonportable  ; scoop install logitech-gaming-software-np }
-if ($Tab5_checkBox49.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing roundedtb..."  ) ; scoop bucket add extras  ; scoop install roundedtb }
-if ($Tab5_checkBox50.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing taskbarx..."  ) ; scoop bucket add extras  ; scoop install taskbarx }
-if ($Tab5_checkBox51.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing translucenttb..."  ) ; scoop bucket add extras  ; scoop install translucenttb }
-if ($Tab5_checkBox52.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing powertoys..."  ) ; scoop bucket add extras  ; scoop install powertoys }
-if ($Tab5_checkBox53.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing 7zip..."  ) ; scoop bucket add main  ; scoop install 7zip }
-if ($Tab5_checkBox54.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing winrar..."  ) ; scoop bucket add extras  ; scoop install winrar }
-if ($Tab5_checkBox55.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing revouninstaller..."  ) ; scoop bucket add extras  ; scoop install revouninstaller }
-if ($Tab5_checkBox56.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing czkawka..."  ) ; scoop bucket add extras  ; scoop install czkawka }
-if ($Tab5_checkBox57.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing anydesk..."  ) ; scoop bucket add extras  ; scoop install anydesk }
-if ($Tab5_checkBox58.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing teamviewer..."  ) ; scoop bucket add extras  ; scoop install teamviewer }
-if ($Tab5_checkBox59.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing rustdesk..."  ) ; scoop bucket add extras  ; scoop install rustdesk }
-if ($Tab5_checkBox60.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing putty..."  ) ; scoop bucket add extras  ; scoop install putty }
-if ($Tab5_checkBox61.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing filezilla..."  ) ; scoop bucket add extras  ; scoop install filezilla }
-if ($Tab5_checkBox62.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing etcher..."  ) ; scoop bucket add extras  ; scoop install etcher }
-if ($Tab5_checkBox63.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing rufus..."  ) ; scoop bucket add extras  ; scoop install rufus }
-if ($Tab5_checkBox64.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ventoy..."  ) ; scoop bucket add extras  ; scoop install ventoy }
-if ($Tab5_checkBox65.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ddu..."  ) ; scoop bucket add extras  ; scoop install ddu }
-if ($Tab5_checkBox66.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing nvcleanstall..."  ) ; scoop bucket add extras  ; scoop install nvcleanstall }
-if ($Tab5_checkBox67.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing nvidia-display-driver-np..."  ) ; scoop bucket add nonportable  ; scoop install nvidia-display-driver-np }
-if ($Tab5_checkBox68.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ryzen-controller..."  ) ; scoop bucket add extras  ; scoop install ryzen-controller }
-if ($Tab5_checkBox69.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ryzentuner..."  ) ; scoop bucket add hoilc_scoop-lemon https://github.com/hoilc/scoop-lemon  ; scoop install ryzentuner }
-if ($Tab5_checkBox70.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing IntelExtremeTuningUtility-Install..."  ) ; scoop bucket add ACooper81_scoop-apps https://github.com/ACooper81/scoop-apps ; scoop install IntelExtremeTuningUtility-Install }
-if ($Tab5_checkBox71.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing neofetch..."  ) ; scoop bucket add main  ; scoop install neofetch }
-if ($Tab5_checkBox72.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing meow..."  ) ; scoop bucket add extras  ; scoop install meow }
-if ($Tab5_checkBox73.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing cowsay..."  ) ; scoop bucket add main  ; scoop install cowsay }
-if ($Tab5_checkBox74.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing alacritty..."  ) ; scoop bucket add extras  ; scoop install alacritty }
-if ($Tab5_checkBox75.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing tabby..."  ) ; scoop bucket add extras  ; scoop install tabby }
-if ($Tab5_checkBox76.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing hyper..."  ) ; scoop bucket add extras  ; scoop install hyper }
-if ($Tab5_checkBox77.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing fluent-terminal-np..."  ) ; scoop bucket add nonportable  ; scoop install fluent-terminal-np }
-if ($Tab5_checkBox78.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing windows-terminal..."  ) ; scoop bucket add extras  ; scoop install windows-terminal }
-if ( !$Tab5_checkBox1.Checked -and !$Tab5_checkBox2.Checked -and !$Tab5_checkBox1.Checked -and !$Tab5_checkBox4.Checked -and !$Tab5_checkBox5.Checked -and !$Tab5_checkBox6.Checked -and !$Tab5_checkBox7.Checked -and !$Tab5_checkBox8.Checked -and !$Tab5_checkBox9.Checked -and !$Tab5_checkBox10.Checked -and !$Tab5_checkBox11.Checked -and !$Tab5_checkBox12.Checked -and !$Tab5_checkBox13.Checked -and !$Tab5_checkBox14.Checked -and !$Tab5_checkBox15.Checked -and !$Tab5_checkBox16.Checked -and !$Tab5_checkBox17.Checked -and !$Tab5_checkBox18.Checked -and !$Tab5_checkBox19.Checked -and !$Tab5_checkBox20.Checked -and !$Tab5_checkBox21.Checked -and !$Tab5_checkBox22.Checked -and !$Tab5_checkBox23.Checked -and !$Tab5_checkBox24.Checked -and !$Tab5_checkBox25.Checked -and !$Tab5_checkBox26.Checked -and !$Tab5_checkBox27.Checked -and !$Tab5_checkBox28.Checked -and !$Tab5_checkBox29.Checked -and !$Tab5_checkBox30.Checked -and !$Tab5_checkBox31.Checked -and !$Tab5_checkBox32.Checked -and !$Tab5_checkBox33.Checked -and !$Tab5_checkBox34.Checked -and !$Tab5_checkBox35.Checked -and !$Tab5_checkBox36.Checked -and !$Tab5_checkBox37.Checked -and !$Tab5_checkBox38.Checked -and !$Tab5_checkBox39.Checked -and !$Tab5_checkBox40.Checked -and !$Tab5_checkBox41.Checked -and !$Tab5_checkBox42.Checked -and !$Tab5_checkBox43.Checked -and !$Tab5_checkBox44.Checked -and !$Tab5_checkBox45.Checked -and !$Tab5_checkBox46.Checked -and !$Tab5_checkBox47.Checked -and !$Tab5_checkBox48.Checked -and !$Tab5_checkBox49.Checked -and !$Tab5_checkBox50.Checked -and !$Tab5_checkBox51.Checked -and !$Tab5_checkBox52.Checked -and !$Tab5_checkBox53.Checked -and !$Tab5_checkBox54.Checked -and !$Tab5_checkBox55.Checked -and !$Tab5_checkBox56.Checked -and !$Tab5_checkBox57.Checked -and !$Tab5_checkBox58.Checked -and !$Tab5_checkBox59.Checked -and !$Tab5_checkBox60.Checked -and !$Tab5_checkBox61.Checked -and !$Tab5_checkBox62.Checked -and !$Tab5_checkBox63.Checked -and !$Tab5_checkBox64.Checked -and !$Tab5_checkBox65.Checked -and !$Tab5_checkBox66.Checked -and !$Tab5_checkBox67.Checked -and !$Tab5_checkBox67.Checked -and !$Tab5_checkBox68.Checked -and !$Tab5_checkBox69.Checked -and !$Tab5_checkBox70.Checked -and !$Tab5_checkBox71.Checked -and !$Tab5_checkBox72.Checked -and !$Tab5_checkBox73.Checked -and !$Tab5_checkBox74.Checked -and !$Tab5_checkBox75.Checked -and !$Tab5_checkBox76.Checked -and !$Tab5_checkBox77.Checked -and !$Tab5_checkBox78.Checked) {   $Tab5_Statusbox1.Items.Add("No Tab5_CheckBox selected....")} 
+$handler_Tab5_installbutton1_Click= {
+	$Tab5_Statusbox1.Items.Clear();
+	if ($Tab5_checkBox1.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing firefox..."  ) ; scoop bucket add extras ; scoop install firefox }
+	if ($Tab5_checkBox2.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing librewolf..."  ) ; scoop bucket add extras ; scoop install librewolf }
+	if ($Tab5_checkBox3.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing brave..."  ) ; scoop bucket add extras ; scoop install brave }
+	if ($Tab5_checkBox4.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing googlechrome..."  ) ; scoop bucket add extras ; scoop install googlechrome }
+	if ($Tab5_checkBox5.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing chromium..."  ) ; scoop bucket add extras ; scoop install chromium }
+	if ($Tab5_checkBox6.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing mpv..."  ) ; scoop bucket add extras ; scoop install mpv }
+	if ($Tab5_checkBox7.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing vlc..."  ) ; scoop bucket add extras ; scoop install vlc}
+	if ($Tab5_checkBox8.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing audacity..."  ) ; scoop bucket add extras ; scoop install audacity }
+	if ($Tab5_checkBox9.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing eartrumpet..."  ) ; scoop bucket add extras ; scoop install eartrumpet }
+	if ($Tab5_checkBox10.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing handbrake..."  ) ; scoop bucket add extras ; scoop install handbrake }
+	if ($Tab5_checkBox11.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing flameshot..."  ) ; scoop bucket add extras ; scoop install flameshot }
+	if ($Tab5_checkBox12.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing obs-studio..."  ) ; scoop bucket add extras ; scoop install obs-studio }
+	if ($Tab5_checkBox13.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing blender..."  ) ; scoop bucket add extras ; scoop install blender }
+	if ($Tab5_checkBox14.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing gimp..."  ) ; scoop bucket add extras ; scoop install gimp }
+	if ($Tab5_checkBox15.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing krita..."  ) ; scoop bucket add extras ; scoop install krita }
+	if ($Tab5_checkBox16.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing inkscape..."  ) ; scoop bucket add extras ; scoop install inkscape }
+	if ($Tab5_checkBox17.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing soundnode..."  ) ; scoop bucket add extras ; scoop install soundnode }
+	if ($Tab5_checkBox18.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing spotify..."  ) ; scoop bucket add extras ; scoop install spotify }
+	if ($Tab5_checkBox19.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing youtube-music..."  ) ; scoop bucket add extras ; scoop install youtube-music }
+	if ($Tab5_checkBox20.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing cider..."  ) ; scoop bucket add extras ; scoop install cider }
+	if ($Tab5_checkBox21.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing deluge..."  ) ; scoop bucket add extras ; scoop install deluge }
+	if ($Tab5_checkBox22.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing picotorrent..."  ) ; scoop bucket add extras ; scoop install picotorrent }
+	if ($Tab5_checkBox23.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing qbittorrent..."  ) ; scoop bucket add extras ; scoop install qbittorrent }
+	if ($Tab5_checkBox24.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing transmission..."  ) ; scoop bucket add extras ; scoop install transmission }
+	if ($Tab5_checkBox25.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing zoom..."  ) ; scoop bucket add extras ; scoop install zoom }
+	if ($Tab5_checkBox26.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing microsoft-teams..."  ) ; scoop bucket add extras ; scoop install microsoft-teams }
+	if ($Tab5_checkBox27.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing telegram..."  ) ; scoop bucket add extras ; scoop install telegram }
+	if ($Tab5_checkBox28.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing signal..."  ) ; scoop bucket add extras ; scoop install signal }
+	if ($Tab5_checkBox29.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing discord..."  ) ; scoop bucket add extras  ; scoop install discord }
+	if ($Tab5_checkBox30.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing caprine..."  ) ; scoop bucket add extras  ; scoop install caprine }
+	if ($Tab5_checkBox31.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing libreoffice..."  ) ; scoop bucket add extras  ; scoop install libreoffice }
+	if ($Tab5_checkBox32.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing onlyoffice-desktopeditors..."  ) ; scoop bucket add extras  ; scoop install onlyoffice-desktopeditors }
+	if ($Tab5_checkBox33.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing office-365-apps-np..."  ) ; scoop bucket add nonportable  ; scoop install office-365-apps-np }
+	if ($Tab5_checkBox34.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing foxit-pdf-reader..."  ) ; scoop bucket add extras  ; scoop install foxit-pdf-reader }
+	if ($Tab5_checkBox35.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing qalculate..."  ) ; scoop bucket add extras  ; scoop install qalculate }
+	if ($Tab5_checkBox36.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing steam..."  ) ; scoop bucket add versions  ; scoop install steam }
+	if ($Tab5_checkBox37.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing epicgameslauncher..."  ) ; scoop bucket add chawyehsu_dorado https://github.com/chawyehsu/dorado  ; scoop install epicgameslauncher }
+	if ($Tab5_checkBox38.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing gog-galaxy..."  ) ; scoop bucket add anderlli0053_DEV-tools https://github.com/anderlli0053/DEV-tools  ; scoop install gog-galaxy }
+	if ($Tab5_checkBox39.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing itch..."  ) ; scoop bucket add games  ; scoop install itch }
+	if ($Tab5_checkBox40.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing polymc..."  ) ; scoop bucket add games  ; scoop install polymc }
+	if ($Tab5_checkBox41.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing dolphin..."  ) ; scoop bucket add games  ; scoop install dolphin }
+	if ($Tab5_checkBox42.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing citra..."  ) ; scoop bucket add games  ; scoop install citra }
+	if ($Tab5_checkBox43.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing yuzu..."  ) ; scoop bucket add games  ; scoop install yuzu }
+	if ($Tab5_checkBox44.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing dosbox-x..."  ) ; scoop bucket add extras  ; scoop install dosbox-x }
+	if ($Tab5_checkBox45.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing loot..."  ) ; scoop bucket add games  ; scoop install loot }
+	if ($Tab5_checkBox46.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing mo2..."  ) ; scoop bucket add games  ; scoop install mo2 }
+	if ($Tab5_checkBox47.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing vortex..."  ) ; scoop bucket add games  ; scoop install vortex }
+	if ($Tab5_checkBox48.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing logitech-gaming-software-np..."  ) ; scoop bucket add nonportable  ; scoop install logitech-gaming-software-np }
+	if ($Tab5_checkBox49.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing roundedtb..."  ) ; scoop bucket add extras  ; scoop install roundedtb }
+	if ($Tab5_checkBox50.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing taskbarx..."  ) ; scoop bucket add extras  ; scoop install taskbarx }
+	if ($Tab5_checkBox51.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing translucenttb..."  ) ; scoop bucket add extras  ; scoop install translucenttb }
+	if ($Tab5_checkBox52.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing powertoys..."  ) ; scoop bucket add extras  ; scoop install powertoys }
+	if ($Tab5_checkBox53.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing 7zip..."  ) ; scoop bucket add main  ; scoop install 7zip }
+	if ($Tab5_checkBox54.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing winrar..."  ) ; scoop bucket add extras  ; scoop install winrar }
+	if ($Tab5_checkBox55.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing revouninstaller..."  ) ; scoop bucket add extras  ; scoop install revouninstaller }
+	if ($Tab5_checkBox56.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing czkawka..."  ) ; scoop bucket add extras  ; scoop install czkawka }
+	if ($Tab5_checkBox57.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing anydesk..."  ) ; scoop bucket add extras  ; scoop install anydesk }
+	if ($Tab5_checkBox58.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing teamviewer..."  ) ; scoop bucket add extras  ; scoop install teamviewer }
+	if ($Tab5_checkBox59.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing rustdesk..."  ) ; scoop bucket add extras  ; scoop install rustdesk }
+	if ($Tab5_checkBox60.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing putty..."  ) ; scoop bucket add extras  ; scoop install putty }
+	if ($Tab5_checkBox61.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing filezilla..."  ) ; scoop bucket add extras  ; scoop install filezilla }
+	if ($Tab5_checkBox62.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing etcher..."  ) ; scoop bucket add extras  ; scoop install etcher }
+	if ($Tab5_checkBox63.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing rufus..."  ) ; scoop bucket add extras  ; scoop install rufus }
+	if ($Tab5_checkBox64.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ventoy..."  ) ; scoop bucket add extras  ; scoop install ventoy }
+	if ($Tab5_checkBox65.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ddu..."  ) ; scoop bucket add extras  ; scoop install ddu }
+	if ($Tab5_checkBox66.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing nvcleanstall..."  ) ; scoop bucket add extras  ; scoop install nvcleanstall }
+	if ($Tab5_checkBox67.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing nvidia-display-driver-np..."  ) ; scoop bucket add nonportable  ; scoop install nvidia-display-driver-np }
+	if ($Tab5_checkBox68.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ryzen-controller..."  ) ; scoop bucket add extras  ; scoop install ryzen-controller }
+	if ($Tab5_checkBox69.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing ryzentuner..."  ) ; scoop bucket add hoilc_scoop-lemon https://github.com/hoilc/scoop-lemon  ; scoop install ryzentuner }
+	if ($Tab5_checkBox70.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing IntelExtremeTuningUtility-Install..."  ) ; scoop bucket add ACooper81_scoop-apps https://github.com/ACooper81/scoop-apps ; scoop install IntelExtremeTuningUtility-Install }
+	if ($Tab5_checkBox71.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing neofetch..."  ) ; scoop bucket add main  ; scoop install neofetch }
+	if ($Tab5_checkBox72.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing meow..."  ) ; scoop bucket add extras  ; scoop install meow }
+	if ($Tab5_checkBox73.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing cowsay..."  ) ; scoop bucket add main  ; scoop install cowsay }
+	if ($Tab5_checkBox74.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing alacritty..."  ) ; scoop bucket add extras  ; scoop install alacritty }
+	if ($Tab5_checkBox75.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing tabby..."  ) ; scoop bucket add extras  ; scoop install tabby }
+	if ($Tab5_checkBox76.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing hyper..."  ) ; scoop bucket add extras  ; scoop install hyper }
+	if ($Tab5_checkBox77.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing fluent-terminal-np..."  ) ; scoop bucket add nonportable  ; scoop install fluent-terminal-np }
+	if ($Tab5_checkBox78.Checked) {  $Tab5_Statusbox1.Items.Add( "Installing windows-terminal..."  ) ; scoop bucket add extras  ; scoop install windows-terminal }
+	if ( !$Tab5_checkBox1.Checked -and !$Tab5_checkBox2.Checked -and !$Tab5_checkBox1.Checked -and !$Tab5_checkBox4.Checked -and !$Tab5_checkBox5.Checked -and !$Tab5_checkBox6.Checked -and !$Tab5_checkBox7.Checked -and !$Tab5_checkBox8.Checked -and !$Tab5_checkBox9.Checked -and !$Tab5_checkBox10.Checked -and !$Tab5_checkBox11.Checked -and !$Tab5_checkBox12.Checked -and !$Tab5_checkBox13.Checked -and !$Tab5_checkBox14.Checked -and !$Tab5_checkBox15.Checked -and !$Tab5_checkBox16.Checked -and !$Tab5_checkBox17.Checked -and !$Tab5_checkBox18.Checked -and !$Tab5_checkBox19.Checked -and !$Tab5_checkBox20.Checked -and !$Tab5_checkBox21.Checked -and !$Tab5_checkBox22.Checked -and !$Tab5_checkBox23.Checked -and !$Tab5_checkBox24.Checked -and !$Tab5_checkBox25.Checked -and !$Tab5_checkBox26.Checked -and !$Tab5_checkBox27.Checked -and !$Tab5_checkBox28.Checked -and !$Tab5_checkBox29.Checked -and !$Tab5_checkBox30.Checked -and !$Tab5_checkBox31.Checked -and !$Tab5_checkBox32.Checked -and !$Tab5_checkBox33.Checked -and !$Tab5_checkBox34.Checked -and !$Tab5_checkBox35.Checked -and !$Tab5_checkBox36.Checked -and !$Tab5_checkBox37.Checked -and !$Tab5_checkBox38.Checked -and !$Tab5_checkBox39.Checked -and !$Tab5_checkBox40.Checked -and !$Tab5_checkBox41.Checked -and !$Tab5_checkBox42.Checked -and !$Tab5_checkBox43.Checked -and !$Tab5_checkBox44.Checked -and !$Tab5_checkBox45.Checked -and !$Tab5_checkBox46.Checked -and !$Tab5_checkBox47.Checked -and !$Tab5_checkBox48.Checked -and !$Tab5_checkBox49.Checked -and !$Tab5_checkBox50.Checked -and !$Tab5_checkBox51.Checked -and !$Tab5_checkBox52.Checked -and !$Tab5_checkBox53.Checked -and !$Tab5_checkBox54.Checked -and !$Tab5_checkBox55.Checked -and !$Tab5_checkBox56.Checked -and !$Tab5_checkBox57.Checked -and !$Tab5_checkBox58.Checked -and !$Tab5_checkBox59.Checked -and !$Tab5_checkBox60.Checked -and !$Tab5_checkBox61.Checked -and !$Tab5_checkBox62.Checked -and !$Tab5_checkBox63.Checked -and !$Tab5_checkBox64.Checked -and !$Tab5_checkBox65.Checked -and !$Tab5_checkBox66.Checked -and !$Tab5_checkBox67.Checked -and !$Tab5_checkBox67.Checked -and !$Tab5_checkBox68.Checked -and !$Tab5_checkBox69.Checked -and !$Tab5_checkBox70.Checked -and !$Tab5_checkBox71.Checked -and !$Tab5_checkBox72.Checked -and !$Tab5_checkBox73.Checked -and !$Tab5_checkBox74.Checked -and !$Tab5_checkBox75.Checked -and !$Tab5_checkBox76.Checked -and !$Tab5_checkBox77.Checked -and !$Tab5_checkBox78.Checked) {   $Tab5_Statusbox1.Items.Add("No Tab5_CheckBox selected....")} 
 }
 
 #Tab5_installbutton1
@@ -1167,487 +1095,491 @@ $Tab5_checkBox8.Text = "Audacity"
 $Tab5_checkBox8.Name = "Tab5_checkBox8"
 $tab5.Controls.Add($Tab5_checkBox8)
 
+$Tab5_checkBox9 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox9.Location = New-Object System.Drawing.Point(10,220)
 $Tab5_checkBox9.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox9.Text = "EarTrumpet"
 $Tab5_checkBox9.Name = "Tab5_checkBox9"
 $tab5.Controls.Add($Tab5_checkBox9)
 
-
+$Tab5_checkBox10 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox10.Location = New-Object System.Drawing.Point(10,240)
 $Tab5_checkBox10.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox10.Text = "HandBrake"
 $Tab5_checkBox10.Name = "Tab5_checkBox10"
 $tab5.Controls.Add($Tab5_checkBox10)
 
-
+$Tab5_checkBox11 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox11.Location = New-Object System.Drawing.Point(10,280)
 $Tab5_checkBox11.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox11.Text = "Flameshot"
 $Tab5_checkBox11.Name = "Tab5_checkBox11"
 $tab5.Controls.Add($Tab5_checkBox11)
 
-
+$Tab5_checkBox12 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox12.Location = New-Object System.Drawing.Point(10,300)
 $Tab5_checkBox12.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox12.Text = "OBS-Studio"
 $Tab5_checkBox12.Name = "Tab5_checkBox12"
 $tab5.Controls.Add($Tab5_checkBox12)
 
-
+$Tab5_checkBox13 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox13.Location = New-Object System.Drawing.Point(10,320)
 $Tab5_checkBox13.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox13.Text = "Blender"
 $Tab5_checkBox13.Name = "Tab5_checkBox13"
 $tab5.Controls.Add($Tab5_checkBox13)
 
-
+$Tab5_checkBox14 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox14.Location = New-Object System.Drawing.Point(10,340)
 $Tab5_checkBox14.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox14.Text = "Gimp"
 $Tab5_checkBox14.Name = "Tab5_checkBox14"
 $tab5.Controls.Add($Tab5_checkBox14)
 
-
+$Tab5_checkBox15 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox15.Location = New-Object System.Drawing.Point(10,360)
 $Tab5_checkBox15.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox15.Text = "Krita"
 $Tab5_checkBox15.Name = "Tab5_checkBox15"
 $tab5.Controls.Add($Tab5_checkBox15)
 
-
+$Tab5_checkBox16 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox16.Location = New-Object System.Drawing.Point(10,380)
 $Tab5_checkBox16.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox16.Text = "InkScape"
 $Tab5_checkBox16.Name = "Tab5_checkBox16"
 $tab5.Controls.Add($Tab5_checkBox16)
 
-
+$Tab5_checkBox17 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox17.Location = New-Object System.Drawing.Point(110,50)
 $Tab5_checkBox17.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox17.Text = "SoundCloud"
 $Tab5_checkBox17.Name = "Tab5_checkBox17"
 $tab5.Controls.Add($Tab5_checkBox17)
 
-
+$Tab5_checkBox18 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox18.Location = New-Object System.Drawing.Point(110,70)
 $Tab5_checkBox18.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox18.Text = "Spotify"
 $Tab5_checkBox18.Name = "Tab5_checkBox18"
 $tab5.Controls.Add($Tab5_checkBox18)
 
-
+$Tab5_checkBox19 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox19.Location = New-Object System.Drawing.Point(110,90)
 $Tab5_checkBox19.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox19.Text = "YT Music"
 $Tab5_checkBox19.Name = "Tab5_checkBox19"
 $tab5.Controls.Add($Tab5_checkBox19)
 
-
+$Tab5_checkBox20 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox20.Location = New-Object System.Drawing.Point(110,110)
 $Tab5_checkBox20.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox20.Text = "Cider"
 $Tab5_checkBox20.Name = "Tab5_checkBox20"
 $tab5.Controls.Add($Tab5_checkBox20)
 
-
+$Tab5_checkBox21 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox21.Location = New-Object System.Drawing.Point(110,140)
 $Tab5_checkBox21.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox21.Text = "Deluge"
 $Tab5_checkBox21.Name = "Tab5_checkBox21"
 $tab5.Controls.Add($Tab5_checkBox21)
 
-
+$Tab5_checkBox22 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox22.Location = New-Object System.Drawing.Point(110,160)
 $Tab5_checkBox22.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox22.Text = "Picotorrent"
 $Tab5_checkBox22.Name = "Tab5_checkBox22"
 $tab5.Controls.Add($Tab5_checkBox22)
 
-
+$Tab5_checkBox23 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox23.Location = New-Object System.Drawing.Point(110,180)
 $Tab5_checkBox23.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox23.Text = "qBittorrent"
 $Tab5_checkBox23.Name = "Tab5_checkBox23"
 $tab5.Controls.Add($Tab5_checkBox23)
 
-
+$Tab5_checkBox24 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox24.Location = New-Object System.Drawing.Point(110,200)
 $Tab5_checkBox24.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox24.Text = "Transmission"
 $Tab5_checkBox24.Name = "Tab5_checkBox24"
 $tab5.Controls.Add($Tab5_checkBox24)
 
-
+$Tab5_checkBox25 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox25.Location = New-Object System.Drawing.Point(110,230)
 $Tab5_checkBox25.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox25.Text = "Zoom"
 $Tab5_checkBox25.Name = "Tab5_checkBox25"
 $tab5.Controls.Add($Tab5_checkBox25)
 
-
+$Tab5_checkBox26 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox26.Location = New-Object System.Drawing.Point(110,250)
 $Tab5_checkBox26.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox26.Text = "Teams"
 $Tab5_checkBox26.Name = "Tab5_checkBox26"
 $tab5.Controls.Add($Tab5_checkBox26)
 
-
+$Tab5_checkBox27 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox27.Location = New-Object System.Drawing.Point(110,270)
 $Tab5_checkBox27.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox27.Text = "Telegram"
 $Tab5_checkBox27.Name = "Tab5_checkBox27"
 $tab5.Controls.Add($Tab5_checkBox27)
 
-
+$Tab5_checkBox28 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox28.Location = New-Object System.Drawing.Point(110,290)
 $Tab5_checkBox28.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox28.Text = "Signal"
 $Tab5_checkBox28.Name = "Tab5_checkBox28"
 $tab5.Controls.Add($Tab5_checkBox28)
 
-
+$Tab5_checkBox29 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox29.Location = New-Object System.Drawing.Point(110,310)
 $Tab5_checkBox29.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox29.Text = "Discord"
 $Tab5_checkBox29.Name = "Tab5_checkBox29"
 $tab5.Controls.Add($Tab5_checkBox29)
 
-
+$Tab5_checkBox30 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox30.Location = New-Object System.Drawing.Point(110,330)
 $Tab5_checkBox30.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox30.Text = "Caprine"
 $Tab5_checkBox30.Name = "Tab5_checkBox30"
 $tab5.Controls.Add($Tab5_checkBox30)
 
-
+$Tab5_checkBox31 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox31.Location = New-Object System.Drawing.Point(110,360)
 $Tab5_checkBox31.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox31.Text = "LibreOffice"
 $Tab5_checkBox31.Name = "Tab5_checkBox31"
 $tab5.Controls.Add($Tab5_checkBox31)
 
-
+$Tab5_checkBox32 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox32.Location = New-Object System.Drawing.Point(110,380)
 $Tab5_checkBox32.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox32.Text = "OnlyOffice"
 $Tab5_checkBox32.Name = "Tab5_checkBox32"
 $tab5.Controls.Add($Tab5_checkBox32)
 
-
+$Tab5_checkBox33 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox33.Location = New-Object System.Drawing.Point(110,400)
 $Tab5_checkBox33.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox33.Text = "Office 365"
 $Tab5_checkBox33.Name = "Tab5_checkBox33"
 $tab5.Controls.Add($Tab5_checkBox33)
 
-
+$Tab5_checkBox34 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox34.Location = New-Object System.Drawing.Point(210,50)
 $Tab5_checkBox34.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox34.Text = "Foxit"
 $Tab5_checkBox34.Name = "Tab5_checkBox34"
 $tab5.Controls.Add($Tab5_checkBox34)
 
-
+$Tab5_checkBox35 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox35.Location = New-Object System.Drawing.Point(210,70)
 $Tab5_checkBox35.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox35.Text = "Qalculate"
 $Tab5_checkBox35.Name = "Tab5_checkBox35"
 $tab5.Controls.Add($Tab5_checkBox35)
 
-
+$Tab5_checkBox36 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox36.Location = New-Object System.Drawing.Point(210,100)
 $Tab5_checkBox36.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox36.Text = "Steam"
 $Tab5_checkBox36.Name = "Tab5_checkBox36"
 $tab5.Controls.Add($Tab5_checkBox36)
 
-
+$Tab5_checkBox37 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox37.Location = New-Object System.Drawing.Point(210,120)
 $Tab5_checkBox37.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox37.Text = "Epic"
 $Tab5_checkBox37.Name = "Tab5_checkBox37"
 $tab5.Controls.Add($Tab5_checkBox37)
 
-
+$Tab5_checkBox38 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox38.Location = New-Object System.Drawing.Point(210,140)
 $Tab5_checkBox38.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox38.Text = "GOG"
 $Tab5_checkBox38.Name = "Tab5_checkBox38"
 $tab5.Controls.Add($Tab5_checkBox38)
 
-
+$Tab5_checkBox39 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox39.Location = New-Object System.Drawing.Point(210,160)
 $Tab5_checkBox39.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox39.Text = "Itch"
 $Tab5_checkBox39.Name = "Tab5_checkBox39"
 $tab5.Controls.Add($Tab5_checkBox39)
 
-
+$Tab5_checkBox40 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox40.Location = New-Object System.Drawing.Point(210,180)
 $Tab5_checkBox40.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox40.Text = "PolyMC"
 $Tab5_checkBox40.Name = "Tab5_checkBox40"
 $tab5.Controls.Add($Tab5_checkBox40)
 
-
+$Tab5_checkBox41 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox41.Location = New-Object System.Drawing.Point(210,200)
 $Tab5_checkBox41.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox41.Text = "Dolphin"
 $Tab5_checkBox41.Name = "Tab5_checkBox41"
 $tab5.Controls.Add($Tab5_checkBox41)
 
-
+$Tab5_checkBox42 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox42.Location = New-Object System.Drawing.Point(210,220)
 $Tab5_checkBox42.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox42.Text = "Citra"
 $Tab5_checkBox42.Name = "Tab5_checkBox42"
 $tab5.Controls.Add($Tab5_checkBox42)
 
-
+$Tab5_checkBox43 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox43.Location = New-Object System.Drawing.Point(210,240)
 $Tab5_checkBox43.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox43.Text = "Yuzu"
 $Tab5_checkBox43.Name = "Tab5_checkBox43"
 $tab5.Controls.Add($Tab5_checkBox43)
 
-
+$Tab5_checkBox44 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox44.Location = New-Object System.Drawing.Point(210,260)
 $Tab5_checkBox44.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox44.Text = "Dosbox"
 $Tab5_checkBox44.Name = "Tab5_checkBox44"
 $tab5.Controls.Add($Tab5_checkBox44)
 
-
+$Tab5_checkBox45 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox45.Location = New-Object System.Drawing.Point(210,290)
 $Tab5_checkBox45.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox45.Text = "Loot"
 $Tab5_checkBox45.Name = "Tab5_checkBox45"
 $tab5.Controls.Add($Tab5_checkBox45)
 
-
+$Tab5_checkBox46 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox46.Location = New-Object System.Drawing.Point(210,310)
 $Tab5_checkBox46.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox46.Text = "MO 2"
 $Tab5_checkBox46.Name = "Tab5_checkBox46"
 $tab5.Controls.Add($Tab5_checkBox46)
 
-
+$Tab5_checkBox47 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox47.Location = New-Object System.Drawing.Point(210,330)
 $Tab5_checkBox47.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox47.Text = "Vortex"
 $Tab5_checkBox47.Name = "Tab5_checkBox47"
 $tab5.Controls.Add($Tab5_checkBox47)
 
-
+$Tab5_checkBox48 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox48.Location = New-Object System.Drawing.Point(210,360)
 $Tab5_checkBox48.Size = New-Object System.Drawing.Size(100,30)
 $Tab5_checkBox48.Text = "Logitech Software"
 $Tab5_checkBox48.Name = "Tab5_checkBox48"
 $tab5.Controls.Add($Tab5_checkBox48)
 
-
+$Tab5_checkBox49 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox49.Location = New-Object System.Drawing.Point(310,50)
 $Tab5_checkBox49.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox49.Text = "RoundedTB"
 $Tab5_checkBox49.Name = "Tab5_checkBox49"
 $tab5.Controls.Add($Tab5_checkBox49)
 
-
+$Tab5_checkBox50 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox50.Location = New-Object System.Drawing.Point(310,70)
 $Tab5_checkBox50.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox50.Text = "TaskbarX"
 $Tab5_checkBox50.Name = "Tab5_checkBox50"
 $tab5.Controls.Add($Tab5_checkBox50)
 
-
+$Tab5_checkBox51 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox51.Location = New-Object System.Drawing.Point(310,90)
 $Tab5_checkBox51.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox51.Text = "TranslucentTB"
 $Tab5_checkBox51.Name = "Tab5_checkBox51"
 $tab5.Controls.Add($Tab5_checkBox51)
 
-
+$Tab5_checkBox52 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox52.Location = New-Object System.Drawing.Point(310,110)
 $Tab5_checkBox52.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox52.Text = "Powertoys"
 $Tab5_checkBox52.Name = "Tab5_checkBox52"
 $tab5.Controls.Add($Tab5_checkBox52)
 
-
+$Tab5_checkBox53 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox53.Location = New-Object System.Drawing.Point(310,130)
 $Tab5_checkBox53.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox53.Text = "7-zip"
 $Tab5_checkBox53.Name = "Tab5_checkBox53"
 $tab5.Controls.Add($Tab5_checkBox53)
 
-
+$Tab5_checkBox54 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox54.Location = New-Object System.Drawing.Point(310,150)
 $Tab5_checkBox54.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox54.Text = "Winrar"
 $Tab5_checkBox54.Name = "Tab5_checkBox54"
 $tab5.Controls.Add($Tab5_checkBox54)
 
-
+$Tab5_checkBox55 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox55.Location = New-Object System.Drawing.Point(310,170)
 $Tab5_checkBox55.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox55.Text = "Revo"
 $Tab5_checkBox55.Name = "Tab5_checkBox55"
 $tab5.Controls.Add($Tab5_checkBox55)
 
-
+$Tab5_checkBox56 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox56.Location = New-Object System.Drawing.Point(310,190)
 $Tab5_checkBox56.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox56.Text = "Czkawka"
 $Tab5_checkBox56.Name = "Tab5_checkBox56"
 $tab5.Controls.Add($Tab5_checkBox56)
 
-
+$Tab5_checkBox57 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox57.Location = New-Object System.Drawing.Point(310,220)
 $Tab5_checkBox57.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox57.Text = "Anydesk"
 $Tab5_checkBox57.Name = "Tab5_checkBox57"
 $tab5.Controls.Add($Tab5_checkBox57)
 
-
+$Tab5_checkBox58 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox58.Location = New-Object System.Drawing.Point(310,240)
 $Tab5_checkBox58.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox58.Text = "TeamViewer"
 $Tab5_checkBox58.Name = "Tab5_checkBox58"
 $tab5.Controls.Add($Tab5_checkBox58)
 
-
+$Tab5_checkBox59 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox59.Location = New-Object System.Drawing.Point(310,260)
 $Tab5_checkBox59.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox59.Text = "RustDesk"
 $Tab5_checkBox59.Name = "Tab5_checkBox59"
 $tab5.Controls.Add($Tab5_checkBox59)
 
-
+$Tab5_checkBox60 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox60.Location = New-Object System.Drawing.Point(310,290)
 $Tab5_checkBox60.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox60.Text = "Putty"
 $Tab5_checkBox60.Name = "Tab5_checkBox60"
 $tab5.Controls.Add($Tab5_checkBox60)
 
-
+$Tab5_checkBox61 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox61.Location = New-Object System.Drawing.Point(310,320)
 $Tab5_checkBox61.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox61.Text = "Filezilla"
 $Tab5_checkBox61.Name = "Tab5_checkBox61"
 $tab5.Controls.Add($Tab5_checkBox61)
 
-
+$Tab5_checkBox62 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox62.Location = New-Object System.Drawing.Point(310,340)
 $Tab5_checkBox62.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox62.Text = "Etcher"
 $Tab5_checkBox62.Name = "Tab5_checkBox62"
 $tab5.Controls.Add($Tab5_checkBox62)
 
-
+$Tab5_checkBox63 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox63.Location = New-Object System.Drawing.Point(310,360)
 $Tab5_checkBox63.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox63.Text = "Rufus"
 $Tab5_checkBox63.Name = "Tab5_checkBox63"
 $tab5.Controls.Add($Tab5_checkBox63)
 
-
+$Tab5_checkBox64 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox64.Location = New-Object System.Drawing.Point(310,380)
 $Tab5_checkBox64.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox64.Text = "Ventoy"
 $Tab5_checkBox64.Name = "Tab5_checkBox64"
 $tab5.Controls.Add($Tab5_checkBox64)
 
-
+$Tab5_checkBox65 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox65.Location = New-Object System.Drawing.Point(410,50)
 $Tab5_checkBox65.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox65.Text = "DDU"
 $Tab5_checkBox65.Name = "Tab5_checkBox65"
 $tab5.Controls.Add($Tab5_checkBox65)
 
-
+$Tab5_checkBox66 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox66.Location = New-Object System.Drawing.Point(410,70)
 $Tab5_checkBox66.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox66.Text = "NVCleanInstall"
 $Tab5_checkBox66.Name = "Tab5_checkBox66"
 $tab5.Controls.Add($Tab5_checkBox66)
 
+$Tab5_checkBox67 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox67.Location = New-Object System.Drawing.Point(410,90)
 $Tab5_checkBox67.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox67.Text = "GFExperience"
 $Tab5_checkBox67.Name = "Tab5_checkBox67"
 $tab5.Controls.Add($Tab5_checkBox67)
 
-
+$Tab5_checkBox68 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox68.Location = New-Object System.Drawing.Point(410,110)
 $Tab5_checkBox68.Size = New-Object System.Drawing.Size(120,25)
 $Tab5_checkBox68.Text = "Ryzen Controller"
 $Tab5_checkBox68.Name = "Tab5_checkBox68"
 $tab5.Controls.Add($Tab5_checkBox68)
 
-
+$Tab5_checkBox69 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox69.Location = New-Object System.Drawing.Point(410,130)
 $Tab5_checkBox69.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox69.Text = "Ryzen Tuner"
 $Tab5_checkBox69.Name = "Tab5_checkBox69"
 $tab5.Controls.Add($Tab5_checkBox69)
 
-
+$Tab5_checkBox70 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox70.Location = New-Object System.Drawing.Point(410,150)
 $Tab5_checkBox70.Size = New-Object System.Drawing.Size(100,35)
 $Tab5_checkBox70.Text = "Intel Extreme Tuning Utility"
 $Tab5_checkBox70.Name = "Tab5_checkBox70"
 $tab5.Controls.Add($Tab5_checkBox70)
 
-
+$Tab5_checkBox71 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox71.Location = New-Object System.Drawing.Point(410,180)
 $Tab5_checkBox71.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox71.Text = "Neofetch"
 $Tab5_checkBox71.Name = "Tab5_checkBox71"
 $tab5.Controls.Add($Tab5_checkBox71)
 
-
+$Tab5_checkBox72 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox72.Location = New-Object System.Drawing.Point(410,200)
 $Tab5_checkBox72.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox72.Text = "Lolcat"
 $Tab5_checkBox72.Name = "Tab5_checkBox72"
 $tab5.Controls.Add($Tab5_checkBox72)
 
+
+$Tab5_checkBox73 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox73.Location = New-Object System.Drawing.Point(410,220)
 $Tab5_checkBox73.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox73.Text = "Cowsay"
 $Tab5_checkBox73.Name = "Tab5_checkBox73"
 $tab5.Controls.Add($Tab5_checkBox73)
 
-
+$Tab5_checkBox74 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox74.Location = New-Object System.Drawing.Point(410,250)
 $Tab5_checkBox74.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox74.Text = "Alacritty"
 $Tab5_checkBox74.Name = "Tab5_checkBox74"
 $tab5.Controls.Add($Tab5_checkBox74)
 
-
+$Tab5_checkBox75 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox75.Location = New-Object System.Drawing.Point(410,270)
 $Tab5_checkBox75.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox75.Text = "Tabby"
 $Tab5_checkBox75.Name = "Tab5_checkBox75"
 $tab5.Controls.Add($Tab5_checkBox75)
 
-
+$Tab5_checkBox76 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox76.Location = New-Object System.Drawing.Point(410,290)
 $Tab5_checkBox76.Size = New-Object System.Drawing.Size(100,25)
 $Tab5_checkBox76.Text = "Hyper"
 $Tab5_checkBox76.Name = "Tab5_checkBox76"
 $tab5.Controls.Add($Tab5_checkBox76)
 
-
+$Tab5_checkBox77 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox77.Location = New-Object System.Drawing.Point(410,310)
 $Tab5_checkBox77.Size = New-Object System.Drawing.Size(120,25)
 $Tab5_checkBox77.Text = "Fluent"
 $Tab5_checkBox77.Name = "Tab5_checkBox77"
 $tab5.Controls.Add($Tab5_checkBox77)
 
-
+$Tab5_checkBox78 = New-Object System.Windows.Forms.CheckBox
 $Tab5_checkBox78.Location = New-Object System.Drawing.Point(410,330)
 $Tab5_checkBox78.Size = New-Object System.Drawing.Size(120,25)
 $Tab5_checkBox78.Text = "Windows"
@@ -2014,12 +1946,863 @@ $Tab7_label1.Text = ("Essential")
 $tab7.Controls.Add($Tab7_label1)
 
 $Tab7_label2 = New-Object System.Windows.Forms.Label
-$Tab7_label2.Location = New-Object System.Drawing.Point(10,10)
+$Tab7_label2.Location = New-Object System.Drawing.Point(280,10)
 $Tab7_label2.AutoSize = $true
 $Tab7_label2.Font = New-Object System.Drawing.Font('verdana',16)
 $Tab7_label2.ForeColor = "#000000"
 $Tab7_label2.Text = ("Misc")
 $tab7.Controls.Add($Tab7_label2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$handler_Tab7_installbutton1_Click={
+	$Tab7_Statusbox1.Items.Clear();
+	if ($Tab7_checkBox1.Checked) { $Tab7_Statusbox1.Items.Add( "Creating Restore Point..."  ) ;
+		Enable-ComputerRestore -Drive "C:\"
+		Checkpoint-Computer -Description "RestorePoint1" -RestorePointType "MODIFY_SETTINGS"
+	}
+	if ($Tab7_checkBox2.Checked) { $Tab7_Statusbox1.Items.Add( "Running O&O Shutup..."  ) ;
+		Import-Module BitsTransfer
+		Start-BitsTransfer -Source "https://raw.githubusercontent.com/ChrisTitusTech/win10script/master/ooshutup10.cfg" -Destination ooshutup10.cfg
+        Start-BitsTransfer -Source "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe" -Destination OOSU10.exe
+        ./OOSU10.exe ooshutup10.cfg /quiet
+		#Remember to check if this file has changed on https://raw.githubusercontent.com/ChrisTitusTech/winutil/main/winutil-test.ps1
+	}
+	if ($Tab7_checkBox3.Checked) { $Tab7_Statusbox1.Items.Add( "Disabling Telemetry..."  )
+		Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name "AllowTelemetry" -Type DWord -Value 0
+        Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "AllowTelemetry" -Type DWord -Value 0
+        Disable-ScheduledTask -TaskName "Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" | Out-Null
+        Disable-ScheduledTask -TaskName "Microsoft\Windows\Application Experience\ProgramDataUpdater" | Out-Null
+        Disable-ScheduledTask -TaskName "Microsoft\Windows\Autochk\Proxy" | Out-Null
+        Disable-ScheduledTask -TaskName "Microsoft\Windows\Customer Experience Improvement Program\Consolidator" | Out-Null
+        Disable-ScheduledTask -TaskName "Microsoft\Windows\Customer Experience Improvement Program\UsbCeip" | Out-Null
+        Disable-ScheduledTask -TaskName "Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector" | Out-Null
+        Write-Host "Disabling Application suggestions..."
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "ContentDeliveryAllowed" -Type DWord -Value 0
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "OemPreInstalledAppsEnabled" -Type DWord -Value 0
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "PreInstalledAppsEnabled" -Type DWord -Value 0
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "PreInstalledAppsEverEnabled" -Type DWord -Value 0
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SilentInstalledAppsEnabled" -Type DWord -Value 0
+        Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-338387Enabled" -Type DWord -Value 0
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-338388Enabled" -Type DWord -Value 0
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-338389Enabled" -Type DWord -Value 0
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-353698Enabled" -Type DWord -Value 0
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SystemPaneSuggestionsEnabled" -Type DWord -Value 0
+        If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent")) {
+            New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Force | Out-Null
+        }
+        Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Name "DisableWindowsConsumerFeatures" -Type DWord -Value 1
+        Write-Host "Disabling Feedback..."
+        If (!(Test-Path "HKCU:\SOFTWARE\Microsoft\Siuf\Rules")) {
+            New-Item -Path "HKCU:\SOFTWARE\Microsoft\Siuf\Rules" -Force | Out-Null
+        }
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Siuf\Rules" -Name "NumberOfSIUFInPeriod" -Type DWord -Value 0
+        Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "DoNotShowFeedbackNotifications" -Type DWord -Value 1
+        Disable-ScheduledTask -TaskName "Microsoft\Windows\Feedback\Siuf\DmClient" -ErrorAction SilentlyContinue | Out-Null
+        Disable-ScheduledTask -TaskName "Microsoft\Windows\Feedback\Siuf\DmClientOnScenarioDownload" -ErrorAction SilentlyContinue | Out-Null
+        Write-Host "Disabling Tailored Experiences..."
+        If (!(Test-Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\CloudContent")) {
+            New-Item -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Force | Out-Null
+        }
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Name "DisableTailoredExperiencesWithDiagnosticData" -Type DWord -Value 1
+        Write-Host "Disabling Advertising ID..."
+        If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo")) {
+            New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" | Out-Null
+        }
+        Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" -Name "DisabledByGroupPolicy" -Type DWord -Value 1
+        Write-Host "Disabling Error reporting..."
+        Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting" -Name "Disabled" -Type DWord -Value 1
+        Disable-ScheduledTask -TaskName "Microsoft\Windows\Windows Error Reporting\QueueReporting" | Out-Null
+        Write-Host "Restricting Windows Update P2P only to local network..."
+        If (!(Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config")) {
+            New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" | Out-Null
+        }
+        Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" -Name "DODownloadMode" -Type DWord -Value 1
+        Write-Host "Stopping and disabling Diagnostics Tracking Service..."
+        Stop-Service "DiagTrack" -WarningAction SilentlyContinue
+        Set-Service "DiagTrack" -StartupType Disabled
+        Write-Host "Stopping and disabling WAP Push Service..."
+        Stop-Service "dmwappushservice" -WarningAction SilentlyContinue
+        Set-Service "dmwappushservice" -StartupType Disabled
+        Write-Host "Enabling F8 boot menu options..."
+        bcdedit /set `{current`} bootmenupolicy Legacy | Out-Null
+        Write-Host "Disabling Remote Assistance..."
+        Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Remote Assistance" -Name "fAllowToGetHelp" -Type DWord -Value 0
+        Write-Host "Stopping and disabling Superfetch service..."
+        Stop-Service "SysMain" -WarningAction SilentlyContinue
+        Set-Service "SysMain" -StartupType Disabled
+
+        # Task Manager Details
+        If ((get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion" -Name CurrentBuild).CurrentBuild -lt 22557) {
+            Write-Host "Showing task manager details..."
+            $taskmgr = Start-Process -WindowStyle Hidden -FilePath taskmgr.exe -PassThru
+            Do {
+                  Start-Sleep -Milliseconds 100
+                $preferences = Get-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\TaskManager" -Name "Preferences" -ErrorAction SilentlyContinue
+            } Until ($preferences)
+            Stop-Process $taskmgr
+            $preferences.Preferences[28] = 0
+            Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\TaskManager" -Name "Preferences" -Type Binary -Value $preferences.Preferences
+        } else {Write-Host "Task Manager patch not run in builds 22557+ due to bug"}
+
+        Write-Host "Showing file operations details..."
+        If (!(Test-Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager")) {
+            New-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager" | Out-Null
+        }
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager" -Name "EnthusiastMode" -Type DWord -Value 1
+        Write-Host "Hiding Task View button..."
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowTaskViewButton" -Type DWord -Value 0
+        Write-Host "Hiding People icon..."
+        If (!(Test-Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People")) {
+            New-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" | Out-Null
+        }
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" -Name "PeopleBand" -Type DWord -Value 0
+
+        Write-Host "Changing default Explorer view to This PC..."
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "LaunchTo" -Type DWord -Value 1
+    
+        Write-Host "Hiding 3D Objects icon from This PC..."
+        Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" -Recurse -ErrorAction SilentlyContinue  
+        
+        ## Performance Tweaks and More Telemetry
+            Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching" -Name "SearchOrderConfig" -Type DWord -Value 00000000
+            Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -Name "SystemResponsiveness" -Type DWord -Value 0000000a
+            Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -Name "NetworkThrottlingIndex" -Type DWord -Value 0000000a
+            Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control" -Name "WaitToKillServiceTimeout" -Type DWord -Value 2000
+            Set-ItemProperty -Path "HKLM:\Control Panel\Desktop" -Name "MenuShowDelay" -Type DWord -Value 0
+            Set-ItemProperty -Path "HKLM:\Control Panel\Desktop" -Name "WaitToKillAppTimeout" -Type DWord -Value 5000
+            Set-ItemProperty -Path "HKLM:\Control Panel\Desktop" -Name "HungAppTimeout" -Type DWord -Value 4000
+            Set-ItemProperty -Path "HKLM:\Control Panel\Desktop" -Name "AutoEndTasks" -Type DWord -Value 1
+            Set-ItemProperty -Path "HKLM:\Control Panel\Desktop" -Name "LowLevelHooksTimeout" -Type DWord -Value 00001000
+            Set-ItemProperty -Path "HKLM:\Control Panel\Desktop" -Name "WaitToKillServiceTimeout" -Type DWord -Value 00002000
+            Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" -Name "ClearPageFileAtShutdown" -Type DWord -Value 00000001
+            Set-ItemProperty -Path "HKLM:\SYSTEM\ControlSet001\Services\Ndu" -Name "Start" -Type DWord -Value 00000004
+            Set-ItemProperty -Path "HKLM:\Control Panel\Mouse" -Name "MouseHoverTime" -Type DWord -Value 00000010
+
+
+            # Network Tweaks
+            Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" -Name "IRPStackSize" -Type DWord -Value 20
+
+            # Group svchost.exe processes
+            $ram = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1kb
+            Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control" -Name "SvcHostSplitThresholdInKB" -Type DWord -Value $ram -Force
+
+            Write-Host "Disable News and Interests"
+            Set-ItemProperty -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds" -Name "EnableFeeds" -Type DWord -Value 0
+            # Remove "News and Interest" from taskbar
+            Set-ItemProperty -Path  "HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds" -Name "ShellFeedsTaskbarViewMode" -Type DWord -Value 2
+
+            # remove "Meet Now" button from taskbar
+
+            If (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer")) {
+                New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Force | Out-Null
+            }
+
+        Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "HideSCAMeetNow" -Type DWord -Value 1
+
+        Write-Host "Removing AutoLogger file and restricting directory..."
+        $autoLoggerDir = "$env:PROGRAMDATA\Microsoft\Diagnosis\ETLLogs\AutoLogger"
+        If (Test-Path "$autoLoggerDir\AutoLogger-Diagtrack-Listener.etl") {
+            Remove-Item "$autoLoggerDir\AutoLogger-Diagtrack-Listener.etl"
+        }
+        icacls $autoLoggerDir /deny SYSTEM:`(OI`)`(CI`)F | Out-Null
+
+        Write-Host "Stopping and disabling Diagnostics Tracking Service..."
+        Stop-Service "DiagTrack"
+        Set-Service "DiagTrack" -StartupType Disabled
+	}
+	if ($Tab7_checkBox4.Checked) {
+		$Tab7_Statusbox1.Items.Add( "Disabling Wifi-Sense..."  )
+		If (!(Test-Path "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting")) {
+			New-Item -Path "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting" -Force | Out-Null
+		}
+		Set-ItemProperty -Path "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting" -Name "Value" -Type DWord -Value 0
+		Set-ItemProperty -Path "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots" -Name "Value" -Type DWord -Value 0
+	}
+	if ($Tab7_checkBox5.Checked) {
+		$Tab7_Statusbox1.Items.Add( "Disabling Activity History"  )
+		Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "EnableActivityFeed" -Type DWord -Value 0
+        Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "PublishUserActivities" -Type DWord -Value 0
+        Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "UploadUserActivities" -Type DWord -Value 0
+	}
+
+
+
+	if ($Tab7_checkBox6.Checked) {$Tab7_Statusbox1.Items.Add( "Deleting Temporary Files..."  ) ;  Write-Output "hello" }
+
+
+
+
+	if ($Tab7_checkBox7.Checked) {
+		$Tab7_Statusbox1.Items.Add( "Disabling Location Tracking..."  )
+		If (!(Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location")) {
+			New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" -Force | Out-Null
+		}
+		Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" -Name "Value" -Type String -Value "Deny"
+		Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}" -Name "SensorPermissionState" -Type DWord -Value 0
+		Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\lfsvc\Service\Configuration" -Name "Status" -Type DWord -Value 0
+		Write-Host "Disabling automatic Maps updates..."
+		Set-ItemProperty -Path "HKLM:\SYSTEM\Maps" -Name "AutoUpdateEnabled" -Type DWord -Value 0
+	}
+	if ($Tab7_checkBox8.Checked) {
+		$Tab7_Statusbox1.Items.Add( "Disabling Homegroup..."  )
+		Stop-Service "HomeGroupListener" -WarningAction SilentlyContinue
+		Set-Service "HomeGroupListener" -StartupType Manual
+		Stop-Service "HomeGroupProvider" -WarningAction SilentlyContinue
+		Set-Service "HomeGroupProvider" -StartupType Manual
+	}
+	if ($Tab7_checkBox9.Checked) {
+		$Tab7_Statusbox1.Items.Add( "Disabling Storage Sense..."  )
+		Remove-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy" -Recurse -ErrorAction SilentlyContinue
+	}
+	if ($Tab7_checkBox10.Checked) {
+		$Tab7_Statusbox1.Items.Add( "Disabling Hibernation..."  )
+		Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Session Manager\Power" -Name "HibernateEnabled" -Type Dword -Value 0
+        If (!(Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings")) {
+            New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" | Out-Null
+        }
+        Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" -Name "ShowHibernateOption" -Type Dword -Value 0
+	}
+	if ($Tab7_checkBox11.Checked) {
+		$Tab7_Statusbox1.Items.Add( "Disabling GameDVR..."  )
+		Set-ItemProperty -Path "HKLM:\System\GameConfigStore" -Name "GameDVR_DXGIHonorFSEWindowsCompatible" -Type Hex -Value 00000000
+		Set-ItemProperty -Path "HKLM:\System\GameConfigStore" -Name "GameDVR_HonorUserFSEBehaviorMode" -Type Hex -Value 00000000
+		Set-ItemProperty -Path "HKLM:\System\GameConfigStore" -Name "GameDVR_EFSEFeatureFlags" -Type Hex -Value 00000000
+		Set-ItemProperty -Path "HKLM:\System\GameConfigStore" -Name "GameDVR_Enabled" -Type DWord -Value 00000000
+	}
+	if ($Tab7_checkBox12.Checked) {
+		$Tab7_Statusbox1.Items.Add( "Setting Services to Manual..."  )
+		$services = @(
+            "diagnosticshub.standardcollector.service"     # Microsoft (R) Diagnostics Hub Standard Collector Service
+            "DiagTrack"                                    # Diagnostics Tracking Service
+            "DPS"
+            "dmwappushservice"                             # WAP Push Message Routing Service (see known issues)
+            "lfsvc"                                        # Geolocation Service
+            "MapsBroker"                                   # Downloaded Maps Manager
+            "NetTcpPortSharing"                            # Net.Tcp Port Sharing Service
+            "RemoteAccess"                                 # Routing and Remote Access
+            "RemoteRegistry"                               # Remote Registry
+            "SharedAccess"                                 # Internet Connection Sharing (ICS)
+            "TrkWks"                                       # Distributed Link Tracking Client
+            #"WbioSrvc"                                    # Windows Biometric Service (required for Fingerprint reader / facial detection)
+            #"WlanSvc"                                     # WLAN AutoConfig
+            "WMPNetworkSvc"                                # Windows Media Player Network Sharing Service
+            #"wscsvc"                                      # Windows Security Center Service
+            "WSearch"                                      # Windows Search
+            "XblAuthManager"                               # Xbox Live Auth Manager
+            "XblGameSave"                                  # Xbox Live Game Save Service
+            "XboxNetApiSvc"                                # Xbox Live Networking Service
+            "XboxGipSvc"                                   # Disables Xbox Accessory Management Service
+            "ndu"                                          # Windows Network Data Usage Monitor
+            "WerSvc"                                       # Disables windows error reporting
+            #"Spooler"                                     # Disables your printer
+            "Fax"                                          # Disables fax
+            "fhsvc"                                        # Disables fax history
+            "gupdate"                                      # Disables google update
+            "gupdatem"                                     # Disables another google update
+            "stisvc"                                       # Disables Windows Image Acquisition (WIA)
+            "AJRouter"                                     # Disables (needed for AllJoyn Router Service)
+            "MSDTC"                                        # Disables Distributed Transaction Coordinator
+            "WpcMonSvc"                                    # Disables Parental Controls
+            "PhoneSvc"                                     # Disables Phone Service(Manages the telephony state on the device)
+            "PrintNotify"                                  # Disables Windows printer notifications and extensions
+            "PcaSvc"                                       # Disables Program Compatibility Assistant Service
+            "WPDBusEnum"                                   # Disables Portable Device Enumerator Service
+            #"LicenseManager"                              # Disables LicenseManager(Windows store may not work properly)
+            "seclogon"                                     # Disables Secondary Logon(disables other credentials only password will work)
+            "SysMain"                                      # Disables sysmain
+            "lmhosts"                                      # Disables TCP/IP NetBIOS Helper
+            "wisvc"                                        # Disables Windows Insider program(Windows Insider will not work)
+            "FontCache"                                    # Disables Windows font cache
+            "RetailDemo"                                   # Disables RetailDemo whic is often used when showing your device
+            "ALG"                                          # Disables Application Layer Gateway Service(Provides support for 3rd party protocol plug-ins for Internet Connection Sharing)
+            #"BFE"                                         # Disables Base Filtering Engine (BFE) (is a service that manages firewall and Internet Protocol security)
+            #"BrokerInfrastructure"                        # Disables Windows infrastructure service that controls which background tasks can run on the system.
+            "SCardSvr"                                     # Disables Windows smart card
+            "EntAppSvc"                                    # Disables enterprise application management.
+            "BthAvctpSvc"                                  # Disables AVCTP service (if you use  Bluetooth Audio Device or Wireless Headphones. then don't disable this)
+            #"FrameServer"                                 # Disables Windows Camera Frame Server(this allows multiple clients to access video frames from camera devices.)
+            "Browser"                                      # Disables computer browser
+            "BthAvctpSvc"                                  # AVCTP service (This is Audio Video Control Transport Protocol service.)
+            #"BDESVC"                                      # Disables bitlocker
+            "iphlpsvc"                                     # Disables ipv6 but most websites don't use ipv6 they use ipv4     
+            "edgeupdate"                                   # Disables one of edge update service  
+            "MicrosoftEdgeElevationService"                # Disables one of edge  service 
+            "edgeupdatem"                                  # Disables another one of update service (disables edgeupdatem)                          
+            "SEMgrSvc"                                     # Disables Payments and NFC/SE Manager (Manages payments and Near Field Communication (NFC) based secure elements)
+            #"PNRPsvc"                                     # Disables peer Name Resolution Protocol ( some peer-to-peer and collaborative applications, such as Remote Assistance, may not function, Discord will still work)
+            #"p2psvc"                                      # Disbales Peer Name Resolution Protocol(nables multi-party communication using Peer-to-Peer Grouping.  If disabled, some applications, such as HomeGroup, may not function. Discord will still work)
+            #"p2pimsvc"                                    # Disables Peer Networking Identity Manager (Peer-to-Peer Grouping services may not function, and some applications, such as HomeGroup and Remote Assistance, may not function correctly.Discord will still work)
+            "PerfHost"                                     # Disables remote users and 64-bit processes to query performance .
+            "BcastDVRUserService_48486de"                  # Disables GameDVR and Broadcast   is used for Game Recordings and Live Broadcasts
+            "CaptureService_48486de"                       # Disables ptional screen capture functionality for applications that call the Windows.Graphics.Capture API.  
+            "cbdhsvc_48486de"                              # Disables cbdhsvc_48486de (clipboard service it disables)
+            #"BluetoothUserService_48486de"                # Disables BluetoothUserService_48486de (The Bluetooth user service supports proper functionality of Bluetooth features relevant to each user session.)
+            "WpnService"                                   # Disables WpnService (Push Notifications may not work )
+            #"StorSvc"                                     # Disables StorSvc (usb external hard drive will not be reconised by windows)
+            "RtkBtManServ"                                 # Disables Realtek Bluetooth Device Manager Service
+            "QWAVE"                                        # Disables Quality Windows Audio Video Experience (audio and video might sound worse)
+            #Hp services
+            "HPAppHelperCap"
+            "HPDiagsCap"
+            "HPNetworkCap"
+            "HPSysInfoCap"
+            "HpTouchpointAnalyticsService"
+            #hyper-v services
+            "HvHost"                          
+            "vmickvpexchange"
+            "vmicguestinterface"
+            "vmicshutdown"
+            "vmicheartbeat"
+            "vmicvmsession"
+            "vmicrdv"
+            "vmictimesync" 
+            # Services which cannot be disabled
+            #"WdNisSvc"
+        )
+                
+        foreach ($service in $services) {
+            # -ErrorAction SilentlyContinue is so it doesn't write an error to stdout if a service doesn't exist
+                
+            Write-Host "Setting $service StartupType to Manual"
+            Get-Service -Name $service -ErrorAction SilentlyContinue | Set-Service -StartupType Manual
+	}
+	if ($Tab7_checkBox13.Checked) {
+		$Tab7_Statusbox1.Items.Add( "Disabling Power Throttling..."  )
+		Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" -Name "PowerThrottlingOff" -Type DWord -Value 00000000
+		Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Power" -Name "HiberbootEnabled" -Type DWord -Value 0000001
+	}
+	if ($Tab7_checkBox14.Checked) {
+		$Tab7_Statusbox1.Items.Add( "Enabling Power Throttling..."  )
+		Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" -Name "PowerThrottlingOff" -Type DWord -Value 00000001
+		Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Power" -Name "HiberbootEnabled" -Type DWord -Value 0000000
+	}
+	if ($Tab7_checkBox15.Checked) {
+		$Tab7_Statusbox1.Items.Add( "Enabling NumLock on Startup..."  )
+		If (!(Test-Path "HKU:")) {
+			New-PSDrive -Name HKU -PSProvider Registry -Root HKEY_USERS | Out-Null
+		}
+		Set-ItemProperty -Path "HKU:\.DEFAULT\Control Panel\Keyboard" -Name "InitialKeyboardIndicators" -Type DWord -Value 2
+	}
+	if ($Tab7_checkBox16.Checked) {
+		$Tab7_Statusbox1.Items.Add( "Disabling NumLock on Startup..."  )
+		If (!(Test-Path "HKU:")) {
+			New-PSDrive -Name HKU -PSProvider Registry -Root HKEY_USERS | Out-Null
+		}
+		Set-ItemProperty -Path "HKU:\.DEFAULT\Control Panel\Keyboard" -Name "InitialKeyboardIndicators" -Type DWord -Value 0
+	}
+	if ($Tab7_checkBox17.Checked) {
+		$Tab7_Statusbox1.Items.Add( "Showing File Extensions..."  )
+		Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Type DWord -Value 0
+	}
+	if ($Tab7_checkBox18.Checked) {
+		$Tab7_Statusbox1.Items.Add( "Setting Display for Performance..."  )
+		Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "DragFullWindows" -Type String -Value 0
+		Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "MenuShowDelay" -Type String -Value 200
+		Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "UserPreferencesMask" -Type Binary -Value ([byte[]](144,18,3,128,16,0,0,0))
+		Set-ItemProperty -Path "HKCU:\Control Panel\Desktop\WindowMetrics" -Name "MinAnimate" -Type String -Value 0
+		Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardDelay" -Type DWord -Value 0
+		Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewAlphaSelect" -Type DWord -Value 0
+		Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewShadow" -Type DWord -Value 0
+		Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarAnimations" -Type DWord -Value 0
+		Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" -Name "VisualFXSetting" -Type DWord -Value 3
+		Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\DWM" -Name "EnableAeroPeek" -Type DWord -Value 0
+	}
+	if ($Tab7_checkBox19.Checked) {
+		$Tab7_Statusbox1.Items.Add( "Setting Time to UTC..."  )
+		Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation" -Name "RealTimeIsUniversal" -Type DWord -Value 1
+	}
+	if ($Tab7_checkBox20.Checked) {
+		$Tab7_Statusbox1.Items.Add( "Removing all MS Store Apps..."  )
+		$Bloatware = @(
+                    #Unnecessary Windows 10 AppX Apps
+                    "Microsoft.3DBuilder"
+                    "Microsoft.Microsoft3DViewer"
+                    "Microsoft.AppConnector"
+                    "Microsoft.BingFinance"
+                    "Microsoft.BingNews"
+                    "Microsoft.BingSports"
+                    "Microsoft.BingTranslator"
+                    "Microsoft.BingWeather"
+                    "Microsoft.BingFoodAndDrink"
+                    "Microsoft.BingHealthAndFitness"
+                    "Microsoft.BingTravel"
+                    "Microsoft.MinecraftUWP"
+                    "Microsoft.GamingServices"
+                    # "Microsoft.WindowsReadingList"
+                    "Microsoft.GetHelp"
+                    "Microsoft.Getstarted"
+                    "Microsoft.Messaging"
+                    "Microsoft.Microsoft3DViewer"
+                    "Microsoft.MicrosoftSolitaireCollection"
+                    "Microsoft.NetworkSpeedTest"
+                    "Microsoft.News"
+                    "Microsoft.Office.Lens"
+                    "Microsoft.Office.Sway"
+                    "Microsoft.Office.OneNote"
+                    "Microsoft.OneConnect"
+                    "Microsoft.People"
+                    "Microsoft.Print3D"
+                    "Microsoft.SkypeApp"
+                    "Microsoft.Wallet"
+                    "Microsoft.Whiteboard"
+                    "Microsoft.WindowsAlarms"
+                    "microsoft.windowscommunicationsapps"
+                    "Microsoft.WindowsFeedbackHub"
+                    "Microsoft.WindowsMaps"
+                    "Microsoft.WindowsPhone"
+                    "Microsoft.WindowsSoundRecorder"
+                    "Microsoft.XboxApp"
+                    "Microsoft.ConnectivityStore"
+                    "Microsoft.CommsPhone"
+                    "Microsoft.ScreenSketch"
+                    "Microsoft.Xbox.TCUI"
+                    "Microsoft.XboxGameOverlay"
+                    "Microsoft.XboxGameCallableUI"
+                    "Microsoft.XboxSpeechToTextOverlay"
+                    "Microsoft.MixedReality.Portal"
+                    "Microsoft.XboxIdentityProvider"
+                    "Microsoft.ZuneMusic"
+                    "Microsoft.ZuneVideo"
+                    #"Microsoft.YourPhone"
+                    "Microsoft.Getstarted"
+                    "Microsoft.MicrosoftOfficeHub"
+            
+                    #Sponsored Windows 10 AppX Apps
+                    #Add sponsored/featured apps to remove in the "*AppName*" format
+                    "*EclipseManager*"
+                    "*ActiproSoftwareLLC*"
+                    "*AdobeSystemsIncorporated.AdobePhotoshopExpress*"
+                    "*Duolingo-LearnLanguagesforFree*"
+                    "*PandoraMediaInc*"
+                    "*CandyCrush*"
+                    "*BubbleWitch3Saga*"
+                    "*Wunderlist*"
+                    "*Flipboard*"
+                    "*Twitter*"
+                    "*Facebook*"
+                    "*Royal Revolt*"
+                    "*Sway*"
+                    "*Speed Test*"
+                    "*Dolby*"
+                    "*Viber*"
+                    "*ACGMediaPlayer*"
+                    "*Netflix*"
+                    "*OneCalendar*"
+                    "*LinkedInforWindows*"
+                    "*HiddenCityMysteryofShadows*"
+                    "*Hulu*"
+                    "*HiddenCity*"
+                    "*AdobePhotoshopExpress*"
+                    "*HotspotShieldFreeVPN*"
+            
+                    #Optional: Typically not removed but you can if you need to for some reason
+                    "*Microsoft.Advertising.Xaml*"
+                    #"*Microsoft.MSPaint*"
+                    #"*Microsoft.MicrosoftStickyNotes*"
+                    #"*Microsoft.Windows.Photos*"
+                    #"*Microsoft.WindowsCalculator*"
+                    #"*Microsoft.WindowsStore*"
+                    )
+                           
+                foreach ($Bloat in $Bloatware) {
+                    Get-AppxPackage -Name $Bloat| Remove-AppxPackage
+                    Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like $Bloat | Remove-AppxProvisionedPackage -Online
+                    Write-Host "Trying to remove $Bloat."
+                }
+            }}
+	
+	if ($Tab7_checkBox21.Checked) {$Tab7_Statusbox1.Items.Add( "Not yet implemented" )}
+
+	if ( !$Tab7_checkBox1.Checked -and !$Tab7_checkBox2.Checked -and !$Tab7_checkBox3.Checked -and !$Tab7_checkBox4.Checked -and !$Tab7_checkBox5.Checked -and !$Tab7_checkBox6.Checked -and !$Tab7_checkBox7.Checked -and !$Tab7_checkBox8.Checked -and !$Tab7_checkBox9.Checked -and !$Tab7_checkBox10.Checked -and !$Tab7_checkBox11.Checked -and !$Tab7_checkBox12.Checked -and !$Tab7_checkBox13.Checked -and !$Tab7_checkBox14.Checked -and !$Tab7_checkBox15.Checked -and !$Tab7_checkBox16.Checked -and !$Tab7_checkBox17.Checked -and !$Tab7_checkBox18.Checked -and !$Tab7_checkBox19.Checked -and !$Tab7_checkBox20.Checked -and !$Tab7_checkBox21.Checked) {$Tab7_Statusbox1.Items.Add("No tweaks selected....")} 
+}
+
+
+
+#Tab7_installbutton1
+$Tab7_installbutton1 = New-Object System.Windows.Forms.Button
+$Tab7_installbutton1.Name = "Tab5_installbutton1"
+$Tab7_installbutton1.Location = New-Object System.Drawing.Point(450,10)
+$Tab7_installbutton1.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_installbutton1.Text = "Apply selected tweaks"
+$Tab7_installbutton1.add_Click($handler_Tab7_installbutton1_Click)
+$tab7.Controls.Add($Tab7_installbutton1)
+
+#Tab7_undobutton1
+$Tab7_undobutton1 = New-Object System.Windows.Forms.Button
+$Tab7_undobutton1.Name = "Tab5_installbutton1"
+$Tab7_undobutton1.Location = New-Object System.Drawing.Point(450,300)
+$Tab7_undobutton1.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_undobutton1.Text = "Undo all Tweaks"
+$Tab7_undobutton1.Add_Click({
+	Write-Host "Creating Restore Point in case something bad happens"
+	Enable-ComputerRestore -Drive "$env:SystemDrive"
+	Checkpoint-Computer -Description "RestorePoint1" -RestorePointType "MODIFY_SETTINGS"
+
+	Write-Host "Enabling Telemetry..."
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name "AllowTelemetry" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "AllowTelemetry" -Type DWord -Value 1
+	Write-Host "Enabling Wi-Fi Sense"
+	Set-ItemProperty -Path "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting" -Name "Value" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots" -Name "Value" -Type DWord -Value 1
+	Write-Host "Enabling Application suggestions..."
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "ContentDeliveryAllowed" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "OemPreInstalledAppsEnabled" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "PreInstalledAppsEnabled" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "PreInstalledAppsEverEnabled" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SilentInstalledAppsEnabled" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-338387Enabled" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-338388Enabled" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-338389Enabled" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-353698Enabled" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SystemPaneSuggestionsEnabled" -Type DWord -Value 1
+	If (Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent") {
+		Remove-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Recurse -ErrorAction SilentlyContinue
+	}
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Name "DisableWindowsConsumerFeatures" -Type DWord -Value 0
+	Write-Host "Enabling Activity History..."
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "EnableActivityFeed" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "PublishUserActivities" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "UploadUserActivities" -Type DWord -Value 1
+	Write-Host "Enable Location Tracking..."
+	If (Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location") {
+		Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" -Recurse -ErrorAction SilentlyContinue
+	}
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" -Name "Value" -Type String -Value "Allow"
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}" -Name "SensorPermissionState" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\lfsvc\Service\Configuration" -Name "Status" -Type DWord -Value 1
+	Write-Host "Enabling automatic Maps updates..."
+	Set-ItemProperty -Path "HKLM:\SYSTEM\Maps" -Name "AutoUpdateEnabled" -Type DWord -Value 1
+	Write-Host "Enabling Feedback..."
+	If (Test-Path "HKCU:\SOFTWARE\Microsoft\Siuf\Rules") {
+		Remove-Item -Path "HKCU:\SOFTWARE\Microsoft\Siuf\Rules" -Recurse -ErrorAction SilentlyContinue
+	}
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Siuf\Rules" -Name "NumberOfSIUFInPeriod" -Type DWord -Value 0
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "DoNotShowFeedbackNotifications" -Type DWord -Value 0
+	Write-Host "Enabling Tailored Experiences..."
+	If (Test-Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\CloudContent") {
+		Remove-Item -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Recurse -ErrorAction SilentlyContinue
+	}
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Name "DisableTailoredExperiencesWithDiagnosticData" -Type DWord -Value 0
+	Write-Host "Disabling Advertising ID..."
+	If (Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo") {
+		Remove-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" -Recurse -ErrorAction SilentlyContinue
+	}
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" -Name "DisabledByGroupPolicy" -Type DWord -Value 0
+	Write-Host "Allow Error reporting..."
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting" -Name "Disabled" -Type DWord -Value 0
+	Write-Host "Allowing Diagnostics Tracking Service..."
+	Stop-Service "DiagTrack" -WarningAction SilentlyContinue
+	Set-Service "DiagTrack" -StartupType Manual
+	Write-Host "Allowing WAP Push Service..."
+	Stop-Service "dmwappushservice" -WarningAction SilentlyContinue
+	Set-Service "dmwappushservice" -StartupType Manual
+	Write-Host "Allowing Home Groups services..."
+	Stop-Service "HomeGroupListener" -WarningAction SilentlyContinue
+	Set-Service "HomeGroupListener" -StartupType Manual
+	Stop-Service "HomeGroupProvider" -WarningAction SilentlyContinue
+	Set-Service "HomeGroupProvider" -StartupType Manual
+	Write-Host "Enabling Storage Sense..."
+	New-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy" | Out-Null
+	Write-Host "Allowing Superfetch service..."
+	Stop-Service "SysMain" -WarningAction SilentlyContinue
+	Set-Service "SysMain" -StartupType Manual
+	Write-Host "Setting BIOS time to Local Time instead of UTC..."
+	Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation" -Name "RealTimeIsUniversal" -Type DWord -Value 0
+	Write-Host "Enabling Hibernation..."
+	Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Session Manager\Power" -Name "HibernteEnabled" -Type Dword -Value 1
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" -Name "ShowHibernateOption" -Type Dword -Value 1
+	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization" -Name "NoLockScreen" -ErrorAction SilentlyContinue
+
+	Write-Host "Hiding file operations details..."
+	If (Test-Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager") {
+		Remove-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager" -Recurse -ErrorAction SilentlyContinue
+	}
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager" -Name "EnthusiastMode" -Type DWord -Value 0
+	Write-Host "Showing Task View button..."
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowTaskViewButton" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" -Name "PeopleBand" -Type DWord -Value 1
+
+	Write-Host "Changing default Explorer view to Quick Access..."
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "LaunchTo" -Type DWord -Value 1
+
+	Write-Host "Unrestricting AutoLogger directory"
+	$autoLoggerDir = "$env:PROGRAMDATA\Microsoft\Diagnosis\ETLLogs\AutoLogger"
+	icacls $autoLoggerDir /grant:r SYSTEM:`(OI`)`(CI`)F | Out-Null
+
+	Write-Host "Enabling and starting Diagnostics Tracking Service"
+	Set-Service "DiagTrack" -StartupType Automatic
+	Start-Service "DiagTrack"
+
+	Write-Host "Hiding known file extensions"
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Type DWord -Value 1
+
+	Write-Host "Reset Local Group Policies to Stock Defaults"
+	# cmd /c secedit /configure /cfg %windir%\inf\defltbase.inf /db defltbase.sdb /verbose
+	cmd /c RD /S /Q "%WinDir%\System32\GroupPolicyUsers"
+	cmd /c RD /S /Q "%WinDir%\System32\GroupPolicy"
+	cmd /c gpupdate /force
+	# Considered using Invoke-GPUpdate but requires module most people won't have installed
+
+	Write-Output "Adjusting visual effects for appearance..."
+	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "DragFullWindows" -Type String -Value 1
+	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "MenuShowDelay" -Type String -Value 400
+	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "UserPreferencesMask" -Type Binary -Value ([byte[]](158, 30, 7, 128, 18, 0, 0, 0))
+	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop\WindowMetrics" -Name "MinAnimate" -Type String -Value 1
+	Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardDelay" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewAlphaSelect" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewShadow" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarAnimations" -Type DWord -Value 1
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" -Name "VisualFXSetting" -Type DWord -Value 3
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\DWM" -Name "EnableAeroPeek" -Type DWord -Value 1
+	Remove-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "HungAppTimeout" -ErrorAction SilentlyContinue
+	Write-Host "Restoring Clipboard History..."
+	Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Clipboard" -Name "EnableClipboardHistory" -ErrorAction SilentlyContinue
+	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "AllowClipboardHistory" -ErrorAction SilentlyContinue
+	Write-Host "Done - Reverted to Stock Settings"
+
+	Write-Host "Essential Undo Completed"
+
+	$ButtonType = [System.Windows.MessageBoxButton]::OK
+	$MessageboxTitle = "Undo All"
+	$Messageboxbody = ("Done")
+	$MessageIcon = [System.Windows.MessageBoxImage]::Information
+
+	[System.Windows.MessageBox]::Show($Messageboxbody, $MessageboxTitle, $ButtonType, $MessageIcon)
+
+	Write-Host "Undo All is Finished"
+}) >> C:\Users\ghost\log.log 
+$tab7.Controls.Add($Tab7_undobutton1)
+
+#Tab7_Statusbox1
+$Tab7_Statusbox1 = New-Object System.Windows.Forms.ListBox
+$Tab7_Statusbox1.FormattingEnabled = $True
+$Tab7_Statusbox1.Location = New-Object System.Drawing.Point(450,335)
+$Tab7_Statusbox1.Size = New-Object System.Drawing.Size(200,100)
+$Tab7_Statusbox1.Name = "Tab7_Statusbox1"
+$tab7.Controls.Add($Tab7_Statusbox1)
+
+#Tab7_checkboxes
+$Tab7_checkBox1 = New-Object System.Windows.Forms.CheckBox
+$Tab7_checkBox1.Location = New-Object System.Drawing.Point(10,50)
+$Tab7_checkBox1.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_checkBox1.Text = "Create Restore Point"
+$Tab7_checkBox1.Name = "Tab7_checkBox1"
+$tab7.Controls.Add($Tab7_checkBox1)
+
+$Tab7_checkBox2 = New-Object System.Windows.Forms.CheckBox
+$Tab7_checkBox2.Location = New-Object System.Drawing.Point(10,70)
+$Tab7_checkBox2.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_checkBox2.Text = "O&O Shutup"
+$Tab7_checkBox2.Name = "Tab7_checkBox2"
+$tab7.Controls.Add($Tab7_checkBox2)
+
+$Tab7_checkBox3 = New-Object System.Windows.Forms.CheckBox
+$Tab7_checkBox3.Location = New-Object System.Drawing.Point(10,90)
+$Tab7_checkBox3.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_checkBox3.Text = "Disable Telemetry"
+$Tab7_checkBox3.Name = "Tab7_checkBox3"
+$tab7.Controls.Add($Tab7_checkBox3)
+
+$Tab7_checkBox4 = New-Object System.Windows.Forms.CheckBox
+$Tab7_checkBox4.Location = New-Object System.Drawing.Point(10,110)
+$Tab7_checkBox4.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_checkBox4.Text = "Disable Wifi-Sense"
+$Tab7_checkBox4.Name = "Tab7_checkBox4"
+$tab7.Controls.Add($Tab7_checkBox4)
+
+$Tab7_checkBox5 = New-Object System.Windows.Forms.CheckBox
+$Tab7_checkBox5.Location = New-Object System.Drawing.Point(10,130)
+$Tab7_checkBox5.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_checkBox5.Text = "Disable Activity History"
+$Tab7_checkBox5.Name = "Tab7_checkBox5"
+$tab7.Controls.Add($Tab7_checkBox5)
+
+$Tab7_checkBox6 = New-Object System.Windows.Forms.CheckBox
+$Tab7_checkBox6.Location = New-Object System.Drawing.Point(10,160)
+$Tab7_checkBox6.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_checkBox6.Text = "Delete Temporary Files"
+$Tab7_checkBox6.Name = "Tab7_checkBox6"
+$tab7.Controls.Add($Tab7_checkBox6)
+
+$Tab7_checkBox7 = New-Object System.Windows.Forms.CheckBox
+$Tab7_checkBox7.Location = New-Object System.Drawing.Point(10,180)
+$Tab7_checkBox7.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_checkBox7.Text = "Disable Location Tracking"
+$Tab7_checkBox7.Name = "Tab7_checkBox7"
+$tab7.Controls.Add($Tab7_checkBox7)
+
+$Tab7_checkBox8 = New-Object System.Windows.Forms.CheckBox
+$Tab7_checkBox8.Location = New-Object System.Drawing.Point(10,200)
+$Tab7_checkBox8.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_checkBox8.Text = "Disable Homegroup"
+$Tab7_checkBox8.Name = "Tab7_checkBox8"
+$tab7.Controls.Add($Tab7_checkBox8)
+
+$Tab7_checkBox9 = New-Object System.Windows.Forms.CheckBox
+$Tab7_checkBox9.Location = New-Object System.Drawing.Point(10,220)
+$Tab7_checkBox9.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_checkBox9.Text = "Disable Storage Sense"
+$Tab7_checkBox9.Name = "Tab7_checkBox9"
+$tab7.Controls.Add($Tab7_checkBox9)
+
+$Tab7_checkBox10 = New-Object System.Windows.Forms.CheckBox
+$Tab7_checkBox10.Location = New-Object System.Drawing.Point(10,240)
+$Tab7_checkBox10.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_checkBox10.Text = "Disable Hibernation"
+$Tab7_checkBox10.Name = "Tab7_checkBox10"
+$tab7.Controls.Add($Tab7_checkBox10)
+
+$Tab7_checkBox11 = New-Object System.Windows.Forms.CheckBox
+$Tab7_checkBox11.Location = New-Object System.Drawing.Point(10,280)
+$Tab7_checkBox11.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_checkBox11.Text = "Disable GameDVR"
+$Tab7_checkBox11.Name = "Tab7_checkBox11"
+$tab7.Controls.Add($Tab7_checkBox11)
+
+$Tab7_checkBox12 = New-Object System.Windows.Forms.CheckBox
+$Tab7_checkBox12.Location = New-Object System.Drawing.Point(10,300)
+$Tab7_checkBox12.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_checkBox12.Text = "Set Services to Manual"
+$Tab7_checkBox12.Name = "Tab7_checkBox12"
+$tab7.Controls.Add($Tab7_checkBox12)
+
+$Tab7_checkBox13 = New-Object System.Windows.Forms.CheckBox
+$Tab7_checkBox13.Location = New-Object System.Drawing.Point(10,320)
+$Tab7_checkBox13.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_checkBox13.Text = "Disable Power Throttling"
+$Tab7_checkBox13.Name = "Tab7_checkBox13"
+$tab7.Controls.Add($Tab7_checkBox13)
+
+$Tab7_checkBox14 = New-Object System.Windows.Forms.CheckBox
+$Tab7_checkBox14.Location = New-Object System.Drawing.Point(10,340)
+$Tab7_checkBox14.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_checkBox14.Text = "Enable Power Throttling"
+$Tab7_checkBox14.Name = "Tab7_checkBox14"
+$tab7.Controls.Add($Tab7_checkBox14)
+
+$Tab7_checkBox15 = New-Object System.Windows.Forms.CheckBox
+$Tab7_checkBox15.Location = New-Object System.Drawing.Point(10,360)
+$Tab7_checkBox15.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_checkBox15.Text = "Enable NumLock on Startup"
+$Tab7_checkBox15.Name = "Tab7_checkBox15"
+$tab7.Controls.Add($Tab7_checkBox15)
+
+$Tab7_checkBox16 = New-Object System.Windows.Forms.CheckBox
+$Tab7_checkBox16.Location = New-Object System.Drawing.Point(10,380)
+$Tab7_checkBox16.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_checkBox16.Text = "Disable NumLock on Startup"
+$Tab7_checkBox16.Name = "Tab7_checkBox16"
+$tab7.Controls.Add($Tab7_checkBox16)
+
+$Tab7_checkBox17 = New-Object System.Windows.Forms.CheckBox
+$Tab7_checkBox17.Location = New-Object System.Drawing.Point(250,50)
+$Tab7_checkBox17.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_checkBox17.Text = "Show File Extensions"
+$Tab7_checkBox17.Name = "Tab7_checkBox17"
+$tab7.Controls.Add($Tab7_checkBox17)
+
+$Tab7_checkBox18 = New-Object System.Windows.Forms.CheckBox
+$Tab7_checkBox18.Location = New-Object System.Drawing.Point(250,70)
+$Tab7_checkBox18.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_checkBox18.Text = "Set Display for Performance"
+$Tab7_checkBox18.Name = "Tab7_checkBox18"
+$tab7.Controls.Add($Tab7_checkBox18)
+
+$Tab7_checkBox19 = New-Object System.Windows.Forms.CheckBox
+$Tab7_checkBox19.Location = New-Object System.Drawing.Point(250,90)
+$Tab7_checkBox19.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_checkBox19.Text = "Set Time to UTC"
+$Tab7_checkBox19.Name = "Tab7_checkBox19"
+$tab7.Controls.Add($Tab7_checkBox19)
+
+$Tab7_checkBox20 = New-Object System.Windows.Forms.CheckBox
+$Tab7_checkBox20.Location = New-Object System.Drawing.Point(250,110)
+$Tab7_checkBox20.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_checkBox20.Text = "Remove all MS Store Apps"
+$Tab7_checkBox20.Name = "Tab7_checkBox20"
+$tab7.Controls.Add($Tab7_checkBox20)
+
+$Tab7_checkBox21 = New-Object System.Windows.Forms.CheckBox
+$Tab7_checkBox21.Location = New-Object System.Drawing.Point(250,140)
+$Tab7_checkBox21.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_checkBox21.Text = "Disable UAC"
+$Tab7_checkBox21.Name = "Tab7_checkBox21"
+$tab7.Controls.Add($Tab7_checkBox21)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
