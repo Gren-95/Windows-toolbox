@@ -1953,28 +1953,10 @@ $Tab7_label2.ForeColor = "#000000"
 $Tab7_label2.Text = ("Misc")
 $tab7.Controls.Add($Tab7_label2)
 
-#Tab7_Statusbox1
-$Tab7_Statusbox1 = New-Object System.Windows.Forms.ListBox
-$Tab7_Statusbox1.FormattingEnabled = $True
-$Tab7_Statusbox1.Location = New-Object System.Drawing.Point(450,335)
-$Tab7_Statusbox1.Size = New-Object System.Drawing.Size(200,100)
-$Tab7_Statusbox1.Name = "Tab7_Statusbox1"
-$tab7.Controls.Add($Tab7_Statusbox1)
-
-
-
-
-
-
-
-
-
-
-
 
 $Tab7_Tweakbutton1 = New-Object System.Windows.Forms.Button
 $Tab7_Tweakbutton1.Location = New-Object System.Drawing.Point(10,50)
-$Tab7_Tweakbutton1.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton1.Size = New-Object System.Drawing.Size(320,25)
 $Tab7_Tweakbutton1.Text = "Create Restore Point"
 $Tab7_Tweakbutton1.Add_Click({start-process powershell -verb runas {
 	Enable-ComputerRestore -Drive "C:\"
@@ -1985,1044 +1967,621 @@ $tab7.Controls.Add($Tab7_Tweakbutton1)
 
 
 $Tab7_Tweakbutton2 = New-Object System.Windows.Forms.Button
-$Tab7_Tweakbutton2.Location = New-Object System.Drawing.Point(10,50)
-$Tab7_Tweakbutton2.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_Tweakbutton2.Text = "O and O Shutup"
+$Tab7_Tweakbutton2.Location = New-Object System.Drawing.Point(10,75)
+$Tab7_Tweakbutton2.Size = New-Object System.Drawing.Size(320,25)
+$Tab7_Tweakbutton2.Text = "O&O Shutup"
 $Tab7_Tweakbutton2.Add_Click({start-process powershell -verb runas {
 	Import-Module BitsTransfer
-	Start-BitsTransfer -Source "https://raw.githubusercontent.com/ChrisTitusTech/win10script/master/ooshutup10.cfg" -Destination ooshutup10.cfg
+	Start-BitsTransfer -Source "https://raw.githubusercontent.com/Gren-95/efe-toolbox/main/ooshutup10.cfg" -Destination ooshutup10.cfg
 	Start-BitsTransfer -Source "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe" -Destination OOSU10.exe
 	./OOSU10.exe ooshutup10.cfg /quiet
-
 }})
 $tab7.Controls.Add($Tab7_Tweakbutton2)
 
 
 $Tab7_Tweakbutton3 = New-Object System.Windows.Forms.Button
-$Tab7_Tweakbutton3.Location = New-Object System.Drawing.Point(10,50)
-$Tab7_Tweakbutton3.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton3.Location = New-Object System.Drawing.Point(10,100)
+$Tab7_Tweakbutton3.Size = New-Object System.Drawing.Size(320,25)
 $Tab7_Tweakbutton3.Text = "Disable Telemetry"
 $Tab7_Tweakbutton3.Add_Click({start-process powershell -verb runas {
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name "AllowTelemetry" -Type DWord -Value 0
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "AllowTelemetry" -Type DWord -Value 0
+	Disable-ScheduledTask -TaskName "Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" | Out-Null
+	Disable-ScheduledTask -TaskName "Microsoft\Windows\Application Experience\ProgramDataUpdater" | Out-Null
+	Disable-ScheduledTask -TaskName "Microsoft\Windows\Autochk\Proxy" | Out-Null
+	Disable-ScheduledTask -TaskName "Microsoft\Windows\Customer Experience Improvement Program\Consolidator" | Out-Null
+	Disable-ScheduledTask -TaskName "Microsoft\Windows\Customer Experience Improvement Program\UsbCeip" | Out-Null
+	Disable-ScheduledTask -TaskName "Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector" | Out-Null
+	Write-Host "Disabling Application suggestions..."
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "ContentDeliveryAllowed" -Type DWord -Value 0
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "OemPreInstalledAppsEnabled" -Type DWord -Value 0
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "PreInstalledAppsEnabled" -Type DWord -Value 0
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "PreInstalledAppsEverEnabled" -Type DWord -Value 0
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SilentInstalledAppsEnabled" -Type DWord -Value 0
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-338387Enabled" -Type DWord -Value 0
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-338388Enabled" -Type DWord -Value 0
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-338389Enabled" -Type DWord -Value 0
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-353698Enabled" -Type DWord -Value 0
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SystemPaneSuggestionsEnabled" -Type DWord -Value 0
+	If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent")) {
+		New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Force | Out-Null
+	}
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Name "DisableWindowsConsumerFeatures" -Type DWord -Value 1
+	Write-Host "Disabling Feedback..."
+	If (!(Test-Path "HKCU:\SOFTWARE\Microsoft\Siuf\Rules")) {
+		New-Item -Path "HKCU:\SOFTWARE\Microsoft\Siuf\Rules" -Force | Out-Null
+	}
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Siuf\Rules" -Name "NumberOfSIUFInPeriod" -Type DWord -Value 0
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "DoNotShowFeedbackNotifications" -Type DWord -Value 1
+	Disable-ScheduledTask -TaskName "Microsoft\Windows\Feedback\Siuf\DmClient" -ErrorAction SilentlyContinue | Out-Null
+	Disable-ScheduledTask -TaskName "Microsoft\Windows\Feedback\Siuf\DmClientOnScenarioDownload" -ErrorAction SilentlyContinue | Out-Null
+	Write-Host "Disabling Tailored Experiences..."
+	If (!(Test-Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\CloudContent")) {
+		New-Item -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Force | Out-Null
+	}
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Name "DisableTailoredExperiencesWithDiagnosticData" -Type DWord -Value 1
+	Write-Host "Disabling Advertising ID..."
+	If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo")) {
+		New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" | Out-Null
+	}
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" -Name "DisabledByGroupPolicy" -Type DWord -Value 1
+	Write-Host "Disabling Error reporting..."
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting" -Name "Disabled" -Type DWord -Value 1
+	Disable-ScheduledTask -TaskName "Microsoft\Windows\Windows Error Reporting\QueueReporting" | Out-Null
+	Write-Host "Restricting Windows Update P2P only to local network..."
+	If (!(Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config")) {
+		New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" | Out-Null
+	}
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" -Name "DODownloadMode" -Type DWord -Value 1
+	Write-Host "Stopping and disabling Diagnostics Tracking Service..."
+	Stop-Service "DiagTrack" -WarningAction SilentlyContinue
+	Set-Service "DiagTrack" -StartupType Disabled
+	Write-Host "Stopping and disabling WAP Push Service..."
+	Stop-Service "dmwappushservice" -WarningAction SilentlyContinue
+	Set-Service "dmwappushservice" -StartupType Disabled
+	Write-Host "Enabling F8 boot menu options..."
+	bcdedit /set `{current`} bootmenupolicy Legacy | Out-Null
+	Write-Host "Disabling Remote Assistance..."
+	Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Remote Assistance" -Name "fAllowToGetHelp" -Type DWord -Value 0
+	Write-Host "Stopping and disabling Superfetch service..."
+	Stop-Service "SysMain" -WarningAction SilentlyContinue
+	Set-Service "SysMain" -StartupType Disabled
+
+	# Task Manager Details
+	If ((get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion" -Name CurrentBuild).CurrentBuild -lt 22557) {
+		Write-Host "Showing task manager details..."
+		$taskmgr = Start-Process -WindowStyle Hidden -FilePath taskmgr.exe -PassThru
+		Do {
+			  Start-Sleep -Milliseconds 100
+			$preferences = Get-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\TaskManager" -Name "Preferences" -ErrorAction SilentlyContinue
+		} Until ($preferences)
+		Stop-Process $taskmgr
+		$preferences.Preferences[28] = 0
+		Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\TaskManager" -Name "Preferences" -Type Binary -Value $preferences.Preferences
+	} else {Write-Host "Task Manager patch not run in builds 22557+ due to bug"}
+
+	Write-Host "Showing file operations details..."
+	If (!(Test-Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager")) {
+		New-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager" | Out-Null
+	}
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager" -Name "EnthusiastMode" -Type DWord -Value 1
+	Write-Host "Hiding Task View button..."
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowTaskViewButton" -Type DWord -Value 0
+	Write-Host "Hiding People icon..."
+	If (!(Test-Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People")) {
+		New-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" | Out-Null
+	}
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" -Name "PeopleBand" -Type DWord -Value 0
+
+	Write-Host "Changing default Explorer view to This PC..."
+	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "LaunchTo" -Type DWord -Value 1
+
+	Write-Host "Hiding 3D Objects icon from This PC..."
+	Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" -Recurse -ErrorAction SilentlyContinue  
+	
+	## Performance Tweaks and More Telemetry
+		Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching" -Name "SearchOrderConfig" -Type DWord -Value 00000000
+		Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -Name "SystemResponsiveness" -Type DWord -Value 0000000a
+		Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -Name "NetworkThrottlingIndex" -Type DWord -Value 0000000a
+		Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control" -Name "WaitToKillServiceTimeout" -Type DWord -Value 2000
+		Set-ItemProperty -Path "HKLM:\Control Panel\Desktop" -Name "MenuShowDelay" -Type DWord -Value 0
+		Set-ItemProperty -Path "HKLM:\Control Panel\Desktop" -Name "WaitToKillAppTimeout" -Type DWord -Value 5000
+		Set-ItemProperty -Path "HKLM:\Control Panel\Desktop" -Name "HungAppTimeout" -Type DWord -Value 4000
+		Set-ItemProperty -Path "HKLM:\Control Panel\Desktop" -Name "AutoEndTasks" -Type DWord -Value 1
+		Set-ItemProperty -Path "HKLM:\Control Panel\Desktop" -Name "LowLevelHooksTimeout" -Type DWord -Value 00001000
+		Set-ItemProperty -Path "HKLM:\Control Panel\Desktop" -Name "WaitToKillServiceTimeout" -Type DWord -Value 00002000
+		Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" -Name "ClearPageFileAtShutdown" -Type DWord -Value 00000001
+		Set-ItemProperty -Path "HKLM:\SYSTEM\ControlSet001\Services\Ndu" -Name "Start" -Type DWord -Value 00000004
+		Set-ItemProperty -Path "HKLM:\Control Panel\Mouse" -Name "MouseHoverTime" -Type DWord -Value 00000010
 
 
+		# Network Tweaks
+		Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" -Name "IRPStackSize" -Type DWord -Value 20
+
+		# Group svchost.exe processes
+		$ram = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1kb
+		Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control" -Name "SvcHostSplitThresholdInKB" -Type DWord -Value $ram -Force
+
+		Write-Host "Disable News and Interests"
+		Set-ItemProperty -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds" -Name "EnableFeeds" -Type DWord -Value 0
+		# Remove "News and Interest" from taskbar
+		Set-ItemProperty -Path  "HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds" -Name "ShellFeedsTaskbarViewMode" -Type DWord -Value 2
+
+		# remove "Meet Now" button from taskbar
+
+		If (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer")) {
+			New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Force | Out-Null
+		}
+
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "HideSCAMeetNow" -Type DWord -Value 1
+
+	Write-Host "Removing AutoLogger file and restricting directory..."
+	$autoLoggerDir = "$env:PROGRAMDATA\Microsoft\Diagnosis\ETLLogs\AutoLogger"
+	If (Test-Path "$autoLoggerDir\AutoLogger-Diagtrack-Listener.etl") {
+		Remove-Item "$autoLoggerDir\AutoLogger-Diagtrack-Listener.etl"
+	}
+	icacls $autoLoggerDir /deny SYSTEM:`(OI`)`(CI`)F | Out-Null
+	Write-Host "Stopping and disabling Diagnostics Tracking Service..."
+	Stop-Service "DiagTrack"
+	Set-Service "DiagTrack" -StartupType Disabled
 }})
 $tab7.Controls.Add($Tab7_Tweakbutton3)
 
 
 $Tab7_Tweakbutton4 = New-Object System.Windows.Forms.Button
-$Tab7_Tweakbutton4.Location = New-Object System.Drawing.Point(10,50)
-$Tab7_Tweakbutton4.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton4.Location = New-Object System.Drawing.Point(10,125)
+$Tab7_Tweakbutton4.Size = New-Object System.Drawing.Size(320,25)
 $Tab7_Tweakbutton4.Text = "Disable Wifi-Sense"
 $Tab7_Tweakbutton4.Add_Click({start-process powershell -verb runas {
-
-
+	If (!(Test-Path "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting")) {
+		New-Item -Path "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting" -Force | Out-Null
+	}
+	Set-ItemProperty -Path "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting" -Name "Value" -Type DWord -Value 0
+	Set-ItemProperty -Path "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots" -Name "Value" -Type DWord -Value 0
 }})
 $tab7.Controls.Add($Tab7_Tweakbutton4)
 
 
 $Tab7_Tweakbutton5 = New-Object System.Windows.Forms.Button
-$Tab7_Tweakbutton5.Location = New-Object System.Drawing.Point(10,50)
-$Tab7_Tweakbutton5.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton5.Location = New-Object System.Drawing.Point(10,150)
+$Tab7_Tweakbutton5.Size = New-Object System.Drawing.Size(320,25)
 $Tab7_Tweakbutton5.Text = "Disable Activity History"
 $Tab7_Tweakbutton5.Add_Click({start-process powershell -verb runas {
-
-
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "EnableActivityFeed" -Type DWord -Value 0
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "PublishUserActivities" -Type DWord -Value 0
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "UploadUserActivities" -Type DWord -Value 0
 }})
 $tab7.Controls.Add($Tab7_Tweakbutton5)
 
 
 $Tab7_Tweakbutton6 = New-Object System.Windows.Forms.Button
-$Tab7_Tweakbutton6.Location = New-Object System.Drawing.Point(10,50)
-$Tab7_Tweakbutton6.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton6.Location = New-Object System.Drawing.Point(10,175)
+$Tab7_Tweakbutton6.Size = New-Object System.Drawing.Size(320,25)
 $Tab7_Tweakbutton6.Text = "Delete Temporary Files"
 $Tab7_Tweakbutton6.Add_Click({start-process powershell -verb runas {
-
-
+	Get-ChildItem -Path "C:\Windows\Temp" *.* -Recurse | Remove-Item -Force -Recurse
+	Get-ChildItem -Path $env:TEMP *.* -Recurse | Remove-Item -Force -Recurse
 }})
 $tab7.Controls.Add($Tab7_Tweakbutton6)
 
 
 $Tab7_Tweakbutton7 = New-Object System.Windows.Forms.Button
-$Tab7_Tweakbutton7.Location = New-Object System.Drawing.Point(10,50)
-$Tab7_Tweakbutton7.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton7.Location = New-Object System.Drawing.Point(10,200)
+$Tab7_Tweakbutton7.Size = New-Object System.Drawing.Size(320,25)
 $Tab7_Tweakbutton7.Text = "Disable Location Tracking"
 $Tab7_Tweakbutton7.Add_Click({start-process powershell -verb runas {
-
-
+	If (!(Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location")) {
+		New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" -Force | Out-Null
+	}
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" -Name "Value" -Type String -Value "Deny"
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}" -Name "SensorPermissionState" -Type DWord -Value 0
+	Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\lfsvc\Service\Configuration" -Name "Status" -Type DWord -Value 0
+	Write-Host "Disabling automatic Maps updates..."
+	Set-ItemProperty -Path "HKLM:\SYSTEM\Maps" -Name "AutoUpdateEnabled" -Type DWord -Value 0
 }})
 $tab7.Controls.Add($Tab7_Tweakbutton7)
 
 
 $Tab7_Tweakbutton8 = New-Object System.Windows.Forms.Button
-$Tab7_Tweakbutton8.Location = New-Object System.Drawing.Point(10,50)
-$Tab7_Tweakbutton8.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_Tweakbutton8.Text = "Disable Homegroup"
+$Tab7_Tweakbutton8.Location = New-Object System.Drawing.Point(10,225)
+$Tab7_Tweakbutton8.Size = New-Object System.Drawing.Size(320,25)
+$Tab7_Tweakbutton8.Text = "Disable Indexing"
 $Tab7_Tweakbutton8.Add_Click({start-process powershell -verb runas {
-
-
+Set-Content stop "wsearch"
+Set-Content config "wsearch" start=disabled
 }})
 $tab7.Controls.Add($Tab7_Tweakbutton8)
 
 
 $Tab7_Tweakbutton9 = New-Object System.Windows.Forms.Button
-$Tab7_Tweakbutton9.Location = New-Object System.Drawing.Point(10,50)
-$Tab7_Tweakbutton9.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton9.Location = New-Object System.Drawing.Point(10,250)
+$Tab7_Tweakbutton9.Size = New-Object System.Drawing.Size(320,25)
 $Tab7_Tweakbutton9.Text = "Disable Storage Sense"
 $Tab7_Tweakbutton9.Add_Click({start-process powershell -verb runas {
-
-
+	Remove-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy" -Recurse -ErrorAction SilentlyContinue
 }})
 $tab7.Controls.Add($Tab7_Tweakbutton9)
 
 
 $Tab7_Tweakbutton10 = New-Object System.Windows.Forms.Button
-$Tab7_Tweakbutton10.Location = New-Object System.Drawing.Point(10,50)
-$Tab7_Tweakbutton10.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton10.Location = New-Object System.Drawing.Point(10,275)
+$Tab7_Tweakbutton10.Size = New-Object System.Drawing.Size(320,25)
 $Tab7_Tweakbutton10.Text = "Disable Hibernation"
 $Tab7_Tweakbutton10.Add_Click({start-process powershell -verb runas {
-
-
+	Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Session Manager\Power" -Name "HibernateEnabled" -Type Dword -Value 0
+	If (!(Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings")) {
+		New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" | Out-Null
+	}
+	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" -Name "ShowHibernateOption" -Type Dword -Value 0
 }})
 $tab7.Controls.Add($Tab7_Tweakbutton10)
 
 
 $Tab7_Tweakbutton11 = New-Object System.Windows.Forms.Button
-$Tab7_Tweakbutton11.Location = New-Object System.Drawing.Point(10,50)
-$Tab7_Tweakbutton11.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton11.Location = New-Object System.Drawing.Point(10,300)
+$Tab7_Tweakbutton11.Size = New-Object System.Drawing.Size(320,25)
 $Tab7_Tweakbutton11.Text = "Disable GameDVR"
 $Tab7_Tweakbutton11.Add_Click({start-process powershell -verb runas {
-
-
+	If (!(Test-Path "HKCU:\System\GameConfigStore")) {
+		New-Item -Path "HKCU:\System\GameConfigStore" -Force
+	}
+	Set-ItemProperty -Path "HKCU:\System\GameConfigStore" -Name "GameDVR_DXGIHonorFSEWindowsCompatible" -Type DWord -Value 0 -Force
+	Set-ItemProperty -Path "HKCU:\System\GameConfigStore" -Name "GameDVR_HonorUserFSEBehaviorMode" -Type DWord -Value 0 -Force
+	Set-ItemProperty -Path "HKCU:\System\GameConfigStore" -Name "GameDVR_EFSEFeatureFlags" -Type DWord -Value 0 -Force
+	Set-ItemProperty -Path "HKCU:\System\GameConfigStore" -Name "GameDVR_Enabled" -Type DWord -Value 0 -Force
 }})
 $tab7.Controls.Add($Tab7_Tweakbutton11)
 
 
 $Tab7_Tweakbutton12 = New-Object System.Windows.Forms.Button
-$Tab7_Tweakbutton12.Location = New-Object System.Drawing.Point(10,50)
-$Tab7_Tweakbutton12.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton12.Location = New-Object System.Drawing.Point(10,325)
+$Tab7_Tweakbutton12.Size = New-Object System.Drawing.Size(320,25)
 $Tab7_Tweakbutton12.Text = "Set Services to Manual"
 $Tab7_Tweakbutton12.Add_Click({start-process powershell -verb runas {
+ # Set Services to Manual 
 
+ $services = @(
+	"ALG"                                          # Application Layer Gateway Service(Provides support for 3rd party protocol plug-ins for Internet Connection Sharing)
+	"AJRouter"                                     # Needed for AllJoyn Router Service
+	"BcastDVRUserService_48486de"                  # GameDVR and Broadcast is used for Game Recordings and Live Broadcasts
+	#"BDESVC"                                      # Bitlocker Drive Encryption Service
+	#"BFE"                                         # Base Filtering Engine (Manages Firewall and Internet Protocol security)
+	#"BluetoothUserService_48486de"                # Bluetooth user service supports proper functionality of Bluetooth features relevant to each user session.
+	#"BrokerInfrastructure"                        # Windows Infrastructure Service (Controls which background tasks can run on the system)
+	"Browser"                                      # Let users browse and locate shared resources in neighboring computers
+	"BthAvctpSvc"                                  # AVCTP service (needed for Bluetooth Audio Devices or Wireless Headphones)
+	"CaptureService_48486de"                       # Optional screen capture functionality for applications that call the Windows.Graphics.Capture API.
+	"cbdhsvc_48486de"                              # Clipboard Service
+	"diagnosticshub.standardcollector.service"     # Microsoft (R) Diagnostics Hub Standard Collector Service
+	"DiagTrack"                                    # Diagnostics Tracking Service
+	"dmwappushservice"                             # WAP Push Message Routing Service
+	"DPS"                                          # Diagnostic Policy Service (Detects and Troubleshoots Potential Problems)
+	"edgeupdate"                                   # Edge Update Service
+	"edgeupdatem"                                  # Another Update Service
+	#"EntAppSvc"                                    # Enterprise Application Management.
+	"Fax"                                          # Fax Service
+	"fhsvc"                                        # Fax History
+	"FontCache"                                    # Windows font cache
+	#"FrameServer"                                 # Windows Camera Frame Server (Allows multiple clients to access video frames from camera devices)
+	"gupdate"                                      # Google Update
+	"gupdatem"                                     # Another Google Update Service
+	"iphlpsvc"                                     # ipv6(Most websites use ipv4 instead)
+	"lfsvc"                                        # Geolocation Service
+	#"LicenseManager"                              # Disable LicenseManager (Windows Store may not work properly)
+	"lmhosts"                                      # TCP/IP NetBIOS Helper
+	"MapsBroker"                                   # Downloaded Maps Manager
+	"MicrosoftEdgeElevationService"                # Another Edge Update Service
+	"MSDTC"                                        # Distributed Transaction Coordinator
+	"NahimicService"                               # Nahimic Service
+	#"ndu"                                          # Windows Network Data Usage Monitor (Disabling Breaks Task Manager Per-Process Network Monitoring)
+	"NetTcpPortSharing"                            # Net.Tcp Port Sharing Service
+	"PcaSvc"                                       # Program Compatibility Assistant Service
+	"PerfHost"                                     # Remote users and 64-bit processes to query performance.
+	"PhoneSvc"                                     # Phone Service(Manages the telephony state on the device)
+	#"PNRPsvc"                                     # Peer Name Resolution Protocol (Some peer-to-peer and collaborative applications, such as Remote Assistance, may not function, Discord will still work)
+	#"p2psvc"                                      # Peer Name Resolution Protocol(Enables multi-party communication using Peer-to-Peer Grouping.  If disabled, some applications, such as HomeGroup, may not function. Discord will still work)iscord will still work)
+	#"p2pimsvc"                                    # Peer Networking Identity Manager (Peer-to-Peer Grouping services may not function, and some applications, such as HomeGroup and Remote Assistance, may not function correctly. Discord will still work)
+	"PrintNotify"                                  # Windows printer notifications and extentions
+	"QWAVE"                                        # Quality Windows Audio Video Experience (audio and video might sound worse)
+	"RemoteAccess"                                 # Routing and Remote Access
+	"RemoteRegistry"                               # Remote Registry
+	"RetailDemo"                                   # Demo Mode for Store Display
+	"RtkBtManServ"                                 # Realtek Bluetooth Device Manager Service
+	"SCardSvr"                                     # Windows Smart Card Service
+	"seclogon"                                     # Secondary Logon (Disables other credentials only password will work)
+	"SEMgrSvc"                                     # Payments and NFC/SE Manager (Manages payments and Near Field Communication (NFC) based secure elements)
+	"SharedAccess"                                 # Internet Connection Sharing (ICS)
+	#"Spooler"                                     # Printing
+	"stisvc"                                       # Windows Image Acquisition (WIA)
+	#"StorSvc"                                     # StorSvc (usb external hard drive will not be reconized by windows)
+	"SysMain"                                      # Analyses System Usage and Improves Performance
+	"TrkWks"                                       # Distributed Link Tracking Client
+	#"WbioSrvc"                                    # Windows Biometric Service (required for Fingerprint reader / facial detection)
+	"WerSvc"                                       # Windows error reporting
+	"wisvc"                                        # Windows Insider program(Windows Insider will not work if Disabled)
+	#"WlanSvc"                                     # WLAN AutoConfig
+	"WMPNetworkSvc"                                # Windows Media Player Network Sharing Service
+	"WpcMonSvc"                                    # Parental Controls
+	"WPDBusEnum"                                   # Portable Device Enumerator Service
+	"WpnService"                                   # WpnService (Push Notifications may not work)
+	#"wscsvc"                                      # Windows Security Center Service
+	"WSearch"                                      # Windows Search
+	"XblAuthManager"                               # Xbox Live Auth Manager (Disabling Breaks Xbox Live Games)
+	"XblGameSave"                                  # Xbox Live Game Save Service (Disabling Breaks Xbox Live Games)
+	"XboxNetApiSvc"                                # Xbox Live Networking Service (Disabling Breaks Xbox Live Games)
+	"XboxGipSvc"                                   # Xbox Accessory Management Service
+	# Hp services
+	"HPAppHelperCap"
+	"HPDiagsCap"
+	"HPNetworkCap"
+	"HPSysInfoCap"
+	"HpTouchpointAnalyticsService"
+	# Hyper-V services
+	"HvHost"
+	"vmicguestinterface"
+	"vmicheartbeat"
+	"vmickvpexchange"
+	"vmicrdv"
+	"vmicshutdown"
+	"vmictimesync"
+	"vmicvmsession"
+	# Services that cannot be disabled
+	#"WdNisSvc"
+)
 
+foreach ($service in $services) {
+	# -ErrorAction SilentlyContinue is so it doesn't write an error to stdout if a service doesn't exist
+
+	Write-Host "Setting $service StartupType to Manual"
+	Get-Service -Name $service -ErrorAction SilentlyContinue | Set-Service -StartupType Manual
+}
 }})
 $tab7.Controls.Add($Tab7_Tweakbutton12)
 
 
 $Tab7_Tweakbutton13 = New-Object System.Windows.Forms.Button
-$Tab7_Tweakbutton13.Location = New-Object System.Drawing.Point(10,50)
-$Tab7_Tweakbutton13.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton13.Location = New-Object System.Drawing.Point(340,50)
+$Tab7_Tweakbutton13.Size = New-Object System.Drawing.Size(320,25)
 $Tab7_Tweakbutton13.Text = "Disable Power Throttling"
 $Tab7_Tweakbutton13.Add_Click({start-process powershell -verb runas {
-
-
+If (Test-Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling") {
+	Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" -Name "PowerThrottlingOff" -Type DWord -Value 00000001
+}
+Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Power" -Name "HiberbootEnabled" -Type DWord -Value 0000000
 }})
 $tab7.Controls.Add($Tab7_Tweakbutton13)
 
 
 $Tab7_Tweakbutton14 = New-Object System.Windows.Forms.Button
-$Tab7_Tweakbutton14.Location = New-Object System.Drawing.Point(10,50)
-$Tab7_Tweakbutton14.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton14.Location = New-Object System.Drawing.Point(340,75)
+$Tab7_Tweakbutton14.Size = New-Object System.Drawing.Size(320,25)
 $Tab7_Tweakbutton14.Text = "Enable Power Throttling"
 $Tab7_Tweakbutton14.Add_Click({start-process powershell -verb runas {
-
-
+	If (Test-Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling") {
+		Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" -Name "PowerThrottlingOff" -Type DWord -Value 00000000
+	}
+	Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Power" -Name "HiberbootEnabled" -Type DWord -Value 0000001
 }})
 $tab7.Controls.Add($Tab7_Tweakbutton14)
 
 
 $Tab7_Tweakbutton15 = New-Object System.Windows.Forms.Button
-$Tab7_Tweakbutton15.Location = New-Object System.Drawing.Point(10,50)
-$Tab7_Tweakbutton15.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton15.Location = New-Object System.Drawing.Point(340,100)
+$Tab7_Tweakbutton15.Size = New-Object System.Drawing.Size(320,25)
 $Tab7_Tweakbutton15.Text = "Enable NumLock on Startup"
 $Tab7_Tweakbutton15.Add_Click({start-process powershell -verb runas {
-
-
+	If (!(Test-Path "HKU:")) {
+		New-PSDrive -Name HKU -PSProvider Registry -Root HKEY_USERS | Out-Null
+	}
+	Set-ItemProperty -Path "HKU:\.DEFAULT\Control Panel\Keyboard" -Name "InitialKeyboardIndicators" -Type DWord -Value 2
 }})
 $tab7.Controls.Add($Tab7_Tweakbutton15)
 
 
 $Tab7_Tweakbutton16 = New-Object System.Windows.Forms.Button
-$Tab7_Tweakbutton16.Location = New-Object System.Drawing.Point(10,50)
-$Tab7_Tweakbutton16.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton16.Location = New-Object System.Drawing.Point(340,125)
+$Tab7_Tweakbutton16.Size = New-Object System.Drawing.Size(320,25)
 $Tab7_Tweakbutton16.Text = "Disable NumLock on Startup"
 $Tab7_Tweakbutton16.Add_Click({start-process powershell -verb runas {
-
-
+	If (!(Test-Path "HKU:")) {
+		New-PSDrive -Name HKU -PSProvider Registry -Root HKEY_USERS | Out-Null
+	}
+	Set-ItemProperty -Path "HKU:\.DEFAULT\Control Panel\Keyboard" -Name "InitialKeyboardIndicators" -Type DWord -Value 0
 }})
 $tab7.Controls.Add($Tab7_Tweakbutton16)
 
 
 $Tab7_Tweakbutton17 = New-Object System.Windows.Forms.Button
-$Tab7_Tweakbutton17.Location = New-Object System.Drawing.Point(10,50)
-$Tab7_Tweakbutton17.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton17.Location = New-Object System.Drawing.Point(340,150)
+$Tab7_Tweakbutton17.Size = New-Object System.Drawing.Size(320,25)
 $Tab7_Tweakbutton17.Text = "Show File Extensions"
 $Tab7_Tweakbutton17.Add_Click({start-process powershell -verb runas {
-
-
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Type DWord -Value 0
 }})
 $tab7.Controls.Add($Tab7_Tweakbutton17)
 
 
 $Tab7_Tweakbutton18 = New-Object System.Windows.Forms.Button
-$Tab7_Tweakbutton18.Location = New-Object System.Drawing.Point(10,50)
-$Tab7_Tweakbutton18.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton18.Location = New-Object System.Drawing.Point(340,175)
+$Tab7_Tweakbutton18.Size = New-Object System.Drawing.Size(320,25)
 $Tab7_Tweakbutton18.Text = "Set Display for Performance"
 $Tab7_Tweakbutton18.Add_Click({start-process powershell -verb runas {
-
-
+	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "DragFullWindows" -Type String -Value 0
+	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "MenuShowDelay" -Type String -Value 200
+	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "UserPreferencesMask" -Type Binary -Value ([byte[]](144, 18, 3, 128, 16, 0, 0, 0))
+	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop\WindowMetrics" -Name "MinAnimate" -Type String -Value 0
+	Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardDelay" -Type DWord -Value 0
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewAlphaSelect" -Type DWord -Value 0
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewShadow" -Type DWord -Value 0
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarAnimations" -Type DWord -Value 0
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" -Name "VisualFXSetting" -Type DWord -Value 3
+	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\DWM" -Name "EnableAeroPeek" -Type DWord -Value 0
 }})
 $tab7.Controls.Add($Tab7_Tweakbutton18)
 
 
 $Tab7_Tweakbutton19 = New-Object System.Windows.Forms.Button
-$Tab7_Tweakbutton19.Location = New-Object System.Drawing.Point(10,50)
-$Tab7_Tweakbutton19.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton19.Location = New-Object System.Drawing.Point(340,200)
+$Tab7_Tweakbutton19.Size = New-Object System.Drawing.Size(320,25)
 $Tab7_Tweakbutton19.Text = "Set Time to UTC"
 $Tab7_Tweakbutton19.Add_Click({start-process powershell -verb runas {
-
-
+	Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation" -Name "RealTimeIsUniversal" -Type DWord -Value 1
 }})
 $tab7.Controls.Add($Tab7_Tweakbutton19)
 
 
 $Tab7_Tweakbutton20 = New-Object System.Windows.Forms.Button
-$Tab7_Tweakbutton20.Location = New-Object System.Drawing.Point(10,50)
-$Tab7_Tweakbutton20.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton20.Location = New-Object System.Drawing.Point(340,200)
+$Tab7_Tweakbutton20.Size = New-Object System.Drawing.Size(320,25)
 $Tab7_Tweakbutton20.Text = "Remove all MS Store Apps"
 $Tab7_Tweakbutton20.Add_Click({start-process powershell -verb runas {
-
-
+	Get-AppxPackage | Remove-AppPackage
 }})
 $tab7.Controls.Add($Tab7_Tweakbutton20)
 
 
-
 $Tab7_Tweakbutton21 = New-Object System.Windows.Forms.Button
-$Tab7_Tweakbutton21.Location = New-Object System.Drawing.Point(10,50)
-$Tab7_Tweakbutton21.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton21.Location = New-Object System.Drawing.Point(340,225)
+$Tab7_Tweakbutton21.Size = New-Object System.Drawing.Size(320,25)
 $Tab7_Tweakbutton21.Text = "Disable UAC"
 $Tab7_Tweakbutton21.Add_Click({start-process powershell -verb runas {
-
-
+	Set-ItemProperty -Path REGISTRY::HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Policies\System -Name ConsentPromptBehaviorAdmin -Value 0
 }})
 $tab7.Controls.Add($Tab7_Tweakbutton21)
 
 
+$Tab7_Tweakbutton22 = New-Object System.Windows.Forms.Button
+$Tab7_Tweakbutton22.Location = New-Object System.Drawing.Point(10,50)
+$Tab7_Tweakbutton22.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton22.Text = "Undo All Tweaks"
+$Tab7_Tweakbutton22.Add_Click({start-process powershell -verb runas {
+	Write-Host "Creating Restore Point in case something bad happens"
+        Enable-ComputerRestore -Drive "$env:SystemDrive"
+        Checkpoint-Computer -Description "RestorePoint1" -RestorePointType "MODIFY_SETTINGS"
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-$handler_Tab7_installbutton1_Click={
-	$Tab7_Statusbox1.Items.Clear();
-	if ($Tab7_checkBox1.Checked) { $Tab7_Statusbox1.Items.Add( "Creating Restore Point..."  ) ;
-		Enable-ComputerRestore -Drive "C:\"
-		Checkpoint-Computer -Description "RestorePoint1" -RestorePointType "MODIFY_SETTINGS"
-	}
-	if ($Tab7_checkBox2.Checked) { $Tab7_Statusbox1.Items.Add( "Running O&O Shutup..."  ) ;
-		Import-Module BitsTransfer
-		Start-BitsTransfer -Source "https://raw.githubusercontent.com/ChrisTitusTech/win10script/master/ooshutup10.cfg" -Destination ooshutup10.cfg
-        Start-BitsTransfer -Source "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe" -Destination OOSU10.exe
-        ./OOSU10.exe ooshutup10.cfg /quiet
-		#Remember to check if this file has changed on https://raw.githubusercontent.com/ChrisTitusTech/winutil/main/winutil-test.ps1
-	}
-	if ($Tab7_checkBox3.Checked) { $Tab7_Statusbox1.Items.Add( "Disabling Telemetry..."  )
-		Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name "AllowTelemetry" -Type DWord -Value 0
-        Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "AllowTelemetry" -Type DWord -Value 0
-        Disable-ScheduledTask -TaskName "Microsoft\Windows\Application Experience\Microsoft Compatibility Appraiser" | Out-Null
-        Disable-ScheduledTask -TaskName "Microsoft\Windows\Application Experience\ProgramDataUpdater" | Out-Null
-        Disable-ScheduledTask -TaskName "Microsoft\Windows\Autochk\Proxy" | Out-Null
-        Disable-ScheduledTask -TaskName "Microsoft\Windows\Customer Experience Improvement Program\Consolidator" | Out-Null
-        Disable-ScheduledTask -TaskName "Microsoft\Windows\Customer Experience Improvement Program\UsbCeip" | Out-Null
-        Disable-ScheduledTask -TaskName "Microsoft\Windows\DiskDiagnostic\Microsoft-Windows-DiskDiagnosticDataCollector" | Out-Null
-        Write-Host "Disabling Application suggestions..."
-        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "ContentDeliveryAllowed" -Type DWord -Value 0
-        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "OemPreInstalledAppsEnabled" -Type DWord -Value 0
-        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "PreInstalledAppsEnabled" -Type DWord -Value 0
-        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "PreInstalledAppsEverEnabled" -Type DWord -Value 0
-        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SilentInstalledAppsEnabled" -Type DWord -Value 0
-        Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-338387Enabled" -Type DWord -Value 0
-        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-338388Enabled" -Type DWord -Value 0
-        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-338389Enabled" -Type DWord -Value 0
-        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-353698Enabled" -Type DWord -Value 0
-        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SystemPaneSuggestionsEnabled" -Type DWord -Value 0
-        If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent")) {
-            New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Force | Out-Null
+        Write-Host "Enabling Telemetry..."
+        Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name "AllowTelemetry" -Type DWord -Value 1
+        Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "AllowTelemetry" -Type DWord -Value 1
+        Write-Host "Enabling Wi-Fi Sense"
+        Set-ItemProperty -Path "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting" -Name "Value" -Type DWord -Value 1
+        Set-ItemProperty -Path "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots" -Name "Value" -Type DWord -Value 1
+        Write-Host "Enabling Application suggestions..."
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "ContentDeliveryAllowed" -Type DWord -Value 1
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "OemPreInstalledAppsEnabled" -Type DWord -Value 1
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "PreInstalledAppsEnabled" -Type DWord -Value 1
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "PreInstalledAppsEverEnabled" -Type DWord -Value 1
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SilentInstalledAppsEnabled" -Type DWord -Value 1
+        Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-338387Enabled" -Type DWord -Value 1
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-338388Enabled" -Type DWord -Value 1
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-338389Enabled" -Type DWord -Value 1
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-353698Enabled" -Type DWord -Value 1
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SystemPaneSuggestionsEnabled" -Type DWord -Value 1
+        If (Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent") {
+            Remove-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Recurse -ErrorAction SilentlyContinue
         }
-        Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Name "DisableWindowsConsumerFeatures" -Type DWord -Value 1
-        Write-Host "Disabling Feedback..."
-        If (!(Test-Path "HKCU:\SOFTWARE\Microsoft\Siuf\Rules")) {
-            New-Item -Path "HKCU:\SOFTWARE\Microsoft\Siuf\Rules" -Force | Out-Null
+        Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Name "DisableWindowsConsumerFeatures" -Type DWord -Value 0
+        Write-Host "Enabling Activity History..."
+        Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "EnableActivityFeed" -Type DWord -Value 1
+        Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "PublishUserActivities" -Type DWord -Value 1
+        Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "UploadUserActivities" -Type DWord -Value 1
+        Write-Host "Enable Location Tracking..."
+        If (Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location") {
+            Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" -Recurse -ErrorAction SilentlyContinue
+        }
+        Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" -Name "Value" -Type String -Value "Allow"
+        Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}" -Name "SensorPermissionState" -Type DWord -Value 1
+        Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\lfsvc\Service\Configuration" -Name "Status" -Type DWord -Value 1
+        Write-Host "Enabling automatic Maps updates..."
+        Set-ItemProperty -Path "HKLM:\SYSTEM\Maps" -Name "AutoUpdateEnabled" -Type DWord -Value 1
+        Write-Host "Enabling Feedback..."
+        If (Test-Path "HKCU:\SOFTWARE\Microsoft\Siuf\Rules") {
+            Remove-Item -Path "HKCU:\SOFTWARE\Microsoft\Siuf\Rules" -Recurse -ErrorAction SilentlyContinue
         }
         Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Siuf\Rules" -Name "NumberOfSIUFInPeriod" -Type DWord -Value 0
-        Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "DoNotShowFeedbackNotifications" -Type DWord -Value 1
-        Disable-ScheduledTask -TaskName "Microsoft\Windows\Feedback\Siuf\DmClient" -ErrorAction SilentlyContinue | Out-Null
-        Disable-ScheduledTask -TaskName "Microsoft\Windows\Feedback\Siuf\DmClientOnScenarioDownload" -ErrorAction SilentlyContinue | Out-Null
-        Write-Host "Disabling Tailored Experiences..."
-        If (!(Test-Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\CloudContent")) {
-            New-Item -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Force | Out-Null
+        Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "DoNotShowFeedbackNotifications" -Type DWord -Value 0
+        Write-Host "Enabling Tailored Experiences..."
+        If (Test-Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\CloudContent") {
+            Remove-Item -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Recurse -ErrorAction SilentlyContinue
         }
-        Set-ItemProperty -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Name "DisableTailoredExperiencesWithDiagnosticData" -Type DWord -Value 1
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Name "DisableTailoredExperiencesWithDiagnosticData" -Type DWord -Value 0
         Write-Host "Disabling Advertising ID..."
-        If (!(Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo")) {
-            New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" | Out-Null
+        If (Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo") {
+            Remove-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" -Recurse -ErrorAction SilentlyContinue
         }
-        Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" -Name "DisabledByGroupPolicy" -Type DWord -Value 1
-        Write-Host "Disabling Error reporting..."
-        Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting" -Name "Disabled" -Type DWord -Value 1
-        Disable-ScheduledTask -TaskName "Microsoft\Windows\Windows Error Reporting\QueueReporting" | Out-Null
-        Write-Host "Restricting Windows Update P2P only to local network..."
-        If (!(Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config")) {
-            New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" | Out-Null
-        }
-        Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DeliveryOptimization\Config" -Name "DODownloadMode" -Type DWord -Value 1
-        Write-Host "Stopping and disabling Diagnostics Tracking Service..."
+        Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" -Name "DisabledByGroupPolicy" -Type DWord -Value 0
+        Write-Host "Allow Error reporting..."
+        Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting" -Name "Disabled" -Type DWord -Value 0
+        Write-Host "Allowing Diagnostics Tracking Service..."
         Stop-Service "DiagTrack" -WarningAction SilentlyContinue
-        Set-Service "DiagTrack" -StartupType Disabled
-        Write-Host "Stopping and disabling WAP Push Service..."
+        Set-Service "DiagTrack" -StartupType Manual
+        Write-Host "Allowing WAP Push Service..."
         Stop-Service "dmwappushservice" -WarningAction SilentlyContinue
-        Set-Service "dmwappushservice" -StartupType Disabled
-        Write-Host "Enabling F8 boot menu options..."
-        bcdedit /set `{current`} bootmenupolicy Legacy | Out-Null
-        Write-Host "Disabling Remote Assistance..."
-        Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Remote Assistance" -Name "fAllowToGetHelp" -Type DWord -Value 0
-        Write-Host "Stopping and disabling Superfetch service..."
+        Set-Service "dmwappushservice" -StartupType Manual
+        Write-Host "Allowing Home Groups services..."
+        Stop-Service "HomeGroupListener" -WarningAction SilentlyContinue
+        Set-Service "HomeGroupListener" -StartupType Manual
+        Stop-Service "HomeGroupProvider" -WarningAction SilentlyContinue
+        Set-Service "HomeGroupProvider" -StartupType Manual
+        Write-Host "Enabling Storage Sense..."
+        New-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy" | Out-Null
+        Write-Host "Allowing Superfetch service..."
         Stop-Service "SysMain" -WarningAction SilentlyContinue
-        Set-Service "SysMain" -StartupType Disabled
+        Set-Service "SysMain" -StartupType Manual
+        Write-Host "Setting BIOS time to Local Time instead of UTC..."
+        Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation" -Name "RealTimeIsUniversal" -Type DWord -Value 0
+        Write-Host "Enabling Hibernation..."
+        Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Session Manager\Power" -Name "HibernteEnabled" -Type Dword -Value 1
+        Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" -Name "ShowHibernateOption" -Type Dword -Value 1
+        Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization" -Name "NoLockScreen" -ErrorAction SilentlyContinue
 
-        # Task Manager Details
-        If ((get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion" -Name CurrentBuild).CurrentBuild -lt 22557) {
-            Write-Host "Showing task manager details..."
-            $taskmgr = Start-Process -WindowStyle Hidden -FilePath taskmgr.exe -PassThru
-            Do {
-                  Start-Sleep -Milliseconds 100
-                $preferences = Get-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\TaskManager" -Name "Preferences" -ErrorAction SilentlyContinue
-            } Until ($preferences)
-            Stop-Process $taskmgr
-            $preferences.Preferences[28] = 0
-            Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\TaskManager" -Name "Preferences" -Type Binary -Value $preferences.Preferences
-        } else {Write-Host "Task Manager patch not run in builds 22557+ due to bug"}
-
-        Write-Host "Showing file operations details..."
-        If (!(Test-Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager")) {
-            New-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager" | Out-Null
+        Write-Host "Hiding file operations details..."
+        If (Test-Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager") {
+            Remove-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager" -Recurse -ErrorAction SilentlyContinue
         }
-        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager" -Name "EnthusiastMode" -Type DWord -Value 1
-        Write-Host "Hiding Task View button..."
-        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowTaskViewButton" -Type DWord -Value 0
-        Write-Host "Hiding People icon..."
-        If (!(Test-Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People")) {
-            New-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" | Out-Null
-        }
-        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" -Name "PeopleBand" -Type DWord -Value 0
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager" -Name "EnthusiastMode" -Type DWord -Value 0
+        Write-Host "Showing Task View button..."
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowTaskViewButton" -Type DWord -Value 1
+        Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" -Name "PeopleBand" -Type DWord -Value 1
 
-        Write-Host "Changing default Explorer view to This PC..."
+        Write-Host "Changing default Explorer view to Quick Access..."
         Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "LaunchTo" -Type DWord -Value 1
-    
-        Write-Host "Hiding 3D Objects icon from This PC..."
-        Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}" -Recurse -ErrorAction SilentlyContinue  
-        
-        ## Performance Tweaks and More Telemetry
-            Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\DriverSearching" -Name "SearchOrderConfig" -Type DWord -Value 00000000
-            Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -Name "SystemResponsiveness" -Type DWord -Value 0000000a
-            Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile" -Name "NetworkThrottlingIndex" -Type DWord -Value 0000000a
-            Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control" -Name "WaitToKillServiceTimeout" -Type DWord -Value 2000
-            Set-ItemProperty -Path "HKLM:\Control Panel\Desktop" -Name "MenuShowDelay" -Type DWord -Value 0
-            Set-ItemProperty -Path "HKLM:\Control Panel\Desktop" -Name "WaitToKillAppTimeout" -Type DWord -Value 5000
-            Set-ItemProperty -Path "HKLM:\Control Panel\Desktop" -Name "HungAppTimeout" -Type DWord -Value 4000
-            Set-ItemProperty -Path "HKLM:\Control Panel\Desktop" -Name "AutoEndTasks" -Type DWord -Value 1
-            Set-ItemProperty -Path "HKLM:\Control Panel\Desktop" -Name "LowLevelHooksTimeout" -Type DWord -Value 00001000
-            Set-ItemProperty -Path "HKLM:\Control Panel\Desktop" -Name "WaitToKillServiceTimeout" -Type DWord -Value 00002000
-            Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" -Name "ClearPageFileAtShutdown" -Type DWord -Value 00000001
-            Set-ItemProperty -Path "HKLM:\SYSTEM\ControlSet001\Services\Ndu" -Name "Start" -Type DWord -Value 00000004
-            Set-ItemProperty -Path "HKLM:\Control Panel\Mouse" -Name "MouseHoverTime" -Type DWord -Value 00000010
 
-
-            # Network Tweaks
-            Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\LanmanServer\Parameters" -Name "IRPStackSize" -Type DWord -Value 20
-
-            # Group svchost.exe processes
-            $ram = (Get-CimInstance -ClassName Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum).Sum / 1kb
-            Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control" -Name "SvcHostSplitThresholdInKB" -Type DWord -Value $ram -Force
-
-            Write-Host "Disable News and Interests"
-            Set-ItemProperty -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\Windows Feeds" -Name "EnableFeeds" -Type DWord -Value 0
-            # Remove "News and Interest" from taskbar
-            Set-ItemProperty -Path  "HKCU:\Software\Microsoft\Windows\CurrentVersion\Feeds" -Name "ShellFeedsTaskbarViewMode" -Type DWord -Value 2
-
-            # remove "Meet Now" button from taskbar
-
-            If (!(Test-Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer")) {
-                New-Item -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Force | Out-Null
-            }
-
-        Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Policies\Explorer" -Name "HideSCAMeetNow" -Type DWord -Value 1
-
-        Write-Host "Removing AutoLogger file and restricting directory..."
+        Write-Host "Unrestricting AutoLogger directory"
         $autoLoggerDir = "$env:PROGRAMDATA\Microsoft\Diagnosis\ETLLogs\AutoLogger"
-        If (Test-Path "$autoLoggerDir\AutoLogger-Diagtrack-Listener.etl") {
-            Remove-Item "$autoLoggerDir\AutoLogger-Diagtrack-Listener.etl"
-        }
-        icacls $autoLoggerDir /deny SYSTEM:`(OI`)`(CI`)F | Out-Null
-
-        Write-Host "Stopping and disabling Diagnostics Tracking Service..."
-        Stop-Service "DiagTrack"
-        Set-Service "DiagTrack" -StartupType Disabled
-	}
-	if ($Tab7_checkBox4.Checked) {
-		$Tab7_Statusbox1.Items.Add( "Disabling Wifi-Sense..."  )
-		If (!(Test-Path "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting")) {
-			New-Item -Path "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting" -Force | Out-Null
-		}
-		Set-ItemProperty -Path "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting" -Name "Value" -Type DWord -Value 0
-		Set-ItemProperty -Path "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots" -Name "Value" -Type DWord -Value 0
-	}
-	if ($Tab7_checkBox5.Checked) {
-		$Tab7_Statusbox1.Items.Add( "Disabling Activity History"  )
-		Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "EnableActivityFeed" -Type DWord -Value 0
-        Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "PublishUserActivities" -Type DWord -Value 0
-        Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "UploadUserActivities" -Type DWord -Value 0
-	}
-
-
-
-	if ($Tab7_checkBox6.Checked) {$Tab7_Statusbox1.Items.Add( "Deleting Temporary Files..."  ) ; start-process powershell -verb runas {  Write-Output "hello" } >> 'C:\Users\ghost\loggers.log'}
-
-
-
-
-	if ($Tab7_checkBox7.Checked) {
-		$Tab7_Statusbox1.Items.Add( "Disabling Location Tracking..."  )
-		If (!(Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location")) {
-			New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" -Force | Out-Null
-		}
-		Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" -Name "Value" -Type String -Value "Deny"
-		Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}" -Name "SensorPermissionState" -Type DWord -Value 0
-		Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\lfsvc\Service\Configuration" -Name "Status" -Type DWord -Value 0
-		Write-Host "Disabling automatic Maps updates..."
-		Set-ItemProperty -Path "HKLM:\SYSTEM\Maps" -Name "AutoUpdateEnabled" -Type DWord -Value 0
-	}
-	if ($Tab7_checkBox8.Checked) {
-		$Tab7_Statusbox1.Items.Add( "Disabling Homegroup..."  )
-		Stop-Service "HomeGroupListener" -WarningAction SilentlyContinue
-		Set-Service "HomeGroupListener" -StartupType Manual
-		Stop-Service "HomeGroupProvider" -WarningAction SilentlyContinue
-		Set-Service "HomeGroupProvider" -StartupType Manual
-	}
-	if ($Tab7_checkBox9.Checked) {
-		$Tab7_Statusbox1.Items.Add( "Disabling Storage Sense..."  )
-		Remove-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy" -Recurse -ErrorAction SilentlyContinue
-	}
-	if ($Tab7_checkBox10.Checked) {
-		$Tab7_Statusbox1.Items.Add( "Disabling Hibernation..."  )
-		Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Session Manager\Power" -Name "HibernateEnabled" -Type Dword -Value 0
-        If (!(Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings")) {
-            New-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" | Out-Null
-        }
-        Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" -Name "ShowHibernateOption" -Type Dword -Value 0
-	}
-	if ($Tab7_checkBox11.Checked) {
-		$Tab7_Statusbox1.Items.Add( "Disabling GameDVR..."  )
-		Set-ItemProperty -Path "HKLM:\System\GameConfigStore" -Name "GameDVR_DXGIHonorFSEWindowsCompatible" -Type Hex -Value 00000000
-		Set-ItemProperty -Path "HKLM:\System\GameConfigStore" -Name "GameDVR_HonorUserFSEBehaviorMode" -Type Hex -Value 00000000
-		Set-ItemProperty -Path "HKLM:\System\GameConfigStore" -Name "GameDVR_EFSEFeatureFlags" -Type Hex -Value 00000000
-		Set-ItemProperty -Path "HKLM:\System\GameConfigStore" -Name "GameDVR_Enabled" -Type DWord -Value 00000000
-	}
-	if ($Tab7_checkBox12.Checked) {
-		$Tab7_Statusbox1.Items.Add( "Setting Services to Manual..."  )
-		$services = @(
-            "diagnosticshub.standardcollector.service"     # Microsoft (R) Diagnostics Hub Standard Collector Service
-            "DiagTrack"                                    # Diagnostics Tracking Service
-            "DPS"
-            "dmwappushservice"                             # WAP Push Message Routing Service (see known issues)
-            "lfsvc"                                        # Geolocation Service
-            "MapsBroker"                                   # Downloaded Maps Manager
-            "NetTcpPortSharing"                            # Net.Tcp Port Sharing Service
-            "RemoteAccess"                                 # Routing and Remote Access
-            "RemoteRegistry"                               # Remote Registry
-            "SharedAccess"                                 # Internet Connection Sharing (ICS)
-            "TrkWks"                                       # Distributed Link Tracking Client
-            #"WbioSrvc"                                    # Windows Biometric Service (required for Fingerprint reader / facial detection)
-            #"WlanSvc"                                     # WLAN AutoConfig
-            "WMPNetworkSvc"                                # Windows Media Player Network Sharing Service
-            #"wscsvc"                                      # Windows Security Center Service
-            "WSearch"                                      # Windows Search
-            "XblAuthManager"                               # Xbox Live Auth Manager
-            "XblGameSave"                                  # Xbox Live Game Save Service
-            "XboxNetApiSvc"                                # Xbox Live Networking Service
-            "XboxGipSvc"                                   # Disables Xbox Accessory Management Service
-            "ndu"                                          # Windows Network Data Usage Monitor
-            "WerSvc"                                       # Disables windows error reporting
-            #"Spooler"                                     # Disables your printer
-            "Fax"                                          # Disables fax
-            "fhsvc"                                        # Disables fax history
-            "gupdate"                                      # Disables google update
-            "gupdatem"                                     # Disables another google update
-            "stisvc"                                       # Disables Windows Image Acquisition (WIA)
-            "AJRouter"                                     # Disables (needed for AllJoyn Router Service)
-            "MSDTC"                                        # Disables Distributed Transaction Coordinator
-            "WpcMonSvc"                                    # Disables Parental Controls
-            "PhoneSvc"                                     # Disables Phone Service(Manages the telephony state on the device)
-            "PrintNotify"                                  # Disables Windows printer notifications and extensions
-            "PcaSvc"                                       # Disables Program Compatibility Assistant Service
-            "WPDBusEnum"                                   # Disables Portable Device Enumerator Service
-            #"LicenseManager"                              # Disables LicenseManager(Windows store may not work properly)
-            "seclogon"                                     # Disables Secondary Logon(disables other credentials only password will work)
-            "SysMain"                                      # Disables sysmain
-            "lmhosts"                                      # Disables TCP/IP NetBIOS Helper
-            "wisvc"                                        # Disables Windows Insider program(Windows Insider will not work)
-            "FontCache"                                    # Disables Windows font cache
-            "RetailDemo"                                   # Disables RetailDemo whic is often used when showing your device
-            "ALG"                                          # Disables Application Layer Gateway Service(Provides support for 3rd party protocol plug-ins for Internet Connection Sharing)
-            #"BFE"                                         # Disables Base Filtering Engine (BFE) (is a service that manages firewall and Internet Protocol security)
-            #"BrokerInfrastructure"                        # Disables Windows infrastructure service that controls which background tasks can run on the system.
-            "SCardSvr"                                     # Disables Windows smart card
-            "EntAppSvc"                                    # Disables enterprise application management.
-            "BthAvctpSvc"                                  # Disables AVCTP service (if you use  Bluetooth Audio Device or Wireless Headphones. then don't disable this)
-            #"FrameServer"                                 # Disables Windows Camera Frame Server(this allows multiple clients to access video frames from camera devices.)
-            "Browser"                                      # Disables computer browser
-            "BthAvctpSvc"                                  # AVCTP service (This is Audio Video Control Transport Protocol service.)
-            #"BDESVC"                                      # Disables bitlocker
-            "iphlpsvc"                                     # Disables ipv6 but most websites don't use ipv6 they use ipv4     
-            "edgeupdate"                                   # Disables one of edge update service  
-            "MicrosoftEdgeElevationService"                # Disables one of edge  service 
-            "edgeupdatem"                                  # Disables another one of update service (disables edgeupdatem)                          
-            "SEMgrSvc"                                     # Disables Payments and NFC/SE Manager (Manages payments and Near Field Communication (NFC) based secure elements)
-            #"PNRPsvc"                                     # Disables peer Name Resolution Protocol ( some peer-to-peer and collaborative applications, such as Remote Assistance, may not function, Discord will still work)
-            #"p2psvc"                                      # Disbales Peer Name Resolution Protocol(nables multi-party communication using Peer-to-Peer Grouping.  If disabled, some applications, such as HomeGroup, may not function. Discord will still work)
-            #"p2pimsvc"                                    # Disables Peer Networking Identity Manager (Peer-to-Peer Grouping services may not function, and some applications, such as HomeGroup and Remote Assistance, may not function correctly.Discord will still work)
-            "PerfHost"                                     # Disables remote users and 64-bit processes to query performance .
-            "BcastDVRUserService_48486de"                  # Disables GameDVR and Broadcast   is used for Game Recordings and Live Broadcasts
-            "CaptureService_48486de"                       # Disables ptional screen capture functionality for applications that call the Windows.Graphics.Capture API.  
-            "cbdhsvc_48486de"                              # Disables cbdhsvc_48486de (clipboard service it disables)
-            #"BluetoothUserService_48486de"                # Disables BluetoothUserService_48486de (The Bluetooth user service supports proper functionality of Bluetooth features relevant to each user session.)
-            "WpnService"                                   # Disables WpnService (Push Notifications may not work )
-            #"StorSvc"                                     # Disables StorSvc (usb external hard drive will not be reconised by windows)
-            "RtkBtManServ"                                 # Disables Realtek Bluetooth Device Manager Service
-            "QWAVE"                                        # Disables Quality Windows Audio Video Experience (audio and video might sound worse)
-            #Hp services
-            "HPAppHelperCap"
-            "HPDiagsCap"
-            "HPNetworkCap"
-            "HPSysInfoCap"
-            "HpTouchpointAnalyticsService"
-            #hyper-v services
-            "HvHost"                          
-            "vmickvpexchange"
-            "vmicguestinterface"
-            "vmicshutdown"
-            "vmicheartbeat"
-            "vmicvmsession"
-            "vmicrdv"
-            "vmictimesync" 
-            # Services which cannot be disabled
-            #"WdNisSvc"
-        )
-                
-        foreach ($service in $services) {
-            # -ErrorAction SilentlyContinue is so it doesn't write an error to stdout if a service doesn't exist
-                
-            Write-Host "Setting $service StartupType to Manual"
-            Get-Service -Name $service -ErrorAction SilentlyContinue | Set-Service -StartupType Manual
-	}
-	if ($Tab7_checkBox13.Checked) {
-		$Tab7_Statusbox1.Items.Add( "Disabling Power Throttling..."  )
-		Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" -Name "PowerThrottlingOff" -Type DWord -Value 00000000
-		Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Power" -Name "HiberbootEnabled" -Type DWord -Value 0000001
-	}
-	if ($Tab7_checkBox14.Checked) {
-		$Tab7_Statusbox1.Items.Add( "Enabling Power Throttling..."  )
-		Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Power\PowerThrottling" -Name "PowerThrottlingOff" -Type DWord -Value 00000001
-		Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Power" -Name "HiberbootEnabled" -Type DWord -Value 0000000
-	}
-	if ($Tab7_checkBox15.Checked) {
-		$Tab7_Statusbox1.Items.Add( "Enabling NumLock on Startup..."  )
-		If (!(Test-Path "HKU:")) {
-			New-PSDrive -Name HKU -PSProvider Registry -Root HKEY_USERS | Out-Null
-		}
-		Set-ItemProperty -Path "HKU:\.DEFAULT\Control Panel\Keyboard" -Name "InitialKeyboardIndicators" -Type DWord -Value 2
-	}
-	if ($Tab7_checkBox16.Checked) {
-		$Tab7_Statusbox1.Items.Add( "Disabling NumLock on Startup..."  )
-		If (!(Test-Path "HKU:")) {
-			New-PSDrive -Name HKU -PSProvider Registry -Root HKEY_USERS | Out-Null
-		}
-		Set-ItemProperty -Path "HKU:\.DEFAULT\Control Panel\Keyboard" -Name "InitialKeyboardIndicators" -Type DWord -Value 0
-	}
-	if ($Tab7_checkBox17.Checked) {
-		$Tab7_Statusbox1.Items.Add( "Showing File Extensions..."  )
-		Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Type DWord -Value 0
-	}
-	if ($Tab7_checkBox18.Checked) {
-		$Tab7_Statusbox1.Items.Add( "Setting Display for Performance..."  )
-		Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "DragFullWindows" -Type String -Value 0
-		Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "MenuShowDelay" -Type String -Value 200
-		Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "UserPreferencesMask" -Type Binary -Value ([byte[]](144,18,3,128,16,0,0,0))
-		Set-ItemProperty -Path "HKCU:\Control Panel\Desktop\WindowMetrics" -Name "MinAnimate" -Type String -Value 0
-		Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardDelay" -Type DWord -Value 0
-		Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewAlphaSelect" -Type DWord -Value 0
-		Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewShadow" -Type DWord -Value 0
-		Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarAnimations" -Type DWord -Value 0
-		Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" -Name "VisualFXSetting" -Type DWord -Value 3
-		Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\DWM" -Name "EnableAeroPeek" -Type DWord -Value 0
-	}
-	if ($Tab7_checkBox19.Checked) {
-		$Tab7_Statusbox1.Items.Add( "Setting Time to UTC..."  )
-		Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation" -Name "RealTimeIsUniversal" -Type DWord -Value 1
-	}
-	if ($Tab7_checkBox20.Checked) {
-		$Tab7_Statusbox1.Items.Add( "Removing all MS Store Apps..."  )
-		$Bloatware = @(
-                    #Unnecessary Windows 10 AppX Apps
-                    "Microsoft.3DBuilder"
-                    "Microsoft.Microsoft3DViewer"
-                    "Microsoft.AppConnector"
-                    "Microsoft.BingFinance"
-                    "Microsoft.BingNews"
-                    "Microsoft.BingSports"
-                    "Microsoft.BingTranslator"
-                    "Microsoft.BingWeather"
-                    "Microsoft.BingFoodAndDrink"
-                    "Microsoft.BingHealthAndFitness"
-                    "Microsoft.BingTravel"
-                    "Microsoft.MinecraftUWP"
-                    "Microsoft.GamingServices"
-                    # "Microsoft.WindowsReadingList"
-                    "Microsoft.GetHelp"
-                    "Microsoft.Getstarted"
-                    "Microsoft.Messaging"
-                    "Microsoft.Microsoft3DViewer"
-                    "Microsoft.MicrosoftSolitaireCollection"
-                    "Microsoft.NetworkSpeedTest"
-                    "Microsoft.News"
-                    "Microsoft.Office.Lens"
-                    "Microsoft.Office.Sway"
-                    "Microsoft.Office.OneNote"
-                    "Microsoft.OneConnect"
-                    "Microsoft.People"
-                    "Microsoft.Print3D"
-                    "Microsoft.SkypeApp"
-                    "Microsoft.Wallet"
-                    "Microsoft.Whiteboard"
-                    "Microsoft.WindowsAlarms"
-                    "microsoft.windowscommunicationsapps"
-                    "Microsoft.WindowsFeedbackHub"
-                    "Microsoft.WindowsMaps"
-                    "Microsoft.WindowsPhone"
-                    "Microsoft.WindowsSoundRecorder"
-                    "Microsoft.XboxApp"
-                    "Microsoft.ConnectivityStore"
-                    "Microsoft.CommsPhone"
-                    "Microsoft.ScreenSketch"
-                    "Microsoft.Xbox.TCUI"
-                    "Microsoft.XboxGameOverlay"
-                    "Microsoft.XboxGameCallableUI"
-                    "Microsoft.XboxSpeechToTextOverlay"
-                    "Microsoft.MixedReality.Portal"
-                    "Microsoft.XboxIdentityProvider"
-                    "Microsoft.ZuneMusic"
-                    "Microsoft.ZuneVideo"
-                    #"Microsoft.YourPhone"
-                    "Microsoft.Getstarted"
-                    "Microsoft.MicrosoftOfficeHub"
-            
-                    #Sponsored Windows 10 AppX Apps
-                    #Add sponsored/featured apps to remove in the "*AppName*" format
-                    "*EclipseManager*"
-                    "*ActiproSoftwareLLC*"
-                    "*AdobeSystemsIncorporated.AdobePhotoshopExpress*"
-                    "*Duolingo-LearnLanguagesforFree*"
-                    "*PandoraMediaInc*"
-                    "*CandyCrush*"
-                    "*BubbleWitch3Saga*"
-                    "*Wunderlist*"
-                    "*Flipboard*"
-                    "*Twitter*"
-                    "*Facebook*"
-                    "*Royal Revolt*"
-                    "*Sway*"
-                    "*Speed Test*"
-                    "*Dolby*"
-                    "*Viber*"
-                    "*ACGMediaPlayer*"
-                    "*Netflix*"
-                    "*OneCalendar*"
-                    "*LinkedInforWindows*"
-                    "*HiddenCityMysteryofShadows*"
-                    "*Hulu*"
-                    "*HiddenCity*"
-                    "*AdobePhotoshopExpress*"
-                    "*HotspotShieldFreeVPN*"
-            
-                    #Optional: Typically not removed but you can if you need to for some reason
-                    "*Microsoft.Advertising.Xaml*"
-                    #"*Microsoft.MSPaint*"
-                    #"*Microsoft.MicrosoftStickyNotes*"
-                    #"*Microsoft.Windows.Photos*"
-                    #"*Microsoft.WindowsCalculator*"
-                    #"*Microsoft.WindowsStore*"
-                    )
-                           
-                foreach ($Bloat in $Bloatware) {
-                    Get-AppxPackage -Name $Bloat| Remove-AppxPackage
-                    Get-AppxProvisionedPackage -Online | Where-Object DisplayName -like $Bloat | Remove-AppxProvisionedPackage -Online
-                    Write-Host "Trying to remove $Bloat."
-                }
-            }}
-	
-	if ($Tab7_checkBox21.Checked) {$Tab7_Statusbox1.Items.Add( "Not yet implemented" )}
-
-	if ( !$Tab7_checkBox1.Checked -and !$Tab7_checkBox2.Checked -and !$Tab7_checkBox3.Checked -and !$Tab7_checkBox4.Checked -and !$Tab7_checkBox5.Checked -and !$Tab7_checkBox6.Checked -and !$Tab7_checkBox7.Checked -and !$Tab7_checkBox8.Checked -and !$Tab7_checkBox9.Checked -and !$Tab7_checkBox10.Checked -and !$Tab7_checkBox11.Checked -and !$Tab7_checkBox12.Checked -and !$Tab7_checkBox13.Checked -and !$Tab7_checkBox14.Checked -and !$Tab7_checkBox15.Checked -and !$Tab7_checkBox16.Checked -and !$Tab7_checkBox17.Checked -and !$Tab7_checkBox18.Checked -and !$Tab7_checkBox19.Checked -and !$Tab7_checkBox20.Checked -and !$Tab7_checkBox21.Checked) {$Tab7_Statusbox1.Items.Add("No tweaks selected....")} 
-}
-
-
-
-#Tab7_installbutton1
-$Tab7_installbutton1 = New-Object System.Windows.Forms.Button
-$Tab7_installbutton1.Name = "Tab5_installbutton1"
-$Tab7_installbutton1.Location = New-Object System.Drawing.Point(450,10)
-$Tab7_installbutton1.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_installbutton1.Text = "Apply selected tweaks"
-$Tab7_installbutton1.add_Click({start-process powershell -verb runas {$handler_Tab7_installbutton1_Click}})
-$tab7.Controls.Add($Tab7_installbutton1)
-
-#Tab7_undobutton1
-$Tab7_undobutton1 = New-Object System.Windows.Forms.Button
-$Tab7_undobutton1.Name = "Tab5_installbutton1"
-$Tab7_undobutton1.Location = New-Object System.Drawing.Point(450,300)
-$Tab7_undobutton1.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_undobutton1.Text = "Undo all Tweaks"
-$Tab7_undobutton1.Add_Click({
-	Write-Host "Creating Restore Point in case something bad happens"
-	Enable-ComputerRestore -Drive "$env:SystemDrive"
-	Checkpoint-Computer -Description "RestorePoint1" -RestorePointType "MODIFY_SETTINGS"
-
-	Write-Host "Enabling Telemetry..."
-	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" -Name "AllowTelemetry" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "AllowTelemetry" -Type DWord -Value 1
-	Write-Host "Enabling Wi-Fi Sense"
-	Set-ItemProperty -Path "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowWiFiHotSpotReporting" -Name "Value" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKLM:\Software\Microsoft\PolicyManager\default\WiFi\AllowAutoConnectToWiFiSenseHotspots" -Name "Value" -Type DWord -Value 1
-	Write-Host "Enabling Application suggestions..."
-	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "ContentDeliveryAllowed" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "OemPreInstalledAppsEnabled" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "PreInstalledAppsEnabled" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "PreInstalledAppsEverEnabled" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SilentInstalledAppsEnabled" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-338387Enabled" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-338388Enabled" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-338389Enabled" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SubscribedContent-353698Enabled" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" -Name "SystemPaneSuggestionsEnabled" -Type DWord -Value 1
-	If (Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent") {
-		Remove-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Recurse -ErrorAction SilentlyContinue
-	}
-	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Name "DisableWindowsConsumerFeatures" -Type DWord -Value 0
-	Write-Host "Enabling Activity History..."
-	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "EnableActivityFeed" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "PublishUserActivities" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "UploadUserActivities" -Type DWord -Value 1
-	Write-Host "Enable Location Tracking..."
-	If (Test-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location") {
-		Remove-Item -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" -Recurse -ErrorAction SilentlyContinue
-	}
-	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\CapabilityAccessManager\ConsentStore\location" -Name "Value" -Type String -Value "Allow"
-	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Sensor\Overrides\{BFA794E4-F964-4FDB-90F6-51056BFE4B44}" -Name "SensorPermissionState" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\lfsvc\Service\Configuration" -Name "Status" -Type DWord -Value 1
-	Write-Host "Enabling automatic Maps updates..."
-	Set-ItemProperty -Path "HKLM:\SYSTEM\Maps" -Name "AutoUpdateEnabled" -Type DWord -Value 1
-	Write-Host "Enabling Feedback..."
-	If (Test-Path "HKCU:\SOFTWARE\Microsoft\Siuf\Rules") {
-		Remove-Item -Path "HKCU:\SOFTWARE\Microsoft\Siuf\Rules" -Recurse -ErrorAction SilentlyContinue
-	}
-	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Siuf\Rules" -Name "NumberOfSIUFInPeriod" -Type DWord -Value 0
-	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\DataCollection" -Name "DoNotShowFeedbackNotifications" -Type DWord -Value 0
-	Write-Host "Enabling Tailored Experiences..."
-	If (Test-Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\CloudContent") {
-		Remove-Item -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Recurse -ErrorAction SilentlyContinue
-	}
-	Set-ItemProperty -Path "HKCU:\SOFTWARE\Policies\Microsoft\Windows\CloudContent" -Name "DisableTailoredExperiencesWithDiagnosticData" -Type DWord -Value 0
-	Write-Host "Disabling Advertising ID..."
-	If (Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo") {
-		Remove-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" -Recurse -ErrorAction SilentlyContinue
-	}
-	Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo" -Name "DisabledByGroupPolicy" -Type DWord -Value 0
-	Write-Host "Allow Error reporting..."
-	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\Windows Error Reporting" -Name "Disabled" -Type DWord -Value 0
-	Write-Host "Allowing Diagnostics Tracking Service..."
-	Stop-Service "DiagTrack" -WarningAction SilentlyContinue
-	Set-Service "DiagTrack" -StartupType Manual
-	Write-Host "Allowing WAP Push Service..."
-	Stop-Service "dmwappushservice" -WarningAction SilentlyContinue
-	Set-Service "dmwappushservice" -StartupType Manual
-	Write-Host "Allowing Home Groups services..."
-	Stop-Service "HomeGroupListener" -WarningAction SilentlyContinue
-	Set-Service "HomeGroupListener" -StartupType Manual
-	Stop-Service "HomeGroupProvider" -WarningAction SilentlyContinue
-	Set-Service "HomeGroupProvider" -StartupType Manual
-	Write-Host "Enabling Storage Sense..."
-	New-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\StorageSense\Parameters\StoragePolicy" | Out-Null
-	Write-Host "Allowing Superfetch service..."
-	Stop-Service "SysMain" -WarningAction SilentlyContinue
-	Set-Service "SysMain" -StartupType Manual
-	Write-Host "Setting BIOS time to Local Time instead of UTC..."
-	Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\TimeZoneInformation" -Name "RealTimeIsUniversal" -Type DWord -Value 0
-	Write-Host "Enabling Hibernation..."
-	Set-ItemProperty -Path "HKLM:\System\CurrentControlSet\Control\Session Manager\Power" -Name "HibernteEnabled" -Type Dword -Value 1
-	Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FlyoutMenuSettings" -Name "ShowHibernateOption" -Type Dword -Value 1
-	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization" -Name "NoLockScreen" -ErrorAction SilentlyContinue
-
-	Write-Host "Hiding file operations details..."
-	If (Test-Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager") {
-		Remove-Item -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager" -Recurse -ErrorAction SilentlyContinue
-	}
-	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\OperationStatusManager" -Name "EnthusiastMode" -Type DWord -Value 0
-	Write-Host "Showing Task View button..."
-	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ShowTaskViewButton" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced\People" -Name "PeopleBand" -Type DWord -Value 1
-
-	Write-Host "Changing default Explorer view to Quick Access..."
-	Set-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "LaunchTo" -Type DWord -Value 1
-
-	Write-Host "Unrestricting AutoLogger directory"
-	$autoLoggerDir = "$env:PROGRAMDATA\Microsoft\Diagnosis\ETLLogs\AutoLogger"
-	icacls $autoLoggerDir /grant:r SYSTEM:`(OI`)`(CI`)F | Out-Null
-
-	Write-Host "Enabling and starting Diagnostics Tracking Service"
-	Set-Service "DiagTrack" -StartupType Automatic
-	Start-Service "DiagTrack"
-
-	Write-Host "Hiding known file extensions"
-	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Type DWord -Value 1
-
-	Write-Host "Reset Local Group Policies to Stock Defaults"
-	# cmd /c secedit /configure /cfg %windir%\inf\defltbase.inf /db defltbase.sdb /verbose
-	cmd /c RD /S /Q "%WinDir%\System32\GroupPolicyUsers"
-	cmd /c RD /S /Q "%WinDir%\System32\GroupPolicy"
-	cmd /c gpupdate /force
-	# Considered using Invoke-GPUpdate but requires module most people won't have installed
-
-	Write-Output "Adjusting visual effects for appearance..."
-	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "DragFullWindows" -Type String -Value 1
-	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "MenuShowDelay" -Type String -Value 400
-	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "UserPreferencesMask" -Type Binary -Value ([byte[]](158, 30, 7, 128, 18, 0, 0, 0))
-	Set-ItemProperty -Path "HKCU:\Control Panel\Desktop\WindowMetrics" -Name "MinAnimate" -Type String -Value 1
-	Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardDelay" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewAlphaSelect" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewShadow" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarAnimations" -Type DWord -Value 1
-	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" -Name "VisualFXSetting" -Type DWord -Value 3
-	Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\DWM" -Name "EnableAeroPeek" -Type DWord -Value 1
-	Remove-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "HungAppTimeout" -ErrorAction SilentlyContinue
-	Write-Host "Restoring Clipboard History..."
-	Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Clipboard" -Name "EnableClipboardHistory" -ErrorAction SilentlyContinue
-	Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "AllowClipboardHistory" -ErrorAction SilentlyContinue
-	Write-Host "Done - Reverted to Stock Settings"
-
-	Write-Host "Essential Undo Completed"
-
-	$ButtonType = [System.Windows.MessageBoxButton]::OK
-	$MessageboxTitle = "Undo All"
-	$Messageboxbody = ("Done")
-	$MessageIcon = [System.Windows.MessageBoxImage]::Information
-
-	[System.Windows.MessageBox]::Show($Messageboxbody, $MessageboxTitle, $ButtonType, $MessageIcon)
-
-	Write-Host "Undo All is Finished"
-}) >> C:\Users\ghost\log.log 
-$tab7.Controls.Add($Tab7_undobutton1)
-
-
-
-#Tab7_checkboxes
-$Tab7_checkBox1 = New-Object System.Windows.Forms.CheckBox
-$Tab7_checkBox1.Location = New-Object System.Drawing.Point(10,50)
-$Tab7_checkBox1.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_checkBox1.Text = "Create Restore Point"
-$Tab7_checkBox1.Name = "Tab7_checkBox1"
-$tab7.Controls.Add($Tab7_checkBox1)
-
-$Tab7_checkBox2 = New-Object System.Windows.Forms.CheckBox
-$Tab7_checkBox2.Location = New-Object System.Drawing.Point(10,70)
-$Tab7_checkBox2.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_checkBox2.Text = "O and O Shutup"
-$Tab7_checkBox2.Name = "Tab7_checkBox2"
-$tab7.Controls.Add($Tab7_checkBox2)
-
-$Tab7_checkBox3 = New-Object System.Windows.Forms.CheckBox
-$Tab7_checkBox3.Location = New-Object System.Drawing.Point(10,90)
-$Tab7_checkBox3.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_checkBox3.Text = "Disable Telemetry"
-$Tab7_checkBox3.Name = "Tab7_checkBox3"
-$tab7.Controls.Add($Tab7_checkBox3)
-
-$Tab7_checkBox4 = New-Object System.Windows.Forms.CheckBox
-$Tab7_checkBox4.Location = New-Object System.Drawing.Point(10,110)
-$Tab7_checkBox4.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_checkBox4.Text = "Disable Wifi-Sense"
-$Tab7_checkBox4.Name = "Tab7_checkBox4"
-$tab7.Controls.Add($Tab7_checkBox4)
-
-$Tab7_checkBox5 = New-Object System.Windows.Forms.CheckBox
-$Tab7_checkBox5.Location = New-Object System.Drawing.Point(10,130)
-$Tab7_checkBox5.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_checkBox5.Text = "Disable Activity History"
-$Tab7_checkBox5.Name = "Tab7_checkBox5"
-$tab7.Controls.Add($Tab7_checkBox5)
-
-$Tab7_checkBox6 = New-Object System.Windows.Forms.CheckBox
-$Tab7_checkBox6.Location = New-Object System.Drawing.Point(10,160)
-$Tab7_checkBox6.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_checkBox6.Text = "Delete Temporary Files"
-$Tab7_checkBox6.Name = "Tab7_checkBox6"
-$tab7.Controls.Add($Tab7_checkBox6)
-
-$Tab7_checkBox7 = New-Object System.Windows.Forms.CheckBox
-$Tab7_checkBox7.Location = New-Object System.Drawing.Point(10,180)
-$Tab7_checkBox7.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_checkBox7.Text = "Disable Location Tracking"
-$Tab7_checkBox7.Name = "Tab7_checkBox7"
-$tab7.Controls.Add($Tab7_checkBox7)
-
-$Tab7_checkBox8 = New-Object System.Windows.Forms.CheckBox
-$Tab7_checkBox8.Location = New-Object System.Drawing.Point(10,200)
-$Tab7_checkBox8.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_checkBox8.Text = "Disable Homegroup"
-$Tab7_checkBox8.Name = "Tab7_checkBox8"
-$tab7.Controls.Add($Tab7_checkBox8)
-
-$Tab7_checkBox9 = New-Object System.Windows.Forms.CheckBox
-$Tab7_checkBox9.Location = New-Object System.Drawing.Point(10,220)
-$Tab7_checkBox9.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_checkBox9.Text = "Disable Storage Sense"
-$Tab7_checkBox9.Name = "Tab7_checkBox9"
-$tab7.Controls.Add($Tab7_checkBox9)
-
-$Tab7_checkBox10 = New-Object System.Windows.Forms.CheckBox
-$Tab7_checkBox10.Location = New-Object System.Drawing.Point(10,240)
-$Tab7_checkBox10.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_checkBox10.Text = "Disable Hibernation"
-$Tab7_checkBox10.Name = "Tab7_checkBox10"
-$tab7.Controls.Add($Tab7_checkBox10)
-
-$Tab7_checkBox11 = New-Object System.Windows.Forms.CheckBox
-$Tab7_checkBox11.Location = New-Object System.Drawing.Point(10,280)
-$Tab7_checkBox11.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_checkBox11.Text = "Disable GameDVR"
-$Tab7_checkBox11.Name = "Tab7_checkBox11"
-$tab7.Controls.Add($Tab7_checkBox11)
-
-$Tab7_checkBox12 = New-Object System.Windows.Forms.CheckBox
-$Tab7_checkBox12.Location = New-Object System.Drawing.Point(10,300)
-$Tab7_checkBox12.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_checkBox12.Text = "Set Services to Manual"
-$Tab7_checkBox12.Name = "Tab7_checkBox12"
-$tab7.Controls.Add($Tab7_checkBox12)
-
-$Tab7_checkBox13 = New-Object System.Windows.Forms.CheckBox
-$Tab7_checkBox13.Location = New-Object System.Drawing.Point(10,320)
-$Tab7_checkBox13.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_checkBox13.Text = "Disable Power Throttling"
-$Tab7_checkBox13.Name = "Tab7_checkBox13"
-$tab7.Controls.Add($Tab7_checkBox13)
-
-$Tab7_checkBox14 = New-Object System.Windows.Forms.CheckBox
-$Tab7_checkBox14.Location = New-Object System.Drawing.Point(10,340)
-$Tab7_checkBox14.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_checkBox14.Text = "Enable Power Throttling"
-$Tab7_checkBox14.Name = "Tab7_checkBox14"
-$tab7.Controls.Add($Tab7_checkBox14)
-
-$Tab7_checkBox15 = New-Object System.Windows.Forms.CheckBox
-$Tab7_checkBox15.Location = New-Object System.Drawing.Point(10,360)
-$Tab7_checkBox15.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_checkBox15.Text = "Enable NumLock on Startup"
-$Tab7_checkBox15.Name = "Tab7_checkBox15"
-$tab7.Controls.Add($Tab7_checkBox15)
-
-$Tab7_checkBox16 = New-Object System.Windows.Forms.CheckBox
-$Tab7_checkBox16.Location = New-Object System.Drawing.Point(10,380)
-$Tab7_checkBox16.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_checkBox16.Text = "Disable NumLock on Startup"
-$Tab7_checkBox16.Name = "Tab7_checkBox16"
-$tab7.Controls.Add($Tab7_checkBox16)
-
-$Tab7_checkBox17 = New-Object System.Windows.Forms.CheckBox
-$Tab7_checkBox17.Location = New-Object System.Drawing.Point(250,50)
-$Tab7_checkBox17.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_checkBox17.Text = "Show File Extensions"
-$Tab7_checkBox17.Name = "Tab7_checkBox17"
-$tab7.Controls.Add($Tab7_checkBox17)
-
-$Tab7_checkBox18 = New-Object System.Windows.Forms.CheckBox
-$Tab7_checkBox18.Location = New-Object System.Drawing.Point(250,70)
-$Tab7_checkBox18.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_checkBox18.Text = "Set Display for Performance"
-$Tab7_checkBox18.Name = "Tab7_checkBox18"
-$tab7.Controls.Add($Tab7_checkBox18)
-
-$Tab7_checkBox19 = New-Object System.Windows.Forms.CheckBox
-$Tab7_checkBox19.Location = New-Object System.Drawing.Point(250,90)
-$Tab7_checkBox19.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_checkBox19.Text = "Set Time to UTC"
-$Tab7_checkBox19.Name = "Tab7_checkBox19"
-$tab7.Controls.Add($Tab7_checkBox19)
-
-$Tab7_checkBox20 = New-Object System.Windows.Forms.CheckBox
-$Tab7_checkBox20.Location = New-Object System.Drawing.Point(250,110)
-$Tab7_checkBox20.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_checkBox20.Text = "Remove all MS Store Apps"
-$Tab7_checkBox20.Name = "Tab7_checkBox20"
-$tab7.Controls.Add($Tab7_checkBox20)
-
-$Tab7_checkBox21 = New-Object System.Windows.Forms.CheckBox
-$Tab7_checkBox21.Location = New-Object System.Drawing.Point(250,140)
-$Tab7_checkBox21.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_checkBox21.Text = "Disable UAC"
-$Tab7_checkBox21.Name = "Tab7_checkBox21"
-$tab7.Controls.Add($Tab7_checkBox21)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        icacls $autoLoggerDir /grant:r SYSTEM:`(OI`)`(CI`)F | Out-Null
+
+        Write-Host "Enabling and starting Diagnostics Tracking Service"
+        Set-Service "DiagTrack" -StartupType Automatic
+        Start-Service "DiagTrack"
+
+        Write-Host "Hiding known file extensions"
+        Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "HideFileExt" -Type DWord -Value 1
+
+        Write-Host "Reset Local Group Policies to Stock Defaults"
+        # cmd /c secedit /configure /cfg %windir%\inf\defltbase.inf /db defltbase.sdb /verbose
+        cmd /c RD /S /Q "%WinDir%\System32\GroupPolicyUsers"
+        cmd /c RD /S /Q "%WinDir%\System32\GroupPolicy"
+        cmd /c gpupdate /force
+        # Considered using Invoke-GPUpdate but requires module most people won't have installed
+
+        Write-Output "Adjusting visual effects for appearance..."
+        Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "DragFullWindows" -Type String -Value 1
+        Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "MenuShowDelay" -Type String -Value 400
+        Set-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "UserPreferencesMask" -Type Binary -Value ([byte[]](158, 30, 7, 128, 18, 0, 0, 0))
+        Set-ItemProperty -Path "HKCU:\Control Panel\Desktop\WindowMetrics" -Name "MinAnimate" -Type String -Value 1
+        Set-ItemProperty -Path "HKCU:\Control Panel\Keyboard" -Name "KeyboardDelay" -Type DWord -Value 1
+        Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewAlphaSelect" -Type DWord -Value 1
+        Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "ListviewShadow" -Type DWord -Value 1
+        Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" -Name "TaskbarAnimations" -Type DWord -Value 1
+        Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects" -Name "VisualFXSetting" -Type DWord -Value 3
+        Set-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\DWM" -Name "EnableAeroPeek" -Type DWord -Value 1
+        Remove-ItemProperty -Path "HKCU:\Control Panel\Desktop" -Name "HungAppTimeout" -ErrorAction SilentlyContinue
+        Write-Host "Restoring Clipboard History..."
+        Remove-ItemProperty -Path "HKCU:\SOFTWARE\Microsoft\Clipboard" -Name "EnableClipboardHistory" -ErrorAction SilentlyContinue
+        Remove-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name "AllowClipboardHistory" -ErrorAction SilentlyContinue
+        Write-Host "Done - Reverted to Stock Settings"
+}})
+$tab7.Controls.Add($Tab7_Tweakbutton22)
 
 # TAB 10
 #----------------------------------------------
@@ -3034,13 +2593,14 @@ $tab10.Text = "About”
 $FormTabControl.Controls.Add($tab10)
 
 # window label
-$label = New-Object System.Windows.Forms.Label
-$label.Location = New-Object System.Drawing.Point(10,10)
-$label.AutoSize = $true
-$label.Font = New-Object System.Drawing.Font('verdana',26,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
-$label.ForeColor = "#000000"
-$label.Text = ("Efe's Toolbox")
-$tab10.Controls.Add($label)
+$tab10_label1 = New-Object System.Windows.Forms.Label
+$tab10_label1.Location = New-Object System.Drawing.Point(10,10)
+$tab10_label1.AutoSize = $true
+$tab10_label1.Font = New-Object System.Drawing.Font('verdana',26,[System.Drawing.FontStyle]([System.Drawing.FontStyle]::Bold))
+$tab10_label1.ForeColor = "#000000"
+$tab10_label1.Text =("Efe's Toolbox")
+$tab10.Controls.Add($tab10_label1)
+
 
 # window label
 $label2 = New-Object System.Windows.Forms.Label
@@ -3049,7 +2609,7 @@ $label2.AutoSize = $true
 $label2.Font = New-Object System.Drawing.Font('verdana',12)
 $label2.ForeColor = "#000000"
 #$label2.backColor = "#b3b3b3"
-$label2.Text = ("Efe's Toolbox is designed by a student`nwho has gotten bored and found coding slightly interesting.")
+$label2.Text = ("Efe's Toolbox is designed by a student`nwho has gotten bored and found coding interesting.")
 $tab10.Controls.Add($label2)
 
 # link1
