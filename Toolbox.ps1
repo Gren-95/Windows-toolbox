@@ -1933,7 +1933,7 @@ $Tab6.Controls.Add($Tab6_updatebutton4)
 $tab7 = New-object System.Windows.Forms.Tabpage
 $tab7.DataBindings.DefaultDataSourceUpdateMode = 0 
 $tab7.Name = "tab7" 
-$tab7.Text = "Tweaks” 
+$tab7.Text = "Tweaks”
 $FormTabControl.Controls.Add($tab7)
 
 # window label
@@ -1953,6 +1953,13 @@ $Tab7_label2.ForeColor = "#000000"
 $Tab7_label2.Text = ("Misc")
 $tab7.Controls.Add($Tab7_label2)
 
+#Tab7_Statusbox1
+$Tab7_Statusbox1 = New-Object System.Windows.Forms.ListBox
+$Tab7_Statusbox1.FormattingEnabled = $True
+$Tab7_Statusbox1.Location = New-Object System.Drawing.Point(450,335)
+$Tab7_Statusbox1.Size = New-Object System.Drawing.Size(200,100)
+$Tab7_Statusbox1.Name = "Tab7_Statusbox1"
+$tab7.Controls.Add($Tab7_Statusbox1)
 
 
 
@@ -1965,23 +1972,240 @@ $tab7.Controls.Add($Tab7_label2)
 
 
 
+$Tab7_Tweakbutton1 = New-Object System.Windows.Forms.Button
+$Tab7_Tweakbutton1.Location = New-Object System.Drawing.Point(10,50)
+$Tab7_Tweakbutton1.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton1.Text = "Create Restore Point"
+$Tab7_Tweakbutton1.Add_Click({start-process powershell -verb runas {
+	Enable-ComputerRestore -Drive "C:\"
+	Checkpoint-Computer -Description "RestorePoint1" -RestorePointType "MODIFY_SETTINGS"
+}})
+$tab7.Controls.Add($Tab7_Tweakbutton1)
 
 
 
+$Tab7_Tweakbutton2 = New-Object System.Windows.Forms.Button
+$Tab7_Tweakbutton2.Location = New-Object System.Drawing.Point(10,50)
+$Tab7_Tweakbutton2.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton2.Text = "O and O Shutup"
+$Tab7_Tweakbutton2.Add_Click({start-process powershell -verb runas {
+	Import-Module BitsTransfer
+	Start-BitsTransfer -Source "https://raw.githubusercontent.com/ChrisTitusTech/win10script/master/ooshutup10.cfg" -Destination ooshutup10.cfg
+	Start-BitsTransfer -Source "https://dl5.oo-software.com/files/ooshutup10/OOSU10.exe" -Destination OOSU10.exe
+	./OOSU10.exe ooshutup10.cfg /quiet
+
+}})
+$tab7.Controls.Add($Tab7_Tweakbutton2)
+
+
+$Tab7_Tweakbutton3 = New-Object System.Windows.Forms.Button
+$Tab7_Tweakbutton3.Location = New-Object System.Drawing.Point(10,50)
+$Tab7_Tweakbutton3.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton3.Text = "Disable Telemetry"
+$Tab7_Tweakbutton3.Add_Click({start-process powershell -verb runas {
+
+
+}})
+$tab7.Controls.Add($Tab7_Tweakbutton3)
+
+
+$Tab7_Tweakbutton4 = New-Object System.Windows.Forms.Button
+$Tab7_Tweakbutton4.Location = New-Object System.Drawing.Point(10,50)
+$Tab7_Tweakbutton4.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton4.Text = "Disable Wifi-Sense"
+$Tab7_Tweakbutton4.Add_Click({start-process powershell -verb runas {
+
+
+}})
+$tab7.Controls.Add($Tab7_Tweakbutton4)
+
+
+$Tab7_Tweakbutton5 = New-Object System.Windows.Forms.Button
+$Tab7_Tweakbutton5.Location = New-Object System.Drawing.Point(10,50)
+$Tab7_Tweakbutton5.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton5.Text = "Disable Activity History"
+$Tab7_Tweakbutton5.Add_Click({start-process powershell -verb runas {
+
+
+}})
+$tab7.Controls.Add($Tab7_Tweakbutton5)
+
+
+$Tab7_Tweakbutton6 = New-Object System.Windows.Forms.Button
+$Tab7_Tweakbutton6.Location = New-Object System.Drawing.Point(10,50)
+$Tab7_Tweakbutton6.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton6.Text = "Delete Temporary Files"
+$Tab7_Tweakbutton6.Add_Click({start-process powershell -verb runas {
+
+
+}})
+$tab7.Controls.Add($Tab7_Tweakbutton6)
+
+
+$Tab7_Tweakbutton7 = New-Object System.Windows.Forms.Button
+$Tab7_Tweakbutton7.Location = New-Object System.Drawing.Point(10,50)
+$Tab7_Tweakbutton7.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton7.Text = "Disable Location Tracking"
+$Tab7_Tweakbutton7.Add_Click({start-process powershell -verb runas {
+
+
+}})
+$tab7.Controls.Add($Tab7_Tweakbutton7)
+
+
+$Tab7_Tweakbutton8 = New-Object System.Windows.Forms.Button
+$Tab7_Tweakbutton8.Location = New-Object System.Drawing.Point(10,50)
+$Tab7_Tweakbutton8.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton8.Text = "Disable Homegroup"
+$Tab7_Tweakbutton8.Add_Click({start-process powershell -verb runas {
+
+
+}})
+$tab7.Controls.Add($Tab7_Tweakbutton8)
+
+
+$Tab7_Tweakbutton9 = New-Object System.Windows.Forms.Button
+$Tab7_Tweakbutton9.Location = New-Object System.Drawing.Point(10,50)
+$Tab7_Tweakbutton9.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton9.Text = "Disable Storage Sense"
+$Tab7_Tweakbutton9.Add_Click({start-process powershell -verb runas {
+
+
+}})
+$tab7.Controls.Add($Tab7_Tweakbutton9)
+
+
+$Tab7_Tweakbutton10 = New-Object System.Windows.Forms.Button
+$Tab7_Tweakbutton10.Location = New-Object System.Drawing.Point(10,50)
+$Tab7_Tweakbutton10.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton10.Text = "Disable Hibernation"
+$Tab7_Tweakbutton10.Add_Click({start-process powershell -verb runas {
+
+
+}})
+$tab7.Controls.Add($Tab7_Tweakbutton10)
+
+
+$Tab7_Tweakbutton11 = New-Object System.Windows.Forms.Button
+$Tab7_Tweakbutton11.Location = New-Object System.Drawing.Point(10,50)
+$Tab7_Tweakbutton11.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton11.Text = "Disable GameDVR"
+$Tab7_Tweakbutton11.Add_Click({start-process powershell -verb runas {
+
+
+}})
+$tab7.Controls.Add($Tab7_Tweakbutton11)
+
+
+$Tab7_Tweakbutton12 = New-Object System.Windows.Forms.Button
+$Tab7_Tweakbutton12.Location = New-Object System.Drawing.Point(10,50)
+$Tab7_Tweakbutton12.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton12.Text = "Set Services to Manual"
+$Tab7_Tweakbutton12.Add_Click({start-process powershell -verb runas {
+
+
+}})
+$tab7.Controls.Add($Tab7_Tweakbutton12)
+
+
+$Tab7_Tweakbutton13 = New-Object System.Windows.Forms.Button
+$Tab7_Tweakbutton13.Location = New-Object System.Drawing.Point(10,50)
+$Tab7_Tweakbutton13.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton13.Text = "Disable Power Throttling"
+$Tab7_Tweakbutton13.Add_Click({start-process powershell -verb runas {
+
+
+}})
+$tab7.Controls.Add($Tab7_Tweakbutton13)
+
+
+$Tab7_Tweakbutton14 = New-Object System.Windows.Forms.Button
+$Tab7_Tweakbutton14.Location = New-Object System.Drawing.Point(10,50)
+$Tab7_Tweakbutton14.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton14.Text = "Enable Power Throttling"
+$Tab7_Tweakbutton14.Add_Click({start-process powershell -verb runas {
+
+
+}})
+$tab7.Controls.Add($Tab7_Tweakbutton14)
+
+
+$Tab7_Tweakbutton15 = New-Object System.Windows.Forms.Button
+$Tab7_Tweakbutton15.Location = New-Object System.Drawing.Point(10,50)
+$Tab7_Tweakbutton15.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton15.Text = "Enable NumLock on Startup"
+$Tab7_Tweakbutton15.Add_Click({start-process powershell -verb runas {
+
+
+}})
+$tab7.Controls.Add($Tab7_Tweakbutton15)
+
+
+$Tab7_Tweakbutton16 = New-Object System.Windows.Forms.Button
+$Tab7_Tweakbutton16.Location = New-Object System.Drawing.Point(10,50)
+$Tab7_Tweakbutton16.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton16.Text = "Disable NumLock on Startup"
+$Tab7_Tweakbutton16.Add_Click({start-process powershell -verb runas {
+
+
+}})
+$tab7.Controls.Add($Tab7_Tweakbutton16)
+
+
+$Tab7_Tweakbutton17 = New-Object System.Windows.Forms.Button
+$Tab7_Tweakbutton17.Location = New-Object System.Drawing.Point(10,50)
+$Tab7_Tweakbutton17.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton17.Text = "Show File Extensions"
+$Tab7_Tweakbutton17.Add_Click({start-process powershell -verb runas {
+
+
+}})
+$tab7.Controls.Add($Tab7_Tweakbutton17)
+
+
+$Tab7_Tweakbutton18 = New-Object System.Windows.Forms.Button
+$Tab7_Tweakbutton18.Location = New-Object System.Drawing.Point(10,50)
+$Tab7_Tweakbutton18.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton18.Text = "Set Display for Performance"
+$Tab7_Tweakbutton18.Add_Click({start-process powershell -verb runas {
+
+
+}})
+$tab7.Controls.Add($Tab7_Tweakbutton18)
+
+
+$Tab7_Tweakbutton19 = New-Object System.Windows.Forms.Button
+$Tab7_Tweakbutton19.Location = New-Object System.Drawing.Point(10,50)
+$Tab7_Tweakbutton19.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton19.Text = "Set Time to UTC"
+$Tab7_Tweakbutton19.Add_Click({start-process powershell -verb runas {
+
+
+}})
+$tab7.Controls.Add($Tab7_Tweakbutton19)
+
+
+$Tab7_Tweakbutton20 = New-Object System.Windows.Forms.Button
+$Tab7_Tweakbutton20.Location = New-Object System.Drawing.Point(10,50)
+$Tab7_Tweakbutton20.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton20.Text = "Remove all MS Store Apps"
+$Tab7_Tweakbutton20.Add_Click({start-process powershell -verb runas {
+
+
+}})
+$tab7.Controls.Add($Tab7_Tweakbutton20)
 
 
 
+$Tab7_Tweakbutton21 = New-Object System.Windows.Forms.Button
+$Tab7_Tweakbutton21.Location = New-Object System.Drawing.Point(10,50)
+$Tab7_Tweakbutton21.Size = New-Object System.Drawing.Size(200,25)
+$Tab7_Tweakbutton21.Text = "Disable UAC"
+$Tab7_Tweakbutton21.Add_Click({start-process powershell -verb runas {
 
 
-
-
-
-
-
-
-
-
-
+}})
+$tab7.Controls.Add($Tab7_Tweakbutton21)
 
 
 
@@ -2181,7 +2405,7 @@ $handler_Tab7_installbutton1_Click={
 
 
 
-	if ($Tab7_checkBox6.Checked) {$Tab7_Statusbox1.Items.Add( "Deleting Temporary Files..."  ) ;  Write-Output "hello" }
+	if ($Tab7_checkBox6.Checked) {$Tab7_Statusbox1.Items.Add( "Deleting Temporary Files..."  ) ; start-process powershell -verb runas {  Write-Output "hello" } >> 'C:\Users\ghost\loggers.log'}
 
 
 
@@ -2478,7 +2702,7 @@ $Tab7_installbutton1.Name = "Tab5_installbutton1"
 $Tab7_installbutton1.Location = New-Object System.Drawing.Point(450,10)
 $Tab7_installbutton1.Size = New-Object System.Drawing.Size(200,25)
 $Tab7_installbutton1.Text = "Apply selected tweaks"
-$Tab7_installbutton1.add_Click($handler_Tab7_installbutton1_Click)
+$Tab7_installbutton1.add_Click({start-process powershell -verb runas {$handler_Tab7_installbutton1_Click}})
 $tab7.Controls.Add($Tab7_installbutton1)
 
 #Tab7_undobutton1
@@ -2627,13 +2851,7 @@ $Tab7_undobutton1.Add_Click({
 }) >> C:\Users\ghost\log.log 
 $tab7.Controls.Add($Tab7_undobutton1)
 
-#Tab7_Statusbox1
-$Tab7_Statusbox1 = New-Object System.Windows.Forms.ListBox
-$Tab7_Statusbox1.FormattingEnabled = $True
-$Tab7_Statusbox1.Location = New-Object System.Drawing.Point(450,335)
-$Tab7_Statusbox1.Size = New-Object System.Drawing.Size(200,100)
-$Tab7_Statusbox1.Name = "Tab7_Statusbox1"
-$tab7.Controls.Add($Tab7_Statusbox1)
+
 
 #Tab7_checkboxes
 $Tab7_checkBox1 = New-Object System.Windows.Forms.CheckBox
@@ -2646,7 +2864,7 @@ $tab7.Controls.Add($Tab7_checkBox1)
 $Tab7_checkBox2 = New-Object System.Windows.Forms.CheckBox
 $Tab7_checkBox2.Location = New-Object System.Drawing.Point(10,70)
 $Tab7_checkBox2.Size = New-Object System.Drawing.Size(200,25)
-$Tab7_checkBox2.Text = "O&O Shutup"
+$Tab7_checkBox2.Text = "O and O Shutup"
 $Tab7_checkBox2.Name = "Tab7_checkBox2"
 $tab7.Controls.Add($Tab7_checkBox2)
 
