@@ -526,6 +526,23 @@ Get-AppPackage | Remove-AppPackage
 }})
 $Tab2.Controls.Add($Tab2_pkgmgrbutton5)
 
+$Tab2_pkgmgrbutton6 = New-Object System.Windows.Forms.Button
+$Tab2_pkgmgrbutton6.Location = New-Object System.Drawing.Point(10,175)
+$Tab2_pkgmgrbutton6.Size = New-Object System.Drawing.Size (200,25)
+$Tab2_pkgmgrbutton6.Text = "Remove MS Store Apps"
+$Tab2_pkgmgrbutton6.Add_Click({start-process powershell -verb runas {
+Get-AppPackage | Remove-AppPackage
+}})
+$Tab2.Controls.Add($Tab2_pkgmgrbutton6)
+
+$Tab2_pkgmgrbutton7 = New-Object System.Windows.Forms.Button
+$Tab2_pkgmgrbutton7.Location = New-Object System.Drawing.Point(10,175)
+$Tab2_pkgmgrbutton7.Size = New-Object System.Drawing.Size (200,25)
+$Tab2_pkgmgrbutton7.Text = "Remove MS Store Apps"
+$Tab2_pkgmgrbutton7.Add_Click({start-process powershell -verb runas {
+Get-AppPackage | Remove-AppPackage
+}})
+$Tab2.Controls.Add($Tab2_pkgmgrbutton7)
 
 
 
@@ -631,18 +648,20 @@ $Tab2_probutton2.Text = "User Manager"
 $Tab2_probutton2.Add_Click({& 'C:\Program Files\usermanager\lusrmgr.exe'})
 $Tab2.Controls.Add($Tab2_probutton2)
 
-#$Tab2_probutton3 = New-Object System.Windows.Forms.Button
-#$Tab2_probutton3.Location = New-Object System.Drawing.Point(440,125)
-#$Tab2_probutton3.Size = New-Object System.Drawing.Size (200,25)
-#$Tab2_probutton3.Text = "GPedit"
-#$Tab2_probutton3.Add_Click({start-process cmd -verb runas {
-#Push-Location "%~dp0" 
-#Get-ChildItem /b %SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package~3*.mum >List.txt 
-#Get-ChildItem /b %SystemRoot%\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package~3*.mum >>List.txt 
-#i#f( /f %%i in ('findstr /i . List.txt 2^>nul')) {dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i" }
-#pause
-#}})
-#$Tab2.Controls.Add($Tab2_probutton3)
+$Tab2_probutton3 = New-Object System.Windows.Forms.Button
+$Tab2_probutton3.Location = New-Object System.Drawing.Point(440,125)
+$Tab2_probutton3.Size = New-Object System.Drawing.Size (200,25)
+$Tab2_probutton3.Text = "GPedit"
+$Tab2_probutton3.Add_Click({start-process cmd -verb runas {
+if(!(((Get-ComputerInfo).WindowsEditionId).IndexOf('Core') -eq -1) -or !(((Get-ComputerInfo).WindowsEditionId).IndexOf('Home') -eq -1)){ # Not sure if home edition is Core or Home
+	Write-Host "Enabling gpedit.msc...Group Policy for Home Users"
+	Get-ChildItem @(
+		"$env:SystemDrive\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientTools-Package*.mum",
+		"$env:SystemDrive\Windows\servicing\Packages\Microsoft-Windows-GroupPolicy-ClientExtensions-Package*.mum"
+	) | ForEach-Object { dism.exe /online /norestart /add-package:"$_" }
+	
+}}})
+$Tab2.Controls.Add($Tab2_probutton3)
 
 # window label
 $label = New-Object System.Windows.Forms.Label
@@ -2589,6 +2608,26 @@ $Tab7_Tweakbutton22.Add_Click({start-process powershell -verb runas {
         Write-Host "Done - Reverted to Stock Settings"
 }})
 $tab7.Controls.Add($Tab7_Tweakbutton22)
+
+$Tab7_Tweakbutton23 = New-Object System.Windows.Forms.Button
+$Tab7_Tweakbutton23.Location = New-Object System.Drawing.Point(340,250)
+$Tab7_Tweakbutton23.Size = New-Object System.Drawing.Size(320,25)
+$Tab7_Tweakbutton23.Text = "Dark Mode"
+$Tab7_Tweakbutton23.Add_Click({start-process powershell -verb runas {
+	Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme -Value 0
+}})
+$tab7.Controls.Add($Tab7_Tweakbutton23)
+
+$Tab7_Tweakbutton24 = New-Object System.Windows.Forms.Button
+$Tab7_Tweakbutton24.Location = New-Object System.Drawing.Point(340,275)
+$Tab7_Tweakbutton24.Size = New-Object System.Drawing.Size(320,25)
+$Tab7_Tweakbutton24.Text = "Light Mode"
+$Tab7_Tweakbutton24.Add_Click({start-process powershell -verb runas {
+	Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme -Value 1
+}})
+$tab7.Controls.Add($Tab7_Tweakbutton24)
+
+
 
 # TAB 10
 #----------------------------------------------
