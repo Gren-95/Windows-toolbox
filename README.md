@@ -2,9 +2,7 @@
 My personal toolbox for windows 10+
 
 
-## How to use
-
-### Quick download link
+## Quick download link
 `iex (iwr https://bit.ly/3e3hxr9).Content`
 
 
