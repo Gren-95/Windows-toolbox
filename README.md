@@ -3,7 +3,7 @@ My personal toolbox for windows 10+
 
 
 ## Quick download link
-`iex (iwr https://bit.ly/3e3hxr9).Content`
+`curl.exe -fsSL https://bit.ly/3e3hxr9|out-string|iex`
 
 
 ## Pictures
